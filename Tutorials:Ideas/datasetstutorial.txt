@@ -1,0 +1,19 @@
+We should add a page/tutorial on:
+
+1)Evaluating Other Sentiment Models (besides O3-Mini) on FPB:
+- Copy/modify the notebook
+- Change model endpoints or wrappers
+- Run evaluation
+- Compare metrics side by side
+
+2)Fine-Tuning / Prompt-Tuning a Model on FPB
+  - Preprocess FPB training data
+  - Fine-tune or LoRA (or parameter-efficient tuning)
+  - Evaluate on test set
+  - Compare to baseline O3-Mini
+
+3)Custom Dataset Evaluation:
+  - Show how to format dataset to match API expectations
+  - Adapt evaluation notebook to load custom dataset
+  - Run predictions & compute metrics
+  - Tips on data splits, balancing etc.
