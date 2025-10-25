@@ -1,0 +1,101 @@
+{
+  "results": {
+    "GPT4o_NEN": {
+      "alias": "GPT4o_NEN",
+      "exact_match,none": 0.0,
+      "exact_match_stderr,none": 0.0
+    }
+  },
+  "group_subtasks": {
+    "GPT4o_NEN": []
+  },
+  "configs": {
+    "GPT4o_NEN": {
+      "task": "GPT4o_NEN",
+      "tag": "xbrl",
+      "dataset_path": "TheFinAI/XBRL_Tagging_Pipeline_GPT4o_Rerank_6",
+      "dataset_name": "default",
+      "test_split": "train",
+      "fewshot_split": "train",
+      "doc_to_text": "{{query}}",
+      "doc_to_target": "{{answer}}",
+      "description": "",
+      "target_delimiter": " ",
+      "fewshot_delimiter": "\n\n",
+      "num_fewshot": 0,
+      "metric_list": [
+        {
+          "metric": "exact_match",
+          "aggregation": "mean",
+          "higher_is_better": true
+        }
+      ],
+      "output_type": "generate_until",
+      "generation_kwargs": {
+        "until": [
+          "JSON_END"
+        ],
+        "do_sample": false,
+        "temperature": 0.0,
+        "max_gen_toks": 1024
+      },
+      "repeats": 1,
+      "should_decontaminate": true,
+      "doc_to_decontamination_query": "{{query}}",
+      "metadata": {
+        "version": "1.0"
+      }
+    }
+  },
+  "versions": {
+    "GPT4o_NEN": "1.0"
+  },
+  "n-shot": {
+    "GPT4o_NEN": 0
+  },
+  "higher_is_better": {
+    "GPT4o_NEN": {
+      "exact_match": true
+    }
+  },
+  "n-samples": {
+    "GPT4o_NEN": {
+      "original": 5360,
+      "effective": 5360
+    }
+  },
+  "config": {
+    "model": "openai-chat-completions",
+    "model_args": "model=gpt-4o,api_key=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,eos_string=JSON_END,num_concurrent=1,timeout=60,max_retries=6",
+    "batch_size": 1,
+    "batch_sizes": [],
+    "device": null,
+    "use_cache": ".\\cache",
+    "limit": null,
+    "bootstrap_iters": 100000,
+    "gen_kwargs": null,
+    "random_seed": 0,
+    "numpy_seed": 1234,
+    "torch_seed": 1234,
+    "fewshot_seed": 1234
+  },
+  "git_hash": "4657b91",
+  "date": 1759115387.862507,
+  "pretty_env_info": "PyTorch version: 2.8.0+cpu\nIs debug build: False\nCUDA used to build PyTorch: Could not collect\nROCM used to build PyTorch: N/A\n\nOS: Microsoft Windows 11 专业版 (10.0.26100 64-bit)\nGCC version: Could not collect\nClang version: Could not collect\nCMake version: Could not collect\nLibc version: N/A\n\nPython version: 3.12.11 | packaged by Anaconda, Inc. | (main, Jun  5 2025, 12:58:53) [MSC v.1929 64 bit (AMD64)] (64-bit runtime)\nPython platform: Windows-11-10.0.26100-SP0\nIs CUDA available: False\nCUDA runtime version: Could not collect\nCUDA_MODULE_LOADING set to: N/A\nGPU models and configuration: GPU 0: NVIDIA GeForce RTX 3060 Laptop GPU\nNvidia driver version: 577.03\ncuDNN version: Could not collect\nHIP runtime version: N/A\nMIOpen runtime version: N/A\nIs XNNPACK available: True\n\nCPU:\nName: 12th Gen Intel(R) Core(TM) i7-12700H\nManufacturer: GenuineIntel\nFamily: 198\nArchitecture: 9\nProcessorType: 3\nDeviceID: CPU0\nCurrentClockSpeed: 2300\nMaxClockSpeed: 2300\nL2CacheSize: 11776\nL2CacheSpeed: None\nRevision: None\n\nVersions of relevant libraries:\n[pip3] numpy==2.3.3\n[pip3] torch==2.8.0\n[conda] numpy                     2.3.3                    pypi_0    pypi\n[conda] torch                     2.8.0                    pypi_0    pypi",
+  "transformers_version": "4.56.2",
+  "upper_git_hash": "4657b911f032f4fa57a4419454a933578160c05f",
+  "task_hashes": {
+    "GPT4o_NEN": "3883615ee9f23cff0e8f02f1e8df457a19719b4fef7634b36c68ba673e1895a0"
+  },
+  "model_source": "openai-chat-completions",
+  "model_name": "gpt-4o",
+  "model_name_sanitized": "gpt-4o",
+  "system_instruction": null,
+  "system_instruction_sha": null,
+  "fewshot_as_multiturn": false,
+  "chat_template": "",
+  "chat_template_sha": null,
+  "start_time": 28086.6399853,
+  "end_time": 28123.4804632,
+  "total_evaluation_time_seconds": "36.84047790000113"
+}
