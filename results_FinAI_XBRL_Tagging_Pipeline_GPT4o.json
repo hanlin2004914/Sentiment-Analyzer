@@ -66,7 +66,7 @@
   },
   "config": {
     "model": "openai-chat-completions",
-    "model_args": "model=gpt-4o,api_key=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,eos_string=JSON_END,num_concurrent=1,timeout=60,max_retries=6",
+    "model_args": "",
     "batch_size": 1,
     "batch_sizes": [],
     "device": null,
