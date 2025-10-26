@@ -66,7 +66,7 @@
   },
   "config": {
     "model": "deepseek-chat-completions",
-    "model_args": "model=deepseek-chat,api_key=sk-e1902393f3d2452b96deed3548ad3422,eos_string=JSON_END,num_concurrent=1,timeout=60,max_retries=6",
+    "model_args": "model=deepseek-chat,api_key=",
     "batch_size": 1,
     "batch_sizes": [],
     "device": null,
