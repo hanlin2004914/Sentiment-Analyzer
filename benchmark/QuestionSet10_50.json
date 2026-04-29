@@ -1,0 +1,302 @@
+[
+  {
+    "id": 1,
+    "question": "Workday reported fiscal fourth-quarter revenue of $2.532 billion, up 14.5% year over year, with subscription revenue rising 15.7%.",
+    "answer": "Positive",
+    "type": "Equity News Sentiment (ENS)"
+  },
+  {
+    "id": 2,
+    "question": "Lam Research reported March-quarter revenue of $5.841 billion, a 49.8% gross margin, and GAAP net income of $1.825 billion.",
+    "answer": "Positive",
+    "type": "Equity News Sentiment (ENS)"
+  },
+  {
+    "id": 3,
+    "question": "KLA reported fiscal third-quarter revenue and EPS above guidance, but its shares fell after investors expected stronger forward guidance.",
+    "answer": "Neutral",
+    "type": "Equity News Sentiment (ENS)"
+  },
+  {
+    "id": 4,
+    "question": "Texas Instruments reported first-quarter revenue of $4.83 billion, net income of $1.55 billion, and EPS above its original guidance.",
+    "answer": "Positive",
+    "type": "Equity News Sentiment (ENS)"
+  },
+  {
+    "id": 5,
+    "question": "Halliburton reported first-quarter revenue of $5.4 billion and operating margin of 13%, but adjusted earnings were lower than the prior-year adjusted level.",
+    "answer": "Neutral",
+    "type": "Equity News Sentiment (ENS)"
+  },
+  {
+    "id": 6,
+    "question": "SLB said first-quarter global revenue decreased 7% year over year excluding the ChampionX acquisition, with international and North American revenue both declining.",
+    "answer": "Negative",
+    "type": "Equity News Sentiment (ENS)"
+  },
+  {
+    "id": 7,
+    "question": "Blackstone's assets under management rose above $1.3 trillion and distributable earnings increased, but private-credit redemptions and flat fund returns weighed on sentiment.",
+    "answer": "Neutral",
+    "type": "Equity News Sentiment (ENS)"
+  },
+  {
+    "id": 8,
+    "question": "Charles Schwab reported record first-quarter results, including $2.5 billion in net income and $140 billion in core net new assets.",
+    "answer": "Positive",
+    "type": "Equity News Sentiment (ENS)"
+  },
+  {
+    "id": 9,
+    "question": "S&P Global reported higher first-quarter profit as revenue rose 10% and demand for ratings, data, and analytics products remained strong.",
+    "answer": "Positive",
+    "type": "Equity News Sentiment (ENS)"
+  },
+  {
+    "id": 10,
+    "question": "Marsh reported 8% revenue growth and higher adjusted operating income, but GAAP operating income declined because of a litigation-related charge.",
+    "answer": "Neutral",
+    "type": "Equity News Sentiment (ENS)"
+  },
+  {
+    "id": 11,
+    "question": "$WDAY subscription revenue still growing nearly 16% makes the enterprise software demand story look solid.",
+    "answer": "Positive",
+    "type": "Equity Social Media Sentiment (ESM)"
+  },
+  {
+    "id": 12,
+    "question": "$LRCX putting up $5.84B in revenue with almost 50% gross margin shows chip-equipment demand is still strong.",
+    "answer": "Positive",
+    "type": "Equity Social Media Sentiment (ESM)"
+  },
+  {
+    "id": 13,
+    "question": "$KLAC beat the quarter, but the stock slipping after guidance shows expectations were already very high.",
+    "answer": "Neutral",
+    "type": "Equity Social Media Sentiment (ESM)"
+  },
+  {
+    "id": 14,
+    "question": "$TXN finally looks healthier after beating Q1 expectations and showing stronger demand across industrial and data-center customers.",
+    "answer": "Positive",
+    "type": "Equity Social Media Sentiment (ESM)"
+  },
+  {
+    "id": 15,
+    "question": "$HAL had decent Q1 revenue, but lower adjusted earnings versus last year and Middle East disruption risk keep me cautious.",
+    "answer": "Neutral",
+    "type": "Equity Social Media Sentiment (ESM)"
+  },
+  {
+    "id": 16,
+    "question": "$SLB revenue looks weaker once the acquisition impact is stripped out, and international activity is still under pressure.",
+    "answer": "Negative",
+    "type": "Equity Social Media Sentiment (ESM)"
+  },
+  {
+    "id": 17,
+    "question": "$BX assets keep growing, but private-credit redemptions make the quarter feel less clean than the headline numbers suggest.",
+    "answer": "Neutral",
+    "type": "Equity Social Media Sentiment (ESM)"
+  },
+  {
+    "id": 18,
+    "question": "$SCHW adding $140B in core net new assets while posting record Q1 results is a strong client-growth signal.",
+    "answer": "Positive",
+    "type": "Equity Social Media Sentiment (ESM)"
+  },
+  {
+    "id": 19,
+    "question": "$SPGI revenue up double digits as investors need more data and ratings during volatility looks like a strong setup.",
+    "answer": "Positive",
+    "type": "Equity Social Media Sentiment (ESM)"
+  },
+  {
+    "id": 20,
+    "question": "$MRSH grew revenue and adjusted profit, but that litigation charge makes the headline quarter feel mixed.",
+    "answer": "Neutral",
+    "type": "Equity Social Media Sentiment (ESM)"
+  },
+  {
+    "id": 21,
+    "question": "Fiscal fourth-quarter revenue grew 14.5% year over year, supported by continued expansion in subscription revenue.",
+    "answer": "Positive",
+    "type": "Equity Transcript Sentiment (ETS)"
+  },
+  {
+    "id": 22,
+    "question": "March-quarter revenue reached $5.841 billion, with gross margin of 49.8% and operating margin of 35.0%.",
+    "answer": "Positive",
+    "type": "Equity Transcript Sentiment (ETS)"
+  },
+  {
+    "id": 23,
+    "question": "Third-quarter revenue and EPS exceeded the midpoints of our guidance ranges, although market expectations for future growth remain elevated.",
+    "answer": "Neutral",
+    "type": "Equity Transcript Sentiment (ETS)"
+  },
+  {
+    "id": 24,
+    "question": "First-quarter revenue reached $4.83 billion, and earnings per share came in above our original guidance.",
+    "answer": "Positive",
+    "type": "Equity Transcript Sentiment (ETS)"
+  },
+  {
+    "id": 25,
+    "question": "We delivered $5.4 billion in revenue and 13% operating margin, while adjusted earnings remained below the prior-year adjusted result.",
+    "answer": "Neutral",
+    "type": "Equity Transcript Sentiment (ETS)"
+  },
+  {
+    "id": 26,
+    "question": "Excluding the acquisition impact, global revenue decreased 7% year over year as both international and North American activity weakened.",
+    "answer": "Negative",
+    "type": "Equity Transcript Sentiment (ETS)"
+  },
+  {
+    "id": 27,
+    "question": "Assets under management increased above $1.3 trillion, but private-credit redemptions and limited quarterly returns created pressure in the credit segment.",
+    "answer": "Neutral",
+    "type": "Equity Transcript Sentiment (ETS)"
+  },
+  {
+    "id": 28,
+    "question": "Client growth remained strong, with $140 billion in core net new assets and record quarterly net income.",
+    "answer": "Positive",
+    "type": "Equity Transcript Sentiment (ETS)"
+  },
+  {
+    "id": 29,
+    "question": "Revenue increased 10% in the quarter as ratings, market intelligence, and analytics demand remained resilient.",
+    "answer": "Positive",
+    "type": "Equity Transcript Sentiment (ETS)"
+  },
+  {
+    "id": 30,
+    "question": "Revenue increased 8% and adjusted operating income improved, although GAAP operating income declined due to a litigation-related charge.",
+    "answer": "Neutral",
+    "type": "Equity Transcript Sentiment (ETS)"
+  },
+  {
+    "id": 31,
+    "question": "An EU-linked fund aimed to mobilize up to 20 billion euros for sustainable infrastructure investments in low- and middle-income countries.",
+    "answer": "Positive",
+    "type": "ES News Sentiment (ES-ESG)"
+  },
+  {
+    "id": 32,
+    "question": "U.S. greenhouse gas emissions rose 2.4% in 2025, driven mainly by higher power-sector demand and building fuel use.",
+    "answer": "Negative",
+    "type": "ES News Sentiment (ES-ESG)"
+  },
+  {
+    "id": 33,
+    "question": "AstraZeneca lowered its 2030 Scope 3 emissions reduction target from 50% to 35% relative to its 2019 baseline.",
+    "answer": "Negative",
+    "type": "ES News Sentiment (ES-ESG)"
+  },
+  {
+    "id": 34,
+    "question": "Baker Hughes reported a 36.9% absolute reduction in operational greenhouse-gas emissions, with zero-carbon energy supplying 41.1% of electricity use.",
+    "answer": "Positive",
+    "type": "ES News Sentiment (ES-ESG)"
+  },
+  {
+    "id": 35,
+    "question": "An Australian court dismissed a lawsuit accusing Santos of misleading investors about its net-zero plan, reducing near-term climate litigation risk for the company.",
+    "answer": "Positive",
+    "type": "ES News Sentiment (ES-ESG)"
+  },
+  {
+    "id": 36,
+    "question": "Environmental groups in the Western Balkans warned that new gas projects could harm climate goals and create long-term economic risks.",
+    "answer": "Negative",
+    "type": "ES News Sentiment (ES-ESG)"
+  },
+  {
+    "id": 37,
+    "question": "Henkel announced new 2030 sustainability targets, including a goal to reduce absolute Scope 1 and 2 greenhouse-gas emissions by 42%.",
+    "answer": "Positive",
+    "type": "ES News Sentiment (ES-ESG)"
+  },
+  {
+    "id": 38,
+    "question": "Aptiv's sustainability report showed total Scope 3 emissions rising from about 24.0 million to 28.1 million metric tons.",
+    "answer": "Negative",
+    "type": "ES News Sentiment (ES-ESG)"
+  },
+  {
+    "id": 39,
+    "question": "Major bond investors proposed crisis pause clauses that would let emerging countries delay sovereign debt payments during severe shocks without triggering default.",
+    "answer": "Positive",
+    "type": "ES News Sentiment (ES-ESG)"
+  },
+  {
+    "id": 40,
+    "question": "Growing scrutiny of data-center emissions increased legal and reputational risks for companies relying on high-growth computing infrastructure.",
+    "answer": "Negative",
+    "type": "ES News Sentiment (ES-ESG)"
+  },
+  {
+    "id": 41,
+    "question": "The Netherlands lowered its economic growth outlook as U.S. tariffs were expected to reduce trade and slow GDP growth to 1.3% in 2026.",
+    "answer": "Negative",
+    "type": "Country News Sentiment (CNS)"
+  },
+  {
+    "id": 42,
+    "question": "Denmark raised its 2026 GDP growth forecast to 2.2%, signaling a stronger outlook despite pressure around its largest pharmaceutical company.",
+    "answer": "Positive",
+    "type": "Country News Sentiment (CNS)"
+  },
+  {
+    "id": 43,
+    "question": "Chile's central bank held rates steady but raised its 2026 inflation forecast and lowered its expected growth range amid energy-price risks.",
+    "answer": "Negative",
+    "type": "Country News Sentiment (CNS)"
+  },
+  {
+    "id": 44,
+    "question": "Peru projected 3.5% economic growth with inflation near 1.4%, placing it among the stronger growth stories in the region.",
+    "answer": "Positive",
+    "type": "Country News Sentiment (CNS)"
+  },
+  {
+    "id": 45,
+    "question": "The Czech finance ministry said 2026 economic growth could slow to 2.1% as uncertainty and higher energy prices weighed on demand.",
+    "answer": "Negative",
+    "type": "Country News Sentiment (CNS)"
+  },
+  {
+    "id": 46,
+    "question": "Hungary's incoming government reported constructive talks with the European Union over releasing previously frozen funds tied to rule-of-law reforms.",
+    "answer": "Positive",
+    "type": "Country News Sentiment (CNS)"
+  },
+  {
+    "id": 47,
+    "question": "Switzerland's central bank warned that the Middle East conflict could slow growth and push inflation higher through energy-price pressure.",
+    "answer": "Negative",
+    "type": "Country News Sentiment (CNS)"
+  },
+  {
+    "id": 48,
+    "question": "Germany entered talks with Poland to secure temporary oil deliveries after Russia said it would halt Kazakh crude flows through the Druzhba pipeline.",
+    "answer": "Negative",
+    "type": "Country News Sentiment (CNS)"
+  },
+  {
+    "id": 49,
+    "question": "Swiss voters showed majority support for a population-cap initiative that the government warned could damage economic ties with the European Union.",
+    "answer": "Negative",
+    "type": "Country News Sentiment (CNS)"
+  },
+  {
+    "id": 50,
+    "question": "The European Central Bank was expected to keep rates steady, but rising inflation kept future rate hikes firmly on the table.",
+    "answer": "Neutral",
+    "type": "Country News Sentiment (CNS)"
+  }
+]
