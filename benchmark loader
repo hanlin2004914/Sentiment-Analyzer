@@ -1,0 +1,46 @@
+import json
+import os
+
+BENCHMARK_DIR = "benchmarks"
+
+def load_questions(filepath):
+    with open(filepath, "r") as f:
+        data = json.load(f)
+    return data.get("questions", [])
+
+def filter_by_task(questions, task_type):
+    return [q for q in questions if q.get("task_type") == task_type]
+
+def filter_by_difficulty(questions, difficulty):
+    return [q for q in questions if q.get("difficulty") == difficulty]
+
+def get_stats(questions):
+    tasks = {}
+    difficulties = {}
+    for q in questions:
+        t = q.get("task_type", "unknown")
+        d = q.get("difficulty", "unknown")
+        tasks[t] = tasks.get(t, 0) + 1
+        difficulties[d] = difficulties.get(d, 0) + 1
+    return {
+        "total": len(questions),
+        "by_task": tasks,
+        "by_difficulty": difficulties
+    }
+
+def list_benchmarks():
+    if not os.path.exists(BENCHMARK_DIR):
+        return []
+    return [f for f in os.listdir(BENCHMARK_DIR) if f.endswith(".json")]
+
+if __name__ == "__main__":
+    available = list_benchmarks()
+    print(f"Found {len(available)} benchmark files: {available}")
+    for name in available:
+        path = os.path.join(BENCHMARK_DIR, name)
+        questions = load_questions(path)
+        stats = get_stats(questions)
+        print(f"\n{name}:")
+        print(f"  Total questions: {stats['total']}")
+        print(f"  By task: {stats['by_task']}")
+        print(f"  By difficulty: {stats['by_difficulty']}")
