@@ -1,0 +1,302 @@
+[
+  {
+    "id": 1,
+    "question": "Honeywell's first-quarter orders rose 7% and backlog approached $38 billion, but reported EPS fell 35% and sales missed expectations.",
+    "answer": "Neutral",
+    "type": "Equity News Sentiment (ENS)"
+  },
+  {
+    "id": 2,
+    "question": "Progressive's first-quarter net income increased 10% to about $2.8 billion as net premiums earned grew 8% from the prior year.",
+    "answer": "Positive",
+    "type": "Equity News Sentiment (ENS)"
+  },
+  {
+    "id": 3,
+    "question": "American Airlines reported record first-quarter revenue of $13.9 billion, but still posted a GAAP net loss and faced a sharply higher fuel bill.",
+    "answer": "Negative",
+    "type": "Equity News Sentiment (ENS)"
+  },
+  {
+    "id": 4,
+    "question": "Mercedes-Benz first-quarter operating profit fell 17% as China competition, tariff pressure, and higher input costs weighed on results.",
+    "answer": "Negative",
+    "type": "Equity News Sentiment (ENS)"
+  },
+  {
+    "id": 5,
+    "question": "Porsche's first-quarter operating profit dropped 22% as U.S. tariffs, weaker China demand, and Middle East uncertainty pressured margins.",
+    "answer": "Negative",
+    "type": "Equity News Sentiment (ENS)"
+  },
+  {
+    "id": 6,
+    "question": "AbbVie topped quarterly revenue and earnings expectations as Skyrizi and Rinvoq growth helped offset the continued Humira decline.",
+    "answer": "Positive",
+    "type": "Equity News Sentiment (ENS)"
+  },
+  {
+    "id": 7,
+    "question": "Biogen beat first-quarter profit expectations on strong Leqembi and rare-disease drug demand, but lowered its annual profit forecast because of acquisition-related costs.",
+    "answer": "Neutral",
+    "type": "Equity News Sentiment (ENS)"
+  },
+  {
+    "id": 8,
+    "question": "Humana beat first-quarter profit estimates, but its unchanged annual forecast disappointed investors concerned about Medicare Advantage cost pressure.",
+    "answer": "Neutral",
+    "type": "Equity News Sentiment (ENS)"
+  },
+  {
+    "id": 9,
+    "question": "Centene raised its 2026 profit forecast after better medical-cost control and stronger-than-expected quarterly results.",
+    "answer": "Positive",
+    "type": "Equity News Sentiment (ENS)"
+  },
+  {
+    "id": 10,
+    "question": "London Stock Exchange Group lifted its 2026 revenue outlook after first-quarter income grew 9.8% on stronger trading activity.",
+    "answer": "Positive",
+    "type": "Equity News Sentiment (ENS)"
+  },
+  {
+    "id": 11,
+    "question": "$HON has strong orders and a huge backlog, but the sales miss and lower reported EPS make the quarter feel mixed.",
+    "answer": "Neutral",
+    "type": "Equity Social Media Sentiment (ESM)"
+  },
+  {
+    "id": 12,
+    "question": "$PGR net income and premiums both rising says the insurer is still executing well.",
+    "answer": "Positive",
+    "type": "Equity Social Media Sentiment (ESM)"
+  },
+  {
+    "id": 13,
+    "question": "$AAL record revenue does not matter much if fuel costs are exploding and the company is still losing money.",
+    "answer": "Negative",
+    "type": "Equity Social Media Sentiment (ESM)"
+  },
+  {
+    "id": 14,
+    "question": "Mercedes profit falling again while China sales stay weak makes the luxury-auto story look rough.",
+    "answer": "Negative",
+    "type": "Equity Social Media Sentiment (ESM)"
+  },
+  {
+    "id": 15,
+    "question": "Porsche's margin getting squeezed by tariffs and weaker demand is not the premium-auto setup investors wanted.",
+    "answer": "Negative",
+    "type": "Equity Social Media Sentiment (ESM)"
+  },
+  {
+    "id": 16,
+    "question": "$ABBV getting strong Skyrizi and Rinvoq growth while raising guidance makes the Humira cliff look more manageable.",
+    "answer": "Positive",
+    "type": "Equity Social Media Sentiment (ESM)"
+  },
+  {
+    "id": 17,
+    "question": "$BIIB beat the quarter, but cutting the full-year profit guide keeps the story from being fully clean.",
+    "answer": "Neutral",
+    "type": "Equity Social Media Sentiment (ESM)"
+  },
+  {
+    "id": 18,
+    "question": "$HUM beat Q1, but leaving guidance unchanged with medical-cost pressure still around is not exactly exciting.",
+    "answer": "Neutral",
+    "type": "Equity Social Media Sentiment (ESM)"
+  },
+  {
+    "id": 19,
+    "question": "$CNC raising its profit forecast after better cost control is the kind of health-insurer update investors want.",
+    "answer": "Positive",
+    "type": "Equity Social Media Sentiment (ESM)"
+  },
+  {
+    "id": 20,
+    "question": "$LSEG getting a trading boost and guiding to the high end of revenue growth makes the market-data story look better.",
+    "answer": "Positive",
+    "type": "Equity Social Media Sentiment (ESM)"
+  },
+  {
+    "id": 21,
+    "question": "Orders increased 7% and backlog remained strong, although reported earnings declined because of restructuring and impairment charges.",
+    "answer": "Neutral",
+    "type": "Equity Transcript Sentiment (ETS)"
+  },
+  {
+    "id": 22,
+    "question": "Net premiums earned increased 8%, and first-quarter net income rose 10% compared with the prior year.",
+    "answer": "Positive",
+    "type": "Equity Transcript Sentiment (ETS)"
+  },
+  {
+    "id": 23,
+    "question": "Record first-quarter revenue was offset by a GAAP net loss and significantly higher jet-fuel costs.",
+    "answer": "Negative",
+    "type": "Equity Transcript Sentiment (ETS)"
+  },
+  {
+    "id": 24,
+    "question": "Operating profit declined as tariff pressure, weaker China demand, and higher input costs weighed on profitability.",
+    "answer": "Negative",
+    "type": "Equity Transcript Sentiment (ETS)"
+  },
+  {
+    "id": 25,
+    "question": "Operating margin narrowed during the quarter as lower deliveries, tariffs, and regional demand uncertainty pressured earnings.",
+    "answer": "Negative",
+    "type": "Equity Transcript Sentiment (ETS)"
+  },
+  {
+    "id": 26,
+    "question": "Newer immunology medicines continued to grow strongly, helping offset the decline in Humira revenue.",
+    "answer": "Positive",
+    "type": "Equity Transcript Sentiment (ETS)"
+  },
+  {
+    "id": 27,
+    "question": "Growth products performed above expectations, but acquisition-related research and development charges reduced our full-year profit outlook.",
+    "answer": "Neutral",
+    "type": "Equity Transcript Sentiment (ETS)"
+  },
+  {
+    "id": 28,
+    "question": "Medical-cost trends improved in the quarter, but we are maintaining our annual earnings outlook because second-half uncertainty remains elevated.",
+    "answer": "Neutral",
+    "type": "Equity Transcript Sentiment (ETS)"
+  },
+  {
+    "id": 29,
+    "question": "Improved medical-cost control supported stronger quarterly results and allowed us to raise the full-year adjusted profit outlook.",
+    "answer": "Positive",
+    "type": "Equity Transcript Sentiment (ETS)"
+  },
+  {
+    "id": 30,
+    "question": "First-quarter income grew 9.8%, and we now expect annual revenue growth near the upper end of our guidance range.",
+    "answer": "Positive",
+    "type": "Equity Transcript Sentiment (ETS)"
+  },
+  {
+    "id": 31,
+    "question": "BTG Pactual Timberland Investment Group raised $1.24 billion for a Latin America reforestation strategy focused on restoring degraded land.",
+    "answer": "Positive",
+    "type": "ES News Sentiment (ES-ESG)"
+  },
+  {
+    "id": 32,
+    "question": "Corporate climate-accounting groups considered diverging Scope 2 emissions rules, creating uncertainty for companies' sustainability reporting.",
+    "answer": "Neutral",
+    "type": "ES News Sentiment (ES-ESG)"
+  },
+  {
+    "id": 33,
+    "question": "Global fossil-fuel carbon dioxide emissions were projected to reach a record 38.1 billion metric tons in 2025 despite renewable growth.",
+    "answer": "Negative",
+    "type": "ES News Sentiment (ES-ESG)"
+  },
+  {
+    "id": 34,
+    "question": "New food-sector climate reporting rules raised the standard for regenerative-agriculture claims and land-use emissions disclosures.",
+    "answer": "Positive",
+    "type": "ES News Sentiment (ES-ESG)"
+  },
+  {
+    "id": 35,
+    "question": "World Bank climate-finance targets came under pressure after the U.S. pushed the lender to drop its 45% climate-lending goal.",
+    "answer": "Negative",
+    "type": "ES News Sentiment (ES-ESG)"
+  },
+  {
+    "id": 36,
+    "question": "Rising physical climate risks contributed to higher insurance premiums and cancellations in vulnerable housing markets.",
+    "answer": "Negative",
+    "type": "ES News Sentiment (ES-ESG)"
+  },
+  {
+    "id": 37,
+    "question": "PJM Interconnection reopened processing for new power-plant applications, including battery storage, solar, wind, nuclear, and hydropower projects.",
+    "answer": "Positive",
+    "type": "ES News Sentiment (ES-ESG)"
+  },
+  {
+    "id": 38,
+    "question": "The European Union prepared guidance to reduce dependence on Middle Eastern jet fuel by encouraging sustainable aviation fuel and synthetic fuel options.",
+    "answer": "Positive",
+    "type": "ES News Sentiment (ES-ESG)"
+  },
+  {
+    "id": 39,
+    "question": "European Union countries agreed to keep pushing for a global price on shipping carbon emissions in U.N. talks.",
+    "answer": "Positive",
+    "type": "ES News Sentiment (ES-ESG)"
+  },
+  {
+    "id": 40,
+    "question": "Energy-security concerns after the Iran war increased global interest in solar power and other renewable energy alternatives.",
+    "answer": "Positive",
+    "type": "ES News Sentiment (ES-ESG)"
+  },
+  {
+    "id": 41,
+    "question": "Romania's minority government faced a no-confidence vote that risked policy gridlock and access to more than 10 billion euros in EU recovery funds.",
+    "answer": "Negative",
+    "type": "Country News Sentiment (CNS)"
+  },
+  {
+    "id": 42,
+    "question": "Argentina credit stress deepened as inflation and higher utility costs continued to strain household finances.",
+    "answer": "Negative",
+    "type": "Country News Sentiment (CNS)"
+  },
+  {
+    "id": 43,
+    "question": "Nigeria capped jet-fuel prices after a sharp fuel-cost surge threatened airline schedules and pushed carriers toward higher fares.",
+    "answer": "Negative",
+    "type": "Country News Sentiment (CNS)"
+  },
+  {
+    "id": 44,
+    "question": "Morocco's annual inflation rose to 0.9% in March from negative territory, signaling a mild return of price pressure.",
+    "answer": "Neutral",
+    "type": "Country News Sentiment (CNS)"
+  },
+  {
+    "id": 45,
+    "question": "Euro zone business activity unexpectedly contracted in April as surging input costs pulled the composite PMI below 50.",
+    "answer": "Negative",
+    "type": "Country News Sentiment (CNS)"
+  },
+  {
+    "id": 46,
+    "question": "Indonesia was expected to keep interest rates at 4.75% through 2026 as the Iran war increased inflation risks.",
+    "answer": "Neutral",
+    "type": "Country News Sentiment (CNS)"
+  },
+  {
+    "id": 47,
+    "question": "Ghana's consumer inflation slowed for a fifteenth straight month in March, moving closer to the central bank's target range.",
+    "answer": "Positive",
+    "type": "Country News Sentiment (CNS)"
+  },
+  {
+    "id": 48,
+    "question": "The Bank of Japan signaled a likely June rate hike as energy shocks pushed its inflation forecasts above target.",
+    "answer": "Negative",
+    "type": "Country News Sentiment (CNS)"
+  },
+  {
+    "id": 49,
+    "question": "The Bank of England was expected to hold rates steady as the Iran war clouded the outlook for inflation and growth.",
+    "answer": "Neutral",
+    "type": "Country News Sentiment (CNS)"
+  },
+  {
+    "id": 50,
+    "question": "A global Reuters poll raised 2026 inflation forecasts for 44 of the top 50 economies after the energy-price shock.",
+    "answer": "Negative",
+    "type": "Country News Sentiment (CNS)"
+  }
+]
