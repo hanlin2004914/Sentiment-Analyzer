@@ -1,0 +1,53 @@
+# Failure Case Analysis
+
+Common ways models get things wrong on our benchmark.
+
+## 1. Wrong Target
+
+The model picks up sentiment about the wrong company or entity.
+
+| Input | Expected | Model Said | What Went Wrong |
+|-------|----------|------------|-----------------|
+| "Tesla stock dropped 5% after strong Ford earnings report" | Negative | Positive | Focused on Ford's "strong earnings" instead of Tesla's drop |
+| "Despite Apple's record quarter, suppliers face margin pressure" | Negative | Positive | Picked up on "record quarter" and ignored the supplier issue |
+
+Models tend to latch onto the strongest positive/negative words without checking *who* the question is actually about.
+
+## 2. Doesn't Understand Finance
+
+The model misses things that a finance person would catch.
+| Input | Expected | Model Said | What Went Wrong |
+|-------|----------|------------|-----------------|
+| "The company announced a reverse stock split" | Negative | Neutral | Didn't know reverse splits are usually a bad sign |
+| "Short interest in XYZ rose to 25%" | Negative | Neutral | Didn't recognize high short interest as bearish |
+
+General-purpose models just don't always know what specific financial terms or events mean for investors.
+
+## 3. Right Info, Wrong Answer
+
+The model finds the relevant facts but still gets the conclusion wrong.
+
+| Input | Expected | Model Said | What Went Wrong |
+|-------|----------|------------|-----------------|
+| "Revenue grew 3% vs expected 8% growth" | Negative | Positive | Saw "grew" and said positive, missed the expectation gap |
+| "EPS beat estimates by $0.02 but guidance was lowered" | Negative | Positive | Focused on the small beat, ignored the guidance cut |
+
+This happens when there are competing signals — the model picks the surface-level one instead of the one that actually matters more.
+
+## 4. Defaulting to Neutral
+
+The model plays it safe and says "neutral" when it should commit to positive or negative.
+
+| Input | Expected | Model Said | What Went Wrong |
+|-------|----------|------------|-----------------|
+| "The Fed held rates steady amid mixed economic signals" | Positive | Neutral | Markets saw the hold as dovish, but the model hedged |
+| "Management expressed cautious optimism about Q4" | Positive | Neutral | The word "cautious" scared it into neutral |
+
+When the input has any kind of hedging language, models tend to default to neutral instead of making a call.
+
+## Takeaways
+
+- Models need to be told exactly *which* entity to evaluate sentiment for
+- Financial domain knowledge matters a lot — general models miss things
+- Beating expectations vs missing expectations is a hard concept for models
+- Models are too cautious and overuse the neutral label
