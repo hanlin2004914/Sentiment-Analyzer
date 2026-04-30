@@ -365,3 +365,115 @@ def parse_bool(value: Any) -> bool:
     if value is None:
         return False
     return str(value).strip().lower() in {"1", "true", "yes", "y"}
+
+
+# ---------------------------------------------------------------------------
+# Main
+# ---------------------------------------------------------------------------
+
+def main() -> None:
+    args = parse_args()
+    max_samples = args.max_samples if args.max_samples > 0 else None
+    dataset_id = resolve_dataset_id(args.dataset)
+    is_ner_task = "flare-ner" in dataset_id
+
+    script_dir = Path(__file__).resolve().parent
+    slug = dataset_slug(dataset_id)
+    predictions_path = script_dir / f"{slug}_o3_predictions.csv"
+    metrics_path = script_dir / f"{slug}_o3_metrics.json"
+
+    api_key, hf_token = get_env_secrets()
+    print(f"OPENAI_SET {bool(api_key)}")
+    print(f"HF_SET {bool(hf_token)}")
+    if not api_key:
+        raise RuntimeError("OPENAI_API_KEY/API_KEY not set")
+
+    client = OpenAI(api_key=api_key)
+
+    dataset = load_dataset(dataset_id, split=args.split)
+    total_available = len(dataset)
+    target_total = min(max_samples, total_available) if max_samples else total_available
+
+    existing_records = load_existing_records(predictions_path)
+    already_done = {
+        idx for idx, row in existing_records.items() if parse_bool(row.get("success"))
+    }
+
+    file_exists = predictions_path.exists()
+    with predictions_path.open("a", encoding="utf-8", newline="") as f:
+        writer = csv.DictWriter(
+            f,
+            fieldnames=["row_idx", "text", "gold_json", "pred_json", "success", "error"],
+        )
+        if not file_exists:
+            writer.writeheader()
+
+        try:
+            for idx in range(target_total):
+                if idx in already_done:
+                    continue
+
+                if args.request_delay > 0:
+                    time.sleep(args.request_delay)
+
+                sample = dataset[idx]
+                text_preview = shorten_text(sample.get("text", ""))
+                prompt = build_prompt(sample, is_ner_task=is_ner_task)
+
+                if is_ner_task:
+                    gold_items = {
+                        f"{entity}|||{ent_type}"
+                        for entity, ent_type in parse_entities_from_json_string(
+                            sample.get("answer", "[]")
+                        )
+                    }
+                    gold_json = entities_to_json(
+                        {tuple(item.split("|||", 1)) for item in gold_items if "|||" in item}
+                    )
+                else:
+                    gold_items = normalize_text_items(sample.get("answer", ""))
+                    gold_json = serialize_string_set(gold_items)
+
+                output_text, error = call_model_with_retry(
+                    client=client,
+                    api_key=api_key,
+                    prompt=prompt,
+                    max_retries=args.max_retries,
+                    base_backoff=args.backoff_seconds,
+                )
+
+                pred_items: Set[str] = set()
+                success = False
+
+                if not error:
+                    if is_ner_task:
+                        json_array_text = extract_json_array_text(output_text)
+                        pred_payload = try_parse_json_like(json_array_text)
+                        pred_items = {
+                            f"{entity}|||{ent_type}"
+                            for entity, ent_type in normalize_entities(pred_payload)
+                        }
+                    else:
+                        pred_items = normalize_text_items(output_text)
+                    success = True
+
+                row = {
+                    "row_idx": idx,
+                    "text": text_preview,
+                    "gold_json": gold_json,
+                    "pred_json": (
+                        entities_to_json(
+                            {tuple(item.split("|||", 1)) for item in pred_items if "|||" in item}
+                        )
+                        if is_ner_task
+                        else serialize_string_set(pred_items)
+                    ),
+                    "success": success,
+                    "error": error or "",
+                }
+                writer.writerow(row)
+                existing_records[idx] = row
+                f.flush()
+                print(f"Processed sample {idx + 1}/{target_total} (success={success})")
+        except KeyboardInterrupt:
+            print("\n[Interrupted] Progress saved. Re-run to resume.")
