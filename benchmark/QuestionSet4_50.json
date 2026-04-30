@@ -1,0 +1,302 @@
+[
+  {
+    "id": 1,
+    "question": "Netflix reported Q1 2026 revenue of $12.25 billion, up 16% year over year, with operating income rising 18%.",
+    "answer": "Positive",
+    "type": "Equity News Sentiment (ENS)"
+  },
+  {
+    "id": 2,
+    "question": "ASML reported Q1 2026 net sales of EUR 8.8 billion, a 53.0% gross margin, and net income of EUR 2.8 billion.",
+    "answer": "Positive",
+    "type": "Equity News Sentiment (ENS)"
+  },
+  {
+    "id": 3,
+    "question": "Disney's fiscal Q1 2026 revenue rose 5%, but total segment operating income declined 9% from the prior year.",
+    "answer": "Neutral",
+    "type": "Equity News Sentiment (ENS)"
+  },
+  {
+    "id": 4,
+    "question": "McDonald's reported fourth-quarter revenue up 10% to $7.01 billion and adjusted EPS above expectations as value meals supported demand.",
+    "answer": "Positive",
+    "type": "Equity News Sentiment (ENS)"
+  },
+  {
+    "id": 5,
+    "question": "Yum Brands beat quarterly same-store sales and profit estimates, although Pizza Hut U.S. comparable sales fell for another quarter.",
+    "answer": "Neutral",
+    "type": "Equity News Sentiment (ENS)"
+  },
+  {
+    "id": 6,
+    "question": "Ford raised its 2026 profit outlook after a tariff refund boosted results, but rising aluminum and supplier costs continued to pressure margins.",
+    "answer": "Neutral",
+    "type": "Equity News Sentiment (ENS)"
+  },
+  {
+    "id": 7,
+    "question": "AstraZeneca beat first-quarter profit expectations and maintained its annual outlook, but warned that U.S. drug pricing reforms could affect launches in other markets.",
+    "answer": "Neutral",
+    "type": "Equity News Sentiment (ENS)"
+  },
+  {
+    "id": 8,
+    "question": "Verizon beat quarterly EPS estimates and added postpaid phone subscribers, but revenue came in below expectations and fixed wireless growth slowed.",
+    "answer": "Neutral",
+    "type": "Equity News Sentiment (ENS)"
+  },
+  {
+    "id": 9,
+    "question": "Domino's forecast weaker annual comparable sales growth after U.S. sales fell short as diners curbed spending.",
+    "answer": "Negative",
+    "type": "Equity News Sentiment (ENS)"
+  },
+  {
+    "id": 10,
+    "question": "Comcast lost fewer broadband subscribers than expected and Peacock revenue rose sharply, though net profit declined from the prior year.",
+    "answer": "Neutral",
+    "type": "Equity News Sentiment (ENS)"
+  },
+  {
+    "id": 11,
+    "question": "$NFLX revenue up 16% and operating income still climbing makes the streaming business look very healthy.",
+    "answer": "Positive",
+    "type": "Equity Social Media Sentiment (ESM)"
+  },
+  {
+    "id": 12,
+    "question": "$ASML putting up a 53% gross margin and nearly EUR 2.8B in profit shows chip-equipment demand is still strong.",
+    "answer": "Positive",
+    "type": "Equity Social Media Sentiment (ESM)"
+  },
+  {
+    "id": 13,
+    "question": "$DIS revenue grew, but a 9% drop in segment operating income makes the quarter feel mixed.",
+    "answer": "Neutral",
+    "type": "Equity Social Media Sentiment (ESM)"
+  },
+  {
+    "id": 14,
+    "question": "$MCD value meals are clearly working if revenue and EPS are both coming in ahead of expectations.",
+    "answer": "Positive",
+    "type": "Equity Social Media Sentiment (ESM)"
+  },
+  {
+    "id": 15,
+    "question": "$YUM had a solid Taco Bell quarter, but Pizza Hut's continued weakness keeps the story from looking perfect.",
+    "answer": "Neutral",
+    "type": "Equity Social Media Sentiment (ESM)"
+  },
+  {
+    "id": 16,
+    "question": "$F raising profit guidance sounds good, but aluminum costs and tariff exposure still make the setup messy.",
+    "answer": "Neutral",
+    "type": "Equity Social Media Sentiment (ESM)"
+  },
+  {
+    "id": 17,
+    "question": "$AZN beat on profit, but drug-pricing policy risk makes the long-term launch story harder to price.",
+    "answer": "Neutral",
+    "type": "Equity Social Media Sentiment (ESM)"
+  },
+  {
+    "id": 18,
+    "question": "$VZ getting surprise phone adds is nice, but missing revenue and slower fixed wireless growth keep me cautious.",
+    "answer": "Neutral",
+    "type": "Equity Social Media Sentiment (ESM)"
+  },
+  {
+    "id": 19,
+    "question": "$DPZ lowering the sales growth story while customers pull back is not what investors wanted to see.",
+    "answer": "Negative",
+    "type": "Equity Social Media Sentiment (ESM)"
+  },
+  {
+    "id": 20,
+    "question": "$CMCSA broadband losses were better than feared, but falling profit still makes the quarter hard to celebrate.",
+    "answer": "Neutral",
+    "type": "Equity Social Media Sentiment (ESM)"
+  },
+  {
+    "id": 21,
+    "question": "Q1 revenue was slightly above our forecast, helped by stronger membership growth and favorable foreign exchange movements.",
+    "answer": "Positive",
+    "type": "Equity Transcript Sentiment (ETS)"
+  },
+  {
+    "id": 22,
+    "question": "We now expect 2026 total net sales of EUR 36 billion to EUR 40 billion, with gross margin between 51% and 53%.",
+    "answer": "Positive",
+    "type": "Equity Transcript Sentiment (ETS)"
+  },
+  {
+    "id": 23,
+    "question": "Experiences delivered record quarterly revenue and operating income, supported by stronger domestic parks performance.",
+    "answer": "Positive",
+    "type": "Equity Transcript Sentiment (ETS)"
+  },
+  {
+    "id": 24,
+    "question": "Affordable meal options and marketing promotions helped drive stronger comparable sales across key markets.",
+    "answer": "Positive",
+    "type": "Equity Transcript Sentiment (ETS)"
+  },
+  {
+    "id": 25,
+    "question": "Our first-quarter results benefited from value-focused offerings, although Pizza Hut continued to face pressure in the U.S.",
+    "answer": "Neutral",
+    "type": "Equity Transcript Sentiment (ETS)"
+  },
+  {
+    "id": 26,
+    "question": "We raised our annual profit outlook, while supplier disruptions and higher aluminum costs continue to create operating headwinds.",
+    "answer": "Neutral",
+    "type": "Equity Transcript Sentiment (ETS)"
+  },
+  {
+    "id": 27,
+    "question": "We remain on track for our long-term revenue target, but pricing-policy changes may affect launch economics in certain markets.",
+    "answer": "Neutral",
+    "type": "Equity Transcript Sentiment (ETS)"
+  },
+  {
+    "id": 28,
+    "question": "Postpaid phone additions exceeded expectations, but fixed wireless net additions slowed compared with the prior year.",
+    "answer": "Neutral",
+    "type": "Equity Transcript Sentiment (ETS)"
+  },
+  {
+    "id": 29,
+    "question": "We now expect comparable sales to grow only in the low single digits as consumer spending remains pressured.",
+    "answer": "Negative",
+    "type": "Equity Transcript Sentiment (ETS)"
+  },
+  {
+    "id": 30,
+    "question": "Broadband subscriber losses improved versus expectations, but profitability declined due to higher content and operating costs.",
+    "answer": "Neutral",
+    "type": "Equity Transcript Sentiment (ETS)"
+  },
+  {
+    "id": 31,
+    "question": "Graphic Packaging and NextEra announced a 250-megawatt solar project in Texas aimed at expanding renewable energy use and reducing emissions.",
+    "answer": "Positive",
+    "type": "ES News Sentiment (ES-ESG)"
+  },
+  {
+    "id": 32,
+    "question": "Meta signed an agreement to access up to 1 gigawatt of space-based solar power for future data-center energy needs.",
+    "answer": "Positive",
+    "type": "ES News Sentiment (ES-ESG)"
+  },
+  {
+    "id": 33,
+    "question": "The number of companies with SBTi-validated climate targets rose 40% in 2025, while validated net-zero targets increased 61%.",
+    "answer": "Positive",
+    "type": "ES News Sentiment (ES-ESG)"
+  },
+  {
+    "id": 34,
+    "question": "Google agreed to purchase 200,000 tons of Amazon reforestation carbon credits from a Brazilian startup.",
+    "answer": "Positive",
+    "type": "ES News Sentiment (ES-ESG)"
+  },
+  {
+    "id": 35,
+    "question": "A Big Tech-backed coalition agreed to pay $44.2 million for biowaste-based carbon removal credits.",
+    "answer": "Positive",
+    "type": "ES News Sentiment (ES-ESG)"
+  },
+  {
+    "id": 36,
+    "question": "Big Tech demand for durable carbon removal credits increased sharply, but issued supply remained below 1 million tons.",
+    "answer": "Neutral",
+    "type": "ES News Sentiment (ES-ESG)"
+  },
+  {
+    "id": 37,
+    "question": "A U.N. agency said indirect emissions from major AI-focused tech companies rose 150% over three years as data-center demand expanded.",
+    "answer": "Negative",
+    "type": "ES News Sentiment (ES-ESG)"
+  },
+  {
+    "id": 38,
+    "question": "Entergy's expanded Meta data-center agreement includes more than 5.2 gigawatts of new natural gas power capacity, raising concerns about fossil-fuel reliance.",
+    "answer": "Negative",
+    "type": "ES News Sentiment (ES-ESG)"
+  },
+  {
+    "id": 39,
+    "question": "AI and data-center growth is projected to create 50 gigawatts of new U.S. electricity demand by 2030, complicating clean-air and emissions goals.",
+    "answer": "Negative",
+    "type": "ES News Sentiment (ES-ESG)"
+  },
+  {
+    "id": 40,
+    "question": "A report warned that biodiversity loss creates material risks for companies and the global economy if firms fail to protect nature.",
+    "answer": "Negative",
+    "type": "ES News Sentiment (ES-ESG)"
+  },
+  {
+    "id": 41,
+    "question": "South Korea's economy grew 1.7% in Q1 2026, beating forecasts as semiconductor exports surged on AI demand.",
+    "answer": "Positive",
+    "type": "Country News Sentiment (CNS)"
+  },
+  {
+    "id": 42,
+    "question": "South Korean exports were expected to rise for an eleventh straight month in April, led by strong semiconductor shipments.",
+    "answer": "Positive",
+    "type": "Country News Sentiment (CNS)"
+  },
+  {
+    "id": 43,
+    "question": "Australia's CPI jumped 1.4% in Q1 2026 and annual inflation climbed to 4.1%, increasing pressure on the central bank.",
+    "answer": "Negative",
+    "type": "Country News Sentiment (CNS)"
+  },
+  {
+    "id": 44,
+    "question": "Brazil's central bank cut the Selic rate by 25 basis points to 14.50%, but inflation concerns limited forward guidance.",
+    "answer": "Neutral",
+    "type": "Country News Sentiment (CNS)"
+  },
+  {
+    "id": 45,
+    "question": "Brazil's central government posted a larger-than-expected primary deficit in March, adding fiscal pressure.",
+    "answer": "Negative",
+    "type": "Country News Sentiment (CNS)"
+  },
+  {
+    "id": 46,
+    "question": "Mexico said inflation was close to resuming its decline toward the central bank's target, suggesting easing price pressures.",
+    "answer": "Positive",
+    "type": "Country News Sentiment (CNS)"
+  },
+  {
+    "id": 47,
+    "question": "Canada's central bank slightly raised its 2026 and 2027 growth forecasts while projecting inflation to stay above its target in 2026.",
+    "answer": "Neutral",
+    "type": "Country News Sentiment (CNS)"
+  },
+  {
+    "id": 48,
+    "question": "Thailand held its policy rate at 1.00% after cutting its 2026 growth forecast and raising its inflation outlook.",
+    "answer": "Negative",
+    "type": "Country News Sentiment (CNS)"
+  },
+  {
+    "id": 49,
+    "question": "Powell said the U.S. economy remained resilient and should keep growing above 2%, supported by consumer spending and data-center investment.",
+    "answer": "Positive",
+    "type": "Country News Sentiment (CNS)"
+  },
+  {
+    "id": 50,
+    "question": "Mexico required federal projects to use domestic steel after U.S. tariffs, supporting local industry but signaling rising trade friction.",
+    "answer": "Neutral",
+    "type": "Country News Sentiment (CNS)"
+  }
+]
