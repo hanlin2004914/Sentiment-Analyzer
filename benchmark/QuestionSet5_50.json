@@ -1,0 +1,302 @@
+[
+  {
+    "id": 1,
+    "question": "TSMC reported first-quarter 2026 revenue of NT$1.134 trillion and net income of NT$572.48 billion as advanced-chip demand remained strong.",
+    "answer": "Positive",
+    "type": "Equity News Sentiment (ENS)"
+  },
+  {
+    "id": 2,
+    "question": "SAP reported first-quarter cloud revenue up 19% and operating profit up 17%, beating expectations as cloud ERP demand stayed strong.",
+    "answer": "Positive",
+    "type": "Equity News Sentiment (ENS)"
+  },
+  {
+    "id": 3,
+    "question": "Citigroup reported first-quarter 2026 net income of $5.8 billion on revenue of $24.6 billion, with revenue up 14% from the prior year.",
+    "answer": "Positive",
+    "type": "Equity News Sentiment (ENS)"
+  },
+  {
+    "id": 4,
+    "question": "American Express beat first-quarter 2026 profit estimates as cardmember spending rose 9% and revenue increased to $18.9 billion.",
+    "answer": "Positive",
+    "type": "Equity News Sentiment (ENS)"
+  },
+  {
+    "id": 5,
+    "question": "Coca-Cola's first-quarter 2026 revenue rose 12% to $12.5 billion and comparable EPS grew 18%, helped by concentrate sales and pricing.",
+    "answer": "Positive",
+    "type": "Equity News Sentiment (ENS)"
+  },
+  {
+    "id": 6,
+    "question": "Walmart's fourth-quarter FY26 results showed strong revenue and adjusted operating income growth, with global eCommerce sales up 24%.",
+    "answer": "Positive",
+    "type": "Equity News Sentiment (ENS)"
+  },
+  {
+    "id": 7,
+    "question": "Costco reported February 2026 net sales of $21.69 billion, up 9.5% from the prior year, and first-26-week sales up 8.6%.",
+    "answer": "Positive",
+    "type": "Equity News Sentiment (ENS)"
+  },
+  {
+    "id": 8,
+    "question": "FedEx reported third-quarter FY26 revenue of $24.0 billion and raised its full-year fiscal 2026 earnings outlook after stronger operating results.",
+    "answer": "Positive",
+    "type": "Equity News Sentiment (ENS)"
+  },
+  {
+    "id": 9,
+    "question": "UPS first-quarter 2026 revenue fell 1.6% and adjusted EPS declined from last year, even as results beat estimates and full-year guidance stayed unchanged.",
+    "answer": "Neutral",
+    "type": "Equity News Sentiment (ENS)"
+  },
+  {
+    "id": 10,
+    "question": "LVMH reported 2025 revenue down 5% and recurring operating profit down 9% as softer luxury demand weighed on results.",
+    "answer": "Negative",
+    "type": "Equity News Sentiment (ENS)"
+  },
+  {
+    "id": 11,
+    "question": "$TSM putting up NT$1.134T in quarterly revenue and a 66.2% gross margin makes the AI chip cycle look very alive.",
+    "answer": "Positive",
+    "type": "Equity Social Media Sentiment (ESM)"
+  },
+  {
+    "id": 12,
+    "question": "$SAP cloud revenue up 19% with backlog still growing feels like enterprise software is holding up better than feared.",
+    "answer": "Positive",
+    "type": "Equity Social Media Sentiment (ESM)"
+  },
+  {
+    "id": 13,
+    "question": "$C revenue up double digits and profit jumping to $5.8B is a strong bank quarter.",
+    "answer": "Positive",
+    "type": "Equity Social Media Sentiment (ESM)"
+  },
+  {
+    "id": 14,
+    "question": "$AXP card spending at a three-year high tells me premium consumers are still spending.",
+    "answer": "Positive",
+    "type": "Equity Social Media Sentiment (ESM)"
+  },
+  {
+    "id": 15,
+    "question": "$KO beat on revenue and EPS again, so the pricing power story still looks solid.",
+    "answer": "Positive",
+    "type": "Equity Social Media Sentiment (ESM)"
+  },
+  {
+    "id": 16,
+    "question": "$WMT eCommerce up 24% and comp sales growing makes the retail setup look stronger than expected.",
+    "answer": "Positive",
+    "type": "Equity Social Media Sentiment (ESM)"
+  },
+  {
+    "id": 17,
+    "question": "$COST February sales up almost 10% shows shoppers are still sticking with the warehouse model.",
+    "answer": "Positive",
+    "type": "Equity Social Media Sentiment (ESM)"
+  },
+  {
+    "id": 18,
+    "question": "$FDX raising its 2026 earnings outlook after a stronger quarter is exactly the kind of update bulls wanted.",
+    "answer": "Positive",
+    "type": "Equity Social Media Sentiment (ESM)"
+  },
+  {
+    "id": 19,
+    "question": "$UPS beat the quarter, but shrinking revenue and lower EPS make the recovery feel incomplete.",
+    "answer": "Neutral",
+    "type": "Equity Social Media Sentiment (ESM)"
+  },
+  {
+    "id": 20,
+    "question": "LVMH sales and profit falling in 2025 makes the luxury slowdown look real.",
+    "answer": "Negative",
+    "type": "Equity Social Media Sentiment (ESM)"
+  },
+  {
+    "id": 21,
+    "question": "We delivered first-quarter revenue of $35.90 billion, with gross margin reaching 66.2% as advanced-node demand remained strong.",
+    "answer": "Positive",
+    "type": "Equity Transcript Sentiment (ETS)"
+  },
+  {
+    "id": 22,
+    "question": "Cloud revenue increased 19%, and current cloud backlog reached EUR 21.9 billion as customers continued moving to cloud ERP.",
+    "answer": "Positive",
+    "type": "Equity Transcript Sentiment (ETS)"
+  },
+  {
+    "id": 23,
+    "question": "We generated $24.6 billion in quarterly revenue and $5.8 billion in net income, driven by growth across our five interconnected businesses.",
+    "answer": "Positive",
+    "type": "Equity Transcript Sentiment (ETS)"
+  },
+  {
+    "id": 24,
+    "question": "Cardmember spending grew 9%, and first-quarter revenue reached $18.9 billion while credit performance remained strong.",
+    "answer": "Positive",
+    "type": "Equity Transcript Sentiment (ETS)"
+  },
+  {
+    "id": 25,
+    "question": "Organic revenue grew 10%, supported by concentrate sales, pricing, and improved operating efficiency.",
+    "answer": "Positive",
+    "type": "Equity Transcript Sentiment (ETS)"
+  },
+  {
+    "id": 26,
+    "question": "Global eCommerce grew 24%, and comparable sales improved as digital momentum supported top-line performance.",
+    "answer": "Positive",
+    "type": "Equity Transcript Sentiment (ETS)"
+  },
+  {
+    "id": 27,
+    "question": "We raised our full-year fiscal 2026 earnings outlook after stronger third-quarter operating results.",
+    "answer": "Positive",
+    "type": "Equity Transcript Sentiment (ETS)"
+  },
+  {
+    "id": 28,
+    "question": "Revenue declined year over year, but cost actions and pricing helped us keep our full-year revenue target unchanged.",
+    "answer": "Neutral",
+    "type": "Equity Transcript Sentiment (ETS)"
+  },
+  {
+    "id": 29,
+    "question": "Quarterly revenue came in below expectations, although adjusted EPS beat estimates and tariff cost expectations remained manageable.",
+    "answer": "Neutral",
+    "type": "Equity Transcript Sentiment (ETS)"
+  },
+  {
+    "id": 30,
+    "question": "Full-year revenue and recurring operating profit declined as softer consumer demand continued to pressure luxury spending.",
+    "answer": "Negative",
+    "type": "Equity Transcript Sentiment (ETS)"
+  },
+  {
+    "id": 31,
+    "question": "Mars secured most of the output from a Lithuanian wind farm expected to generate about 490 GWh of renewable electricity annually.",
+    "answer": "Positive",
+    "type": "ES News Sentiment (ES-ESG)"
+  },
+  {
+    "id": 32,
+    "question": "Johnson Controls reported a 33% reduction in Scope 3 emissions from use of sold products, more than double its 2030 target.",
+    "answer": "Positive",
+    "type": "ES News Sentiment (ES-ESG)"
+  },
+  {
+    "id": 33,
+    "question": "TotalEnergies reported that operated methane emissions in 2025 were 65% lower than 2020 levels, exceeding its reduction target.",
+    "answer": "Positive",
+    "type": "ES News Sentiment (ES-ESG)"
+  },
+  {
+    "id": 34,
+    "question": "Microsoft agreed to purchase 2.85 million regenerative-agriculture soil carbon credits over 12 years to support its carbon-negative goal.",
+    "answer": "Positive",
+    "type": "ES News Sentiment (ES-ESG)"
+  },
+  {
+    "id": 35,
+    "question": "TotalEnergies approved a $1.2 billion, 1-gigawatt wind project in Kazakhstan with battery storage capacity.",
+    "answer": "Positive",
+    "type": "ES News Sentiment (ES-ESG)"
+  },
+  {
+    "id": 36,
+    "question": "BP shareholders rejected proposals tied to weaker climate-disclosure practices, signaling investor concern over transparency and governance.",
+    "answer": "Negative",
+    "type": "ES News Sentiment (ES-ESG)"
+  },
+  {
+    "id": 37,
+    "question": "U.S. solar and wind power-purchase agreement prices rose sharply in Q1 2026, increasing clean-energy procurement costs for companies.",
+    "answer": "Negative",
+    "type": "ES News Sentiment (ES-ESG)"
+  },
+  {
+    "id": 38,
+    "question": "Corporate DEI policies fell down companies' priority lists amid political pressure and reduced public emphasis on such programs.",
+    "answer": "Negative",
+    "type": "ES News Sentiment (ES-ESG)"
+  },
+  {
+    "id": 39,
+    "question": "Iberdrola put a planned sale of a minority stake in a roughly 1-gigawatt Spanish solar portfolio on hold.",
+    "answer": "Neutral",
+    "type": "ES News Sentiment (ES-ESG)"
+  },
+  {
+    "id": 40,
+    "question": "A Reuters analysis warned that new U.N. carbon-credit rules could create uncertainty for the offset market they are meant to improve.",
+    "answer": "Negative",
+    "type": "ES News Sentiment (ES-ESG)"
+  },
+  {
+    "id": 41,
+    "question": "IMF projected global growth of 3.1% in 2026 and 3.2% in 2027, below recent outcomes and pre-pandemic averages.",
+    "answer": "Negative",
+    "type": "Country News Sentiment (CNS)"
+  },
+  {
+    "id": 42,
+    "question": "Euro area GDP increased 1.4% in 2025 after 0.9% growth in 2024, showing a modest improvement in regional economic activity.",
+    "answer": "Positive",
+    "type": "Country News Sentiment (CNS)"
+  },
+  {
+    "id": 43,
+    "question": "Singapore raised its 2026 GDP growth forecast to 2.0% to 4.0% after the economy expanded 6.9% year over year in Q4 2025.",
+    "answer": "Positive",
+    "type": "Country News Sentiment (CNS)"
+  },
+  {
+    "id": 44,
+    "question": "Indonesia posted 5.11% GDP growth in 2025, its fastest annual expansion in three years.",
+    "answer": "Positive",
+    "type": "Country News Sentiment (CNS)"
+  },
+  {
+    "id": 45,
+    "question": "Kenya's economy grew 4.6% in 2025, slightly below the prior year and below the finance ministry's 5.0% projection.",
+    "answer": "Neutral",
+    "type": "Country News Sentiment (CNS)"
+  },
+  {
+    "id": 46,
+    "question": "South Africa's economy grew 1.1% in 2025, slower than central bank and Treasury forecasts.",
+    "answer": "Negative",
+    "type": "Country News Sentiment (CNS)"
+  },
+  {
+    "id": 47,
+    "question": "Mexico's economy grew only 0.1% in February 2026 and contracted 0.3% from a year earlier, missing expectations.",
+    "answer": "Negative",
+    "type": "Country News Sentiment (CNS)"
+  },
+  {
+    "id": 48,
+    "question": "Japan's Q1 2025 GDP contraction was revised to -0.2% annualized, less severe than the initial -0.7% decline.",
+    "answer": "Neutral",
+    "type": "Country News Sentiment (CNS)"
+  },
+  {
+    "id": 49,
+    "question": "Moody's upgraded China's credit outlook from negative to stable, citing resilience and manageable fiscal risks.",
+    "answer": "Positive",
+    "type": "Country News Sentiment (CNS)"
+  },
+  {
+    "id": 50,
+    "question": "South Africa announced temporary fuel-tax cuts to cushion households from higher energy prices, while maintaining its fiscal plan.",
+    "answer": "Neutral",
+    "type": "Country News Sentiment (CNS)"
+  }
+]
