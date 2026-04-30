@@ -1,0 +1,302 @@
+[
+  {
+    "id": 1,
+    "question": "IBM reported first-quarter 2026 revenue of $15.9 billion and adjusted earnings above expectations, but investors reacted cautiously after the company kept its full-year outlook unchanged.",
+    "answer": "Neutral",
+    "type": "Equity News Sentiment (ENS)"
+  },
+  {
+    "id": 2,
+    "question": "AT&T reported strong first-quarter 2026 results as Advanced Connectivity revenue grew 4.7% and wireless service revenue increased 3.6% year over year.",
+    "answer": "Positive",
+    "type": "Equity News Sentiment (ENS)"
+  },
+  {
+    "id": 3,
+    "question": "T-Mobile's first-quarter 2026 revenue beat expectations and the company raised its postpaid account guidance, although net income declined because of merger-related costs.",
+    "answer": "Neutral",
+    "type": "Equity News Sentiment (ENS)"
+  },
+  {
+    "id": 4,
+    "question": "General Motors reported first-quarter 2026 revenue of $43.6 billion, net income of $2.6 billion, and raised full-year adjusted EBIT guidance by $500 million.",
+    "answer": "Positive",
+    "type": "Equity News Sentiment (ENS)"
+  },
+  {
+    "id": 5,
+    "question": "Cognizant forecast second-quarter revenue below analyst estimates as clients remained cautious on discretionary IT spending.",
+    "answer": "Negative",
+    "type": "Equity News Sentiment (ENS)"
+  },
+  {
+    "id": 6,
+    "question": "Deere raised its fiscal 2026 net income outlook to $4.5 billion to $5.0 billion, but management still described the equipment market as near the bottom of a weak cycle.",
+    "answer": "Neutral",
+    "type": "Equity News Sentiment (ENS)"
+  },
+  {
+    "id": 7,
+    "question": "PepsiCo's first-quarter 2026 net revenue increased 8.5%, organic revenue grew 2.6%, and core EPS increased as the company reaffirmed its annual guidance.",
+    "answer": "Positive",
+    "type": "Equity News Sentiment (ENS)"
+  },
+  {
+    "id": 8,
+    "question": "Chipotle reported first-quarter 2026 revenue growth and a surprise comparable-sales increase, but operating margin and adjusted EPS declined from the prior year.",
+    "answer": "Neutral",
+    "type": "Equity News Sentiment (ENS)"
+  },
+  {
+    "id": 9,
+    "question": "eBay reported first-quarter 2026 revenue of $3.09 billion and gross merchandise volume of $22.2 billion, both ahead of expectations.",
+    "answer": "Positive",
+    "type": "Equity News Sentiment (ENS)"
+  },
+  {
+    "id": 10,
+    "question": "Spotify's shares fell after the company projected second-quarter operating income below expectations because of higher AI and marketing spending.",
+    "answer": "Negative",
+    "type": "Equity News Sentiment (ENS)"
+  },
+  {
+    "id": 11,
+    "question": "$IBM beat Q1 revenue and EPS, but keeping the 2026 outlook unchanged makes the stock reaction feel understandable.",
+    "answer": "Neutral",
+    "type": "Equity Social Media Sentiment (ESM)"
+  },
+  {
+    "id": 12,
+    "question": "$T wireless and fiber growth still look solid after another quarter of stronger service revenue.",
+    "answer": "Positive",
+    "type": "Equity Social Media Sentiment (ESM)"
+  },
+  {
+    "id": 13,
+    "question": "$TMUS revenue beat and guidance moved higher, but merger costs hitting net income keep the quarter from looking totally clean.",
+    "answer": "Neutral",
+    "type": "Equity Social Media Sentiment (ESM)"
+  },
+  {
+    "id": 14,
+    "question": "$GM raising adjusted EBIT guidance after a stronger-than-expected Q1 makes the auto story look better than feared.",
+    "answer": "Positive",
+    "type": "Equity Social Media Sentiment (ESM)"
+  },
+  {
+    "id": 15,
+    "question": "$CTSH guiding Q2 revenue below the Street because clients are still cautious is not a great sign for IT services demand.",
+    "answer": "Negative",
+    "type": "Equity Social Media Sentiment (ESM)"
+  },
+  {
+    "id": 16,
+    "question": "$DE raising the full-year profit outlook is nice, but calling 2026 the bottom of the cycle keeps me cautious.",
+    "answer": "Neutral",
+    "type": "Equity Social Media Sentiment (ESM)"
+  },
+  {
+    "id": 17,
+    "question": "$PEP showing faster revenue growth and reaffirming guidance makes the consumer-staples setup look stable.",
+    "answer": "Positive",
+    "type": "Equity Social Media Sentiment (ESM)"
+  },
+  {
+    "id": 18,
+    "question": "$CMG finally beat the comp-sales fear, but lower margins and EPS mean the turnaround is still not perfect.",
+    "answer": "Neutral",
+    "type": "Equity Social Media Sentiment (ESM)"
+  },
+  {
+    "id": 19,
+    "question": "$EBAY revenue and GMV both beat expectations, so the marketplace comeback looks stronger than people expected.",
+    "answer": "Positive",
+    "type": "Equity Social Media Sentiment (ESM)"
+  },
+  {
+    "id": 20,
+    "question": "$SPOT hitting record operating income is cool, but the next-quarter profit guide missing expectations kills the vibe.",
+    "answer": "Negative",
+    "type": "Equity Social Media Sentiment (ESM)"
+  },
+  {
+    "id": 21,
+    "question": "Revenue and adjusted earnings exceeded expectations in the quarter, although our full-year outlook remains unchanged.",
+    "answer": "Neutral",
+    "type": "Equity Transcript Sentiment (ETS)"
+  },
+  {
+    "id": 22,
+    "question": "Advanced Connectivity revenue increased 4.7% year over year, supported by growth in wireless service revenue and fiber-related demand.",
+    "answer": "Positive",
+    "type": "Equity Transcript Sentiment (ETS)"
+  },
+  {
+    "id": 23,
+    "question": "Service revenue increased double digits and account-growth guidance improved, while merger-related expenses reduced reported net income.",
+    "answer": "Neutral",
+    "type": "Equity Transcript Sentiment (ETS)"
+  },
+  {
+    "id": 24,
+    "question": "First-quarter EBIT-adjusted surpassed expectations, and we are raising our full-year adjusted EBIT guidance by $500 million.",
+    "answer": "Positive",
+    "type": "Equity Transcript Sentiment (ETS)"
+  },
+  {
+    "id": 25,
+    "question": "We expect second-quarter revenue to come in below market expectations as clients remain cautious with discretionary technology spending.",
+    "answer": "Negative",
+    "type": "Equity Transcript Sentiment (ETS)"
+  },
+  {
+    "id": 26,
+    "question": "We raised our fiscal 2026 net income forecast, while continuing to manage through weak conditions in the large agriculture cycle.",
+    "answer": "Neutral",
+    "type": "Equity Transcript Sentiment (ETS)"
+  },
+  {
+    "id": 27,
+    "question": "Net revenue and organic revenue accelerated in the quarter, with every business segment delivering organic growth.",
+    "answer": "Positive",
+    "type": "Equity Transcript Sentiment (ETS)"
+  },
+  {
+    "id": 28,
+    "question": "Comparable restaurant sales improved modestly, but higher input and labor costs reduced operating margin and adjusted earnings per share.",
+    "answer": "Neutral",
+    "type": "Equity Transcript Sentiment (ETS)"
+  },
+  {
+    "id": 29,
+    "question": "Marketplace revenue and gross merchandise volume both exceeded expectations, reflecting stronger engagement across focus categories.",
+    "answer": "Positive",
+    "type": "Equity Transcript Sentiment (ETS)"
+  },
+  {
+    "id": 30,
+    "question": "Operating income reached a record level in the first quarter, but planned AI and marketing investments are expected to pressure next-quarter profit.",
+    "answer": "Neutral",
+    "type": "Equity Transcript Sentiment (ETS)"
+  },
+  {
+    "id": 31,
+    "question": "RELEX reported using 100% renewable electricity in its offices and co-location data centers while expanding supplier ESG assessments.",
+    "answer": "Positive",
+    "type": "ES News Sentiment (ES-ESG)"
+  },
+  {
+    "id": 32,
+    "question": "Schneider Electric surpassed its 2025 sustainability target by helping customers save and avoid 862 million tons of carbon dioxide emissions.",
+    "answer": "Positive",
+    "type": "ES News Sentiment (ES-ESG)"
+  },
+  {
+    "id": 33,
+    "question": "Siemens again received a CDP Climate A List rating in 2025, signaling strong corporate climate disclosure and environmental performance.",
+    "answer": "Positive",
+    "type": "ES News Sentiment (ES-ESG)"
+  },
+  {
+    "id": 34,
+    "question": "Siemens Healthineers reported a 49% reduction in Scope 1 and 2 emissions from its 2019 baseline.",
+    "answer": "Positive",
+    "type": "ES News Sentiment (ES-ESG)"
+  },
+  {
+    "id": 35,
+    "question": "HP reported that product-use emissions were 46% lower than 2019 levels, reflecting progress on product energy efficiency.",
+    "answer": "Positive",
+    "type": "ES News Sentiment (ES-ESG)"
+  },
+  {
+    "id": 36,
+    "question": "DHL Group reduced logistics-related greenhouse gas emissions by 4.3% in 2025 while increasing investment in sustainable fuels and technologies.",
+    "answer": "Positive",
+    "type": "ES News Sentiment (ES-ESG)"
+  },
+  {
+    "id": 37,
+    "question": "UPS powered 27.4% of its global facilities with renewable electricity in 2025 and surpassed its renewable-energy target.",
+    "answer": "Positive",
+    "type": "ES News Sentiment (ES-ESG)"
+  },
+  {
+    "id": 38,
+    "question": "Maersk said its total emissions increased by 2% in 2025 despite continued work on its energy transition.",
+    "answer": "Negative",
+    "type": "ES News Sentiment (ES-ESG)"
+  },
+  {
+    "id": 39,
+    "question": "Global corporate clean-power purchase volumes fell 10% in 2025, ending an eight-year streak of annual growth.",
+    "answer": "Negative",
+    "type": "ES News Sentiment (ES-ESG)"
+  },
+  {
+    "id": 40,
+    "question": "FedEx reported a 58% reduction in Scope 1 and 2 emissions intensity from its FY09 baseline, reflecting progress on logistics decarbonization.",
+    "answer": "Positive",
+    "type": "ES News Sentiment (ES-ESG)"
+  },
+  {
+    "id": 41,
+    "question": "Sberbank cut Russia's 2026 GDP growth forecast to 0.5% to 1.0% after a weak first quarter.",
+    "answer": "Negative",
+    "type": "Country News Sentiment (CNS)"
+  },
+  {
+    "id": 42,
+    "question": "A U.K. economic institute lowered its 2026 growth forecast to 0.9% and warned that inflation could rise to 4.1% by early 2027.",
+    "answer": "Negative",
+    "type": "Country News Sentiment (CNS)"
+  },
+  {
+    "id": 43,
+    "question": "Australia's annual CPI inflation rose to 4.1% in the first quarter of 2026, keeping pressure on the central bank to raise rates.",
+    "answer": "Negative",
+    "type": "Country News Sentiment (CNS)"
+  },
+  {
+    "id": 44,
+    "question": "New Zealand's central bank said first-quarter core inflation remained stable within its 1% to 3% target band.",
+    "answer": "Positive",
+    "type": "Country News Sentiment (CNS)"
+  },
+  {
+    "id": 45,
+    "question": "The Swiss National Bank warned that the Middle East conflict could slow growth and raise inflation in Switzerland.",
+    "answer": "Negative",
+    "type": "Country News Sentiment (CNS)"
+  },
+  {
+    "id": 46,
+    "question": "Morocco's economic growth was projected to slow to 4.0% in 2026 from 4.4% expected in 2025 as foreign demand weakened.",
+    "answer": "Negative",
+    "type": "Country News Sentiment (CNS)"
+  },
+  {
+    "id": 47,
+    "question": "The IMF lowered its 2026 growth forecast for emerging market and developing economies to 3.9% as higher energy and food costs darkened the outlook.",
+    "answer": "Negative",
+    "type": "Country News Sentiment (CNS)"
+  },
+  {
+    "id": 48,
+    "question": "Irish consumer sentiment fell to its lowest level since late 2022 as households grew more cautious about inflation and economic prospects.",
+    "answer": "Negative",
+    "type": "Country News Sentiment (CNS)"
+  },
+  {
+    "id": 49,
+    "question": "Colombia was expected to raise interest rates again as inflation stayed well above the central bank's 3% target.",
+    "answer": "Negative",
+    "type": "Country News Sentiment (CNS)"
+  },
+  {
+    "id": 50,
+    "question": "South Africa's rand fell more than 1% as investors reacted to global rate uncertainty and prolonged geopolitical risk.",
+    "answer": "Negative",
+    "type": "Country News Sentiment (CNS)"
+  }
+]
