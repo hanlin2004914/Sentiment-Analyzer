@@ -1,0 +1,302 @@
+[
+  {
+    "id": 1,
+    "question": "Mastercard reported fourth-quarter 2025 net revenue of $8.8 billion, up 18%, with purchase volume rising 9% on a local-currency basis.",
+    "answer": "Positive",
+    "type": "Equity News Sentiment (ENS)"
+  },
+  {
+    "id": 2,
+    "question": "Shopify reported fourth-quarter 2025 revenue growth of 31% and a 19% free cash flow margin, marking another quarter of double-digit free cash flow margin.",
+    "answer": "Positive",
+    "type": "Equity News Sentiment (ENS)"
+  },
+  {
+    "id": 3,
+    "question": "MercadoLibre delivered fourth-quarter 2025 net revenue and financial income of $8.8 billion, up 45% year over year.",
+    "answer": "Positive",
+    "type": "Equity News Sentiment (ENS)"
+  },
+  {
+    "id": 4,
+    "question": "Airbnb's fourth-quarter 2025 revenue rose 12%, while gross booking value increased 16% and nights and seats booked rose 10%.",
+    "answer": "Positive",
+    "type": "Equity News Sentiment (ENS)"
+  },
+  {
+    "id": 5,
+    "question": "Block reported fourth-quarter 2025 gross profit growth of 24% and raised its 2026 gross profit outlook.",
+    "answer": "Positive",
+    "type": "Equity News Sentiment (ENS)"
+  },
+  {
+    "id": 6,
+    "question": "PayPal grew 2025 revenue, transaction margin dollars, and earnings per share, but management said execution in branded checkout had not met expectations.",
+    "answer": "Neutral",
+    "type": "Equity News Sentiment (ENS)"
+  },
+  {
+    "id": 7,
+    "question": "Procter & Gamble's fiscal second-quarter 2026 net sales rose 1%, but organic sales were flat and diluted earnings per share fell 5%.",
+    "answer": "Neutral",
+    "type": "Equity News Sentiment (ENS)"
+  },
+  {
+    "id": 8,
+    "question": "3M's fourth-quarter 2025 adjusted EPS rose 9%, but GAAP EPS fell 20% as reported operating margin declined.",
+    "answer": "Neutral",
+    "type": "Equity News Sentiment (ENS)"
+  },
+  {
+    "id": 9,
+    "question": "Booking Holdings lowered its annual revenue growth forecast after Middle East travel disruptions reduced room night growth and weighed on demand.",
+    "answer": "Negative",
+    "type": "Equity News Sentiment (ENS)"
+  },
+  {
+    "id": 10,
+    "question": "Cisco reported second-quarter fiscal 2026 revenue of $15.3 billion and raised its full-year outlook as AI infrastructure demand strengthened.",
+    "answer": "Positive",
+    "type": "Equity News Sentiment (ENS)"
+  },
+  {
+    "id": 11,
+    "question": "$MA net revenue up 18% with purchase volume still growing makes the payments story look very solid.",
+    "answer": "Positive",
+    "type": "Equity Social Media Sentiment (ESM)"
+  },
+  {
+    "id": 12,
+    "question": "$SHOP growing revenue 31% and still posting a 19% free cash flow margin is a strong combination.",
+    "answer": "Positive",
+    "type": "Equity Social Media Sentiment (ESM)"
+  },
+  {
+    "id": 13,
+    "question": "$MELI putting up 45% revenue growth again shows Latin American commerce and fintech demand are still running hot.",
+    "answer": "Positive",
+    "type": "Equity Social Media Sentiment (ESM)"
+  },
+  {
+    "id": 14,
+    "question": "$ABNB finally reaccelerating bookings and revenue in Q4 makes the travel platform look healthier.",
+    "answer": "Positive",
+    "type": "Equity Social Media Sentiment (ESM)"
+  },
+  {
+    "id": 15,
+    "question": "$XYZ gross profit growth jumping 24% and guidance moving higher makes the Block turnaround look real.",
+    "answer": "Positive",
+    "type": "Equity Social Media Sentiment (ESM)"
+  },
+  {
+    "id": 16,
+    "question": "$PYPL numbers improved for 2025, but management admitting branded checkout execution problems keeps me cautious.",
+    "answer": "Neutral",
+    "type": "Equity Social Media Sentiment (ESM)"
+  },
+  {
+    "id": 17,
+    "question": "$PG still sells a lot, but flat organic sales and lower EPS make the quarter feel stuck.",
+    "answer": "Neutral",
+    "type": "Equity Social Media Sentiment (ESM)"
+  },
+  {
+    "id": 18,
+    "question": "$MMM adjusted results look better, but GAAP EPS dropping 20% makes the headline quarter hard to love.",
+    "answer": "Neutral",
+    "type": "Equity Social Media Sentiment (ESM)"
+  },
+  {
+    "id": 19,
+    "question": "$BKNG cutting its revenue growth outlook because travel demand is getting hit is not what holders wanted.",
+    "answer": "Negative",
+    "type": "Equity Social Media Sentiment (ESM)"
+  },
+  {
+    "id": 20,
+    "question": "$CSCO taking in big AI infrastructure demand and lifting the outlook makes old-school networking look relevant again.",
+    "answer": "Positive",
+    "type": "Equity Social Media Sentiment (ESM)"
+  },
+  {
+    "id": 21,
+    "question": "Fourth-quarter net revenue increased 18%, supported by higher purchase volume and continued cross-border payment activity.",
+    "answer": "Positive",
+    "type": "Equity Transcript Sentiment (ETS)"
+  },
+  {
+    "id": 22,
+    "question": "We delivered 31% revenue growth in the fourth quarter while maintaining a 19% free cash flow margin.",
+    "answer": "Positive",
+    "type": "Equity Transcript Sentiment (ETS)"
+  },
+  {
+    "id": 23,
+    "question": "Net revenue and financial income increased 45% year over year, reflecting continued strength across commerce and fintech.",
+    "answer": "Positive",
+    "type": "Equity Transcript Sentiment (ETS)"
+  },
+  {
+    "id": 24,
+    "question": "Revenue, gross booking value, and nights and seats booked all grew at double-digit rates in the fourth quarter.",
+    "answer": "Positive",
+    "type": "Equity Transcript Sentiment (ETS)"
+  },
+  {
+    "id": 25,
+    "question": "Gross profit grew 24% in the fourth quarter, and we raised our 2026 gross profit and adjusted operating income outlook.",
+    "answer": "Positive",
+    "type": "Equity Transcript Sentiment (ETS)"
+  },
+  {
+    "id": 26,
+    "question": "Revenue and earnings improved during 2025, although branded checkout execution remains below the level we need.",
+    "answer": "Neutral",
+    "type": "Equity Transcript Sentiment (ETS)"
+  },
+  {
+    "id": 27,
+    "question": "Net sales increased slightly, but organic sales were unchanged and earnings per share declined because of restructuring charges.",
+    "answer": "Neutral",
+    "type": "Equity Transcript Sentiment (ETS)"
+  },
+  {
+    "id": 28,
+    "question": "Adjusted earnings improved in the quarter, while reported earnings declined due to weaker GAAP operating margin.",
+    "answer": "Neutral",
+    "type": "Equity Transcript Sentiment (ETS)"
+  },
+  {
+    "id": 29,
+    "question": "Travel demand remains disrupted in key regions, requiring us to reduce our annual revenue growth expectations.",
+    "answer": "Negative",
+    "type": "Equity Transcript Sentiment (ETS)"
+  },
+  {
+    "id": 30,
+    "question": "Second-quarter revenue reached $15.3 billion, and AI infrastructure orders supported a higher full-year outlook.",
+    "answer": "Positive",
+    "type": "Equity Transcript Sentiment (ETS)"
+  },
+  {
+    "id": 31,
+    "question": "Sasol received certification for sustainable aviation fuel production, allowing it to begin working toward exports to the European Union.",
+    "answer": "Positive",
+    "type": "ES News Sentiment (ES-ESG)"
+  },
+  {
+    "id": 32,
+    "question": "LyondellBasell signed European wind-power purchase agreements to increase renewable electricity use across its operations.",
+    "answer": "Positive",
+    "type": "ES News Sentiment (ES-ESG)"
+  },
+  {
+    "id": 33,
+    "question": "Air bp signed a multi-year sustainable aviation fuel supply contract with Airbus across Germany and Spain.",
+    "answer": "Positive",
+    "type": "ES News Sentiment (ES-ESG)"
+  },
+  {
+    "id": 34,
+    "question": "Mastercard reported that revenue grew in 2025 while emissions declined for a third consecutive year.",
+    "answer": "Positive",
+    "type": "ES News Sentiment (ES-ESG)"
+  },
+  {
+    "id": 35,
+    "question": "TotalEnergies agreed to supply 800 gigawatt-hours of renewable electricity to a paper manufacturer in France over ten years.",
+    "answer": "Positive",
+    "type": "ES News Sentiment (ES-ESG)"
+  },
+  {
+    "id": 36,
+    "question": "An investor climate group relaunched with weaker pledges after climate-focused initiatives lost support from major investors.",
+    "answer": "Negative",
+    "type": "ES News Sentiment (ES-ESG)"
+  },
+  {
+    "id": 37,
+    "question": "Environmental groups in the Western Balkans urged governments to prioritize renewable power over new gas projects to avoid locking in fossil-fuel dependence.",
+    "answer": "Negative",
+    "type": "ES News Sentiment (ES-ESG)"
+  },
+  {
+    "id": 38,
+    "question": "U.S. renewable-energy firms faced pressure from policy shifts that accelerated consolidation and asset sales in the solar and wind sector.",
+    "answer": "Negative",
+    "type": "ES News Sentiment (ES-ESG)"
+  },
+  {
+    "id": 39,
+    "question": "Google agreed to buy biochar carbon removal credits from an Indian agricultural-waste project, expanding corporate support for carbon removal.",
+    "answer": "Positive",
+    "type": "ES News Sentiment (ES-ESG)"
+  },
+  {
+    "id": 40,
+    "question": "Portugal announced a large resilience investment plan to strengthen infrastructure after storms and a major blackout.",
+    "answer": "Positive",
+    "type": "ES News Sentiment (ES-ESG)"
+  },
+  {
+    "id": 41,
+    "question": "Norway cut its 2026 mainland economic growth forecast to 1.8% from 2.1%, signaling a weaker activity outlook.",
+    "answer": "Negative",
+    "type": "Country News Sentiment (CNS)"
+  },
+  {
+    "id": 42,
+    "question": "Sweden kept its policy rate unchanged at 1.75% and projected stronger GDP growth of about 3.0% in 2026 after 1.0% growth in 2025.",
+    "answer": "Positive",
+    "type": "Country News Sentiment (CNS)"
+  },
+  {
+    "id": 43,
+    "question": "Poland's economy was expected to grow more than 3% in 2026, but the IMF warned that the country still needed to curb rising public debt.",
+    "answer": "Neutral",
+    "type": "Country News Sentiment (CNS)"
+  },
+  {
+    "id": 44,
+    "question": "Portugal's 2026 budget forecast stronger growth, a small budget surplus, and a lower debt-to-GDP ratio.",
+    "answer": "Positive",
+    "type": "Country News Sentiment (CNS)"
+  },
+  {
+    "id": 45,
+    "question": "The IMF cut Turkey's 2026 growth forecast from 4.2% to 3.4% because of weaker momentum and higher energy prices.",
+    "answer": "Negative",
+    "type": "Country News Sentiment (CNS)"
+  },
+  {
+    "id": 46,
+    "question": "Turkey's annual inflation fell to 30.87% in March and came in below market forecasts, although price growth remained very high.",
+    "answer": "Neutral",
+    "type": "Country News Sentiment (CNS)"
+  },
+  {
+    "id": 47,
+    "question": "Egypt's economic growth outlook was trimmed as higher energy prices and regional conflict threatened tourism, Suez Canal revenue, and remittances.",
+    "answer": "Negative",
+    "type": "Country News Sentiment (CNS)"
+  },
+  {
+    "id": 48,
+    "question": "The World Bank projected a 24% surge in energy prices in 2026, increasing inflation pressure on developing economies.",
+    "answer": "Negative",
+    "type": "Country News Sentiment (CNS)"
+  },
+  {
+    "id": 49,
+    "question": "Sweden issued an early warning about a possible jet fuel shortage after Middle East conflict disrupted global oil supply routes.",
+    "answer": "Negative",
+    "type": "Country News Sentiment (CNS)"
+  },
+  {
+    "id": 50,
+    "question": "Portugal's economy rebounded with 0.6% quarterly growth in the second quarter of 2025 after contracting in the previous quarter.",
+    "answer": "Positive",
+    "type": "Country News Sentiment (CNS)"
+  }
+]
