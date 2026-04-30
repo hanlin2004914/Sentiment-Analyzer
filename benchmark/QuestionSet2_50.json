@@ -1,0 +1,302 @@
+[
+  {
+    "id": 1,
+    "question": "NVIDIA reported record quarterly revenue of $68.1 billion, with data center revenue reaching $62.3 billion as AI infrastructure demand accelerated.",
+    "answer": "Positive",
+    "type": "Equity News Sentiment (ENS)"
+  },
+  {
+    "id": 2,
+    "question": "BYD's quarterly revenue declined 11.8% and earnings per share fell 57%, showing pressure from China's highly competitive EV market.",
+    "answer": "Negative",
+    "type": "Equity News Sentiment (ENS)"
+  },
+  {
+    "id": 3,
+    "question": "Alphabet's Google Cloud revenue grew 48%, but its planned $175 billion to $185 billion in 2026 capital spending raised concerns about AI investment returns.",
+    "answer": "Neutral",
+    "type": "Equity News Sentiment (ENS)"
+  },
+  {
+    "id": 4,
+    "question": "Oracle and CoreWeave shares fell after reports of OpenAI growth concerns raised doubts about future AI infrastructure demand.",
+    "answer": "Negative",
+    "type": "Equity News Sentiment (ENS)"
+  },
+  {
+    "id": 5,
+    "question": "$NVDA just dropped another monster quarter - $68B revenue and data center still carrying the whole AI trade.",
+    "answer": "Positive",
+    "type": "Equity Social Media Sentiment (ESM)"
+  },
+  {
+    "id": 6,
+    "question": "$AMZN sales are still growing, but a $200B AI capex plan and a double-digit after-hours drop make the spending story feel risky.",
+    "answer": "Negative",
+    "type": "Equity Social Media Sentiment (ESM)"
+  },
+  {
+    "id": 7,
+    "question": "$TSLA finally showed higher profit again, but competition and heavy investment still make the stock hard to read.",
+    "answer": "Neutral",
+    "type": "Equity Social Media Sentiment (ESM)"
+  },
+  {
+    "id": 8,
+    "question": "$BYD revenue down and EPS crushed by more than half - China's EV price war looks painful.",
+    "answer": "Negative",
+    "type": "Equity Social Media Sentiment (ESM)"
+  },
+  {
+    "id": 9,
+    "question": "We delivered record quarterly revenue, led by exceptional data center demand and continued adoption of our AI computing platform.",
+    "answer": "Positive",
+    "type": "Equity Transcript Sentiment (ETS)"
+  },
+  {
+    "id": 10,
+    "question": "We achieved all-time records for company revenue and earnings per share, with iPhone and Services revenue reaching new highs.",
+    "answer": "Positive",
+    "type": "Equity Transcript Sentiment (ETS)"
+  },
+  {
+    "id": 11,
+    "question": "Our cloud business continued to expand strongly, with Microsoft Cloud revenue growing 26% and remaining performance obligation rising sharply.",
+    "answer": "Positive",
+    "type": "Equity Transcript Sentiment (ETS)"
+  },
+  {
+    "id": 12,
+    "question": "We increased annual net sales by 12%, while continuing to invest heavily in AI infrastructure to support long-term growth.",
+    "answer": "Neutral",
+    "type": "Equity Transcript Sentiment (ETS)"
+  },
+  {
+    "id": 13,
+    "question": "Apple reported that its greenhouse gas emissions remained more than 60% below 2015 levels even as the company grew.",
+    "answer": "Positive",
+    "type": "ES News Sentiment (ES-ESG)"
+  },
+  {
+    "id": 14,
+    "question": "Microsoft reported that its total Scope 1, 2, and 3 emissions increased 23.4% from its 2020 baseline, partly due to AI and cloud expansion.",
+    "answer": "Negative",
+    "type": "ES News Sentiment (ES-ESG)"
+  },
+  {
+    "id": 15,
+    "question": "Google reduced data center energy emissions by 12% in 2024 and procured more than 8 GW of clean energy.",
+    "answer": "Positive",
+    "type": "ES News Sentiment (ES-ESG)"
+  },
+  {
+    "id": 16,
+    "question": "The Net-Zero Banking Alliance decided to cease operations after many member banks left the climate coalition.",
+    "answer": "Negative",
+    "type": "ES News Sentiment (ES-ESG)"
+  },
+  {
+    "id": 17,
+    "question": "U.S. real GDP growth slowed to a 0.5% annualized rate in Q4 2025 after growing 4.4% in Q3.",
+    "answer": "Negative",
+    "type": "Country News Sentiment (CNS)"
+  },
+  {
+    "id": 18,
+    "question": "U.S. CPI rose 0.9% in March, with energy prices increasing 10.9% for the month.",
+    "answer": "Negative",
+    "type": "Country News Sentiment (CNS)"
+  },
+  {
+    "id": 19,
+    "question": "China reached 5.0% GDP growth in 2025, meeting its target, but weak domestic consumption remained a longer-term risk.",
+    "answer": "Neutral",
+    "type": "Country News Sentiment (CNS)"
+  },
+  {
+    "id": 20,
+    "question": "India's real GDP is estimated to grow 7.6% in FY 2025-26, showing strong and sustained expansion.",
+    "answer": "Positive",
+    "type": "Country News Sentiment (CNS)"
+  },
+  {
+    "id": 21,
+    "question": "JPMorgan Chase reported first-quarter 2026 net income of $16.5 billion and managed revenue of $50.5 billion, supported by strong firmwide performance.",
+    "answer": "Positive",
+    "type": "Equity News Sentiment (ENS)"
+  },
+  {
+    "id": 22,
+    "question": "Intel reported first-quarter 2026 revenue of $13.6 billion, up 7% year over year, and issued a second-quarter revenue forecast above analyst expectations.",
+    "answer": "Positive",
+    "type": "Equity News Sentiment (ENS)"
+  },
+  {
+    "id": 23,
+    "question": "Nike projected a surprise current-quarter sales decline of 2% to 4%, while China sales fell 10% amid weak demand and stronger local competition.",
+    "answer": "Negative",
+    "type": "Equity News Sentiment (ENS)"
+  },
+  {
+    "id": 24,
+    "question": "Boeing's first-quarter 2026 revenue rose to $22.2 billion and backlog reached a record $695 billion, but the company still reported a loss and negative free cash flow.",
+    "answer": "Neutral",
+    "type": "Equity News Sentiment (ENS)"
+  },
+  {
+    "id": 25,
+    "question": "$JPM pulling in $16.5B in quarterly profit while revenue keeps climbing shows the big banks are still in a strong position.",
+    "answer": "Positive",
+    "type": "Equity Social Media Sentiment (ESM)"
+  },
+  {
+    "id": 26,
+    "question": "$INTC finally looks like it has real momentum again after beating Q1 expectations and guiding higher for next quarter.",
+    "answer": "Positive",
+    "type": "Equity Social Media Sentiment (ESM)"
+  },
+  {
+    "id": 27,
+    "question": "$NKE's China problem is not going away, and a surprise sales-drop forecast makes the turnaround look shaky.",
+    "answer": "Negative",
+    "type": "Equity Social Media Sentiment (ESM)"
+  },
+  {
+    "id": 28,
+    "question": "$BA backlog looks huge, but negative free cash flow makes it hard to call the recovery clean yet.",
+    "answer": "Neutral",
+    "type": "Equity Social Media Sentiment (ESM)"
+  },
+  {
+    "id": 29,
+    "question": "We reported strong first-quarter results, including $16.5 billion in net income, a 19% return on equity, and $50.5 billion in managed revenue.",
+    "answer": "Positive",
+    "type": "Equity Transcript Sentiment (ETS)"
+  },
+  {
+    "id": 30,
+    "question": "First-quarter revenue increased 7% year over year, and we expect second-quarter revenue to remain above prior market expectations.",
+    "answer": "Positive",
+    "type": "Equity Transcript Sentiment (ETS)"
+  },
+  {
+    "id": 31,
+    "question": "Revenue increased during the quarter, and total backlog reached a record level, although free cash flow remained negative.",
+    "answer": "Neutral",
+    "type": "Equity Transcript Sentiment (ETS)"
+  },
+  {
+    "id": 32,
+    "question": "Fourth-quarter earnings declined from the prior year as upstream earnings weakened and foreign currency effects reduced reported results.",
+    "answer": "Negative",
+    "type": "Equity Transcript Sentiment (ETS)"
+  },
+  {
+    "id": 33,
+    "question": "Multilateral development banks provided a record $137 billion in climate finance in 2024, increasing support for climate-related projects.",
+    "answer": "Positive",
+    "type": "ES News Sentiment (ES-ESG)"
+  },
+  {
+    "id": 34,
+    "question": "Investors pressed Amazon, Microsoft, and Google for more detailed data-center water and power-use disclosures as AI infrastructure expanded.",
+    "answer": "Negative",
+    "type": "ES News Sentiment (ES-ESG)"
+  },
+  {
+    "id": 35,
+    "question": "Exxon sued California over climate disclosure rules that require large companies to report emissions and climate-related financial risks.",
+    "answer": "Negative",
+    "type": "ES News Sentiment (ES-ESG)"
+  },
+  {
+    "id": 36,
+    "question": "NatWest faced investor criticism after weakening some climate-related lending restrictions and removing several decarbonization targets.",
+    "answer": "Negative",
+    "type": "ES News Sentiment (ES-ESG)"
+  },
+  {
+    "id": 37,
+    "question": "The Federal Reserve kept interest rates unchanged at 3.5% to 3.75%, but the highly divided vote signaled uncertainty over inflation and future policy.",
+    "answer": "Neutral",
+    "type": "Country News Sentiment (CNS)"
+  },
+  {
+    "id": 38,
+    "question": "The U.S. goods trade deficit widened 5.3% in March as imports rose sharply, creating potential pressure on economic growth.",
+    "answer": "Negative",
+    "type": "Country News Sentiment (CNS)"
+  },
+  {
+    "id": 39,
+    "question": "Euro zone economic confidence fell to its lowest level in three and a half years as energy-price pressure and geopolitical uncertainty weighed on sentiment.",
+    "answer": "Negative",
+    "type": "Country News Sentiment (CNS)"
+  },
+  {
+    "id": 40,
+    "question": "U.S. core capital goods orders surged 3.3% in March, supported by AI-related investment and data-center construction.",
+    "answer": "Positive",
+    "type": "Country News Sentiment (CNS)"
+  },
+  {
+    "id": 41,
+    "question": "Visa beat quarterly profit estimates as payments volume rose 9% and consumer spending remained resilient despite macro uncertainty.",
+    "answer": "Positive",
+    "type": "Equity News Sentiment (ENS)"
+  },
+  {
+    "id": 42,
+    "question": "SoFi posted record first-quarter results, but its shares fell after the company left its 2026 revenue forecast unchanged.",
+    "answer": "Neutral",
+    "type": "Equity News Sentiment (ENS)"
+  },
+  {
+    "id": 43,
+    "question": "$GD jumping after stronger defense and aerospace results plus higher profit guidance makes the quarter look seriously strong.",
+    "answer": "Positive",
+    "type": "Equity Social Media Sentiment (ESM)"
+  },
+  {
+    "id": 44,
+    "question": "$GEHC revenue grew, but cutting the annual profit outlook because chip, oil, and freight costs are rising is not a good look.",
+    "answer": "Negative",
+    "type": "Equity Social Media Sentiment (ESM)"
+  },
+  {
+    "id": 45,
+    "question": "We raised our full-year profit outlook after stronger marine and aerospace performance supported double-digit revenue growth.",
+    "answer": "Positive",
+    "type": "Equity Transcript Sentiment (ETS)"
+  },
+  {
+    "id": 46,
+    "question": "We achieved record revenue and loan-origination growth, but maintained our full-year guidance because macro uncertainty remains elevated.",
+    "answer": "Neutral",
+    "type": "Equity Transcript Sentiment (ETS)"
+  },
+  {
+    "id": 47,
+    "question": "Revised estimates showed that AI data centers in the U.K. could produce far more carbon emissions than officials had previously projected.",
+    "answer": "Negative",
+    "type": "ES News Sentiment (ES-ESG)"
+  },
+  {
+    "id": 48,
+    "question": "Support for U.S. environmental and social shareholder resolutions declined sharply amid political pressure and reduced investor backing.",
+    "answer": "Negative",
+    "type": "ES News Sentiment (ES-ESG)"
+  },
+  {
+    "id": 49,
+    "question": "Brazil created more formal jobs than expected in March, signaling stronger-than-anticipated labor market momentum.",
+    "answer": "Positive",
+    "type": "Country News Sentiment (CNS)"
+  },
+  {
+    "id": 50,
+    "question": "Inflation rose in several major German states in April, pointing to renewed national price pressure from higher energy and raw material costs.",
+    "answer": "Negative",
+    "type": "Country News Sentiment (CNS)"
+  }
+]
