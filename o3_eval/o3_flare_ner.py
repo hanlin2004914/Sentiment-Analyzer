@@ -200,3 +200,84 @@ def normalize_entities(payload: Any) -> Set[Tuple[str, str]]:
             continue
         normalized.add((entity_clean, type_clean))
     return normalized
+
+
+def entities_to_json(entity_set: Set[Tuple[str, str]]) -> str:
+    rows = [{"entity": e, "type": t} for (e, t) in sorted(entity_set)]
+    return json.dumps(rows, ensure_ascii=False)
+
+
+def parse_entities_from_json_string(value: Any) -> Set[Tuple[str, str]]:
+    if isinstance(value, str):
+        text = value.strip()
+        parsed = try_parse_json_like(text)
+        if isinstance(parsed, list):
+            normalized = normalize_entities(parsed)
+            if normalized:
+                return normalized
+        return parse_flare_answer_string(text)
+    payload = try_parse_json_like(value)
+    if isinstance(payload, list):
+        return normalize_entities(payload)
+    return set()
+
+
+def normalize_text_items(value: Any) -> Set[str]:
+    text = value if isinstance(value, str) else str(value or "")
+    text = text.strip()
+    if not text:
+        return set()
+    lines = []
+    for line in text.splitlines():
+        clean = re.sub(r"\s+", " ", line).strip()
+        if clean:
+            lines.append(clean)
+    if not lines:
+        clean = re.sub(r"\s+", " ", text).strip()
+        return {clean} if clean else set()
+    return set(lines)
+
+
+def serialize_string_set(items: Set[str]) -> str:
+    return json.dumps(sorted(items), ensure_ascii=False)
+
+
+def deserialize_string_set(value: Any) -> Set[str]:
+    parsed = try_parse_json_like(value)
+    if isinstance(parsed, list):
+        result: Set[str] = set()
+        for item in parsed:
+            clean = re.sub(r"\s+", " ", str(item)).strip()
+            if clean:
+                result.add(clean)
+        if result:
+            return result
+    if isinstance(value, str):
+        return normalize_text_items(value)
+    return set()
+
+
+# ---------------------------------------------------------------------------
+# Model calling
+# ---------------------------------------------------------------------------
+
+def _extract_output_text(payload: dict) -> str:
+    """Extract text from Responses API JSON (handles nested output structure)."""
+    output_text = payload.get("output_text") or ""
+    if not output_text:
+        output_items = payload.get("output")
+        if isinstance(output_items, list):
+            for item in output_items:
+                if not isinstance(item, dict):
+                    continue
+                if item.get("type") == "message":
+                    content = item.get("content")
+                    if isinstance(content, list):
+                        for block in content:
+                            if isinstance(block, dict) and block.get("type") == "output_text":
+                                output_text = block.get("text", "")
+                                break
+                if output_text:
+                    break
+    return str(output_text)
+
