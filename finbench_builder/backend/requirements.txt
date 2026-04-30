@@ -1,0 +1,8 @@
+flask==3.0.3
+flask-cors==4.0.1
+feedparser==6.0.11
+requests==2.31.0
+beautifulsoup4==4.12.3
+lxml==5.2.2
+nltk==3.8.1
+python-dotenv==1.0.1
