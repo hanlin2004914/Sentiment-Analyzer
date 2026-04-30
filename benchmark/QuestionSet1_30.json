@@ -1,0 +1,246 @@
+{
+  "question_set_name": "Cleaned Sentiment Questions No Table",
+  "total_questions": 30,
+  "questions": [
+    {
+      "id": 1,
+      "question": "NVIDIA stock surged after analysts raised their price target, citing strong demand for AI chips.",
+      "answer": "Positive",
+      "type": "Equity News Sentiment (ENS)",
+      "type_name": "Equity News Sentiment",
+      "type_code": "ENS"
+    },
+    {
+      "id": 2,
+      "question": "Apple shares rose modestly after the company announced stronger-than-expected iPhone demand.",
+      "answer": "Positive",
+      "type": "Equity News Sentiment (ENS)",
+      "type_name": "Equity News Sentiment",
+      "type_code": "ENS"
+    },
+    {
+      "id": 3,
+      "question": "Microsoft announced a partnership with a cloud startup to expand its AI services, but financial impact remains unclear.",
+      "answer": "Neutral",
+      "type": "Equity News Sentiment (ENS)",
+      "type_name": "Equity News Sentiment",
+      "type_code": "ENS"
+    },
+    {
+      "id": 4,
+      "question": "Despite unveiling a new processor, Qualcomm offered limited guidance as macro uncertainty clouds future demand.",
+      "answer": "Neutral",
+      "type": "Equity News Sentiment (ENS)",
+      "type_name": "Equity News Sentiment",
+      "type_code": "ENS"
+    },
+    {
+      "id": 5,
+      "question": "Amazon's profit margins declined for the third consecutive quarter despite rising overall revenue.",
+      "answer": "Negative",
+      "type": "Equity News Sentiment (ENS)",
+      "type_name": "Equity News Sentiment",
+      "type_code": "ENS"
+    },
+    {
+      "id": 6,
+      "question": "Despite strong revenue growth, Meta warned that regulatory pressures could hinder future expansion.",
+      "answer": "Negative",
+      "type": "Equity News Sentiment (ENS)",
+      "type_name": "Equity News Sentiment",
+      "type_code": "ENS"
+    },
+    {
+      "id": 7,
+      "question": "$AAPL to the moon! Their new M4 chip just crushed everything else.",
+      "answer": "Positive",
+      "type": "Equity Social Media Sentiment (ESM)",
+      "type_name": "Equity Social Media Sentiment",
+      "type_code": "ESM"
+    },
+    {
+      "id": 8,
+      "question": "Bro $NVDA is unstoppable this year. AI boom gonna send it even higher.",
+      "answer": "Positive",
+      "type": "Equity Social Media Sentiment (ESM)",
+      "type_name": "Equity Social Media Sentiment",
+      "type_code": "ESM"
+    },
+    {
+      "id": 9,
+      "question": "Not sure what to think about $META earnings. Feels like they're spending too much on the metaverse.",
+      "answer": "Neutral",
+      "type": "Equity Social Media Sentiment (ESM)",
+      "type_name": "Equity Social Media Sentiment",
+      "type_code": "ESM"
+    },
+    {
+      "id": 10,
+      "question": "Still trying to figure out where $AMZN goes from here — strong fundamentals but mixed signals lately.",
+      "answer": "Neutral",
+      "type": "Equity Social Media Sentiment (ESM)",
+      "type_name": "Equity Social Media Sentiment",
+      "type_code": "ESM"
+    },
+    {
+      "id": 11,
+      "question": "$TSLA just dropped 7% today... guess the hype is finally over.",
+      "answer": "Negative",
+      "type": "Equity Social Media Sentiment (ESM)",
+      "type_name": "Equity Social Media Sentiment",
+      "type_code": "ESM"
+    },
+    {
+      "id": 12,
+      "question": "$AMZN missing delivery deadlines again... don't see them fixing this anytime soon.",
+      "answer": "Negative",
+      "type": "Equity Social Media Sentiment (ESM)",
+      "type_name": "Equity Social Media Sentiment",
+      "type_code": "ESM"
+    },
+    {
+      "id": 13,
+      "question": "We remain confident in our long-term growth strategy, supported by solid demand across all business segments.",
+      "answer": "Positive",
+      "type": "Equity Transcript Sentiment (ETS)",
+      "type_name": "Equity Transcript Sentiment",
+      "type_code": "ETS"
+    },
+    {
+      "id": 14,
+      "question": "We achieved record revenue this quarter and see continued momentum going forward.",
+      "answer": "Positive",
+      "type": "Equity Transcript Sentiment (ETS)",
+      "type_name": "Equity Transcript Sentiment",
+      "type_code": "ETS"
+    },
+    {
+      "id": 15,
+      "question": "While the quarter was challenging due to supply constraints, we expect gradual recovery in the next half.",
+      "answer": "Neutral",
+      "type": "Equity Transcript Sentiment (ETS)",
+      "type_name": "Equity Transcript Sentiment",
+      "type_code": "ETS"
+    },
+    {
+      "id": 16,
+      "question": "We anticipate modest growth next year, but several cost-related uncertainties remain.",
+      "answer": "Neutral",
+      "type": "Equity Transcript Sentiment (ETS)",
+      "type_name": "Equity Transcript Sentiment",
+      "type_code": "ETS"
+    },
+    {
+      "id": 17,
+      "question": "Customer churn increased significantly this quarter, primarily due to product performance issues.",
+      "answer": "Negative",
+      "type": "Equity Transcript Sentiment (ETS)",
+      "type_name": "Equity Transcript Sentiment",
+      "type_code": "ETS"
+    },
+    {
+      "id": 18,
+      "question": "We anticipate margin pressure to persist as higher freight and component costs offset recent operational efficiencies.",
+      "answer": "Negative",
+      "type": "Equity Transcript Sentiment (ETS)",
+      "type_name": "Equity Transcript Sentiment",
+      "type_code": "ETS"
+    },
+    {
+      "id": 19,
+      "question": "The company was recognized for its industry-leading renewable-energy initiatives.",
+      "answer": "Positive",
+      "type": "ES News Sentiment (ES-ESG)",
+      "type_name": "ES News Sentiment",
+      "type_code": "ES-ESG"
+    },
+    {
+      "id": 20,
+      "question": "A new audit confirmed the company successfully eliminated single-use plastics across all major facilities.",
+      "answer": "Positive",
+      "type": "ES News Sentiment (ES-ESG)",
+      "type_name": "ES News Sentiment",
+      "type_code": "ES-ESG"
+    },
+    {
+      "id": 21,
+      "question": "The company published a sustainability report, but critics say data transparency is lacking.",
+      "answer": "Neutral",
+      "type": "ES News Sentiment (ES-ESG)",
+      "type_name": "ES News Sentiment",
+      "type_code": "ES-ESG"
+    },
+    {
+      "id": 22,
+      "question": "A recent sustainability report highlighted progress on energy efficiency but pointed to gaps in supplier oversight.",
+      "answer": "Neutral",
+      "type": "ES News Sentiment (ES-ESG)",
+      "type_name": "ES News Sentiment",
+      "type_code": "ES-ESG"
+    },
+    {
+      "id": 23,
+      "question": "Tesla faces another investigation over safety issues related to its autopilot system.",
+      "answer": "Negative",
+      "type": "ES News Sentiment (ES-ESG)",
+      "type_name": "ES News Sentiment",
+      "type_code": "ES-ESG"
+    },
+    {
+      "id": 24,
+      "question": "A regulatory filing revealed that several facilities failed to meet environmental compliance standards, prompting a broader investigation.",
+      "answer": "Negative",
+      "type": "ES News Sentiment (ES-ESG)",
+      "type_name": "ES News Sentiment",
+      "type_code": "ES-ESG"
+    },
+    {
+      "id": 25,
+      "question": "The U.S. economy grew faster than expected last quarter, driven by strong consumer spending.",
+      "answer": "Positive",
+      "type": "Country News Sentiment (CNS)",
+      "type_name": "Country News Sentiment",
+      "type_code": "CNS"
+    },
+    {
+      "id": 26,
+      "question": "Canada's employment numbers strengthened in June, signaling continued labor market resilience.",
+      "answer": "Positive",
+      "type": "Country News Sentiment (CNS)",
+      "type_name": "Country News Sentiment",
+      "type_code": "CNS"
+    },
+    {
+      "id": 27,
+      "question": "Europe's economy showed mixed signals, with manufacturing declining but services improving.",
+      "answer": "Neutral",
+      "type": "Country News Sentiment (CNS)",
+      "type_name": "Country News Sentiment",
+      "type_code": "CNS"
+    },
+    {
+      "id": 28,
+      "question": "Germany's industrial output ticked up slightly, though business sentiment surveys remain broadly negative.",
+      "answer": "Neutral",
+      "type": "Country News Sentiment (CNS)",
+      "type_name": "Country News Sentiment",
+      "type_code": "CNS"
+    },
+    {
+      "id": 29,
+      "question": "Stock market today: Dow, S&P 500, Nasdaq end volatile week lower amid worst tech sell-off since April.",
+      "answer": "Negative",
+      "type": "Country News Sentiment (CNS)",
+      "type_name": "Country News Sentiment",
+      "type_code": "CNS"
+    },
+    {
+      "id": 30,
+      "question": "China faces rising deflation risks as consumer demand continues to weaken.",
+      "answer": "Negative",
+      "type": "Country News Sentiment (CNS)",
+      "type_name": "Country News Sentiment",
+      "type_code": "CNS"
+    }
+  ]
+}
