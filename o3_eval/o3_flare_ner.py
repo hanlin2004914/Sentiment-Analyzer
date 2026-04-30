@@ -281,3 +281,87 @@ def _extract_output_text(payload: dict) -> str:
                     break
     return str(output_text)
 
+
+def call_model_with_retry(
+    client: OpenAI,
+    api_key: str,
+    prompt: str,
+    max_retries: int,
+    base_backoff: float,
+) -> Tuple[str, Optional[str]]:
+    last_error: Optional[str] = None
+    base_url = (os.getenv("OPENAI_BASE_URL") or DEFAULT_OPENAI_BASE_URL).rstrip("/")
+    endpoint = f"{base_url}/responses"
+
+    for attempt in range(max_retries):
+        try:
+            if hasattr(client, "responses"):
+                response = client.responses.create(model=MODEL_NAME, input=prompt)
+                output_text = response.output_text or ""
+            else:
+                response = requests.post(
+                    endpoint,
+                    headers={
+                        "Authorization": f"Bearer {api_key}",
+                        "Content-Type": "application/json",
+                    },
+                    json={"model": MODEL_NAME, "input": prompt},
+                    timeout=120,
+                )
+                if response.status_code >= 400:
+                    detail = ""
+                    try:
+                        body = response.json()
+                        if isinstance(body, dict):
+                            err_obj = body.get("error")
+                            if isinstance(err_obj, dict):
+                                detail = str(err_obj.get("message") or body)
+                            else:
+                                detail = str(body)
+                    except Exception:
+                        detail = response.text or ""
+                    if not detail:
+                        detail = "<empty response body>"
+                    raise RuntimeError(
+                        f"HTTP {response.status_code} {response.reason}: {detail[:1000]}"
+                    )
+                payload = response.json()
+                output_text = _extract_output_text(payload)
+            return output_text, None
+        except KeyboardInterrupt:
+            raise
+        except Exception as exc:
+            last_error = str(exc)
+            if attempt == max_retries - 1:
+                break
+            sleep_seconds = base_backoff * (2 ** attempt) + random.uniform(0, 0.5)
+            time.sleep(sleep_seconds)
+
+    return "", last_error or "Unknown model error"
+
+
+# ---------------------------------------------------------------------------
+# Resume support
+# ---------------------------------------------------------------------------
+
+def load_existing_records(predictions_path: Path) -> Dict[int, Dict[str, Any]]:
+    records: Dict[int, Dict[str, Any]] = {}
+    if not predictions_path.exists():
+        return records
+    with predictions_path.open("r", encoding="utf-8", newline="") as f:
+        reader = csv.DictReader(f)
+        for row in reader:
+            try:
+                row_idx = int(row.get("row_idx", ""))
+            except Exception:
+                continue
+            records[row_idx] = row
+    return records
+
+
+def parse_bool(value: Any) -> bool:
+    if isinstance(value, bool):
+        return value
+    if value is None:
+        return False
+    return str(value).strip().lower() in {"1", "true", "yes", "y"}
