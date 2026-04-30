@@ -1,0 +1,67 @@
+[
+  {
+    "id": 1,
+    "question": "Affirm CEO says the robots are coming --- but they're not coming for our jobs",
+    "answer": "neutral"
+  },
+  {
+    "id": 2,
+    "question": "Delta CEO says flying will feel more like streaming as the airline furthers its premium push",
+    "answer": "positive"
+  },
+  {
+    "id": 3,
+    "question": "It really is remarkable to see the advancement of artificial intelligence, how quickly it is evolving.",
+    "answer": "positive"
+  },
+  {
+    "id": 4,
+    "question": "It was a record quarter, driven by continued strength of Microsoft Cloud, which surpassed $42 billion in revenue, up 22% in constant currency.",
+    "answer": "positive"
+  },
+  {
+    "id": 5,
+    "question": "Warren Buffett will no longer write annual letter, speak at Berkshire Hathaway shareholder meeting",
+    "answer": "negative"
+  },
+  {
+    "id": 6,
+    "question": "AMD Q3 2025 earnings call transcript discusses the company's performance, reporting a revenue of $9.2 billion, a 36% year-over-year increase.",
+    "answer": "positive"
+  },
+  {
+    "id": 7,
+    "question": "Nvidia For fiscal 2025 revenue was $130.5 billion, up 114% from the prior year.",
+    "answer": "positive"
+  },
+  {
+    "id": 8,
+    "question": "Intel outlines $18B 2025 CapEx and signals strategic foundry shift amid cost cuts and AI focus",
+    "answer": "neutral"
+  },
+  {
+    "id": 9,
+    "question": "Goldman Sachs profits rise 12% as trading rebounds, yet CEO warns of 'uneven recovery'",
+    "answer": "neutral"
+  },
+  {
+    "id": 10,
+    "question": "We anticipate strong demand in Q4 but remain cautious on foreign exchange headwinds.",
+    "answer": "neutral"
+  },
+  {
+    "id": 11,
+    "question": "We maintain our overweight rating on Nvidia despite short-term valuation risks.",
+    "answer": "positive"
+  },
+  {
+    "id": 12,
+    "question": "Tesla shares drop after CEO warns of weaker margins",
+    "answer": "negative"
+  },
+  {
+    "id": 13,
+    "question": "Bank of America warns of higher loan defaults in Q1",
+    "answer": "negative"
+  }
+]
