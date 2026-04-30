@@ -1,0 +1,278 @@
+[
+  {
+    "id": 1,
+    "question": "Stock market today: Dow jumps over 500 points to record close, Nvidia's slide drags on Nasdaq",
+    "answer": "positive"
+  },
+  {
+    "id": 2,
+    "question": "Bitcoin slumps nearly 20% from all-time high as strategist warns 'we could correct quite a bit more'",
+    "answer": "negative"
+  },
+  {
+    "id": 3,
+    "question": "Stock market today: Dow, S&P 500, Nasdaq close mixed to cap a volatile week as Fed cut in doubt",
+    "answer": "neutral"
+  },
+  {
+    "id": 4,
+    "question": "Berkshire reveals new $4.3 billion Alphabet stake, sells more Apple",
+    "answer": "neutral"
+  },
+  {
+    "id": 5,
+    "question": "Bitcoin in 'bear market regime' as cryptocurrency falls below $95,000",
+    "answer": "negative"
+  },
+  {
+    "id": 6,
+    "question": "Stock market today: Dow slides 500 points, S&P 500 notches 4th day of losses as Nvidia earnings loom",
+    "answer": "negative"
+  },
+  {
+    "id": 7,
+    "question": "Great Bitcoin Crash of 2025 Has It Lagging Bonds, Gold and More",
+    "answer": "negative"
+  },
+  {
+    "id": 8,
+    "question": "Nvidia Scores Lobbying Win as Congress Rejects Chip Export Bill",
+    "answer": "positive"
+  },
+  {
+    "id": 9,
+    "question": "JPMorgan stock tumbles over 4% after company warns on higher spending in 2026",
+    "answer": "negative"
+  },
+  {
+    "id": 10,
+    "question": "SpaceX to Pursue 2026 IPO Raising Far Above $30 Billion",
+    "answer": "neutral"
+  },
+  {
+    "id": 11,
+    "question": "Stock market today: Dow slips as JPMorgan slides, S&P 500, Nasdaq little changed with all eyes on Fed decision",
+    "answer": "negative"
+  },
+  {
+    "id": 12,
+    "question": "Strategy Bought Nearly $1B in Bitcoin Last Week as Saylor's Company Returns to Big Purchases",
+    "answer": "positive"
+  },
+  {
+    "id": 13,
+    "question": "IBM accelerates cloud drive with $11 billion Confluent deal as AI demand booms",
+    "answer": "positive"
+  },
+  {
+    "id": 14,
+    "question": "Investors warm to Paramount's bid for Warner Bros.",
+    "answer": "positive"
+  },
+  {
+    "id": 15,
+    "question": "Oil Drops for Second Straight Session With Supply Glut in Focus",
+    "answer": "negative"
+  },
+  {
+    "id": 16,
+    "question": "Earnings live: GameStop stock sinks, Cracker Barrel tumbles as sales decline",
+    "answer": "negative"
+  },
+  {
+    "id": 17,
+    "question": "Tesla unsupervised FSD milestone 'very close,' Piper Sandler says",
+    "answer": "positive"
+  },
+  {
+    "id": 18,
+    "question": "Unconventional AI confirms its massive $475M seed round",
+    "answer": "positive"
+  },
+  {
+    "id": 19,
+    "question": "Oracle set to report earnings as Wall Street looks for cracks in the AI bubble",
+    "answer": "negative"
+  },
+  {
+    "id": 20,
+    "question": "AI Memory Chipmaker SK Hynix Weighs US Listing to Lift Valuation",
+    "answer": "positive"
+  },
+  {
+    "id": 21,
+    "question": "GE Vernova Doubles Dividend, Boosts Buybacks With AI as 'Driver'",
+    "answer": "positive"
+  },
+  {
+    "id": 22,
+    "question": "Silver Powers Past $60 as Speculators Chase Upside Momentum",
+    "answer": "positive"
+  },
+  {
+    "id": 23,
+    "question": "Exclusive: Nvidia builds location verification tech that could help fight chip smuggling",
+    "answer": "positive"
+  },
+  {
+    "id": 24,
+    "question": "Home Depot Warns That Housing Pressures Will Persist Next Year",
+    "answer": "negative"
+  },
+  {
+    "id": 25,
+    "question": "ETF Investors Pour $44.2B Into Funds As Markets Push Toward Record Highs",
+    "answer": "positive"
+  },
+  {
+    "id": 26,
+    "question": "NVIDIA reports record Q4 revenue of $68.1B, up 73% year-over-year as AI 'factories' drive demand",
+    "answer": "positive"
+  },
+  {
+    "id": 27,
+    "question": "Bitcoin hits $72,000 as whale activity surges on Hyperliquid; spot ETFs see $1B monthly inflow",
+    "answer": "positive"
+  },
+  {
+    "id": 28,
+    "question": "Dick's Sporting Goods shares jump 8% after double-beat on earnings and revenue",
+    "answer": "positive"
+  },
+  {
+    "id": 29,
+    "question": "BlackRock launches ETHB, the first Staking Ethereum ETF to debut on Nasdaq",
+    "answer": "positive"
+  },
+  {
+    "id": 30,
+    "question": "BMW reports stable €10B profit but warns 'significant tariff headwinds' will persist through 2026",
+    "answer": "neutral"
+  },
+  {
+    "id": 31,
+    "question": "Nvidia surges 4% in premarket; analysts warn retail 'fomo' has reached 2021 levels",
+    "answer": "neutral"
+  },
+  {
+    "id": 32,
+    "question": "Tesla misses delivery estimates by 2%, but maintains 2026 production guidance",
+    "answer": "neutral"
+  },
+  {
+    "id": 33,
+    "question": "Apple shifts iPhone production from China to India faster than internal projections",
+    "answer": "positive"
+  },
+  {
+    "id": 34,
+    "question": "Disney+ hits profitability for first time, but linear TV revenue continues 10% annual decline",
+    "answer": "neutral"
+  }
+  {
+    "id": 35,
+    "question": "Stock market today: Dow jumps over 500 points to record close, Nvidia's slide drags on Nasdaq",
+    "answer": "positive"
+  },
+  {
+    "id": 36,
+    "question": "Bitcoin slumps nearly 20% from all-time high as strategist warns 'we could correct quite a bit more'",
+    "answer": "negative"
+  },
+  {
+    "id": 37,
+    "question": "Stock market today: Dow, S&P 500, Nasdaq close mixed to cap a volatile week as Fed cut in doubt",
+    "answer": "neutral"
+  },
+  {
+    "id": 38,
+    "question": "Berkshire reveals new $4.3 billion Alphabet stake, sells more Apple",
+    "answer": "neutral"
+  },
+  {
+    "id": 39,
+    "question": "Bitcoin in 'bear market regime' as cryptocurrency falls below $95,000",
+    "answer": "negative"
+  },
+  {
+    "id": 40,
+    "question": "Stock market today: Dow slides 500 points, S&P 500 notches 4th day of losses as Nvidia earnings loom",
+    "answer": "negative"
+  },
+  {
+    "id": 41,
+    "question": "Great Bitcoin Crash of 2025 Has It Lagging Bonds, Gold and More",
+    "answer": "negative"
+  },
+  {
+    "id": 42,
+    "question": "Nvidia Scores Lobbying Win as Congress Rejects Chip Export Bill",
+    "answer": "positive"
+  },
+  {
+    "id": 43,
+    "question": "JPMorgan stock tumbles over 4% after company warns on higher spending in 2026",
+    "answer": "negative"
+  },
+  {
+    "id": 44,
+    "question": "SpaceX to Pursue 2026 IPO Raising Far Above $30 Billion",
+    "answer": "neutral"
+  },
+  {
+    "id": 45,
+    "question": "Stock market today: Dow slips as JPMorgan slides, S&P 500, Nasdaq little changed with all eyes on Fed decision",
+    "answer": "negative"
+  }
+  {
+    "id": 46,
+    "question": "S&P 500 slides 0.8% Friday, heading for longest weekly losing streak in four years.",
+    "answer": "negative"
+  },
+  {
+    "id": 47,
+    "question": "Netflix gains 0.8% after announcing a price increase for its streaming services",
+    "answer": "positive"
+  },
+  {
+    "id": 48,
+    "question": "Alphabet (GOOGL) unit found liable in landmark social media addiction lawsuit",
+    "answer": "neutral"
+  },
+  {
+    "id": 49,
+    "question": "AstraZeneca (AZN) rises 4% following positive trial results for chronic lung disease drug",
+    "answer": "positive"
+  },
+  {
+    "id": 50,
+    "question": "Crude oil futures fall as US inventories rise more than expected",
+    "answer": "negative"
+  },
+  {
+    "id": 51,
+    "question": "US stock futures edge higher as traders await Fed minutes",
+    "answer": "positive"
+  },
+  {
+    "id": 52,
+    "question": "Goldman Sachs upgrades Tesla to buy, cites improving margins",
+    "answer": "positive"
+  },
+  {
+    "id": 53,
+    "question": "Boeing shares drop after regulator tightens oversight on 737 production",
+    "answer": "negative"
+  },
+  {
+    "id": 54,
+    "question": "Moderna's RSV vaccine shows promising results in late-stage trial",
+    "answer": "positive"
+  },
+  {
+    "id": 55,
+    "question": "Cisco announces $28 billion acquisition of Splunk, sending shares lower",
+    "answer": "neutral"
+  }
+]
+
