@@ -477,3 +477,55 @@ def main() -> None:
                 print(f"Processed sample {idx + 1}/{target_total} (success={success})")
         except KeyboardInterrupt:
             print("\n[Interrupted] Progress saved. Re-run to resume.")
+
+    # Compute metrics
+    tp = 0
+    fp = 0
+    fn = 0
+    successful_samples = 0
+
+    for idx in range(target_total):
+        row = existing_records.get(idx)
+        if not row:
+            continue
+
+        if is_ner_task:
+            gold_set = {
+                f"{entity}|||{ent_type}"
+                for entity, ent_type in parse_entities_from_json_string(row.get("gold_json", "[]"))
+            }
+            pred_set = {
+                f"{entity}|||{ent_type}"
+                for entity, ent_type in parse_entities_from_json_string(row.get("pred_json", "[]"))
+            }
+        else:
+            gold_set = deserialize_string_set(row.get("gold_json", "[]"))
+            pred_set = deserialize_string_set(row.get("pred_json", "[]"))
+        if parse_bool(row.get("success")):
+            successful_samples += 1
+
+        tp += len(gold_set & pred_set)
+        fp += len(pred_set - gold_set)
+        fn += len(gold_set - pred_set)
+
+    precision = tp / (tp + fp) if (tp + fp) else 0.0
+    recall = tp / (tp + fn) if (tp + fn) else 0.0
+    f1 = 2 * precision * recall / (precision + recall) if (precision + recall) else 0.0
+
+    metrics = {
+        "precision": precision,
+        "recall": recall,
+        "f1": f1,
+        "total_samples": target_total,
+        "successful_samples": successful_samples,
+    }
+    with metrics_path.open("w", encoding="utf-8") as f:
+        json.dump(metrics, f, ensure_ascii=False, indent=2)
+
+    print(f"Saved predictions to: {predictions_path}")
+    print(f"Saved metrics to: {metrics_path}")
+    print(json.dumps(metrics, indent=2))
+
+
+if __name__ == "__main__":
+    main()
