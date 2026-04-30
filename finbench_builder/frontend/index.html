@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Financial Benchmark Builder</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="layout">
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <div class="logo">
+      <h1>FinBench Builder</h1>
+      <p>Financial Sentiment Dataset</p>
+    </div>
+    <nav class="nav">
+      <button class="nav-item active" onclick="showPage('dashboard')" id="nav-dashboard">
+        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
+        Dashboard
+      </button>
+      <button class="nav-item" onclick="showPage('articles')" id="nav-articles">
+        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10l6 6v8a2 2 0 01-2 2z"/></svg>
+        Articles
+      </button>
+      <button class="nav-item" onclick="showPage('annotate')" id="nav-annotate">
+        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z"/></svg>
+        Annotate
+      </button>
+      <button class="nav-item" onclick="showPage('upload')" id="nav-upload">
+        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"/></svg>
+        Upload
+      </button>
+      <button class="nav-item" onclick="showPage('export')" id="nav-export">
+        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+        Export
+      </button>
+    </nav>
+  </aside>
+
+  <!-- Main -->
+  <main class="main">
+
+    <!-- Dashboard -->
+    <div id="page-dashboard">
+      <div class="page-header">
+        <h2>Dashboard</h2>
+        <button class="btn btn-primary" onclick="scrapeFeeds()" id="scrape-btn">
+          <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
+          Fetch News Feeds
+        </button>
+      </div>
+
+      <div class="stats-bar" id="stats-bar">
+        <div class="stat-card"><div class="val" id="s-articles">–</div><div class="lbl">Articles</div></div>
+        <div class="stat-card"><div class="val" id="s-chunks">–</div><div class="lbl">Text Chunks</div></div>
+        <div class="stat-card"><div class="val" id="s-labeled">–</div><div class="lbl">Labeled</div></div>
+        <div class="stat-card"><div class="val" id="s-pct">–</div><div class="lbl">Progress</div></div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px">
+        <div class="stat-card">
+          <div style="font-size:13px;font-weight:600;margin-bottom:12px">Label Distribution</div>
+          <div class="label-dist" id="label-dist-bar"></div>
+          <div style="margin-top:12px" id="label-dist-text"></div>
+        </div>
+        <div class="stat-card">
+          <div style="font-size:13px;font-weight:600;margin-bottom:12px">Source Types</div>
+          <div id="type-dist-text" style="font-size:13px"></div>
+        </div>
+      </div>
+
+      <div class="stat-card">
+        <div style="font-size:13px;font-weight:600;margin-bottom:12px">News Sources Configured</div>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;font-size:12px;color:var(--muted)">
+          <div>• Yahoo Finance (Top Stories)</div>
+          <div>• Yahoo Finance (Markets)</div>
+          <div>• Reuters Business</div>
+          <div>• Reuters Markets</div>
+          <div>• MarketWatch Top Stories</div>
+          <div>• MarketWatch Pulse</div>
+          <div>• Seeking Alpha</div>
+          <div>• CNBC Finance</div>
+          <div>• CNBC World Economy</div>
+          <div>• Financial Times</div>
+          <div>• Bloomberg Markets</div>
+          <div>• Investopedia News</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Articles -->
+    <div id="page-articles" class="hidden">
+      <div class="page-header">
+        <h2>Articles</h2>
+        <div style="display:flex;gap:8px">
+          <button class="btn btn-ghost btn-sm" onclick="showPage('upload')">+ Add Manual</button>
+        </div>
+      </div>
+      <div class="filters">
+        <button class="filter-btn active" onclick="setFilter('type', null, this)">All Types</button>
+        <button class="filter-btn" onclick="setFilter('type', 'news', this)">News</button>
+        <button class="filter-btn" onclick="setFilter('type', 'transcript', this)">Transcript</button>
+        <button class="filter-btn" onclick="setFilter('type', 'social', this)">Social</button>
+        <span style="width:1px;background:var(--border);margin:0 4px"></span>
+        <button class="filter-btn active" onclick="setFilter('entity', null, this)" data-group="entity">All Entities</button>
+        <button class="filter-btn" onclick="setFilter('entity', 'equity', this)" data-group="entity">Equity</button>
+        <button class="filter-btn" onclick="setFilter('entity', 'country', this)" data-group="entity">Country</button>
+        <button class="filter-btn" onclick="setFilter('entity', 'es', this)" data-group="entity">ES (Environmental)</button>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Title</th>
+              <th>Source</th>
+              <th>Type</th>
+              <th>Entity</th>
+              <th>Chunks</th>
+              <th>Labeled</th>
+              <th>Date</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody id="articles-tbody"></tbody>
+        </table>
+      </div>
+      <div class="pagination" id="articles-pagination"></div>
+    </div>
+
+    <!-- Annotate -->
+    <div id="page-annotate" class="hidden">
+      <div class="page-header">
+        <h2>Annotate</h2>
+        <div style="display:flex;gap:8px;align-items:center">
+          <select class="filter-select" id="anno-type-filter" onchange="loadNextChunk()">
+            <option value="">All Types</option>
+            <option value="news">News</option>
+            <option value="transcript">Transcript</option>
+            <option value="social">Social</option>
+          </select>
+          <select class="filter-select" id="anno-entity-filter" onchange="loadNextChunk()">
+            <option value="">All Entities</option>
+            <option value="equity">Equity</option>
+            <option value="country">Country</option>
+            <option value="es">ES</option>
+          </select>
+        </div>
+      </div>
+      <div id="annotate-area">
+        <div class="annotate-empty" id="anno-empty">
+          <div class="empty-state">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg>
+            <p>Click "Load Next Chunk" to start annotating</p>
+            <button class="btn btn-secondary" style="margin-top:14px" onclick="loadNextChunk()">Load Next Chunk</button>
+          </div>
+        </div>
+
+        <div id="anno-workspace" class="annotate-workspace hidden">
+          <!-- Top row: chunk + price side-by-side -->
+          <div class="annotate-grid">
+            <div class="annotate-card" id="anno-content">
+              <!-- chunk + label buttons render here -->
+            </div>
+            <div class="price-card" id="price-card">
+              <div class="price-loading">Loading price data...</div>
+            </div>
+          </div>
+
+          <!-- Question creation -->
+          <div class="questions-card">
+            <div class="questions-header">
+              <h3>Create Benchmark Questions</h3>
+              <p class="text-muted" style="margin-top:4px">Write your own evaluation questions about this chunk. Only these questions get exported as the dataset.</p>
+            </div>
+            <div class="question-form">
+              <textarea id="q-input" placeholder="e.g. Will AAPL stock rise within 7 days based on this news?" rows="2"></textarea>
+              <div class="q-answer-row">
+                <span class="text-muted" style="font-size:12px">Answer:</span>
+                <button class="q-ans-btn q-ans-pos" data-answer="positive">Positive</button>
+                <button class="q-ans-btn q-ans-neg" data-answer="negative">Negative</button>
+                <button class="q-ans-btn q-ans-neu" data-answer="neutral">Neutral</button>
+                <input type="text" id="q-answer-custom" placeholder="or custom answer..." style="flex:1;min-width:120px">
+                <button class="btn btn-primary btn-sm" onclick="addQuestion()">+ Add</button>
+              </div>
+            </div>
+            <div class="questions-list" id="questions-list"></div>
+          </div>
+
+          <div style="margin-top:20px;display:flex;justify-content:space-between;align-items:center">
+            <span class="text-muted" id="anno-session-info">Session: 0 labeled</span>
+            <button class="btn btn-primary" onclick="loadNextChunk()" id="load-next-btn">Next Chunk →</button>
+          </div>
+        </div>
+
+        <div class="shortcuts-row">
+          <span class="shortcuts-label">Keyboard Shortcuts</span>
+          <span class="shortcut-item"><kbd class="kbd kbd-pos">1</kbd> Positive</span>
+          <span class="shortcut-item"><kbd class="kbd kbd-neg">2</kbd> Negative</span>
+          <span class="shortcut-item"><kbd class="kbd kbd-neu">3</kbd> Neutral</span>
+          <span class="shortcut-item"><kbd class="kbd kbd-undo">U</kbd> Undo</span>
+          <span class="shortcut-item"><kbd class="kbd kbd-skip">S</kbd> Skip</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Upload -->
+    <div id="page-upload" class="hidden">
+      <div class="page-header">
+        <h2>Upload / Add Content</h2>
+      </div>
+      <div style="max-width:600px">
+        <div class="stat-card" style="margin-bottom:20px">
+          <div style="font-size:13px;font-weight:600;margin-bottom:16px">Add Article / Transcript</div>
+          <div class="form-group">
+            <label>Title</label>
+            <input type="text" id="up-title" placeholder="Article or transcript title">
+          </div>
+          <div class="form-group">
+            <label>Content</label>
+            <textarea id="up-content" rows="6" placeholder="Paste article text or earnings transcript here..."></textarea>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Source Name</label>
+              <input type="text" id="up-source" placeholder="e.g. Bloomberg">
+            </div>
+            <div class="form-group">
+              <label>URL (optional)</label>
+              <input type="text" id="up-url" placeholder="https://...">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Content Type</label>
+              <select id="up-type">
+                <option value="news">News Article</option>
+                <option value="transcript">Earnings Transcript</option>
+                <option value="social">Social Media</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Entity Type</label>
+              <select id="up-entity-type">
+                <option value="equity">Equity (Company)</option>
+                <option value="country">Country</option>
+                <option value="es">ES (Environmental/Social)</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Entity Name (company ticker or country)</label>
+            <input type="text" id="up-entity" placeholder="e.g. AAPL, United States">
+          </div>
+          <div class="form-group">
+            <label>Chunk Size (target tokens)</label>
+            <input type="number" id="up-chunk-size" value="75" min="40" max="150">
+          </div>
+          <button class="btn btn-primary" onclick="submitArticle()">Add &amp; Chunk</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Export -->
+    <div id="page-export" class="hidden">
+      <div class="page-header">
+        <h2>Export Benchmark Dataset</h2>
+      </div>
+      <div style="max-width:560px">
+        <div class="stat-card" style="margin-bottom:16px">
+          <div style="font-size:13px;font-weight:600;margin-bottom:16px">Export Options</div>
+          <div class="form-group">
+            <label>Mode</label>
+            <select id="export-mode">
+              <option value="questions">User-Created Questions (recommended)</option>
+              <option value="chunks">Raw Chunks + Sentiment Labels</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Format</label>
+            <select id="export-format">
+              <option value="jsonl">JSONL (one record per line)</option>
+              <option value="json">JSON (array)</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Include</label>
+            <select id="export-labeled">
+              <option value="true">Answered / labeled only</option>
+              <option value="false">All records</option>
+            </select>
+          </div>
+          <div style="display:flex;gap:10px">
+            <button class="btn btn-primary" onclick="exportData()">Download Dataset</button>
+            <button class="btn btn-secondary" onclick="previewExport()">Preview (first 5)</button>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div style="font-size:13px;font-weight:600;margin-bottom:12px">Dataset Schema</div>
+          <pre id="schema-display" style="font-size:11px;color:var(--muted);line-height:1.7;overflow-x:auto">{
+  "question_id": 7,
+  "question": "Will AAPL rise after this news?",
+  "answer": "positive",
+  "notes": "...",
+  "context": "...",            // the chunk text
+  "chunk_label": "positive",
+  "title": "Article title",
+  "source": "Yahoo Finance",
+  "url": "https://...",
+  "article_type": "news",
+  "entity": "AAPL",
+  "entity_type": "equity",
+  "published_at": "...",
+  "price_change_pct": 2.34,    // % change after publish
+  "price_before": 175.20,
+  "price_after": 179.30
+}</pre>
+        </div>
+        <div id="export-preview" class="hidden" style="margin-top:16px">
+          <div class="stat-card">
+            <div style="font-size:13px;font-weight:600;margin-bottom:12px">Preview</div>
+            <pre id="export-preview-content" style="font-size:11px;color:var(--muted);line-height:1.6;overflow-x:auto;max-height:300px"></pre>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </main>
+</div>
+
+<!-- Article Detail Modal -->
+<div id="modal" class="modal-overlay hidden">
+  <div class="modal">
+    <div class="modal-header">
+      <h3 id="modal-title"></h3>
+      <button class="close-btn" onclick="closeModal()">&times;</button>
+    </div>
+    <div class="modal-body" id="modal-body"></div>
+    <div class="modal-footer">
+      <button class="btn btn-ghost btn-sm" onclick="fetchFullContent()" id="fetch-full-btn">Fetch Full Content</button>
+      <button class="btn btn-secondary btn-sm" onclick="rechunkModal()">Re-chunk</button>
+      <button class="btn btn-ghost btn-sm" onclick="closeModal()">Close</button>
+    </div>
+  </div>
+</div>
+
+<div id="toast"></div>
+
+<script src="app.js"></script>
+</body>
+</html>
