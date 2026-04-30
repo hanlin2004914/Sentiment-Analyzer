@@ -1,0 +1,302 @@
+[
+  {
+    "id": 1,
+    "question": "Procter & Gamble reported fiscal third-quarter 2026 net sales of $21.2 billion and 3% organic sales growth, but higher commodity costs were expected to pressure earnings.",
+    "answer": "Neutral",
+    "type": "Equity News Sentiment (ENS)"
+  },
+  {
+    "id": 2,
+    "question": "Johnson & Johnson reported first-quarter 2026 sales of $24.1 billion and raised its full-year outlook after operational sales growth remained solid.",
+    "answer": "Positive",
+    "type": "Equity News Sentiment (ENS)"
+  },
+  {
+    "id": 3,
+    "question": "ServiceNow reported first-quarter 2026 revenue of $3.77 billion, up 22% year over year, and raised its full-year subscription revenue outlook.",
+    "answer": "Positive",
+    "type": "Equity News Sentiment (ENS)"
+  },
+  {
+    "id": 4,
+    "question": "Booking Holdings grew 2025 gross bookings by 12% and revenue by 13%, although GAAP net income declined from the prior year.",
+    "answer": "Neutral",
+    "type": "Equity News Sentiment (ENS)"
+  },
+  {
+    "id": 5,
+    "question": "Delta Air Lines generated $15.9 billion in March-quarter 2026 operating revenue and strong operating cash flow, but still reported a GAAP pre-tax loss.",
+    "answer": "Neutral",
+    "type": "Equity News Sentiment (ENS)"
+  },
+  {
+    "id": 6,
+    "question": "RTX reported first-quarter 2026 sales of $22.1 billion, up 9% year over year, with adjusted EPS rising 21%.",
+    "answer": "Positive",
+    "type": "Equity News Sentiment (ENS)"
+  },
+  {
+    "id": 7,
+    "question": "Union Pacific reported higher first-quarter 2026 revenue and adjusted EPS, but warned that elevated fuel prices could pressure margins.",
+    "answer": "Neutral",
+    "type": "Equity News Sentiment (ENS)"
+  },
+  {
+    "id": 8,
+    "question": "Home Depot's fiscal 2025 sales increased 3.2%, but net earnings and adjusted diluted EPS declined from the prior year.",
+    "answer": "Neutral",
+    "type": "Equity News Sentiment (ENS)"
+  },
+  {
+    "id": 9,
+    "question": "Lockheed Martin's first-quarter 2026 earnings and operating cash flow fell from the prior year as production delays and contract costs weighed on results.",
+    "answer": "Negative",
+    "type": "Equity News Sentiment (ENS)"
+  },
+  {
+    "id": 10,
+    "question": "Nucor reported first-quarter 2026 revenue of $9.5 billion and earnings of $3.23 per share as steel mills benefited from stronger prices and volumes.",
+    "answer": "Positive",
+    "type": "Equity News Sentiment (ENS)"
+  },
+  {
+    "id": 11,
+    "question": "$PG beat on sales and organic growth, but the commodity-cost warning makes the quarter feel more mixed than bullish.",
+    "answer": "Neutral",
+    "type": "Equity Social Media Sentiment (ESM)"
+  },
+  {
+    "id": 12,
+    "question": "$JNJ raising guidance after a solid Q1 sales print makes the healthcare giant look stronger than expected.",
+    "answer": "Positive",
+    "type": "Equity Social Media Sentiment (ESM)"
+  },
+  {
+    "id": 13,
+    "question": "$NOW revenue up 22% and subscription guidance moving higher is a strong signal that enterprise AI demand is still real.",
+    "answer": "Positive",
+    "type": "Equity Social Media Sentiment (ESM)"
+  },
+  {
+    "id": 14,
+    "question": "$BKNG travel demand still looks healthy, but lower GAAP net income keeps me from calling the year perfect.",
+    "answer": "Neutral",
+    "type": "Equity Social Media Sentiment (ESM)"
+  },
+  {
+    "id": 15,
+    "question": "$DAL pulled in strong revenue and cash flow, but a GAAP loss makes the quarter hard to read cleanly.",
+    "answer": "Neutral",
+    "type": "Equity Social Media Sentiment (ESM)"
+  },
+  {
+    "id": 16,
+    "question": "$RTX sales up 9% and adjusted EPS up 21% makes the aerospace and defense setup look pretty strong.",
+    "answer": "Positive",
+    "type": "Equity Social Media Sentiment (ESM)"
+  },
+  {
+    "id": 17,
+    "question": "$UNP beat earnings, but fuel-price pressure and merger uncertainty keep the railroad story from being totally clean.",
+    "answer": "Neutral",
+    "type": "Equity Social Media Sentiment (ESM)"
+  },
+  {
+    "id": 18,
+    "question": "$HD sales grew for the year, but declining earnings show the home-improvement recovery is not fully back yet.",
+    "answer": "Neutral",
+    "type": "Equity Social Media Sentiment (ESM)"
+  },
+  {
+    "id": 19,
+    "question": "$LMT missing profit expectations while cash from operations drops is not a great look, even with defense demand high.",
+    "answer": "Negative",
+    "type": "Equity Social Media Sentiment (ESM)"
+  },
+  {
+    "id": 20,
+    "question": "$NUE revenue jumping past expectations and steel mill shipments hitting records makes the quarter look very strong.",
+    "answer": "Positive",
+    "type": "Equity Social Media Sentiment (ESM)"
+  },
+  {
+    "id": 21,
+    "question": "We delivered organic sales growth across all product categories, while higher commodity costs are expected to create near-term earnings pressure.",
+    "answer": "Neutral",
+    "type": "Equity Transcript Sentiment (ETS)"
+  },
+  {
+    "id": 22,
+    "question": "Reported sales increased to $24.1 billion, and we raised our full-year outlook based on continued operational momentum.",
+    "answer": "Positive",
+    "type": "Equity Transcript Sentiment (ETS)"
+  },
+  {
+    "id": 23,
+    "question": "Subscription revenue grew 22% year over year, and we raised our full-year subscription revenue outlook.",
+    "answer": "Positive",
+    "type": "Equity Transcript Sentiment (ETS)"
+  },
+  {
+    "id": 24,
+    "question": "Gross bookings and revenue increased at double-digit rates, although GAAP net income declined from the prior year.",
+    "answer": "Neutral",
+    "type": "Equity Transcript Sentiment (ETS)"
+  },
+  {
+    "id": 25,
+    "question": "Operating revenue and operating cash flow remained strong, but the quarter included a GAAP pre-tax loss.",
+    "answer": "Neutral",
+    "type": "Equity Transcript Sentiment (ETS)"
+  },
+  {
+    "id": 26,
+    "question": "Reported and adjusted sales increased 9%, and adjusted earnings per share rose 21% compared with the prior year.",
+    "answer": "Positive",
+    "type": "Equity Transcript Sentiment (ETS)"
+  },
+  {
+    "id": 27,
+    "question": "Operating revenue grew 3% and adjusted EPS improved, while higher fuel prices remain a potential margin headwind.",
+    "answer": "Neutral",
+    "type": "Equity Transcript Sentiment (ETS)"
+  },
+  {
+    "id": 28,
+    "question": "Full-year sales increased, but net earnings and adjusted diluted EPS declined compared with the prior fiscal year.",
+    "answer": "Neutral",
+    "type": "Equity Transcript Sentiment (ETS)"
+  },
+  {
+    "id": 29,
+    "question": "Sales remained steady, but net earnings and cash from operations were lower than the prior-year quarter.",
+    "answer": "Negative",
+    "type": "Equity Transcript Sentiment (ETS)"
+  },
+  {
+    "id": 30,
+    "question": "Steel mill performance improved significantly as higher average selling prices and record shipments supported a sharp earnings rebound.",
+    "answer": "Positive",
+    "type": "Equity Transcript Sentiment (ETS)"
+  },
+  {
+    "id": 31,
+    "question": "General Motors said it was sourcing 100% renewable energy for its U.S. operations and matching 70% of global electricity use with renewables.",
+    "answer": "Positive",
+    "type": "ES News Sentiment (ES-ESG)"
+  },
+  {
+    "id": 32,
+    "question": "Fujifilm announced that its U.S. and Canadian operations would offset all electricity use through renewable energy certificates tied to a Texas solar project.",
+    "answer": "Positive",
+    "type": "ES News Sentiment (ES-ESG)"
+  },
+  {
+    "id": 33,
+    "question": "Fortescue committed an additional $680 million to green energy infrastructure as part of its plan to replace fossil fuels in Pilbara mining operations.",
+    "answer": "Positive",
+    "type": "ES News Sentiment (ES-ESG)"
+  },
+  {
+    "id": 34,
+    "question": "The U.S. Energy Department restored funding for major direct-air-capture carbon removal projects after previously considering cancellations.",
+    "answer": "Positive",
+    "type": "ES News Sentiment (ES-ESG)"
+  },
+  {
+    "id": 35,
+    "question": "Canada and Alberta moved closer to raising the carbon price for industrial emitters, but a broader oil-sands emissions agreement remained unresolved.",
+    "answer": "Neutral",
+    "type": "ES News Sentiment (ES-ESG)"
+  },
+  {
+    "id": 36,
+    "question": "European rooftop-solar providers reported a jump in orders as households sought lower energy bills and greater energy independence.",
+    "answer": "Positive",
+    "type": "ES News Sentiment (ES-ESG)"
+  },
+  {
+    "id": 37,
+    "question": "Major technology companies signed an energy pledge aimed at improving efficiency and dedicated power supply as AI data-center demand strained electricity systems.",
+    "answer": "Neutral",
+    "type": "ES News Sentiment (ES-ESG)"
+  },
+  {
+    "id": 38,
+    "question": "The Greenhouse Gas Protocol's incoming CEO emphasized consistent climate reporting while companies debated how Scope 2 and Scope 3 emissions should be measured.",
+    "answer": "Neutral",
+    "type": "ES News Sentiment (ES-ESG)"
+  },
+  {
+    "id": 39,
+    "question": "EU countries approved changes that weaken corporate sustainability and supply-chain due-diligence rules for many companies.",
+    "answer": "Negative",
+    "type": "ES News Sentiment (ES-ESG)"
+  },
+  {
+    "id": 40,
+    "question": "A sustainability analysis warned that many companies still lack credible plans to deliver on their net-zero emissions promises.",
+    "answer": "Negative",
+    "type": "ES News Sentiment (ES-ESG)"
+  },
+  {
+    "id": 41,
+    "question": "Spain kept its 2026 economic growth forecast at 2.2% and projected improvements in public debt and budget deficit ratios.",
+    "answer": "Positive",
+    "type": "Country News Sentiment (CNS)"
+  },
+  {
+    "id": 42,
+    "question": "French consumer confidence fell sharply in April 2026, dropping below expectations as households became more worried about finances and unemployment.",
+    "answer": "Negative",
+    "type": "Country News Sentiment (CNS)"
+  },
+  {
+    "id": 43,
+    "question": "France's private-sector activity contracted at the fastest pace in 14 months as services weakness outweighed manufacturing improvement.",
+    "answer": "Negative",
+    "type": "Country News Sentiment (CNS)"
+  },
+  {
+    "id": 44,
+    "question": "Italy's consumer and business confidence fell in April, and the government cut its 2026 and 2027 growth forecasts to 0.6%.",
+    "answer": "Negative",
+    "type": "Country News Sentiment (CNS)"
+  },
+  {
+    "id": 45,
+    "question": "Vietnam's first-quarter 2026 GDP growth slowed to 7.83% from the previous quarter, although the economy still expanded at a strong pace.",
+    "answer": "Neutral",
+    "type": "Country News Sentiment (CNS)"
+  },
+  {
+    "id": 46,
+    "question": "Malaysia recorded 5.2% GDP growth in 2025, its fastest annual expansion in three years and above official projections.",
+    "answer": "Positive",
+    "type": "Country News Sentiment (CNS)"
+  },
+  {
+    "id": 47,
+    "question": "Saudi Arabia's economy grew 4.5% in 2025, supported by non-oil activity, while firms still faced rising input and wage costs.",
+    "answer": "Neutral",
+    "type": "Country News Sentiment (CNS)"
+  },
+  {
+    "id": 48,
+    "question": "The UAE's decision to leave OPEC highlighted its economic diversification, with non-oil sectors accounting for more than three quarters of real GDP.",
+    "answer": "Neutral",
+    "type": "Country News Sentiment (CNS)"
+  },
+  {
+    "id": 49,
+    "question": "The Philippine central bank raised benchmark rates as Middle East conflict pushed energy and food inflation risks higher.",
+    "answer": "Negative",
+    "type": "Country News Sentiment (CNS)"
+  },
+  {
+    "id": 50,
+    "question": "Egypt's growth outlook was trimmed after higher energy prices and regional conflict raised inflation and external-pressure risks.",
+    "answer": "Negative",
+    "type": "Country News Sentiment (CNS)"
+  }
+]
