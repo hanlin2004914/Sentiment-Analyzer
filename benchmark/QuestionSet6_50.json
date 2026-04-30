@@ -1,0 +1,302 @@
+[
+  {
+    "id": 1,
+    "question": "Micron reported fiscal second-quarter 2026 revenue of $23.86 billion, far above the $8.05 billion reported a year earlier, as AI-driven memory demand accelerated.",
+    "answer": "Positive",
+    "type": "Equity News Sentiment (ENS)"
+  },
+  {
+    "id": 2,
+    "question": "Salesforce delivered record fourth-quarter fiscal 2026 revenue of $11.2 billion and remaining performance obligation of $72.4 billion, reflecting continued enterprise demand.",
+    "answer": "Positive",
+    "type": "Equity News Sentiment (ENS)"
+  },
+  {
+    "id": 3,
+    "question": "Snowflake reported fourth-quarter fiscal 2026 product revenue of $1.23 billion, up 30% year over year, with remaining performance obligations rising 42%.",
+    "answer": "Positive",
+    "type": "Equity News Sentiment (ENS)"
+  },
+  {
+    "id": 4,
+    "question": "Seagate forecast fourth-quarter revenue of about $3.45 billion, above analyst expectations, as AI adoption boosted demand for data-storage hardware.",
+    "answer": "Positive",
+    "type": "Equity News Sentiment (ENS)"
+  },
+  {
+    "id": 5,
+    "question": "ServiceNow reported 22% revenue growth in the first quarter of 2026, but its shares fell after investors focused on lower margin guidance and delayed large deals.",
+    "answer": "Neutral",
+    "type": "Equity News Sentiment (ENS)"
+  },
+  {
+    "id": 6,
+    "question": "Robinhood missed first-quarter 2026 revenue and profit expectations as cryptocurrency revenue fell 47% from the prior year.",
+    "answer": "Negative",
+    "type": "Equity News Sentiment (ENS)"
+  },
+  {
+    "id": 7,
+    "question": "Eli Lilly reported fourth-quarter 2025 revenue growth of 43% to $19.3 billion, driven by strong volume growth from Mounjaro and Zepbound.",
+    "answer": "Positive",
+    "type": "Equity News Sentiment (ENS)"
+  },
+  {
+    "id": 8,
+    "question": "Novo Nordisk shares declined after Canada approved a generic version of Ozempic, increasing concerns about future pricing pressure for GLP-1 drugs.",
+    "answer": "Negative",
+    "type": "Equity News Sentiment (ENS)"
+  },
+  {
+    "id": 9,
+    "question": "Target reported that full-year 2025 net sales declined 1.7% and adjusted earnings per share fell from the prior year.",
+    "answer": "Negative",
+    "type": "Equity News Sentiment (ENS)"
+  },
+  {
+    "id": 10,
+    "question": "Lowe's fourth-quarter 2025 comparable sales increased 1.3%, but its 2026 outlook pointed to only flat-to-2% comparable-sales growth.",
+    "answer": "Neutral",
+    "type": "Equity News Sentiment (ENS)"
+  },
+  {
+    "id": 11,
+    "question": "$MU just printed record revenue as AI memory demand keeps running way beyond available supply.",
+    "answer": "Positive",
+    "type": "Equity Social Media Sentiment (ESM)"
+  },
+  {
+    "id": 12,
+    "question": "$CRM sitting on more than $72B in RPO while Q4 revenue grows double digits makes the enterprise AI story look solid.",
+    "answer": "Positive",
+    "type": "Equity Social Media Sentiment (ESM)"
+  },
+  {
+    "id": 13,
+    "question": "$SNOW product revenue up 30% and RPO up 42% makes the data-cloud growth story look very much alive.",
+    "answer": "Positive",
+    "type": "Equity Social Media Sentiment (ESM)"
+  },
+  {
+    "id": 14,
+    "question": "$STX guiding above expectations because AI storage demand is so strong is exactly the kind of update storage bulls wanted.",
+    "answer": "Positive",
+    "type": "Equity Social Media Sentiment (ESM)"
+  },
+  {
+    "id": 15,
+    "question": "$NOW revenue growth was fine, but lower margin guidance and delayed deals make the stock reaction hard to ignore.",
+    "answer": "Neutral",
+    "type": "Equity Social Media Sentiment (ESM)"
+  },
+  {
+    "id": 16,
+    "question": "$HOOD crypto revenue falling 47% is rough, especially when the quarter missed on both revenue and profit.",
+    "answer": "Negative",
+    "type": "Equity Social Media Sentiment (ESM)"
+  },
+  {
+    "id": 17,
+    "question": "$LLY Mounjaro and Zepbound are carrying growth again, with Q4 sales jumping more than 40%.",
+    "answer": "Positive",
+    "type": "Equity Social Media Sentiment (ESM)"
+  },
+  {
+    "id": 18,
+    "question": "$NVO getting hit by Canada approving generic Ozempic makes the pricing-risk story feel real.",
+    "answer": "Negative",
+    "type": "Equity Social Media Sentiment (ESM)"
+  },
+  {
+    "id": 19,
+    "question": "$TGT sales down and EPS lower for the year is not a great setup for a retail turnaround.",
+    "answer": "Negative",
+    "type": "Equity Social Media Sentiment (ESM)"
+  },
+  {
+    "id": 20,
+    "question": "$LOW comps finally turned positive, but the housing backdrop still makes the recovery feel cautious.",
+    "answer": "Neutral",
+    "type": "Equity Social Media Sentiment (ESM)"
+  },
+  {
+    "id": 21,
+    "question": "We ended fiscal 2026 with annual recurring revenue of $5.25 billion, up 24% year over year, and fourth-quarter revenue increased 23%.",
+    "answer": "Positive",
+    "type": "Equity Transcript Sentiment (ETS)"
+  },
+  {
+    "id": 22,
+    "question": "Adjusted EBITDA reached $780 million in the fourth quarter, up 38% from the prior year, as marketplace scale improved.",
+    "answer": "Positive",
+    "type": "Equity Transcript Sentiment (ETS)"
+  },
+  {
+    "id": 23,
+    "question": "Net revenues increased 4% to $8.7 billion, and transaction margin dollars rose 3% during the quarter.",
+    "answer": "Positive",
+    "type": "Equity Transcript Sentiment (ETS)"
+  },
+  {
+    "id": 24,
+    "question": "Organic sales increased 3% across our portfolio, although higher commodity costs are expected to pressure earnings.",
+    "answer": "Neutral",
+    "type": "Equity Transcript Sentiment (ETS)"
+  },
+  {
+    "id": 25,
+    "question": "We raised our 2026 operating profit outlook after first-quarter profit exceeded expectations.",
+    "answer": "Positive",
+    "type": "Equity Transcript Sentiment (ETS)"
+  },
+  {
+    "id": 26,
+    "question": "Comparable restaurant sales rose slightly, but operating margin declined due to higher beef and labor costs.",
+    "answer": "Neutral",
+    "type": "Equity Transcript Sentiment (ETS)"
+  },
+  {
+    "id": 27,
+    "question": "We maintained our full-year profit outlook after the quarterly beat, reflecting continued caution around medical cost trends.",
+    "answer": "Neutral",
+    "type": "Equity Transcript Sentiment (ETS)"
+  },
+  {
+    "id": 28,
+    "question": "We raised our full-year adjusted profit forecast after improved cost controls lowered the medical loss ratio.",
+    "answer": "Positive",
+    "type": "Equity Transcript Sentiment (ETS)"
+  },
+  {
+    "id": 29,
+    "question": "Same-store sales improved meaningfully, but higher staffing investments kept operating margins below prior-year levels.",
+    "answer": "Neutral",
+    "type": "Equity Transcript Sentiment (ETS)"
+  },
+  {
+    "id": 30,
+    "question": "Fourth-quarter net sales and comparable sales both declined, indicating that store traffic and discretionary demand remain weak.",
+    "answer": "Negative",
+    "type": "Equity Transcript Sentiment (ETS)"
+  },
+  {
+    "id": 31,
+    "question": "Investors urged Alphabet to strengthen safeguards around the use of its cloud and AI technologies in government surveillance and military contexts.",
+    "answer": "Negative",
+    "type": "ES News Sentiment (ES-ESG)"
+  },
+  {
+    "id": 32,
+    "question": "Organizations asked U.S. trade officials to use new import bans and duties against goods linked to forced labor risks in global supply chains.",
+    "answer": "Negative",
+    "type": "ES News Sentiment (ES-ESG)"
+  },
+  {
+    "id": 33,
+    "question": "Health and environmental groups sued the EPA over the rollback of mercury standards for coal-fired power plants, warning of higher pollution risks.",
+    "answer": "Negative",
+    "type": "ES News Sentiment (ES-ESG)"
+  },
+  {
+    "id": 34,
+    "question": "Several U.S. states challenged the EPA's decision to roll back the legal basis for vehicle greenhouse-gas rules, creating uncertainty around climate regulation.",
+    "answer": "Negative",
+    "type": "ES News Sentiment (ES-ESG)"
+  },
+  {
+    "id": 35,
+    "question": "Reports showed that diversity, equity, and inclusion policies were falling down corporate priority lists amid political pressure.",
+    "answer": "Negative",
+    "type": "ES News Sentiment (ES-ESG)"
+  },
+  {
+    "id": 36,
+    "question": "Proxy adviser ISS urged ConocoPhillips shareholders to support an independent board chair proposal, citing the need for stronger management oversight.",
+    "answer": "Positive",
+    "type": "ES News Sentiment (ES-ESG)"
+  },
+  {
+    "id": 37,
+    "question": "Companies joining a new renewables initiative pledged 0.1% of revenue to help fund global clean-power expansion.",
+    "answer": "Positive",
+    "type": "ES News Sentiment (ES-ESG)"
+  },
+  {
+    "id": 38,
+    "question": "Corporate power-purchase agreements continued to support new wind and solar capacity as companies sought cleaner electricity for AI-era operations.",
+    "answer": "Positive",
+    "type": "ES News Sentiment (ES-ESG)"
+  },
+  {
+    "id": 39,
+    "question": "AI tools are improving access to sustainability data, but experts warned that ESG reporting still requires human oversight and strong controls.",
+    "answer": "Neutral",
+    "type": "ES News Sentiment (ES-ESG)"
+  },
+  {
+    "id": 40,
+    "question": "Analysts raised longer-term EU carbon-price forecasts as falling free allowances were expected to increase incentives for emissions reduction.",
+    "answer": "Positive",
+    "type": "ES News Sentiment (ES-ESG)"
+  },
+  {
+    "id": 41,
+    "question": "The U.K. economy grew 0.5% in the three months to February 2026, improving from weak growth at the end of 2025.",
+    "answer": "Positive",
+    "type": "Country News Sentiment (CNS)"
+  },
+  {
+    "id": 42,
+    "question": "France's GDP grew only 0.9% in 2025, slowing from 1.1% growth in 2024 and 1.6% growth in 2023.",
+    "answer": "Negative",
+    "type": "Country News Sentiment (CNS)"
+  },
+  {
+    "id": 43,
+    "question": "Spain's economy expanded 2.8% in 2025, far outgrowing many European peers.",
+    "answer": "Positive",
+    "type": "Country News Sentiment (CNS)"
+  },
+  {
+    "id": 44,
+    "question": "Saudi Arabia's real GDP grew 4.5% in 2025, supported by stronger oil activity and continued non-oil growth.",
+    "answer": "Positive",
+    "type": "Country News Sentiment (CNS)"
+  },
+  {
+    "id": 45,
+    "question": "The United Arab Emirates announced it would leave OPEC, weakening the oil cartel and adding uncertainty to global energy markets.",
+    "answer": "Negative",
+    "type": "Country News Sentiment (CNS)"
+  },
+  {
+    "id": 46,
+    "question": "Spain's unemployment rate rose to 10.83% in the first quarter of 2026, although it remained the lowest first-quarter level since 2008.",
+    "answer": "Neutral",
+    "type": "Country News Sentiment (CNS)"
+  },
+  {
+    "id": 47,
+    "question": "Vietnam's first-quarter GDP growth slowed to 7.83% from 8.46% in the prior quarter as higher input and energy costs created policy challenges.",
+    "answer": "Neutral",
+    "type": "Country News Sentiment (CNS)"
+  },
+  {
+    "id": 48,
+    "question": "Malaysia's economy grew 5.3% year over year in the first quarter of 2026, showing continued expansion despite some moderation from late 2025.",
+    "answer": "Positive",
+    "type": "Country News Sentiment (CNS)"
+  },
+  {
+    "id": 49,
+    "question": "Fitch revised the Philippines' outlook to negative as high energy prices and weak public capital spending were expected to weigh on growth.",
+    "answer": "Negative",
+    "type": "Country News Sentiment (CNS)"
+  },
+  {
+    "id": 50,
+    "question": "Taiwan's export orders surged at the fastest pace in more than 16 years as AI and high-performance computing demand expanded.",
+    "answer": "Positive",
+    "type": "Country News Sentiment (CNS)"
+  }
+]
