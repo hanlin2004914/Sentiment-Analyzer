@@ -1,0 +1,257 @@
+[
+  {
+    "id": 1,
+    "question": "Trump tariffs live updates: Trump readies tariff cuts on beef, coffee, bananas to help slash US grocery bills",
+    "answer": "positive"
+  },
+  {
+    "id": 2,
+    "question": "Stock market today: Dow, S&P 500, Nasdaq rise as weak ADP jobs data reinforces growing Fed rate cut bets",
+    "answer": "positive"
+  },
+  {
+    "id": 3,
+    "question": "Job openings inched up in October, but labor market worries persist",
+    "answer": "neutral"
+  },
+  {
+    "id": 4,
+    "question": "Dow, S&P 500, Nasdaq futures waver with Fed rate decision on deck",
+    "answer": "neutral"
+  },
+  {
+    "id": 5,
+    "question": "Fed Cut This Week May Be Last for A While",
+    "answer": "positive"
+  },
+  {
+    "id": 6,
+    "question": "Trump's Nvidia Deal Reshapes US's China Strategy, Risks Supercharging Xi's AI Push",
+    "answer": "negative"
+  },
+  {
+    "id": 7,
+    "question": "The Fed is likely to cut rates for a third time this year. What happens next year is less certain.",
+    "answer": "negative"
+  },
+  {
+    "id": 8,
+    "question": "Asian benchmarks mostly decline as investors anticipate US rate cut",
+    "answer": "negative"
+  },
+  {
+    "id": 9,
+    "question": "Analysis: How China Inc is marching into Vietnam amid US tariffs",
+    "answer": "neutral"
+  },
+  {
+    "id": 10,
+    "question": "EU firms in China accelerating supply chain diversification, report finds",
+    "answer": "negative"
+  },
+  {
+    "id": 11,
+    "question": "Trump Says He'll Call Thailand, Cambodia Over Renewed Conflict",
+    "answer": "neutral"
+  },
+  {
+    "id": 12,
+    "question": "Gold, Silver Slip as Bond Yields Climb Ahead of Fed Meeting",
+    "answer": "negative"
+  },
+  {
+    "id": 13,
+    "question": "Copper Climbs to Record as China Policy, US Imports Spur Rally",
+    "answer": "positive"
+  },
+  {
+    "id": 14,
+    "question": "The Great Income Squeeze Begins as Fed Spells End to Easy Yields",
+    "answer": "negative"
+  },
+  {
+    "id": 15,
+    "question": "Oil hovers near $100 to end the week as US moves to ease prices",
+    "answer": "negative"
+  },
+  {
+    "id": 16,
+    "question": "US economy lost 92,000 jobs in February, measurably below economists' expectations for 50,000 additions",
+    "answer": "negative"
+  },
+  {
+    "id": 17,
+    "question": "Oil prices surge 36% in a week as Iran effectively closes Straits of Hormuz, record weekly jump",
+    "answer": "negative"
+  },
+  {
+    "id": 18,
+    "question": "Supreme Court strikes down key portions of Trump's 'Reciprocal' tariffs, citing overreach of executive power",
+    "answer": "positive"
+  },
+  {
+    "id": 19,
+    "question": "US Unemployment rate ticks up to 4.4% as job growth concentrates solely in healthcare and education",
+    "answer": "negative"
+  },
+  {
+    "id": 20,
+    "question": "Treasury yields hit 5% for the first time in 20 years, signaling 'higher for longer' regime",
+    "answer": "negative"
+  },
+  {
+    "id": 21,
+    "question": "Wages grew 4.5% in January, complicating the Fed's path to a March rate cut",
+    "answer": "negative"
+  }
+  {
+    "id": 22,
+    "question": "Trump tariffs live updates: Trump readies tariff cuts on beef, coffee, bananas to help slash US grocery bills",
+    "answer": "positive"
+  },
+  {
+    "id": 23,
+    "question": "Stock market today: Dow, S&P 500, Nasdaq rise as weak ADP jobs data reinforces growing Fed rate cut bets",
+    "answer": "positive"
+  },
+  {
+    "id": 24,
+    "question": "Job openings inched up in October, but labor market worries persist",
+    "answer": "neutral"
+  }
+  {
+    "id": 25,
+    "question": "Gold prices rise as investors seek safe-haven assets",
+    "answer": "neutral"
+  },
+  {
+    "id": 26,
+    "question": "European stocks edge higher despite weak manufacturing data",
+    "answer": "neutral"
+  }
+  {
+    "id": 27,
+    "question": "How Are Tariffs Impacting Shoe Manufacturing on the Ground in China: Here's One Data Point",
+    "answer": "neutral"
+  },
+  {
+    "id": 28,
+    "question": "Trump Admin's Decision Not To Release CPI, Jobs Report Will 'Fuel Conspiracy Theories,' Warns Economist Mohamed El-Erian",
+    "answer": "negative"
+  },
+  {
+    "id": 29,
+    "question": "Fed signals rate cuts later this year after inflation cools more than expected",
+    "answer": "positive"
+  },
+  {
+    "id": 30,
+    "question": "Oil prices jump after OPEC+ announces surprise production cuts",
+    "answer": "positive"
+  },
+  {
+    "id": 31,
+    "question": "US retail sales fall slightly in September, but consumer spending remains resilient",
+    "answer": "neutral"
+  },
+  {
+    "id": 32,
+    "question": "Euro edges higher after ECB hints at nearing end of tightening cycle",
+    "answer": "positive"
+  },
+  {
+    "id": 33,
+    "question": "China's central bank injects liquidity to support faltering property sector",
+    "answer": "neutral"
+  },
+  {
+    "id": 34,
+    "question": "US job growth slows, fueling expectations of Fed easing",
+    "answer": "positive"
+  },
+  {
+    "id": 35,
+    "question": "Fed signals it may pause rate hikes to assess progress on inflation.",
+    "answer": "positive"
+  },
+  {
+    "id": 36,
+    "question": "Fed cuts rates to zero as economy falters again",
+    "answer": "negative"
+  },
+  {
+    "id": 37,
+    "question": "Oil prices fall as OPEC signals production increase",
+    "answer": "negative"
+  },
+  {
+    "id": 38,
+    "question": "US inflation slows, raising hopes for a soft economic landing",
+    "answer": "positive"
+  },
+  {
+    "id": 39,
+    "question": "China's export growth stalls amid global demand slowdown",
+    "answer": "negative"
+  },
+  {
+    "id": 40,
+    "question": "Gold prices steady as investors await Fed meeting outcome",
+    "answer": "neutral"
+  },
+  {
+    "id": 41,
+    "question": "Euro strengthens as ECB maintains interest rates",
+    "answer": "neutral"
+  },
+  {
+    "id": 42,
+    "question": "Consumer confidence remains unchanged amid mixed economic signals",
+    "answer": "neutral"
+  },
+  {
+    "id": 43,
+    "question": "Global stocks rise as investors cheer cooler inflation data",
+    "answer": "positive"
+  },
+  {
+    "id": 44,
+    "question": "Oil prices tumble after weak demand outlook from IEA",
+    "answer": "negative"
+  },
+  {
+    "id": 45,
+    "question": "US consumer confidence improves for the third straight month",
+    "answer": "positive"
+  },
+  {
+    "id": 46,
+    "question": "China manufacturing PMI falls below 50 signaling contraction",
+    "answer": "negative"
+  },
+  {
+    "id": 47,
+    "question": "Federal Reserve leaves rates unchanged amid mixed economic signals",
+    "answer": "neutral"
+  },
+  {
+    "id": 48,
+    "question": "Gold slips as dollar strengthens after Fed comments",
+    "answer": "negative"
+  },
+  {
+    "id": 49,
+    "question": "US housing starts rebound sharply in October",
+    "answer": "positive"
+  },
+  {
+    "id": 50,
+    "question": "European Central Bank warns of persistent inflation risks",
+    "answer": "negative"
+  },
+  {
+    "id": 51,
+    "question": "US retail sales decline unexpectedly in September",
+    "answer": "negative"
+  }
+]
