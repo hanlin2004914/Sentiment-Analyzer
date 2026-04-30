@@ -1,0 +1,47 @@
+[
+  {
+    "id": 1,
+    "question": "Starbucks workers kick off 65-store U.S. strike on company's busy Red Cup Day",
+    "answer": "negative"
+  },
+  {
+    "id": 2,
+    "question": "Bravo star Dr. Heavenly Kimes wins reality TV fights. Can she win a run for Congress?",
+    "answer": "neutral"
+  },
+  {
+    "id": 3,
+    "question": "Blended finance for Fighting Climate Change is Stalling at Alarmingly low levels.",
+    "answer": "negative"
+  },
+  {
+    "id": 4,
+    "question": "Powerful Storms Are Ravaging Billion-Dollar Defenses.",
+    "answer": "negative"
+  },
+  {
+    "id": 5,
+    "question": "Can Eating More Beans Help Save the Planet?",
+    "answer": "neutral"
+  },
+  {
+    "id": 6,
+    "question": "ONAR Strengthens Governance and M&A Execution with Appointment of Veteran CFO and Audit Leader Kelly Anderson as Audit Committee Chair",
+    "answer": "positive"
+  },
+  {
+    "id": 7,
+    "question": "How Will Australia's Social Media Ban for Kids Under 16 Actually Work?",
+    "answer": "neutral"
+  },
+  {
+    "id": 8,
+    "question": "Microsoft layoffs seen as cost-cutting measure to boost margins",
+    "answer": "neutral"
+  },
+  {
+    "id": 9,
+    "question": "Amazon to hire 250,000 seasonal workers ahead of holidays",
+    "answer": "positive"
+  }
+]
