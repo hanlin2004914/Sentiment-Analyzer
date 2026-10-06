@@ -85,6 +85,44 @@
     "retrieved_on": "2026-09-22",
     "sha256": "9704314697dd8f7594ecd7be687690145c7d031d0d1c940f8b845c2d5b0d262e"
   },
+  "RMBS-10-Q": {
+    "ticker": "RMBS",
+    "cik": "0000917273",
+    "form": "10-Q",
+    "filed": "2025-04-29",
+    "report_date": "2025-03-31",
+    "accession": "0000917273-25-000075",
+    "url": "https://www.sec.gov/Archives/edgar/data/917273/000091727325000075/rmbs-20250331.htm",
+    "company": "Rambus Inc.",
+    "retrieved_on": "2026-09-22",
+    "sha256": "4a36c9f9cc763c5e8257761fb0e895a8b66691643684104fda3ea61b8fc56e7a"
+  },
+  "RMBS-8-K": {
+    "ticker": "RMBS",
+    "cik": "0000917273",
+    "form": "8-K",
+    "filed": "2025-04-28",
+    "report_date": "2025-04-28",
+    "accession": "0000917273-25-000072",
+    "url": "https://www.sec.gov/Archives/edgar/data/917273/000091727325000072/rmbs-20250428.htm",
+    "company": "Rambus Inc.",
+    "retrieved_on": "2026-09-22",
+    "sha256": "2d51a1d0403beee7df5ee29f94e98090ecd991866604b766661e0d3a28b75462"
+  },
+  "RMBS-8-K-ex0": {
+    "ticker": "RMBS",
+    "cik": "0000917273",
+    "form": "8-K",
+    "filed": "2025-04-28",
+    "report_date": "2025-04-28",
+    "accession": "0000917273-25-000072",
+    "url": "https://www.sec.gov/Archives/edgar/data/917273/000091727325000072/rmbs-ex991_2025331xer.htm",
+    "company": "Rambus Inc.",
+    "retrieved_on": "2026-09-22",
+    "sha256": "01ad8485a03a21f8bd975b918c656c386e511509a8aa2a1a31f3475cab6a552b",
+    "parent_source_id": "RMBS-8-K",
+    "exhibit": "99.1"
+  },
   "SNDK-10-K": {
     "ticker": "SNDK",
     "cik": "0002023554",

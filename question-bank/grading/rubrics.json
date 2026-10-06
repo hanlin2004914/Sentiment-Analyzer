@@ -7085,5 +7085,1583 @@
       "source_verified": true,
       "agent_run_performed": false
     }
+  },
+  "RAIN-V2-RMBS-001": {
+    "title_zh": "建立 GAAP 收入桥输入",
+    "ticker": "RMBS",
+    "company": "Rambus Inc.",
+    "depends_on": [],
+    "input_bindings": {
+      "product25": {
+        "kind": "source",
+        "value": "76.309",
+        "unit": "USD million",
+        "evidence_label": "product25",
+        "source_id": "RMBS-10-Q"
+      },
+      "royalties25": {
+        "kind": "source",
+        "value": "73.975",
+        "unit": "USD million",
+        "evidence_label": "royalties25",
+        "source_id": "RMBS-10-Q"
+      },
+      "contract25": {
+        "kind": "source",
+        "value": "16.380",
+        "unit": "USD million",
+        "evidence_label": "contract25",
+        "source_id": "RMBS-10-Q"
+      },
+      "total25": {
+        "kind": "source",
+        "value": "166.664",
+        "unit": "USD million",
+        "evidence_label": "total25",
+        "source_id": "RMBS-10-Q"
+      },
+      "product24": {
+        "kind": "source",
+        "value": "50.360",
+        "unit": "USD million",
+        "evidence_label": "product24",
+        "source_id": "RMBS-10-Q"
+      },
+      "royalties24": {
+        "kind": "source",
+        "value": "47.476",
+        "unit": "USD million",
+        "evidence_label": "royalties24",
+        "source_id": "RMBS-10-Q"
+      },
+      "contract24": {
+        "kind": "source",
+        "value": "20.035",
+        "unit": "USD million",
+        "evidence_label": "contract24",
+        "source_id": "RMBS-10-Q"
+      },
+      "total24": {
+        "kind": "source",
+        "value": "117.871",
+        "unit": "USD million",
+        "evidence_label": "total24",
+        "source_id": "RMBS-10-Q"
+      }
+    },
+    "derivations": [],
+    "output_nodes": {
+      "product25": "read_1",
+      "royalties25": "read_1",
+      "contract25": "read_1",
+      "total25": "read_1",
+      "product24": "read_1",
+      "royalties24": "read_1",
+      "contract24": "read_1",
+      "total24": "read_1"
+    },
+    "hop_definition": "conditional_evidence_depth_v2",
+    "hop_plan": [
+      {
+        "id": "read_1",
+        "kind": "retrieve",
+        "depends_on": [],
+        "evidence_block": "RMBS-10-Q:income_statement",
+        "source_ids": [
+          "RMBS-10-Q"
+        ],
+        "outputs": [
+          "product25",
+          "royalties25",
+          "contract25",
+          "total25",
+          "product24",
+          "royalties24",
+          "contract24",
+          "total24"
+        ],
+        "depth": 1
+      }
+    ],
+    "hops": 1,
+    "evidence_records": [
+      {
+        "label": "product25",
+        "source_id": "RMBS-10-Q",
+        "value": "76.309",
+        "unit": "USD million",
+        "concept": "us-gaap:RevenueFromContractWithCustomerIncludingAssessedTax",
+        "context_id": "c-4",
+        "context": "context: entity: identifier:0000917273 segment:rmbs:ProductRevenueMember period: startdate:2025-01-01 enddate:2025-03-31",
+        "fact_id": "f-115",
+        "original_text": "76,309",
+        "scale": 3,
+        "sign": "+",
+        "url": "https://www.sec.gov/Archives/edgar/data/917273/000091727325000075/rmbs-20250331.htm#f-115",
+        "locator": "income_statement; inline XBRL #f-115, context c-4",
+        "evidence_block": "RMBS-10-Q:income_statement"
+      },
+      {
+        "label": "royalties25",
+        "source_id": "RMBS-10-Q",
+        "value": "73.975",
+        "unit": "USD million",
+        "concept": "us-gaap:RevenueFromContractWithCustomerIncludingAssessedTax",
+        "context_id": "c-6",
+        "context": "context: entity: identifier:0000917273 segment:us-gaap:RoyaltyMember period: startdate:2025-01-01 enddate:2025-03-31",
+        "fact_id": "f-117",
+        "original_text": "73,975",
+        "scale": 3,
+        "sign": "+",
+        "url": "https://www.sec.gov/Archives/edgar/data/917273/000091727325000075/rmbs-20250331.htm#f-117",
+        "locator": "income_statement; inline XBRL #f-117, context c-6",
+        "evidence_block": "RMBS-10-Q:income_statement"
+      },
+      {
+        "label": "contract25",
+        "source_id": "RMBS-10-Q",
+        "value": "16.380",
+        "unit": "USD million",
+        "concept": "us-gaap:RevenueFromContractWithCustomerIncludingAssessedTax",
+        "context_id": "c-8",
+        "context": "context: entity: identifier:0000917273 segment:rmbs:ContractandotherRevenueMember period: startdate:2025-01-01 enddate:2025-03-31",
+        "fact_id": "f-119",
+        "original_text": "16,380",
+        "scale": 3,
+        "sign": "+",
+        "url": "https://www.sec.gov/Archives/edgar/data/917273/000091727325000075/rmbs-20250331.htm#f-119",
+        "locator": "income_statement; inline XBRL #f-119, context c-8",
+        "evidence_block": "RMBS-10-Q:income_statement"
+      },
+      {
+        "label": "total25",
+        "source_id": "RMBS-10-Q",
+        "value": "166.664",
+        "unit": "USD million",
+        "concept": "us-gaap:RevenueFromContractWithCustomerIncludingAssessedTax",
+        "context_id": "c-1",
+        "context": "context: entity: identifier:0000917273 period: startdate:2025-01-01 enddate:2025-03-31",
+        "fact_id": "f-121",
+        "original_text": "166,664",
+        "scale": 3,
+        "sign": "+",
+        "url": "https://www.sec.gov/Archives/edgar/data/917273/000091727325000075/rmbs-20250331.htm#f-121",
+        "locator": "income_statement; inline XBRL #f-121, context c-1",
+        "evidence_block": "RMBS-10-Q:income_statement"
+      },
+      {
+        "label": "product24",
+        "source_id": "RMBS-10-Q",
+        "value": "50.360",
+        "unit": "USD million",
+        "concept": "us-gaap:RevenueFromContractWithCustomerIncludingAssessedTax",
+        "context_id": "c-5",
+        "context": "context: entity: identifier:0000917273 segment:rmbs:ProductRevenueMember period: startdate:2024-01-01 enddate:2024-03-31",
+        "fact_id": "f-116",
+        "original_text": "50,360",
+        "scale": 3,
+        "sign": "+",
+        "url": "https://www.sec.gov/Archives/edgar/data/917273/000091727325000075/rmbs-20250331.htm#f-116",
+        "locator": "income_statement; inline XBRL #f-116, context c-5",
+        "evidence_block": "RMBS-10-Q:income_statement"
+      },
+      {
+        "label": "royalties24",
+        "source_id": "RMBS-10-Q",
+        "value": "47.476",
+        "unit": "USD million",
+        "concept": "us-gaap:RevenueFromContractWithCustomerIncludingAssessedTax",
+        "context_id": "c-7",
+        "context": "context: entity: identifier:0000917273 segment:us-gaap:RoyaltyMember period: startdate:2024-01-01 enddate:2024-03-31",
+        "fact_id": "f-118",
+        "original_text": "47,476",
+        "scale": 3,
+        "sign": "+",
+        "url": "https://www.sec.gov/Archives/edgar/data/917273/000091727325000075/rmbs-20250331.htm#f-118",
+        "locator": "income_statement; inline XBRL #f-118, context c-7",
+        "evidence_block": "RMBS-10-Q:income_statement"
+      },
+      {
+        "label": "contract24",
+        "source_id": "RMBS-10-Q",
+        "value": "20.035",
+        "unit": "USD million",
+        "concept": "us-gaap:RevenueFromContractWithCustomerIncludingAssessedTax",
+        "context_id": "c-9",
+        "context": "context: entity: identifier:0000917273 segment:rmbs:ContractandotherRevenueMember period: startdate:2024-01-01 enddate:2024-03-31",
+        "fact_id": "f-120",
+        "original_text": "20,035",
+        "scale": 3,
+        "sign": "+",
+        "url": "https://www.sec.gov/Archives/edgar/data/917273/000091727325000075/rmbs-20250331.htm#f-120",
+        "locator": "income_statement; inline XBRL #f-120, context c-9",
+        "evidence_block": "RMBS-10-Q:income_statement"
+      },
+      {
+        "label": "total24",
+        "source_id": "RMBS-10-Q",
+        "value": "117.871",
+        "unit": "USD million",
+        "concept": "us-gaap:RevenueFromContractWithCustomerIncludingAssessedTax",
+        "context_id": "c-10",
+        "context": "context: entity: identifier:0000917273 period: startdate:2024-01-01 enddate:2024-03-31",
+        "fact_id": "f-122",
+        "original_text": "117,871",
+        "scale": 3,
+        "sign": "+",
+        "url": "https://www.sec.gov/Archives/edgar/data/917273/000091727325000075/rmbs-20250331.htm#f-122",
+        "locator": "income_statement; inline XBRL #f-122, context c-10",
+        "evidence_block": "RMBS-10-Q:income_statement"
+      }
+    ],
+    "reused_from_v1": [],
+    "grading": {
+      "expected_answer": {
+        "product25": {
+          "value": "76.309",
+          "kind": "number",
+          "unit": "USD million",
+          "absolute_tolerance": "0"
+        },
+        "royalties25": {
+          "value": "73.975",
+          "kind": "number",
+          "unit": "USD million",
+          "absolute_tolerance": "0"
+        },
+        "contract25": {
+          "value": "16.380",
+          "kind": "number",
+          "unit": "USD million",
+          "absolute_tolerance": "0"
+        },
+        "total25": {
+          "value": "166.664",
+          "kind": "number",
+          "unit": "USD million",
+          "absolute_tolerance": "0"
+        },
+        "product24": {
+          "value": "50.360",
+          "kind": "number",
+          "unit": "USD million",
+          "absolute_tolerance": "0"
+        },
+        "royalties24": {
+          "value": "47.476",
+          "kind": "number",
+          "unit": "USD million",
+          "absolute_tolerance": "0"
+        },
+        "contract24": {
+          "value": "20.035",
+          "kind": "number",
+          "unit": "USD million",
+          "absolute_tolerance": "0"
+        },
+        "total24": {
+          "value": "117.871",
+          "kind": "number",
+          "unit": "USD million",
+          "absolute_tolerance": "0"
+        }
+      },
+      "max_points": 5,
+      "rubric": {
+        "answer": 2,
+        "evidence": 1,
+        "scope_units": 1,
+        "dependency_and_method": 1
+      }
+    },
+    "verification": {
+      "checked_on": "2026-09-22",
+      "source_verified": true,
+      "agent_run_performed": false
+    }
+  },
+  "RAIN-V2-RMBS-002": {
+    "title_zh": "将总收入增长拆到组成项目",
+    "ticker": "RMBS",
+    "company": "Rambus Inc.",
+    "depends_on": [
+      "RAIN-V2-RMBS-001"
+    ],
+    "input_bindings": {
+      "product25": {
+        "kind": "prior",
+        "question_id": "RAIN-V2-RMBS-001",
+        "field": "product25",
+        "value": "76.309",
+        "unit": "USD million"
+      },
+      "royalties25": {
+        "kind": "prior",
+        "question_id": "RAIN-V2-RMBS-001",
+        "field": "royalties25",
+        "value": "73.975",
+        "unit": "USD million"
+      },
+      "contract25": {
+        "kind": "prior",
+        "question_id": "RAIN-V2-RMBS-001",
+        "field": "contract25",
+        "value": "16.380",
+        "unit": "USD million"
+      },
+      "total25": {
+        "kind": "prior",
+        "question_id": "RAIN-V2-RMBS-001",
+        "field": "total25",
+        "value": "166.664",
+        "unit": "USD million"
+      },
+      "product24": {
+        "kind": "prior",
+        "question_id": "RAIN-V2-RMBS-001",
+        "field": "product24",
+        "value": "50.360",
+        "unit": "USD million"
+      },
+      "royalties24": {
+        "kind": "prior",
+        "question_id": "RAIN-V2-RMBS-001",
+        "field": "royalties24",
+        "value": "47.476",
+        "unit": "USD million"
+      },
+      "contract24": {
+        "kind": "prior",
+        "question_id": "RAIN-V2-RMBS-001",
+        "field": "contract24",
+        "value": "20.035",
+        "unit": "USD million"
+      },
+      "total24": {
+        "kind": "prior",
+        "question_id": "RAIN-V2-RMBS-001",
+        "field": "total24",
+        "value": "117.871",
+        "unit": "USD million"
+      }
+    },
+    "derivations": [
+      {
+        "field": "product_change",
+        "expression": "product25 - product24",
+        "unit": "USD million",
+        "decimal_places": 3
+      },
+      {
+        "field": "royalty_change",
+        "expression": "royalties25 - royalties24",
+        "unit": "USD million",
+        "decimal_places": 3
+      },
+      {
+        "field": "contract_change",
+        "expression": "contract25 - contract24",
+        "unit": "USD million",
+        "decimal_places": 3
+      },
+      {
+        "field": "total_change",
+        "expression": "total25 - total24",
+        "unit": "USD million",
+        "decimal_places": 3
+      },
+      {
+        "field": "component_change",
+        "expression": "product_change + royalty_change + contract_change",
+        "unit": "USD million",
+        "decimal_places": 3
+      },
+      {
+        "field": "bridge_difference",
+        "expression": "component_change - total_change",
+        "unit": "USD million",
+        "decimal_places": 3
+      },
+      {
+        "field": "total_growth",
+        "expression": "(total25 / total24 - 1) * 100",
+        "unit": "percent",
+        "decimal_places": 2
+      },
+      {
+        "field": "royalty_growth",
+        "expression": "(royalties25 / royalties24 - 1) * 100",
+        "unit": "percent",
+        "decimal_places": 2
+      }
+    ],
+    "output_nodes": {
+      "product_change": "derive_product_change",
+      "royalty_change": "derive_royalty_change",
+      "contract_change": "derive_contract_change",
+      "bridge_difference": "derive_bridge_difference",
+      "total_growth": "derive_total_growth",
+      "royalty_growth": "derive_royalty_growth"
+    },
+    "hop_definition": "conditional_evidence_depth_v2",
+    "hop_plan": [
+      {
+        "id": "input_product25",
+        "kind": "prior",
+        "depends_on": [],
+        "outputs": [
+          "product25"
+        ],
+        "question_id": "RAIN-V2-RMBS-001",
+        "field": "product25",
+        "depth": 0
+      },
+      {
+        "id": "input_royalties25",
+        "kind": "prior",
+        "depends_on": [],
+        "outputs": [
+          "royalties25"
+        ],
+        "question_id": "RAIN-V2-RMBS-001",
+        "field": "royalties25",
+        "depth": 0
+      },
+      {
+        "id": "input_contract25",
+        "kind": "prior",
+        "depends_on": [],
+        "outputs": [
+          "contract25"
+        ],
+        "question_id": "RAIN-V2-RMBS-001",
+        "field": "contract25",
+        "depth": 0
+      },
+      {
+        "id": "input_total25",
+        "kind": "prior",
+        "depends_on": [],
+        "outputs": [
+          "total25"
+        ],
+        "question_id": "RAIN-V2-RMBS-001",
+        "field": "total25",
+        "depth": 0
+      },
+      {
+        "id": "input_product24",
+        "kind": "prior",
+        "depends_on": [],
+        "outputs": [
+          "product24"
+        ],
+        "question_id": "RAIN-V2-RMBS-001",
+        "field": "product24",
+        "depth": 0
+      },
+      {
+        "id": "input_royalties24",
+        "kind": "prior",
+        "depends_on": [],
+        "outputs": [
+          "royalties24"
+        ],
+        "question_id": "RAIN-V2-RMBS-001",
+        "field": "royalties24",
+        "depth": 0
+      },
+      {
+        "id": "input_contract24",
+        "kind": "prior",
+        "depends_on": [],
+        "outputs": [
+          "contract24"
+        ],
+        "question_id": "RAIN-V2-RMBS-001",
+        "field": "contract24",
+        "depth": 0
+      },
+      {
+        "id": "input_total24",
+        "kind": "prior",
+        "depends_on": [],
+        "outputs": [
+          "total24"
+        ],
+        "question_id": "RAIN-V2-RMBS-001",
+        "field": "total24",
+        "depth": 0
+      },
+      {
+        "id": "derive_product_change",
+        "kind": "calculate",
+        "depends_on": [
+          "input_product24",
+          "input_product25"
+        ],
+        "outputs": [
+          "product_change"
+        ],
+        "expression": "product25 - product24",
+        "depth": 1
+      },
+      {
+        "id": "derive_royalty_change",
+        "kind": "calculate",
+        "depends_on": [
+          "input_royalties24",
+          "input_royalties25"
+        ],
+        "outputs": [
+          "royalty_change"
+        ],
+        "expression": "royalties25 - royalties24",
+        "depth": 1
+      },
+      {
+        "id": "derive_contract_change",
+        "kind": "calculate",
+        "depends_on": [
+          "input_contract24",
+          "input_contract25"
+        ],
+        "outputs": [
+          "contract_change"
+        ],
+        "expression": "contract25 - contract24",
+        "depth": 1
+      },
+      {
+        "id": "derive_total_change",
+        "kind": "calculate",
+        "depends_on": [
+          "input_total24",
+          "input_total25"
+        ],
+        "outputs": [
+          "total_change"
+        ],
+        "expression": "total25 - total24",
+        "depth": 1
+      },
+      {
+        "id": "derive_component_change",
+        "kind": "calculate",
+        "depends_on": [
+          "derive_contract_change",
+          "derive_product_change",
+          "derive_royalty_change"
+        ],
+        "outputs": [
+          "component_change"
+        ],
+        "expression": "product_change + royalty_change + contract_change",
+        "depth": 2
+      },
+      {
+        "id": "derive_bridge_difference",
+        "kind": "calculate",
+        "depends_on": [
+          "derive_component_change",
+          "derive_total_change"
+        ],
+        "outputs": [
+          "bridge_difference"
+        ],
+        "expression": "component_change - total_change",
+        "depth": 3
+      },
+      {
+        "id": "derive_total_growth",
+        "kind": "calculate",
+        "depends_on": [
+          "input_total24",
+          "input_total25"
+        ],
+        "outputs": [
+          "total_growth"
+        ],
+        "expression": "(total25 / total24 - 1) * 100",
+        "depth": 1
+      },
+      {
+        "id": "derive_royalty_growth",
+        "kind": "calculate",
+        "depends_on": [
+          "input_royalties24",
+          "input_royalties25"
+        ],
+        "outputs": [
+          "royalty_growth"
+        ],
+        "expression": "(royalties25 / royalties24 - 1) * 100",
+        "depth": 1
+      }
+    ],
+    "hops": 3,
+    "evidence_records": [
+      {
+        "label": "product24",
+        "source_id": "RMBS-10-Q",
+        "value": "50.360",
+        "unit": "USD million",
+        "concept": "us-gaap:RevenueFromContractWithCustomerIncludingAssessedTax",
+        "context_id": "c-5",
+        "context": "context: entity: identifier:0000917273 segment:rmbs:ProductRevenueMember period: startdate:2024-01-01 enddate:2024-03-31",
+        "fact_id": "f-116",
+        "original_text": "50,360",
+        "scale": 3,
+        "sign": "+",
+        "url": "https://www.sec.gov/Archives/edgar/data/917273/000091727325000075/rmbs-20250331.htm#f-116",
+        "locator": "income_statement; inline XBRL #f-116, context c-5",
+        "evidence_block": "RMBS-10-Q:income_statement"
+      },
+      {
+        "label": "product25",
+        "source_id": "RMBS-10-Q",
+        "value": "76.309",
+        "unit": "USD million",
+        "concept": "us-gaap:RevenueFromContractWithCustomerIncludingAssessedTax",
+        "context_id": "c-4",
+        "context": "context: entity: identifier:0000917273 segment:rmbs:ProductRevenueMember period: startdate:2025-01-01 enddate:2025-03-31",
+        "fact_id": "f-115",
+        "original_text": "76,309",
+        "scale": 3,
+        "sign": "+",
+        "url": "https://www.sec.gov/Archives/edgar/data/917273/000091727325000075/rmbs-20250331.htm#f-115",
+        "locator": "income_statement; inline XBRL #f-115, context c-4",
+        "evidence_block": "RMBS-10-Q:income_statement"
+      },
+      {
+        "label": "royalties24",
+        "source_id": "RMBS-10-Q",
+        "value": "47.476",
+        "unit": "USD million",
+        "concept": "us-gaap:RevenueFromContractWithCustomerIncludingAssessedTax",
+        "context_id": "c-7",
+        "context": "context: entity: identifier:0000917273 segment:us-gaap:RoyaltyMember period: startdate:2024-01-01 enddate:2024-03-31",
+        "fact_id": "f-118",
+        "original_text": "47,476",
+        "scale": 3,
+        "sign": "+",
+        "url": "https://www.sec.gov/Archives/edgar/data/917273/000091727325000075/rmbs-20250331.htm#f-118",
+        "locator": "income_statement; inline XBRL #f-118, context c-7",
+        "evidence_block": "RMBS-10-Q:income_statement"
+      },
+      {
+        "label": "royalties25",
+        "source_id": "RMBS-10-Q",
+        "value": "73.975",
+        "unit": "USD million",
+        "concept": "us-gaap:RevenueFromContractWithCustomerIncludingAssessedTax",
+        "context_id": "c-6",
+        "context": "context: entity: identifier:0000917273 segment:us-gaap:RoyaltyMember period: startdate:2025-01-01 enddate:2025-03-31",
+        "fact_id": "f-117",
+        "original_text": "73,975",
+        "scale": 3,
+        "sign": "+",
+        "url": "https://www.sec.gov/Archives/edgar/data/917273/000091727325000075/rmbs-20250331.htm#f-117",
+        "locator": "income_statement; inline XBRL #f-117, context c-6",
+        "evidence_block": "RMBS-10-Q:income_statement"
+      },
+      {
+        "label": "contract24",
+        "source_id": "RMBS-10-Q",
+        "value": "20.035",
+        "unit": "USD million",
+        "concept": "us-gaap:RevenueFromContractWithCustomerIncludingAssessedTax",
+        "context_id": "c-9",
+        "context": "context: entity: identifier:0000917273 segment:rmbs:ContractandotherRevenueMember period: startdate:2024-01-01 enddate:2024-03-31",
+        "fact_id": "f-120",
+        "original_text": "20,035",
+        "scale": 3,
+        "sign": "+",
+        "url": "https://www.sec.gov/Archives/edgar/data/917273/000091727325000075/rmbs-20250331.htm#f-120",
+        "locator": "income_statement; inline XBRL #f-120, context c-9",
+        "evidence_block": "RMBS-10-Q:income_statement"
+      },
+      {
+        "label": "contract25",
+        "source_id": "RMBS-10-Q",
+        "value": "16.380",
+        "unit": "USD million",
+        "concept": "us-gaap:RevenueFromContractWithCustomerIncludingAssessedTax",
+        "context_id": "c-8",
+        "context": "context: entity: identifier:0000917273 segment:rmbs:ContractandotherRevenueMember period: startdate:2025-01-01 enddate:2025-03-31",
+        "fact_id": "f-119",
+        "original_text": "16,380",
+        "scale": 3,
+        "sign": "+",
+        "url": "https://www.sec.gov/Archives/edgar/data/917273/000091727325000075/rmbs-20250331.htm#f-119",
+        "locator": "income_statement; inline XBRL #f-119, context c-8",
+        "evidence_block": "RMBS-10-Q:income_statement"
+      },
+      {
+        "label": "total24",
+        "source_id": "RMBS-10-Q",
+        "value": "117.871",
+        "unit": "USD million",
+        "concept": "us-gaap:RevenueFromContractWithCustomerIncludingAssessedTax",
+        "context_id": "c-10",
+        "context": "context: entity: identifier:0000917273 period: startdate:2024-01-01 enddate:2024-03-31",
+        "fact_id": "f-122",
+        "original_text": "117,871",
+        "scale": 3,
+        "sign": "+",
+        "url": "https://www.sec.gov/Archives/edgar/data/917273/000091727325000075/rmbs-20250331.htm#f-122",
+        "locator": "income_statement; inline XBRL #f-122, context c-10",
+        "evidence_block": "RMBS-10-Q:income_statement"
+      },
+      {
+        "label": "total25",
+        "source_id": "RMBS-10-Q",
+        "value": "166.664",
+        "unit": "USD million",
+        "concept": "us-gaap:RevenueFromContractWithCustomerIncludingAssessedTax",
+        "context_id": "c-1",
+        "context": "context: entity: identifier:0000917273 period: startdate:2025-01-01 enddate:2025-03-31",
+        "fact_id": "f-121",
+        "original_text": "166,664",
+        "scale": 3,
+        "sign": "+",
+        "url": "https://www.sec.gov/Archives/edgar/data/917273/000091727325000075/rmbs-20250331.htm#f-121",
+        "locator": "income_statement; inline XBRL #f-121, context c-1",
+        "evidence_block": "RMBS-10-Q:income_statement"
+      }
+    ],
+    "reused_from_v1": [],
+    "grading": {
+      "expected_answer": {
+        "product_change": {
+          "value": "25.949",
+          "kind": "number",
+          "unit": "USD million",
+          "absolute_tolerance": "0.001"
+        },
+        "royalty_change": {
+          "value": "26.499",
+          "kind": "number",
+          "unit": "USD million",
+          "absolute_tolerance": "0.001"
+        },
+        "contract_change": {
+          "value": "-3.655",
+          "kind": "number",
+          "unit": "USD million",
+          "absolute_tolerance": "0.001"
+        },
+        "bridge_difference": {
+          "value": "0.000",
+          "kind": "number",
+          "unit": "USD million",
+          "absolute_tolerance": "0.001"
+        },
+        "total_growth": {
+          "value": "41.40",
+          "kind": "number",
+          "unit": "percent",
+          "absolute_tolerance": "0.01"
+        },
+        "royalty_growth": {
+          "value": "55.82",
+          "kind": "number",
+          "unit": "percent",
+          "absolute_tolerance": "0.01"
+        }
+      },
+      "max_points": 5,
+      "rubric": {
+        "answer": 2,
+        "evidence": 1,
+        "scope_units": 1,
+        "dependency_and_method": 1
+      }
+    },
+    "verification": {
+      "checked_on": "2026-09-22",
+      "source_verified": true,
+      "agent_run_performed": false
+    }
+  },
+  "RAIN-V2-RMBS-003": {
+    "title_zh": "检验 billings 是否跟随 royalties",
+    "ticker": "RMBS",
+    "company": "Rambus Inc.",
+    "depends_on": [
+      "RAIN-V2-RMBS-002"
+    ],
+    "input_bindings": {
+      "royalty_growth": {
+        "kind": "prior",
+        "question_id": "RAIN-V2-RMBS-002",
+        "field": "royalty_growth",
+        "value": "55.81556997219647822057460610",
+        "unit": "percent"
+      },
+      "billings25": {
+        "kind": "source",
+        "value": "73.3",
+        "unit": "USD million",
+        "evidence_label": "billings25",
+        "source_id": "RMBS-8-K-ex0"
+      },
+      "billings24": {
+        "kind": "source",
+        "value": "63.2",
+        "unit": "USD million",
+        "evidence_label": "billings24",
+        "source_id": "RMBS-8-K-ex0"
+      }
+    },
+    "derivations": [
+      {
+        "field": "billings_growth",
+        "expression": "(billings25 / billings24 - 1) * 100",
+        "unit": "percent",
+        "decimal_places": 2
+      },
+      {
+        "field": "growth_gap",
+        "expression": "royalty_growth - billings_growth",
+        "unit": "percentage points",
+        "decimal_places": 2
+      }
+    ],
+    "output_nodes": {
+      "billings25": "read_1",
+      "billings24": "read_1",
+      "billings_growth": "derive_billings_growth",
+      "growth_gap": "derive_growth_gap"
+    },
+    "hop_definition": "conditional_evidence_depth_v2",
+    "hop_plan": [
+      {
+        "id": "input_royalty_growth",
+        "kind": "prior",
+        "depends_on": [],
+        "outputs": [
+          "royalty_growth"
+        ],
+        "question_id": "RAIN-V2-RMBS-002",
+        "field": "royalty_growth",
+        "depth": 0
+      },
+      {
+        "id": "read_1",
+        "kind": "retrieve",
+        "depends_on": [],
+        "evidence_block": "RMBS-8-K-ex0:Quarterly Financial Review - Supplemental Information",
+        "source_ids": [
+          "RMBS-8-K-ex0"
+        ],
+        "outputs": [
+          "billings25",
+          "billings24"
+        ],
+        "depth": 1
+      },
+      {
+        "id": "derive_billings_growth",
+        "kind": "calculate",
+        "depends_on": [
+          "read_1"
+        ],
+        "outputs": [
+          "billings_growth"
+        ],
+        "expression": "(billings25 / billings24 - 1) * 100",
+        "depth": 2
+      },
+      {
+        "id": "derive_growth_gap",
+        "kind": "calculate",
+        "depends_on": [
+          "derive_billings_growth",
+          "input_royalty_growth"
+        ],
+        "outputs": [
+          "growth_gap"
+        ],
+        "expression": "royalty_growth - billings_growth",
+        "depth": 3
+      }
+    ],
+    "hops": 3,
+    "evidence_records": [
+      {
+        "label": "billings25",
+        "source_id": "RMBS-8-K-ex0",
+        "value": "73.3",
+        "unit": "USD million",
+        "url": "https://www.sec.gov/Archives/edgar/data/917273/000091727325000072/rmbs-ex991_2025331xer.htm#:~:text=Licensing%20billings%20%28operational%20metric%29",
+        "locator": "Quarterly Financial Review - Supplemental Information; Licensing billings 2025",
+        "text_fragment": "Licensing billings (operational metric)",
+        "evidence_block": "RMBS-8-K-ex0:Quarterly Financial Review - Supplemental Information"
+      },
+      {
+        "label": "billings24",
+        "source_id": "RMBS-8-K-ex0",
+        "value": "63.2",
+        "unit": "USD million",
+        "url": "https://www.sec.gov/Archives/edgar/data/917273/000091727325000072/rmbs-ex991_2025331xer.htm#:~:text=Licensing%20billings%20%28operational%20metric%29",
+        "locator": "Quarterly Financial Review - Supplemental Information; Licensing billings 2024",
+        "text_fragment": "Licensing billings (operational metric)",
+        "evidence_block": "RMBS-8-K-ex0:Quarterly Financial Review - Supplemental Information"
+      },
+      {
+        "label": "royalties24",
+        "source_id": "RMBS-10-Q",
+        "value": "47.476",
+        "unit": "USD million",
+        "concept": "us-gaap:RevenueFromContractWithCustomerIncludingAssessedTax",
+        "context_id": "c-7",
+        "context": "context: entity: identifier:0000917273 segment:us-gaap:RoyaltyMember period: startdate:2024-01-01 enddate:2024-03-31",
+        "fact_id": "f-118",
+        "original_text": "47,476",
+        "scale": 3,
+        "sign": "+",
+        "url": "https://www.sec.gov/Archives/edgar/data/917273/000091727325000075/rmbs-20250331.htm#f-118",
+        "locator": "income_statement; inline XBRL #f-118, context c-7",
+        "evidence_block": "RMBS-10-Q:income_statement"
+      },
+      {
+        "label": "royalties25",
+        "source_id": "RMBS-10-Q",
+        "value": "73.975",
+        "unit": "USD million",
+        "concept": "us-gaap:RevenueFromContractWithCustomerIncludingAssessedTax",
+        "context_id": "c-6",
+        "context": "context: entity: identifier:0000917273 segment:us-gaap:RoyaltyMember period: startdate:2025-01-01 enddate:2025-03-31",
+        "fact_id": "f-117",
+        "original_text": "73,975",
+        "scale": 3,
+        "sign": "+",
+        "url": "https://www.sec.gov/Archives/edgar/data/917273/000091727325000075/rmbs-20250331.htm#f-117",
+        "locator": "income_statement; inline XBRL #f-117, context c-6",
+        "evidence_block": "RMBS-10-Q:income_statement"
+      }
+    ],
+    "reused_from_v1": [],
+    "grading": {
+      "expected_answer": {
+        "billings25": {
+          "value": "73.3",
+          "kind": "number",
+          "unit": "USD million",
+          "absolute_tolerance": "0"
+        },
+        "billings24": {
+          "value": "63.2",
+          "kind": "number",
+          "unit": "USD million",
+          "absolute_tolerance": "0"
+        },
+        "billings_growth": {
+          "value": "15.98",
+          "kind": "number",
+          "unit": "percent",
+          "absolute_tolerance": "0.01"
+        },
+        "growth_gap": {
+          "value": "39.83",
+          "kind": "number",
+          "unit": "percentage points",
+          "absolute_tolerance": "0.01"
+        }
+      },
+      "max_points": 5,
+      "rubric": {
+        "answer": 2,
+        "evidence": 1,
+        "scope_units": 1,
+        "dependency_and_method": 1
+      }
+    },
+    "verification": {
+      "checked_on": "2026-09-22",
+      "source_verified": true,
+      "agent_run_performed": false
+    }
+  },
+  "RAIN-V2-RMBS-004": {
+    "title_zh": "用披露定义解释不可互换的指标",
+    "ticker": "RMBS",
+    "company": "Rambus Inc.",
+    "depends_on": [
+      "RAIN-V2-RMBS-003"
+    ],
+    "input_bindings": {
+      "growth_gap": {
+        "kind": "prior",
+        "question_id": "RAIN-V2-RMBS-003",
+        "field": "growth_gap",
+        "value": "39.83455731396863011930878330",
+        "unit": "percentage points"
+      },
+      "metric_basis": {
+        "kind": "source",
+        "value": "operational invoicing metric",
+        "unit": "text",
+        "evidence_label": "metric_basis",
+        "source_id": "RMBS-8-K-ex0"
+      }
+    },
+    "derivations": [
+      {
+        "field": "different_growth",
+        "expression": "growth_gap != 0",
+        "unit": "boolean",
+        "decimal_places": null
+      },
+      {
+        "field": "substitution_supported",
+        "expression": "metric_basis == 'GAAP revenue metric' and growth_gap == 0",
+        "unit": "boolean",
+        "decimal_places": null
+      }
+    ],
+    "output_nodes": {
+      "metric_basis": "read_1",
+      "different_growth": "derive_different_growth",
+      "substitution_supported": "derive_substitution_supported"
+    },
+    "hop_definition": "conditional_evidence_depth_v2",
+    "hop_plan": [
+      {
+        "id": "input_growth_gap",
+        "kind": "prior",
+        "depends_on": [],
+        "outputs": [
+          "growth_gap"
+        ],
+        "question_id": "RAIN-V2-RMBS-003",
+        "field": "growth_gap",
+        "depth": 0
+      },
+      {
+        "id": "read_1",
+        "kind": "retrieve",
+        "depends_on": [],
+        "evidence_block": "RMBS-8-K-ex0:Supplemental Information",
+        "source_ids": [
+          "RMBS-8-K-ex0"
+        ],
+        "outputs": [
+          "metric_basis"
+        ],
+        "depth": 1
+      },
+      {
+        "id": "derive_different_growth",
+        "kind": "judge",
+        "depends_on": [
+          "input_growth_gap"
+        ],
+        "outputs": [
+          "different_growth"
+        ],
+        "expression": "growth_gap != 0",
+        "depth": 1
+      },
+      {
+        "id": "derive_substitution_supported",
+        "kind": "judge",
+        "depends_on": [
+          "input_growth_gap",
+          "read_1"
+        ],
+        "outputs": [
+          "substitution_supported"
+        ],
+        "expression": "metric_basis == 'GAAP revenue metric' and growth_gap == 0",
+        "depth": 2
+      }
+    ],
+    "hops": 2,
+    "evidence_records": [
+      {
+        "label": "metric_basis",
+        "source_id": "RMBS-8-K-ex0",
+        "value": "operational invoicing metric",
+        "unit": "text",
+        "url": "https://www.sec.gov/Archives/edgar/data/917273/000091727325000072/rmbs-ex991_2025331xer.htm#:~:text=Licensing%20billings%20is%20an%20operational%20metric",
+        "locator": "Supplemental Information; licensing billings definition footnote",
+        "text_fragment": "Licensing billings is an operational metric",
+        "evidence_block": "RMBS-8-K-ex0:Supplemental Information"
+      },
+      {
+        "label": "billings24",
+        "source_id": "RMBS-8-K-ex0",
+        "value": "63.2",
+        "unit": "USD million",
+        "url": "https://www.sec.gov/Archives/edgar/data/917273/000091727325000072/rmbs-ex991_2025331xer.htm#:~:text=Licensing%20billings%20%28operational%20metric%29",
+        "locator": "Quarterly Financial Review - Supplemental Information; Licensing billings 2024",
+        "text_fragment": "Licensing billings (operational metric)",
+        "evidence_block": "RMBS-8-K-ex0:Quarterly Financial Review - Supplemental Information"
+      },
+      {
+        "label": "billings25",
+        "source_id": "RMBS-8-K-ex0",
+        "value": "73.3",
+        "unit": "USD million",
+        "url": "https://www.sec.gov/Archives/edgar/data/917273/000091727325000072/rmbs-ex991_2025331xer.htm#:~:text=Licensing%20billings%20%28operational%20metric%29",
+        "locator": "Quarterly Financial Review - Supplemental Information; Licensing billings 2025",
+        "text_fragment": "Licensing billings (operational metric)",
+        "evidence_block": "RMBS-8-K-ex0:Quarterly Financial Review - Supplemental Information"
+      },
+      {
+        "label": "royalties24",
+        "source_id": "RMBS-10-Q",
+        "value": "47.476",
+        "unit": "USD million",
+        "concept": "us-gaap:RevenueFromContractWithCustomerIncludingAssessedTax",
+        "context_id": "c-7",
+        "context": "context: entity: identifier:0000917273 segment:us-gaap:RoyaltyMember period: startdate:2024-01-01 enddate:2024-03-31",
+        "fact_id": "f-118",
+        "original_text": "47,476",
+        "scale": 3,
+        "sign": "+",
+        "url": "https://www.sec.gov/Archives/edgar/data/917273/000091727325000075/rmbs-20250331.htm#f-118",
+        "locator": "income_statement; inline XBRL #f-118, context c-7",
+        "evidence_block": "RMBS-10-Q:income_statement"
+      },
+      {
+        "label": "royalties25",
+        "source_id": "RMBS-10-Q",
+        "value": "73.975",
+        "unit": "USD million",
+        "concept": "us-gaap:RevenueFromContractWithCustomerIncludingAssessedTax",
+        "context_id": "c-6",
+        "context": "context: entity: identifier:0000917273 segment:us-gaap:RoyaltyMember period: startdate:2025-01-01 enddate:2025-03-31",
+        "fact_id": "f-117",
+        "original_text": "73,975",
+        "scale": 3,
+        "sign": "+",
+        "url": "https://www.sec.gov/Archives/edgar/data/917273/000091727325000075/rmbs-20250331.htm#f-117",
+        "locator": "income_statement; inline XBRL #f-117, context c-6",
+        "evidence_block": "RMBS-10-Q:income_statement"
+      }
+    ],
+    "reused_from_v1": [],
+    "grading": {
+      "expected_answer": {
+        "metric_basis": {
+          "value": "operational invoicing metric",
+          "kind": "text",
+          "unit": "text"
+        },
+        "different_growth": {
+          "value": true,
+          "kind": "boolean",
+          "unit": "boolean"
+        },
+        "substitution_supported": {
+          "value": false,
+          "kind": "boolean",
+          "unit": "boolean"
+        }
+      },
+      "max_points": 5,
+      "rubric": {
+        "answer": 2,
+        "evidence": 1,
+        "scope_units": 1,
+        "dependency_and_method": 1
+      }
+    },
+    "verification": {
+      "checked_on": "2026-09-22",
+      "source_verified": true,
+      "agent_run_performed": false
+    }
+  },
+  "RAIN-V2-RMBS-005": {
+    "title_zh": "避免把指引组成项错误相加为 GAAP 收入",
+    "ticker": "RMBS",
+    "company": "Rambus Inc.",
+    "depends_on": [
+      "RAIN-V2-RMBS-004"
+    ],
+    "input_bindings": {
+      "substitution_supported": {
+        "kind": "prior",
+        "question_id": "RAIN-V2-RMBS-004",
+        "field": "substitution_supported",
+        "value": false,
+        "unit": "boolean"
+      },
+      "billing_low": {
+        "kind": "source",
+        "value": "64",
+        "unit": "USD million",
+        "evidence_label": "billing_low",
+        "source_id": "RMBS-8-K-ex0"
+      },
+      "billing_high": {
+        "kind": "source",
+        "value": "70",
+        "unit": "USD million",
+        "evidence_label": "billing_high",
+        "source_id": "RMBS-8-K-ex0"
+      },
+      "product_low": {
+        "kind": "source",
+        "value": "77",
+        "unit": "USD million",
+        "evidence_label": "product_low",
+        "source_id": "RMBS-8-K-ex0"
+      },
+      "product_high": {
+        "kind": "source",
+        "value": "83",
+        "unit": "USD million",
+        "evidence_label": "product_high",
+        "source_id": "RMBS-8-K-ex0"
+      },
+      "contract_low": {
+        "kind": "source",
+        "value": "17",
+        "unit": "USD million",
+        "evidence_label": "contract_low",
+        "source_id": "RMBS-8-K-ex0"
+      },
+      "contract_high": {
+        "kind": "source",
+        "value": "23",
+        "unit": "USD million",
+        "evidence_label": "contract_high",
+        "source_id": "RMBS-8-K-ex0"
+      },
+      "gaap_total_guidance": {
+        "kind": "source",
+        "value": null,
+        "unit": "USD million",
+        "evidence_label": "gaap_total_guidance",
+        "source_id": "RMBS-8-K-ex0"
+      }
+    },
+    "derivations": [
+      {
+        "field": "billing_mid",
+        "expression": "(billing_low + billing_high) / 2",
+        "unit": "USD million",
+        "decimal_places": 3
+      },
+      {
+        "field": "product_mid",
+        "expression": "(product_low + product_high) / 2",
+        "unit": "USD million",
+        "decimal_places": 3
+      },
+      {
+        "field": "contract_mid",
+        "expression": "(contract_low + contract_high) / 2",
+        "unit": "USD million",
+        "decimal_places": 3
+      },
+      {
+        "field": "component_sum",
+        "expression": "billing_mid + product_mid + contract_mid",
+        "unit": "USD million",
+        "decimal_places": 3
+      },
+      {
+        "field": "valid_gaap_total",
+        "expression": "substitution_supported and gaap_total_guidance != None",
+        "unit": "boolean",
+        "decimal_places": null
+      }
+    ],
+    "output_nodes": {
+      "billing_mid": "derive_billing_mid",
+      "product_mid": "derive_product_mid",
+      "contract_mid": "derive_contract_mid",
+      "component_sum": "derive_component_sum",
+      "valid_gaap_total": "derive_valid_gaap_total",
+      "gaap_total_guidance": "read_1"
+    },
+    "hop_definition": "conditional_evidence_depth_v2",
+    "hop_plan": [
+      {
+        "id": "input_substitution_supported",
+        "kind": "prior",
+        "depends_on": [],
+        "outputs": [
+          "substitution_supported"
+        ],
+        "question_id": "RAIN-V2-RMBS-004",
+        "field": "substitution_supported",
+        "depth": 0
+      },
+      {
+        "id": "read_1",
+        "kind": "retrieve",
+        "depends_on": [],
+        "evidence_block": "RMBS-8-K-ex0:2025 Second Quarter Outlook",
+        "source_ids": [
+          "RMBS-8-K-ex0"
+        ],
+        "outputs": [
+          "billing_low",
+          "billing_high",
+          "product_low",
+          "product_high",
+          "contract_low",
+          "contract_high",
+          "gaap_total_guidance"
+        ],
+        "depth": 1
+      },
+      {
+        "id": "derive_billing_mid",
+        "kind": "calculate",
+        "depends_on": [
+          "read_1"
+        ],
+        "outputs": [
+          "billing_mid"
+        ],
+        "expression": "(billing_low + billing_high) / 2",
+        "depth": 2
+      },
+      {
+        "id": "derive_product_mid",
+        "kind": "calculate",
+        "depends_on": [
+          "read_1"
+        ],
+        "outputs": [
+          "product_mid"
+        ],
+        "expression": "(product_low + product_high) / 2",
+        "depth": 2
+      },
+      {
+        "id": "derive_contract_mid",
+        "kind": "calculate",
+        "depends_on": [
+          "read_1"
+        ],
+        "outputs": [
+          "contract_mid"
+        ],
+        "expression": "(contract_low + contract_high) / 2",
+        "depth": 2
+      },
+      {
+        "id": "derive_component_sum",
+        "kind": "calculate",
+        "depends_on": [
+          "derive_billing_mid",
+          "derive_contract_mid",
+          "derive_product_mid"
+        ],
+        "outputs": [
+          "component_sum"
+        ],
+        "expression": "billing_mid + product_mid + contract_mid",
+        "depth": 3
+      },
+      {
+        "id": "derive_valid_gaap_total",
+        "kind": "judge",
+        "depends_on": [
+          "read_1",
+          "input_substitution_supported"
+        ],
+        "outputs": [
+          "valid_gaap_total"
+        ],
+        "expression": "substitution_supported and gaap_total_guidance != None",
+        "depth": 2
+      }
+    ],
+    "hops": 3,
+    "evidence_records": [
+      {
+        "label": "billing_low",
+        "source_id": "RMBS-8-K-ex0",
+        "value": "64",
+        "unit": "USD million",
+        "url": "https://www.sec.gov/Archives/edgar/data/917273/000091727325000072/rmbs-ex991_2025331xer.htm#:~:text=2025%20Second%20Quarter%20Outlook",
+        "locator": "2025 Second Quarter Outlook; Licensing billings",
+        "text_fragment": "2025 Second Quarter Outlook",
+        "evidence_block": "RMBS-8-K-ex0:2025 Second Quarter Outlook"
+      },
+      {
+        "label": "billing_high",
+        "source_id": "RMBS-8-K-ex0",
+        "value": "70",
+        "unit": "USD million",
+        "url": "https://www.sec.gov/Archives/edgar/data/917273/000091727325000072/rmbs-ex991_2025331xer.htm#:~:text=2025%20Second%20Quarter%20Outlook",
+        "locator": "2025 Second Quarter Outlook; Licensing billings",
+        "text_fragment": "2025 Second Quarter Outlook",
+        "evidence_block": "RMBS-8-K-ex0:2025 Second Quarter Outlook"
+      },
+      {
+        "label": "product_low",
+        "source_id": "RMBS-8-K-ex0",
+        "value": "77",
+        "unit": "USD million",
+        "url": "https://www.sec.gov/Archives/edgar/data/917273/000091727325000072/rmbs-ex991_2025331xer.htm#:~:text=2025%20Second%20Quarter%20Outlook",
+        "locator": "2025 Second Quarter Outlook; Product revenue",
+        "text_fragment": "2025 Second Quarter Outlook",
+        "evidence_block": "RMBS-8-K-ex0:2025 Second Quarter Outlook"
+      },
+      {
+        "label": "product_high",
+        "source_id": "RMBS-8-K-ex0",
+        "value": "83",
+        "unit": "USD million",
+        "url": "https://www.sec.gov/Archives/edgar/data/917273/000091727325000072/rmbs-ex991_2025331xer.htm#:~:text=2025%20Second%20Quarter%20Outlook",
+        "locator": "2025 Second Quarter Outlook; Product revenue",
+        "text_fragment": "2025 Second Quarter Outlook",
+        "evidence_block": "RMBS-8-K-ex0:2025 Second Quarter Outlook"
+      },
+      {
+        "label": "contract_low",
+        "source_id": "RMBS-8-K-ex0",
+        "value": "17",
+        "unit": "USD million",
+        "url": "https://www.sec.gov/Archives/edgar/data/917273/000091727325000072/rmbs-ex991_2025331xer.htm#:~:text=2025%20Second%20Quarter%20Outlook",
+        "locator": "2025 Second Quarter Outlook; Contract and other revenue",
+        "text_fragment": "2025 Second Quarter Outlook",
+        "evidence_block": "RMBS-8-K-ex0:2025 Second Quarter Outlook"
+      },
+      {
+        "label": "contract_high",
+        "source_id": "RMBS-8-K-ex0",
+        "value": "23",
+        "unit": "USD million",
+        "url": "https://www.sec.gov/Archives/edgar/data/917273/000091727325000072/rmbs-ex991_2025331xer.htm#:~:text=2025%20Second%20Quarter%20Outlook",
+        "locator": "2025 Second Quarter Outlook; Contract and other revenue",
+        "text_fragment": "2025 Second Quarter Outlook",
+        "evidence_block": "RMBS-8-K-ex0:2025 Second Quarter Outlook"
+      },
+      {
+        "label": "gaap_total_guidance",
+        "source_id": "RMBS-8-K-ex0",
+        "value": null,
+        "unit": "USD million",
+        "url": "https://www.sec.gov/Archives/edgar/data/917273/000091727325000072/rmbs-ex991_2025331xer.htm#:~:text=The%20Company%20will%20discuss%20its%20full%20revenue%20guidance",
+        "locator": "2025 Second Quarter Outlook; full revenue guidance deferred to call",
+        "text_fragment": "The Company will discuss its full revenue guidance",
+        "evidence_block": "RMBS-8-K-ex0:2025 Second Quarter Outlook"
+      },
+      {
+        "label": "billings24",
+        "source_id": "RMBS-8-K-ex0",
+        "value": "63.2",
+        "unit": "USD million",
+        "url": "https://www.sec.gov/Archives/edgar/data/917273/000091727325000072/rmbs-ex991_2025331xer.htm#:~:text=Licensing%20billings%20%28operational%20metric%29",
+        "locator": "Quarterly Financial Review - Supplemental Information; Licensing billings 2024",
+        "text_fragment": "Licensing billings (operational metric)",
+        "evidence_block": "RMBS-8-K-ex0:Quarterly Financial Review - Supplemental Information"
+      },
+      {
+        "label": "billings25",
+        "source_id": "RMBS-8-K-ex0",
+        "value": "73.3",
+        "unit": "USD million",
+        "url": "https://www.sec.gov/Archives/edgar/data/917273/000091727325000072/rmbs-ex991_2025331xer.htm#:~:text=Licensing%20billings%20%28operational%20metric%29",
+        "locator": "Quarterly Financial Review - Supplemental Information; Licensing billings 2025",
+        "text_fragment": "Licensing billings (operational metric)",
+        "evidence_block": "RMBS-8-K-ex0:Quarterly Financial Review - Supplemental Information"
+      },
+      {
+        "label": "royalties24",
+        "source_id": "RMBS-10-Q",
+        "value": "47.476",
+        "unit": "USD million",
+        "concept": "us-gaap:RevenueFromContractWithCustomerIncludingAssessedTax",
+        "context_id": "c-7",
+        "context": "context: entity: identifier:0000917273 segment:us-gaap:RoyaltyMember period: startdate:2024-01-01 enddate:2024-03-31",
+        "fact_id": "f-118",
+        "original_text": "47,476",
+        "scale": 3,
+        "sign": "+",
+        "url": "https://www.sec.gov/Archives/edgar/data/917273/000091727325000075/rmbs-20250331.htm#f-118",
+        "locator": "income_statement; inline XBRL #f-118, context c-7",
+        "evidence_block": "RMBS-10-Q:income_statement"
+      },
+      {
+        "label": "royalties25",
+        "source_id": "RMBS-10-Q",
+        "value": "73.975",
+        "unit": "USD million",
+        "concept": "us-gaap:RevenueFromContractWithCustomerIncludingAssessedTax",
+        "context_id": "c-6",
+        "context": "context: entity: identifier:0000917273 segment:us-gaap:RoyaltyMember period: startdate:2025-01-01 enddate:2025-03-31",
+        "fact_id": "f-117",
+        "original_text": "73,975",
+        "scale": 3,
+        "sign": "+",
+        "url": "https://www.sec.gov/Archives/edgar/data/917273/000091727325000075/rmbs-20250331.htm#f-117",
+        "locator": "income_statement; inline XBRL #f-117, context c-6",
+        "evidence_block": "RMBS-10-Q:income_statement"
+      },
+      {
+        "label": "metric_basis",
+        "source_id": "RMBS-8-K-ex0",
+        "value": "operational invoicing metric",
+        "unit": "text",
+        "url": "https://www.sec.gov/Archives/edgar/data/917273/000091727325000072/rmbs-ex991_2025331xer.htm#:~:text=Licensing%20billings%20is%20an%20operational%20metric",
+        "locator": "Supplemental Information; licensing billings definition footnote",
+        "text_fragment": "Licensing billings is an operational metric",
+        "evidence_block": "RMBS-8-K-ex0:Supplemental Information"
+      }
+    ],
+    "reused_from_v1": [],
+    "grading": {
+      "expected_answer": {
+        "billing_mid": {
+          "value": "67.000",
+          "kind": "number",
+          "unit": "USD million",
+          "absolute_tolerance": "0.001"
+        },
+        "product_mid": {
+          "value": "80.000",
+          "kind": "number",
+          "unit": "USD million",
+          "absolute_tolerance": "0.001"
+        },
+        "contract_mid": {
+          "value": "20.000",
+          "kind": "number",
+          "unit": "USD million",
+          "absolute_tolerance": "0.001"
+        },
+        "component_sum": {
+          "value": "167.000",
+          "kind": "number",
+          "unit": "USD million",
+          "absolute_tolerance": "0.001"
+        },
+        "valid_gaap_total": {
+          "value": false,
+          "kind": "boolean",
+          "unit": "boolean"
+        },
+        "gaap_total_guidance": {
+          "value": null,
+          "kind": "null",
+          "unit": "USD million"
+        }
+      },
+      "max_points": 5,
+      "rubric": {
+        "answer": 2,
+        "evidence": 1,
+        "scope_units": 1,
+        "dependency_and_method": 1
+      }
+    },
+    "verification": {
+      "checked_on": "2026-09-22",
+      "source_verified": true,
+      "agent_run_performed": false
+    }
   }
 }

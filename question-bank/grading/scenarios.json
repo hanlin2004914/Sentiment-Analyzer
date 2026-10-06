@@ -299,5 +299,54 @@
         "hops": 5
       }
     ]
+  },
+  "RMBS": {
+    "company": "Rambus Inc.",
+    "ticker_at_filing": "RMBS",
+    "title_zh": "收入质量复核：GAAP royalties 与 licensing billings",
+    "user_request": "I am reviewing Rambus's Q1 2025 growth and a proposed Q2 revenue estimate. Check the GAAP revenue bridge, test whether licensing billings are interchangeable with royalties, and decide if adding the outlook components produces valid GAAP revenue guidance.",
+    "scope": "Q1 2025/2024 comparatives; Q2 2025 outlook in 8-K dated 2025-04-28",
+    "scenario_id": "RAIN-V2-RMBS-001",
+    "file": "rmbs_scenario.json",
+    "steps": [
+      {
+        "id": "RAIN-V2-RMBS-001",
+        "title_zh": "建立 GAAP 收入桥输入",
+        "depends_on": [],
+        "hops": 1
+      },
+      {
+        "id": "RAIN-V2-RMBS-002",
+        "title_zh": "将总收入增长拆到组成项目",
+        "depends_on": [
+          "RAIN-V2-RMBS-001"
+        ],
+        "hops": 3
+      },
+      {
+        "id": "RAIN-V2-RMBS-003",
+        "title_zh": "检验 billings 是否跟随 royalties",
+        "depends_on": [
+          "RAIN-V2-RMBS-002"
+        ],
+        "hops": 3
+      },
+      {
+        "id": "RAIN-V2-RMBS-004",
+        "title_zh": "用披露定义解释不可互换的指标",
+        "depends_on": [
+          "RAIN-V2-RMBS-003"
+        ],
+        "hops": 2
+      },
+      {
+        "id": "RAIN-V2-RMBS-005",
+        "title_zh": "避免把指引组成项错误相加为 GAAP 收入",
+        "depends_on": [
+          "RAIN-V2-RMBS-004"
+        ],
+        "hops": 3
+      }
+    ]
   }
 }

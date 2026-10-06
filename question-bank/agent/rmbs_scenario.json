@@ -1,0 +1,126 @@
+[
+  {
+    "id": "RAIN-V2-RMBS-001",
+    "question": "Scenario: I am reviewing Rambus's Q1 2025 growth and a proposed Q2 revenue estimate. Check the GAAP revenue bridge, test whether licensing billings are interchangeable with royalties, and decide if adding the outlook components produces valid GAAP revenue guidance. First, from the 10-Q filed April 29, 2025 retrieve Q1 2025 and Q1 2024 product revenue, royalties, contract and other revenue, and total revenue. Use the USD-thousand statements converted to USD millions, not rounded release highlights. Return product25: number (USD million); royalties25: number (USD million); contract25: number (USD million); total25: number (USD million); product24: number (USD million); royalties24: number (USD million); contract24: number (USD million); total24: number (USD million). Cite the SEC document and precise table/note/exhibit. Reuse prior-stage amounts without intermediate rounding; report percentages/ratios to two decimals and monetary derived amounts to three decimals unless specified.",
+    "scenario_id": "RAIN-V2-RMBS-001",
+    "workflow_step": 1,
+    "total_steps": 5,
+    "company": "Rambus Inc.",
+    "ticker_at_filing": "RMBS",
+    "depends_on": [],
+    "document_scope": [
+      {
+        "company": "Rambus Inc.",
+        "cik": "0000917273",
+        "form": "10-Q",
+        "filed": "2025-04-29",
+        "report_date": "2025-03-31"
+      }
+    ]
+  },
+  {
+    "id": "RAIN-V2-RMBS-002",
+    "question": "Using Step 1, calculate dollar changes in product, royalty and contract revenue and reconcile their sum to the total revenue increase. Calculate total and royalty revenue growth rates. Retain the royalty growth rate for comparison with billings. Return product_change: number (USD million); royalty_change: number (USD million); contract_change: number (USD million); bridge_difference: number (USD million); total_growth: number (percent); royalty_growth: number (percent). Cite the SEC document and precise table/note/exhibit. Reuse prior-stage amounts without intermediate rounding; report percentages/ratios to two decimals and monetary derived amounts to three decimals unless specified.",
+    "scenario_id": "RAIN-V2-RMBS-001",
+    "workflow_step": 2,
+    "total_steps": 5,
+    "company": "Rambus Inc.",
+    "ticker_at_filing": "RMBS",
+    "depends_on": [
+      "RAIN-V2-RMBS-001"
+    ],
+    "document_scope": [
+      {
+        "company": "Rambus Inc.",
+        "cik": "0000917273",
+        "form": "10-Q",
+        "filed": "2025-04-29",
+        "report_date": "2025-03-31"
+      }
+    ]
+  },
+  {
+    "id": "RAIN-V2-RMBS-003",
+    "question": "Compare Step 2's GAAP royalty growth with licensing billings in Exhibit 99.1 of the April 28, 2025 8-K. Retrieve reported licensing billings for Q1 2025 and Q1 2024, use their disclosed one-decimal USD-million precision, calculate billings growth, and compute GAAP royalty growth minus billings growth in percentage points. Return billings25: number (USD million); billings24: number (USD million); billings_growth: number (percent); growth_gap: number (percentage points). Cite the SEC document and precise table/note/exhibit. Reuse prior-stage amounts without intermediate rounding; report percentages/ratios to two decimals and monetary derived amounts to three decimals unless specified.",
+    "scenario_id": "RAIN-V2-RMBS-001",
+    "workflow_step": 3,
+    "total_steps": 5,
+    "company": "Rambus Inc.",
+    "ticker_at_filing": "RMBS",
+    "depends_on": [
+      "RAIN-V2-RMBS-002"
+    ],
+    "document_scope": [
+      {
+        "company": "Rambus Inc.",
+        "cik": "0000917273",
+        "form": "8-K",
+        "filed": "2025-04-28",
+        "report_date": "2025-04-28"
+      },
+      {
+        "company": "Rambus Inc.",
+        "cik": "0000917273",
+        "form": "10-Q",
+        "filed": "2025-04-29",
+        "report_date": "2025-03-31"
+      }
+    ]
+  },
+  {
+    "id": "RAIN-V2-RMBS-004",
+    "question": "Continue from Step 3's growth gap. Read the licensing-billings definition in the same release: classify whether it is a GAAP revenue metric or an operational invoicing metric adjusted for specified advance-payment differences. Return that classification, whether the previously calculated growth gap is nonzero, and whether substituting billings growth for GAAP royalty growth is supported by this definition. Return metric_basis: text (text); different_growth: boolean (boolean); substitution_supported: boolean (boolean). Cite the SEC document and precise table/note/exhibit. Reuse prior-stage amounts without intermediate rounding; report percentages/ratios to two decimals and monetary derived amounts to three decimals unless specified.",
+    "scenario_id": "RAIN-V2-RMBS-001",
+    "workflow_step": 4,
+    "total_steps": 5,
+    "company": "Rambus Inc.",
+    "ticker_at_filing": "RMBS",
+    "depends_on": [
+      "RAIN-V2-RMBS-003"
+    ],
+    "document_scope": [
+      {
+        "company": "Rambus Inc.",
+        "cik": "0000917273",
+        "form": "8-K",
+        "filed": "2025-04-28",
+        "report_date": "2025-04-28"
+      },
+      {
+        "company": "Rambus Inc.",
+        "cik": "0000917273",
+        "form": "10-Q",
+        "filed": "2025-04-29",
+        "report_date": "2025-03-31"
+      }
+    ]
+  },
+  {
+    "id": "RAIN-V2-RMBS-005",
+    "question": "Apply Step 4's metric classification to the Q2 outlook in the same SEC exhibit. Retrieve the ranges for licensing billings, product revenue and contract/other revenue; calculate their component midpoints and the sum. State whether that sum can be labeled GAAP total revenue guidance. Also state whether a numeric total GAAP revenue guidance is provided in this exhibit itself; it says full revenue guidance will be discussed on the call. Do not invent a total or use an external transcript. Return billing_mid: number (USD million); product_mid: number (USD million); contract_mid: number (USD million); component_sum: number (USD million); valid_gaap_total: boolean (boolean); gaap_total_guidance: null (USD million). Cite the SEC document and precise table/note/exhibit. Reuse prior-stage amounts without intermediate rounding; report percentages/ratios to two decimals and monetary derived amounts to three decimals unless specified.",
+    "scenario_id": "RAIN-V2-RMBS-001",
+    "workflow_step": 5,
+    "total_steps": 5,
+    "company": "Rambus Inc.",
+    "ticker_at_filing": "RMBS",
+    "depends_on": [
+      "RAIN-V2-RMBS-004"
+    ],
+    "document_scope": [
+      {
+        "company": "Rambus Inc.",
+        "cik": "0000917273",
+        "form": "8-K",
+        "filed": "2025-04-28",
+        "report_date": "2025-04-28"
+      },
+      {
+        "company": "Rambus Inc.",
+        "cik": "0000917273",
+        "form": "10-Q",
+        "filed": "2025-04-29",
+        "report_date": "2025-03-31"
+      }
+    ]
+  }
+]
