@@ -1,0 +1,106 @@
+[
+  {
+    "id": "XBRL-CMP-011",
+    "question": "Using Advanced Micro Devices (AMD)'s FY2025 Q2 10-Q XBRL facts (SEC accession 0000002488-25-000108), calculate net inventory as a percentage of current assets as of June 28, 2025. Return a percentage rounded to two decimal places. Use the listed us-gaap concepts and only facts from this accession.",
+    "type": "XBRL Computation",
+    "answer": "AMD_FY2025Q2_closing_inventory_share",
+    "scenario_id": "XBRL-COMPUTE-003",
+    "workflow_step": 1,
+    "total_steps": 5,
+    "hops": 2,
+    "xbrl_concepts": [
+      "us-gaap:InventoryNet",
+      "us-gaap:AssetsCurrent"
+    ],
+    "filing_type": "10-Q",
+    "filing_period": "FY2025 Q2 report ended 2025-06-28; instant end=2025-06-28",
+    "answer_type": "calculated_value",
+    "tool_required": "edgartools (XBRL facts and period filtering) + calculation",
+    "source": "https://data.sec.gov/api/xbrl/companyfacts/CIK0000002488.json",
+    "reasoning": "Compute InventoryNet / AssetsCurrent * 100 using matching instant facts. Match accession, dates and units rather than relying on fy/fp alone; API USD values are already in full dollars.",
+    "evidence": "https://www.sec.gov/Archives/edgar/data/2488/000000248825000108/amd-20250628.htm; Balance Sheets; inventories and total current assets; accession 0000002488-25-000108, filed 2025-08-06; instant end=2025-06-28; unit=USD."
+  },
+  {
+    "id": "XBRL-CMP-012",
+    "question": "Using Advanced Micro Devices (AMD)'s FY2025 Q2 10-Q XBRL facts (SEC accession 0000002488-25-000108), calculate cash-and-cash-equivalents coverage of current liabilities as of June 28, 2025. Define this measure as cash and cash equivalents only divided by current liabilities; exclude investments. Return a ratio rounded to four decimal places. Use the listed us-gaap concepts and only facts from this accession.",
+    "type": "XBRL Computation",
+    "answer": "AMD_FY2025Q2_closing_cash_only_coverage",
+    "scenario_id": "XBRL-COMPUTE-003",
+    "workflow_step": 2,
+    "total_steps": 5,
+    "hops": 2,
+    "xbrl_concepts": [
+      "us-gaap:CashAndCashEquivalentsAtCarryingValue",
+      "us-gaap:LiabilitiesCurrent"
+    ],
+    "filing_type": "10-Q",
+    "filing_period": "FY2025 Q2 report ended 2025-06-28; instant end=2025-06-28",
+    "answer_type": "calculated_value",
+    "tool_required": "edgartools (XBRL facts and period filtering) + calculation",
+    "source": "https://data.sec.gov/api/xbrl/companyfacts/CIK0000002488.json",
+    "reasoning": "Compute CashAndCashEquivalentsAtCarryingValue / LiabilitiesCurrent at the same date. The explicit cash-only definition avoids differing cash-ratio conventions. Match accession, dates and units rather than relying on fy/fp alone; API USD values are already in full dollars.",
+    "evidence": "https://www.sec.gov/Archives/edgar/data/2488/000000248825000108/amd-20250628.htm; Balance Sheets; cash and cash equivalents and total current liabilities; accession 0000002488-25-000108, filed 2025-08-06; instant end=2025-06-28; unit=USD."
+  },
+  {
+    "id": "XBRL-CMP-013",
+    "question": "Using Advanced Micro Devices (AMD)'s FY2025 Q2 10-Q XBRL facts (SEC accession 0000002488-25-000108), calculate GAAP operating margin for Q2 FY2025 (March 30 through June 28, 2025). Return a signed percentage rounded to two decimal places. Use the listed us-gaap concepts and only facts from this accession.",
+    "type": "XBRL Computation",
+    "answer": "AMD_FY2025Q2_quarterly_GAAP_operating_margin",
+    "scenario_id": "XBRL-COMPUTE-003",
+    "workflow_step": 3,
+    "total_steps": 5,
+    "hops": 2,
+    "xbrl_concepts": [
+      "us-gaap:OperatingIncomeLoss",
+      "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax"
+    ],
+    "filing_type": "10-Q",
+    "filing_period": "FY2025 Q2 report ended 2025-06-28; duration start=2025-03-30, end=2025-06-28",
+    "answer_type": "calculated_value",
+    "tool_required": "edgartools (XBRL facts and period filtering) + calculation",
+    "source": "https://data.sec.gov/api/xbrl/companyfacts/CIK0000002488.json",
+    "reasoning": "Compute OperatingIncomeLoss / RevenueFromContractWithCustomerExcludingAssessedTax * 100; retain the sign of operating income or loss. Match accession, dates and units rather than relying on fy/fp alone; API USD values are already in full dollars.",
+    "evidence": "https://www.sec.gov/Archives/edgar/data/2488/000000248825000108/amd-20250628.htm; Statements of Operations; operating income (loss) and net revenue; accession 0000002488-25-000108, filed 2025-08-06; duration start=2025-03-30, end=2025-06-28; unit=USD."
+  },
+  {
+    "id": "XBRL-CMP-014",
+    "question": "Using Advanced Micro Devices (AMD)'s FY2025 Q2 10-Q XBRL facts (SEC accession 0000002488-25-000108), calculate purchases of property, plant and equipment as a percentage of operating cash flow for the first half of FY2025 (December 29, 2024 through June 28, 2025). Return a percentage rounded to two decimal places. Use the listed us-gaap concepts and only facts from this accession.",
+    "type": "XBRL Computation",
+    "answer": "AMD_FY2025Q2_YTD_capex_cashflow_share",
+    "scenario_id": "XBRL-COMPUTE-003",
+    "workflow_step": 4,
+    "total_steps": 5,
+    "hops": 2,
+    "xbrl_concepts": [
+      "us-gaap:PaymentsToAcquirePropertyPlantAndEquipment",
+      "us-gaap:NetCashProvidedByUsedInOperatingActivities"
+    ],
+    "filing_type": "10-Q",
+    "filing_period": "FY2025 Q2 report ended 2025-06-28; duration start=2024-12-29, end=2025-06-28",
+    "answer_type": "calculated_value",
+    "tool_required": "edgartools (XBRL facts and period filtering) + calculation",
+    "source": "https://data.sec.gov/api/xbrl/companyfacts/CIK0000002488.json",
+    "reasoning": "Compute the positive PaymentsToAcquirePropertyPlantAndEquipment amount / NetCashProvidedByUsedInOperatingActivities * 100 using matching fiscal year-to-date durations. Match accession, dates and units rather than relying on fy/fp alone; API USD values are already in full dollars.",
+    "evidence": "https://www.sec.gov/Archives/edgar/data/2488/000000248825000108/amd-20250628.htm; Statements of Cash Flows; purchases of property and equipment and operating cash flow; accession 0000002488-25-000108, filed 2025-08-06; duration start=2024-12-29, end=2025-06-28; unit=USD."
+  },
+  {
+    "id": "XBRL-CMP-015",
+    "question": "Using Advanced Micro Devices (AMD)'s FY2025 Q2 10-Q XBRL facts (SEC accession 0000002488-25-000108), derive Q1 FY2025 gross profit by subtracting Q2 gross profit (March 30 through June 28, 2025) from first-half gross profit (December 29, 2024 through June 28, 2025), then calculate Q2 versus Q1 gross profit growth. Return derived Q1 gross profit in USD millions and growth as a percentage rounded to two decimal places. Use the listed us-gaap concepts and only facts from this accession.",
+    "type": "XBRL Computation",
+    "answer": "AMD_FY2025Q2_Q1_derived_gross_profit_and_Q2_change",
+    "scenario_id": "XBRL-COMPUTE-003",
+    "workflow_step": 5,
+    "total_steps": 5,
+    "hops": 3,
+    "xbrl_concepts": [
+      "us-gaap:GrossProfit"
+    ],
+    "filing_type": "10-Q",
+    "filing_period": "FY2025 Q2 report ended 2025-06-28; two durations: start=2025-03-30 and start=2024-12-29, both end=2025-06-28",
+    "answer_type": "calculated_value",
+    "tool_required": "edgartools (XBRL facts and period filtering) + calculation",
+    "source": "https://data.sec.gov/api/xbrl/companyfacts/CIK0000002488.json",
+    "reasoning": "Compute Q1 = year-to-date GrossProfit - Q2 GrossProfit. Then compute (Q2 / Q1 - 1) * 100 without rounding intermediate values. Match accession, dates and units rather than relying on fy/fp alone; API USD values are already in full dollars.",
+    "evidence": "https://www.sec.gov/Archives/edgar/data/2488/000000248825000108/amd-20250628.htm; Statements of Operations; gross profit, three- and six-month columns; accession 0000002488-25-000108, filed 2025-08-06; two durations: start=2025-03-30 and start=2024-12-29, both end=2025-06-28; unit=USD."
+  }
+]
