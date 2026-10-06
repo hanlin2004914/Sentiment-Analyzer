@@ -1,0 +1,106 @@
+[
+  {
+    "id": "XBRL-CMP-016",
+    "question": "Using Coca-Cola's FY2025 Q2 10-Q XBRL facts (accession 0000021344-25-000061; 2025-03-29 through 2025-06-27), calculate the quarterly effective income tax rate as income tax expense divided by income before tax. Return a percentage rounded to two decimals. Use the listed concepts and only facts from this accession.",
+    "type": "XBRL Computation",
+    "answer": "KO_FY2025_Q2_quarter_effective_tax_rate",
+    "scenario_id": "XBRL-COMPUTE-004",
+    "workflow_step": 1,
+    "total_steps": 5,
+    "hops": 2,
+    "xbrl_concepts": [
+      "us-gaap:IncomeTaxExpenseBenefit",
+      "us-gaap:IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest"
+    ],
+    "filing_type": "10-Q",
+    "filing_period": "FY2025 Q2; 2025-03-29 through 2025-06-27",
+    "answer_type": "calculated_value",
+    "tool_required": "edgartools (XBRL facts and period filtering) + calculation",
+    "source": "https://data.sec.gov/api/xbrl/companyfacts/CIK0000021344.json",
+    "reasoning": "Divide tax expense by pretax income and multiply by 100. Match accession, exact dates and unit USD; do not select by fy/fp alone. SEC API USD facts are in full dollars; convert to millions only when requested.",
+    "evidence": "https://www.sec.gov/Archives/edgar/data/21344/000002134425000061/ko-20250627.htm; Statements of Income; Income Taxes and Income Before Income Taxes; accession 0000021344-25-000061, filed 2025-07-24; 2025-03-29 through 2025-06-27; unit USD."
+  },
+  {
+    "id": "XBRL-CMP-017",
+    "question": "Using Coca-Cola's FY2025 Q2 10-Q XBRL facts (accession 0000021344-25-000061; 2025-01-01 through 2025-06-27), calculate year-to-date operating cash flow divided by year-to-date net operating revenues. Return a signed percentage rounded to two decimals. Use the listed concepts and only facts from this accession.",
+    "type": "XBRL Computation",
+    "answer": "KO_FY2025_Q2_YTD_operating_cash_flow_margin",
+    "scenario_id": "XBRL-COMPUTE-004",
+    "workflow_step": 2,
+    "total_steps": 5,
+    "hops": 2,
+    "xbrl_concepts": [
+      "us-gaap:NetCashProvidedByUsedInOperatingActivities",
+      "us-gaap:Revenues"
+    ],
+    "filing_type": "10-Q",
+    "filing_period": "FY2025 Q2; 2025-01-01 through 2025-06-27",
+    "answer_type": "calculated_value",
+    "tool_required": "edgartools (XBRL facts and period filtering) + calculation",
+    "source": "https://data.sec.gov/api/xbrl/companyfacts/CIK0000021344.json",
+    "reasoning": "Divide signed operating cash flow by revenues and multiply by 100. Keep both periods year-to-date. Match accession, exact dates and unit USD; do not select by fy/fp alone. SEC API USD facts are in full dollars; convert to millions only when requested.",
+    "evidence": "https://www.sec.gov/Archives/edgar/data/21344/000002134425000061/ko-20250627.htm; Statements of Cash Flows and Statements of Income; operating cash flow and Net Operating Revenues; accession 0000021344-25-000061, filed 2025-07-24; 2025-01-01 through 2025-06-27; unit USD."
+  },
+  {
+    "id": "XBRL-CMP-018",
+    "question": "Using Coca-Cola's FY2025 Q2 10-Q XBRL facts (accession 0000021344-25-000061; 2025-01-01 through 2025-06-27), calculate year-to-date simple free cash flow, defined here as operating cash flow minus property, plant and equipment purchases. Return signed USD millions. Use the listed concepts and only facts from this accession.",
+    "type": "XBRL Computation",
+    "answer": "KO_FY2025_Q2_YTD_simple_free_cash_flow",
+    "scenario_id": "XBRL-COMPUTE-004",
+    "workflow_step": 3,
+    "total_steps": 5,
+    "hops": 2,
+    "xbrl_concepts": [
+      "us-gaap:NetCashProvidedByUsedInOperatingActivities",
+      "us-gaap:PaymentsToAcquirePropertyPlantAndEquipment"
+    ],
+    "filing_type": "10-Q",
+    "filing_period": "FY2025 Q2; 2025-01-01 through 2025-06-27",
+    "answer_type": "calculated_value",
+    "tool_required": "edgartools (XBRL facts and period filtering) + calculation",
+    "source": "https://data.sec.gov/api/xbrl/companyfacts/CIK0000021344.json",
+    "reasoning": "Subtract the positive capital-purchase magnitude from signed operating cash flow; divide by 1,000,000. This is a task-defined measure. Match accession, exact dates and unit USD; do not select by fy/fp alone. SEC API USD facts are in full dollars; convert to millions only when requested.",
+    "evidence": "https://www.sec.gov/Archives/edgar/data/21344/000002134425000061/ko-20250627.htm; Statements of Cash Flows; operating cash flow and purchases of property, plant and equipment; accession 0000021344-25-000061, filed 2025-07-24; 2025-01-01 through 2025-06-27; unit USD."
+  },
+  {
+    "id": "XBRL-CMP-019",
+    "question": "Using Coca-Cola's FY2025 Q2 10-Q XBRL facts (accession 0000021344-25-000061; as of 2025-06-27), calculate net current receivables as a percentage of current assets at the reporting date. Return a percentage rounded to two decimals. Use the listed concepts and only facts from this accession.",
+    "type": "XBRL Computation",
+    "answer": "KO_FY2025_Q2_closing_receivables_share",
+    "scenario_id": "XBRL-COMPUTE-004",
+    "workflow_step": 4,
+    "total_steps": 5,
+    "hops": 2,
+    "xbrl_concepts": [
+      "us-gaap:AccountsReceivableNetCurrent",
+      "us-gaap:AssetsCurrent"
+    ],
+    "filing_type": "10-Q",
+    "filing_period": "FY2025 Q2; as of 2025-06-27",
+    "answer_type": "calculated_value",
+    "tool_required": "edgartools (XBRL facts and period filtering) + calculation",
+    "source": "https://data.sec.gov/api/xbrl/companyfacts/CIK0000021344.json",
+    "reasoning": "Divide net current receivables by current assets and multiply by 100. Match accession, exact dates and unit USD; do not select by fy/fp alone. SEC API USD facts are in full dollars; convert to millions only when requested.",
+    "evidence": "https://www.sec.gov/Archives/edgar/data/21344/000002134425000061/ko-20250627.htm; Balance Sheets; net trade receivables and Total Current Assets; accession 0000021344-25-000061, filed 2025-07-24; as of 2025-06-27; unit USD."
+  },
+  {
+    "id": "XBRL-CMP-020",
+    "question": "Using Coca-Cola's FY2025 Q2 10-Q XBRL facts (accession 0000021344-25-000061; quarter 2025-03-29 through 2025-06-27; year-to-date 2025-01-01 through 2025-06-27), derive Q1 2025 net operating revenues from year-to-date revenues less Q2 revenues. Return USD millions. Use the listed concepts and only facts from this accession.",
+    "type": "XBRL Computation",
+    "answer": "KO_FY2025_Q2_Q1_derived_revenue",
+    "scenario_id": "XBRL-COMPUTE-004",
+    "workflow_step": 5,
+    "total_steps": 5,
+    "hops": 3,
+    "xbrl_concepts": [
+      "us-gaap:Revenues"
+    ],
+    "filing_type": "10-Q",
+    "filing_period": "FY2025 Q2; quarter 2025-03-29 through 2025-06-27; year-to-date 2025-01-01 through 2025-06-27",
+    "answer_type": "calculated_value",
+    "tool_required": "edgartools (XBRL facts and period filtering) + calculation",
+    "source": "https://data.sec.gov/api/xbrl/companyfacts/CIK0000021344.json",
+    "reasoning": "Subtract quarterly Revenues from year-to-date Revenues. These durations share an end date but have different start dates. Match accession, exact dates and unit USD; do not select by fy/fp alone. SEC API USD facts are in full dollars; convert to millions only when requested.",
+    "evidence": "https://www.sec.gov/Archives/edgar/data/21344/000002134425000061/ko-20250627.htm; Statements of Income; Net Operating Revenues, quarterly and year-to-date columns; accession 0000021344-25-000061, filed 2025-07-24; quarter 2025-03-29 through 2025-06-27; year-to-date 2025-01-01 through 2025-06-27; unit USD."
+  }
+]
