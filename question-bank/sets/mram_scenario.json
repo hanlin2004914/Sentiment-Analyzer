@@ -1,0 +1,104 @@
+[
+  {
+    "id": "RAIN-V2-MRAM-001",
+    "question": "Scenario: I am checking Everspin's revenue-recovery path. Establish the prior annual decline, compare Q1, translate Q2 guidance into a first-half scenario, and determine what second-half revenue would be needed to regain the prior annual level without claiming earnings are guaranteed. First, use the FY2024 10-K filed February 27, 2025 to retrieve 2024 revenue, 2023 revenue and 2024 cost of goods sold. Calculate the 2024 revenue decline and gross margin, preserving USD-thousand-to-million conversion. Return revenue24: number (USD million); annual_growth: number (percent); annual_gm: number (percent). Cite the SEC document and precise table/note/exhibit. Reuse prior-stage amounts without intermediate rounding; report percentages/ratios to two decimals and monetary derived amounts to three decimals unless specified.",
+    "type": "XBRL Computation",
+    "answer": "{\"revenue24\": \"50.402\", \"annual_growth\": \"-20.96\", \"annual_gm\": \"51.84\"}",
+    "scenario_id": "RAIN-V2-MRAM-001",
+    "workflow_step": 1,
+    "total_steps": 5,
+    "hops": 3,
+    "xbrl_concepts": [
+      "us-gaap:CostOfGoodsAndServicesSold",
+      "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax"
+    ],
+    "filing_type": "10-K",
+    "filing_period": "FY2024 ended 2024-12-31, Q1 2025, Q2 2025 outlook disclosed 2025-04-30; hypothetical H2 scenario",
+    "answer_type": "calculated_value",
+    "tool_required": "SEC EDGAR filing/iXBRL retrieval; arithmetic/comparison",
+    "source": "https://www.sec.gov/Archives/edgar/data/1438423/000155837025001827/mram-20241231x10k.htm#Tc_jutJA6h74k24C4eONuMtQQ_5_3",
+    "reasoning": "Prior-stage dependencies: none. Hop depth 3: depth 1: read_1 -> depth 2: derive_annual_growth, derive_annual_gp -> depth 3: derive_annual_gm. annual_growth = (revenue24 / revenue23 - 1) * 100; annual_gp = revenue24 - cogs24; annual_gm = annual_gp / revenue24 * 100",
+    "evidence": "income_statement; inline XBRL #Tc_jutJA6h74k24C4eONuMtQQ_5_3, context Duration_1_1_2024_To_12_31_2024_WgaXofmgUU-SZDgbnHtWsg — https://www.sec.gov/Archives/edgar/data/1438423/000155837025001827/mram-20241231x10k.htm#Tc_jutJA6h74k24C4eONuMtQQ_5_3; income_statement; inline XBRL #Tc_w9d7U0S7p0yD7bUr3MZ6gQ_5_6, context Duration_1_1_2023_To_12_31_2023_7rAZcCbIQUukfQdMtNqKLw — https://www.sec.gov/Archives/edgar/data/1438423/000155837025001827/mram-20241231x10k.htm#Tc_w9d7U0S7p0yD7bUr3MZ6gQ_5_6; income_statement; inline XBRL #Tc_p5kiuYg76k2LSsCcqNiVOA_8_3, context Duration_1_1_2024_To_12_31_2024_WgaXofmgUU-SZDgbnHtWsg — https://www.sec.gov/Archives/edgar/data/1438423/000155837025001827/mram-20241231x10k.htm#Tc_p5kiuYg76k2LSsCcqNiVOA_8_3"
+  },
+  {
+    "id": "RAIN-V2-MRAM-002",
+    "question": "Using Step 1's annual growth and gross-margin benchmarks, retrieve Q1 2025 revenue, Q1 2024 revenue and Q1 2025 cost of goods sold from the 10-Q filed April 30, 2025. Calculate quarterly revenue growth and gross margin; report whether revenue growth improved relative to the prior annual rate and the gross-margin difference from the annual benchmark. Return q1_revenue: number (USD million); q1_growth: number (percent); q1_gm: number (percent); growth_rate_improved: boolean (boolean); margin_change: number (percentage points). Cite the SEC document and precise table/note/exhibit. Reuse prior-stage amounts without intermediate rounding; report percentages/ratios to two decimals and monetary derived amounts to three decimals unless specified.",
+    "type": "XBRL Computation",
+    "answer": "{\"q1_revenue\": \"13.138\", \"q1_growth\": \"-8.95\", \"q1_gm\": \"51.40\", \"growth_rate_improved\": true, \"margin_change\": \"-0.43\"}",
+    "scenario_id": "RAIN-V2-MRAM-001",
+    "workflow_step": 2,
+    "total_steps": 5,
+    "hops": 4,
+    "xbrl_concepts": [
+      "us-gaap:CostOfGoodsAndServicesSold",
+      "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax"
+    ],
+    "filing_type": "10-Q",
+    "filing_period": "FY2024 ended 2024-12-31, Q1 2025, Q2 2025 outlook disclosed 2025-04-30; hypothetical H2 scenario",
+    "answer_type": "calculated_value",
+    "tool_required": "SEC EDGAR filing/iXBRL retrieval; retained prior scenario outputs; arithmetic/comparison",
+    "source": "https://www.sec.gov/Archives/edgar/data/1438423/000155837025006020/mram-20250331x10q.htm#Tc_FjkhCA801EamRv_YKiOc5Q_5_3",
+    "reasoning": "Prior-stage dependencies: RAIN-V2-MRAM-001. Hop depth 4: depth 1: read_1 -> depth 2: derive_q1_growth, derive_q1_gp -> depth 3: derive_q1_gm, derive_growth_rate_improved -> depth 4: derive_margin_change. q1_growth = (q1_revenue / prior_q1_revenue - 1) * 100; q1_gp = q1_revenue - q1_cogs; q1_gm = q1_gp / q1_revenue * 100; growth_rate_improved = q1_growth > annual_growth; margin_change = q1_gm - annual_gm",
+    "evidence": "income_statement; inline XBRL #Tc_FjkhCA801EamRv_YKiOc5Q_5_3, context Duration_1_1_2025_To_3_31_2025_0pfAnY4koUqFn0HCqMlJTw — https://www.sec.gov/Archives/edgar/data/1438423/000155837025006020/mram-20250331x10q.htm#Tc_FjkhCA801EamRv_YKiOc5Q_5_3; income_statement; inline XBRL #Tc_9Rl43mlP402SatF1CJK0Iw_5_6, context Duration_1_1_2024_To_3_31_2024_JblfxtK2E0uoAOgIwHp7ug — https://www.sec.gov/Archives/edgar/data/1438423/000155837025006020/mram-20250331x10q.htm#Tc_9Rl43mlP402SatF1CJK0Iw_5_6; income_statement; inline XBRL #Tc_jUdZLhJn60WRJ6wGT-FWBA_8_3, context Duration_1_1_2025_To_3_31_2025_0pfAnY4koUqFn0HCqMlJTw — https://www.sec.gov/Archives/edgar/data/1438423/000155837025006020/mram-20250331x10q.htm#Tc_jUdZLhJn60WRJ6wGT-FWBA_8_3; income_statement; inline XBRL #Tc_w9d7U0S7p0yD7bUr3MZ6gQ_5_6, context Duration_1_1_2023_To_12_31_2023_7rAZcCbIQUukfQdMtNqKLw — https://www.sec.gov/Archives/edgar/data/1438423/000155837025001827/mram-20241231x10k.htm#Tc_w9d7U0S7p0yD7bUr3MZ6gQ_5_6; income_statement; inline XBRL #Tc_jutJA6h74k24C4eONuMtQQ_5_3, context Duration_1_1_2024_To_12_31_2024_WgaXofmgUU-SZDgbnHtWsg — https://www.sec.gov/Archives/edgar/data/1438423/000155837025001827/mram-20241231x10k.htm#Tc_jutJA6h74k24C4eONuMtQQ_5_3; income_statement; inline XBRL #Tc_p5kiuYg76k2LSsCcqNiVOA_8_3, context Duration_1_1_2024_To_12_31_2024_WgaXofmgUU-SZDgbnHtWsg — https://www.sec.gov/Archives/edgar/data/1438423/000155837025001827/mram-20241231x10k.htm#Tc_p5kiuYg76k2LSsCcqNiVOA_8_3"
+  },
+  {
+    "id": "RAIN-V2-MRAM-003",
+    "question": "Use Step 2's actual Q1 revenue. In Exhibit 99.1 of the April 30, 2025 8-K, retrieve the Q2 revenue guidance range, calculate its midpoint, and compute sequential growth at the lower bound, midpoint and upper bound. Treat all three as guidance scenarios. Return q2_low: number (USD million); q2_high: number (USD million); q2_mid: number (USD million); growth_low: number (percent); growth_mid: number (percent); growth_high: number (percent). Cite the SEC document and precise table/note/exhibit. Reuse prior-stage amounts without intermediate rounding; report percentages/ratios to two decimals and monetary derived amounts to three decimals unless specified.",
+    "type": "SEC Computation",
+    "answer": "{\"q2_low\": \"12.5\", \"q2_high\": \"13.5\", \"q2_mid\": \"13.000\", \"growth_low\": \"-4.86\", \"growth_mid\": \"-1.05\", \"growth_high\": \"2.76\"}",
+    "scenario_id": "RAIN-V2-MRAM-001",
+    "workflow_step": 3,
+    "total_steps": 5,
+    "hops": 3,
+    "xbrl_concepts": [
+      "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax"
+    ],
+    "filing_type": "8-K",
+    "filing_period": "FY2024 ended 2024-12-31, Q1 2025, Q2 2025 outlook disclosed 2025-04-30; hypothetical H2 scenario",
+    "answer_type": "calculated_value",
+    "tool_required": "SEC EDGAR filing/iXBRL retrieval; retained prior scenario outputs; arithmetic/comparison",
+    "source": "https://www.sec.gov/Archives/edgar/data/1438423/000155837025005987/mram-20250430xex99d1.htm#:~:text=Business%20Outlook",
+    "reasoning": "Prior-stage dependencies: RAIN-V2-MRAM-002. Hop depth 3: depth 1: read_1 -> depth 2: derive_q2_mid, derive_growth_low, derive_growth_high -> depth 3: derive_growth_mid. q2_mid = (q2_low + q2_high) / 2; growth_low = (q2_low / q1_revenue - 1) * 100; growth_mid = (q2_mid / q1_revenue - 1) * 100; growth_high = (q2_high / q1_revenue - 1) * 100",
+    "evidence": "Business Outlook; Q2 2025 revenue — https://www.sec.gov/Archives/edgar/data/1438423/000155837025005987/mram-20250430xex99d1.htm#:~:text=Business%20Outlook; income_statement; inline XBRL #Tc_FjkhCA801EamRv_YKiOc5Q_5_3, context Duration_1_1_2025_To_3_31_2025_0pfAnY4koUqFn0HCqMlJTw — https://www.sec.gov/Archives/edgar/data/1438423/000155837025006020/mram-20250331x10q.htm#Tc_FjkhCA801EamRv_YKiOc5Q_5_3"
+  },
+  {
+    "id": "RAIN-V2-MRAM-004",
+    "question": "Continue from Step 3's Q2 midpoint, Step 2's actual Q1 revenue and Step 1's FY2024 revenue. Assume Q2 lands at the midpoint. Calculate first-half revenue, the second-half revenue required to match FY2024, and the average required in each of Q3 and Q4. This is user scenario arithmetic, not company H2 guidance. Return h1_scenario: number (USD million); required_h2: number (USD million); required_quarter_average: number (USD million). Cite the SEC document and precise table/note/exhibit. Reuse prior-stage amounts without intermediate rounding; report percentages/ratios to two decimals and monetary derived amounts to three decimals unless specified.",
+    "type": "XBRL Computation",
+    "answer": "{\"h1_scenario\": \"26.138\", \"required_h2\": \"24.264\", \"required_quarter_average\": \"12.132\"}",
+    "scenario_id": "RAIN-V2-MRAM-001",
+    "workflow_step": 4,
+    "total_steps": 5,
+    "hops": 3,
+    "xbrl_concepts": [
+      "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax"
+    ],
+    "filing_type": "10-Q",
+    "filing_period": "FY2024 ended 2024-12-31, Q1 2025, Q2 2025 outlook disclosed 2025-04-30; hypothetical H2 scenario",
+    "answer_type": "calculated_value",
+    "tool_required": "retained prior scenario outputs; arithmetic/comparison",
+    "source": "https://www.sec.gov/Archives/edgar/data/1438423/000155837025006020/mram-20250331x10q.htm#Tc_FjkhCA801EamRv_YKiOc5Q_5_3",
+    "reasoning": "Prior-stage dependencies: RAIN-V2-MRAM-001, RAIN-V2-MRAM-002, RAIN-V2-MRAM-003. Hop depth 3: depth 1: derive_h1_scenario -> depth 2: derive_required_h2 -> depth 3: derive_required_quarter_average. h1_scenario = q1_revenue + q2_mid; required_h2 = target - h1_scenario; required_quarter_average = required_h2 / h2_quarters",
+    "evidence": "income_statement; inline XBRL #Tc_FjkhCA801EamRv_YKiOc5Q_5_3, context Duration_1_1_2025_To_3_31_2025_0pfAnY4koUqFn0HCqMlJTw — https://www.sec.gov/Archives/edgar/data/1438423/000155837025006020/mram-20250331x10q.htm#Tc_FjkhCA801EamRv_YKiOc5Q_5_3; Business Outlook; Q2 2025 revenue — https://www.sec.gov/Archives/edgar/data/1438423/000155837025005987/mram-20250430xex99d1.htm#:~:text=Business%20Outlook; income_statement; inline XBRL #Tc_jutJA6h74k24C4eONuMtQQ_5_3, context Duration_1_1_2024_To_12_31_2024_WgaXofmgUU-SZDgbnHtWsg — https://www.sec.gov/Archives/edgar/data/1438423/000155837025001827/mram-20241231x10k.htm#Tc_jutJA6h74k24C4eONuMtQQ_5_3"
+  },
+  {
+    "id": "RAIN-V2-MRAM-005",
+    "question": "Finish the scenario using Step 4's required H2 revenue. Hypothetically let both H2 quarters equal the Q2 guidance lower bound from Step 3. Calculate H2 revenue and surplus over the required H2 amount; return whether the annual revenue target is met. Separately retrieve Q2 GAAP EPS guidance from the April 30 release and state whether the entire disclosed range is strictly positive. Do not turn the revenue scenario into a guaranteed profitability claim. Return h2_scenario: number (USD million); revenue_surplus: number (USD million); revenue_target_met: boolean (boolean); gaap_eps_low: number (USD per basic share); gaap_eps_high: number (USD per basic share); gaap_range_strictly_positive: boolean (boolean). Cite the SEC document and precise table/note/exhibit. Reuse prior-stage amounts without intermediate rounding; report percentages/ratios to two decimals and monetary derived amounts to three decimals unless specified.",
+    "type": "SEC Computation",
+    "answer": "{\"h2_scenario\": \"25.000\", \"revenue_surplus\": \"0.736\", \"revenue_target_met\": true, \"gaap_eps_low\": \"-0.05\", \"gaap_eps_high\": \"0\", \"gaap_range_strictly_positive\": false}",
+    "scenario_id": "RAIN-V2-MRAM-001",
+    "workflow_step": 5,
+    "total_steps": 5,
+    "hops": 3,
+    "xbrl_concepts": [
+      "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax"
+    ],
+    "filing_type": "8-K",
+    "filing_period": "FY2024 ended 2024-12-31, Q1 2025, Q2 2025 outlook disclosed 2025-04-30; hypothetical H2 scenario",
+    "answer_type": "calculated_value",
+    "tool_required": "SEC EDGAR filing/iXBRL retrieval; retained prior scenario outputs; arithmetic/comparison",
+    "source": "https://www.sec.gov/Archives/edgar/data/1438423/000155837025005987/mram-20250430xex99d1.htm#:~:text=Business%20Outlook",
+    "reasoning": "Prior-stage dependencies: RAIN-V2-MRAM-003, RAIN-V2-MRAM-004. Hop depth 3: depth 1: read_1, derive_h2_scenario -> depth 2: derive_revenue_surplus, derive_gaap_range_strictly_positive -> depth 3: derive_revenue_target_met. h2_scenario = q2_low * h2_quarters; revenue_surplus = h2_scenario - required_h2; revenue_target_met = revenue_surplus >= 0; gaap_range_strictly_positive = gaap_eps_low > 0 and gaap_eps_high > 0",
+    "evidence": "Business Outlook; Q2 GAAP net loss/income per basic share — https://www.sec.gov/Archives/edgar/data/1438423/000155837025005987/mram-20250430xex99d1.htm#:~:text=Business%20Outlook; Business Outlook; Q2 2025 revenue — https://www.sec.gov/Archives/edgar/data/1438423/000155837025005987/mram-20250430xex99d1.htm#:~:text=Business%20Outlook; income_statement; inline XBRL #Tc_FjkhCA801EamRv_YKiOc5Q_5_3, context Duration_1_1_2025_To_3_31_2025_0pfAnY4koUqFn0HCqMlJTw — https://www.sec.gov/Archives/edgar/data/1438423/000155837025006020/mram-20250331x10q.htm#Tc_FjkhCA801EamRv_YKiOc5Q_5_3; income_statement; inline XBRL #Tc_jutJA6h74k24C4eONuMtQQ_5_3, context Duration_1_1_2024_To_12_31_2024_WgaXofmgUU-SZDgbnHtWsg — https://www.sec.gov/Archives/edgar/data/1438423/000155837025001827/mram-20241231x10k.htm#Tc_jutJA6h74k24C4eONuMtQQ_5_3"
+  }
+]

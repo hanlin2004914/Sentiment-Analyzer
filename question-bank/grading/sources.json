@@ -1,4 +1,54 @@
 {
+  "MRAM-10-K": {
+    "ticker": "MRAM",
+    "cik": "0001438423",
+    "form": "10-K",
+    "filed": "2025-02-27",
+    "report_date": "2024-12-31",
+    "accession": "0001558370-25-001827",
+    "url": "https://www.sec.gov/Archives/edgar/data/1438423/000155837025001827/mram-20241231x10k.htm",
+    "company": "Everspin Technologies, Inc.",
+    "retrieved_on": "2026-09-22",
+    "sha256": "d1c6aedad4e7cb4b2c669b5c89c6a077eb21cc2b04e36273046abb0f7f8a85d7"
+  },
+  "MRAM-10-Q": {
+    "ticker": "MRAM",
+    "cik": "0001438423",
+    "form": "10-Q",
+    "filed": "2025-04-30",
+    "report_date": "2025-03-31",
+    "accession": "0001558370-25-006020",
+    "url": "https://www.sec.gov/Archives/edgar/data/1438423/000155837025006020/mram-20250331x10q.htm",
+    "company": "Everspin Technologies, Inc.",
+    "retrieved_on": "2026-09-22",
+    "sha256": "9f0bb2b74db7f27f5943d19a6fd49a9503e5a3df1971f2831cc6f905e9d01bdc"
+  },
+  "MRAM-8-K": {
+    "ticker": "MRAM",
+    "cik": "0001438423",
+    "form": "8-K",
+    "filed": "2025-04-30",
+    "report_date": "2025-04-30",
+    "accession": "0001558370-25-005987",
+    "url": "https://www.sec.gov/Archives/edgar/data/1438423/000155837025005987/mram-20250430x8k.htm",
+    "company": "Everspin Technologies, Inc.",
+    "retrieved_on": "2026-09-22",
+    "sha256": "0b3765d26a7567caf6594b9097f4a67838468195ad40b3bfa66c016f24467921"
+  },
+  "MRAM-8-K-ex0": {
+    "ticker": "MRAM",
+    "cik": "0001438423",
+    "form": "8-K",
+    "filed": "2025-04-30",
+    "report_date": "2025-04-30",
+    "accession": "0001558370-25-005987",
+    "url": "https://www.sec.gov/Archives/edgar/data/1438423/000155837025005987/mram-20250430xex99d1.htm",
+    "company": "Everspin Technologies, Inc.",
+    "retrieved_on": "2026-09-22",
+    "sha256": "3ee436e0bc53541325ca5fa118dfdd0ec36090b9e72b51d4453d35198998c19c",
+    "parent_source_id": "MRAM-8-K",
+    "exhibit": "99.1"
+  },
   "MU-10-K": {
     "ticker": "MU",
     "cik": "0000723125",

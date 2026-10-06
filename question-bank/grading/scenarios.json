@@ -348,5 +348,57 @@
         "hops": 3
       }
     ]
+  },
+  "MRAM": {
+    "company": "Everspin Technologies, Inc.",
+    "ticker_at_filing": "MRAM",
+    "title_zh": "收入修复路线：年度下滑、季度表现与指引边界",
+    "user_request": "I am checking Everspin's revenue-recovery path. Establish the prior annual decline, compare Q1, translate Q2 guidance into a first-half scenario, and determine what second-half revenue would be needed to regain the prior annual level without claiming earnings are guaranteed.",
+    "scope": "FY2024 ended 2024-12-31, Q1 2025, Q2 2025 outlook disclosed 2025-04-30; hypothetical H2 scenario",
+    "scenario_id": "RAIN-V2-MRAM-001",
+    "file": "mram_scenario.json",
+    "steps": [
+      {
+        "id": "RAIN-V2-MRAM-001",
+        "title_zh": "建立上年收入与毛利基线",
+        "depends_on": [],
+        "hops": 3
+      },
+      {
+        "id": "RAIN-V2-MRAM-002",
+        "title_zh": "检查 Q1 是否改善及利润率方向",
+        "depends_on": [
+          "RAIN-V2-MRAM-001"
+        ],
+        "hops": 4
+      },
+      {
+        "id": "RAIN-V2-MRAM-003",
+        "title_zh": "将 Q2 收入指引映射为环比区间",
+        "depends_on": [
+          "RAIN-V2-MRAM-002"
+        ],
+        "hops": 3
+      },
+      {
+        "id": "RAIN-V2-MRAM-004",
+        "title_zh": "反推回到上年收入所需的 H2",
+        "depends_on": [
+          "RAIN-V2-MRAM-001",
+          "RAIN-V2-MRAM-002",
+          "RAIN-V2-MRAM-003"
+        ],
+        "hops": 3
+      },
+      {
+        "id": "RAIN-V2-MRAM-005",
+        "title_zh": "收入情景通过不等于保证 GAAP 盈利",
+        "depends_on": [
+          "RAIN-V2-MRAM-003",
+          "RAIN-V2-MRAM-004"
+        ],
+        "hops": 3
+      }
+    ]
   }
 }

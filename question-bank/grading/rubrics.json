@@ -8663,5 +8663,1311 @@
       "source_verified": true,
       "agent_run_performed": false
     }
+  },
+  "RAIN-V2-MRAM-001": {
+    "title_zh": "建立上年收入与毛利基线",
+    "ticker": "MRAM",
+    "company": "Everspin Technologies, Inc.",
+    "depends_on": [],
+    "input_bindings": {
+      "revenue24": {
+        "kind": "source",
+        "value": "50.402",
+        "unit": "USD million",
+        "evidence_label": "revenue24",
+        "source_id": "MRAM-10-K"
+      },
+      "revenue23": {
+        "kind": "source",
+        "value": "63.765",
+        "unit": "USD million",
+        "evidence_label": "revenue23",
+        "source_id": "MRAM-10-K"
+      },
+      "cogs24": {
+        "kind": "source",
+        "value": "24.276",
+        "unit": "USD million",
+        "evidence_label": "cogs24",
+        "source_id": "MRAM-10-K"
+      }
+    },
+    "derivations": [
+      {
+        "field": "annual_growth",
+        "expression": "(revenue24 / revenue23 - 1) * 100",
+        "unit": "percent",
+        "decimal_places": 2
+      },
+      {
+        "field": "annual_gp",
+        "expression": "revenue24 - cogs24",
+        "unit": "USD million",
+        "decimal_places": 3
+      },
+      {
+        "field": "annual_gm",
+        "expression": "annual_gp / revenue24 * 100",
+        "unit": "percent",
+        "decimal_places": 2
+      }
+    ],
+    "output_nodes": {
+      "revenue24": "read_1",
+      "annual_growth": "derive_annual_growth",
+      "annual_gm": "derive_annual_gm"
+    },
+    "hop_definition": "conditional_evidence_depth_v2",
+    "hop_plan": [
+      {
+        "id": "read_1",
+        "kind": "retrieve",
+        "depends_on": [],
+        "evidence_block": "MRAM-10-K:income_statement",
+        "source_ids": [
+          "MRAM-10-K"
+        ],
+        "outputs": [
+          "revenue24",
+          "revenue23",
+          "cogs24"
+        ],
+        "depth": 1
+      },
+      {
+        "id": "derive_annual_growth",
+        "kind": "calculate",
+        "depends_on": [
+          "read_1"
+        ],
+        "outputs": [
+          "annual_growth"
+        ],
+        "expression": "(revenue24 / revenue23 - 1) * 100",
+        "depth": 2
+      },
+      {
+        "id": "derive_annual_gp",
+        "kind": "calculate",
+        "depends_on": [
+          "read_1"
+        ],
+        "outputs": [
+          "annual_gp"
+        ],
+        "expression": "revenue24 - cogs24",
+        "depth": 2
+      },
+      {
+        "id": "derive_annual_gm",
+        "kind": "calculate",
+        "depends_on": [
+          "derive_annual_gp",
+          "read_1"
+        ],
+        "outputs": [
+          "annual_gm"
+        ],
+        "expression": "annual_gp / revenue24 * 100",
+        "depth": 3
+      }
+    ],
+    "hops": 3,
+    "evidence_records": [
+      {
+        "label": "revenue24",
+        "source_id": "MRAM-10-K",
+        "value": "50.402",
+        "unit": "USD million",
+        "concept": "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax",
+        "context_id": "Duration_1_1_2024_To_12_31_2024_WgaXofmgUU-SZDgbnHtWsg",
+        "context": "context: entity: identifier:0001438423 period: startdate:2024-01-01 enddate:2024-12-31",
+        "fact_id": "Tc_jutJA6h74k24C4eONuMtQQ_5_3",
+        "original_text": "50,402",
+        "scale": 3,
+        "sign": "+",
+        "url": "https://www.sec.gov/Archives/edgar/data/1438423/000155837025001827/mram-20241231x10k.htm#Tc_jutJA6h74k24C4eONuMtQQ_5_3",
+        "locator": "income_statement; inline XBRL #Tc_jutJA6h74k24C4eONuMtQQ_5_3, context Duration_1_1_2024_To_12_31_2024_WgaXofmgUU-SZDgbnHtWsg",
+        "evidence_block": "MRAM-10-K:income_statement"
+      },
+      {
+        "label": "revenue23",
+        "source_id": "MRAM-10-K",
+        "value": "63.765",
+        "unit": "USD million",
+        "concept": "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax",
+        "context_id": "Duration_1_1_2023_To_12_31_2023_7rAZcCbIQUukfQdMtNqKLw",
+        "context": "context: entity: identifier:0001438423 period: startdate:2023-01-01 enddate:2023-12-31",
+        "fact_id": "Tc_w9d7U0S7p0yD7bUr3MZ6gQ_5_6",
+        "original_text": "63,765",
+        "scale": 3,
+        "sign": "+",
+        "url": "https://www.sec.gov/Archives/edgar/data/1438423/000155837025001827/mram-20241231x10k.htm#Tc_w9d7U0S7p0yD7bUr3MZ6gQ_5_6",
+        "locator": "income_statement; inline XBRL #Tc_w9d7U0S7p0yD7bUr3MZ6gQ_5_6, context Duration_1_1_2023_To_12_31_2023_7rAZcCbIQUukfQdMtNqKLw",
+        "evidence_block": "MRAM-10-K:income_statement"
+      },
+      {
+        "label": "cogs24",
+        "source_id": "MRAM-10-K",
+        "value": "24.276",
+        "unit": "USD million",
+        "concept": "us-gaap:CostOfGoodsAndServicesSold",
+        "context_id": "Duration_1_1_2024_To_12_31_2024_WgaXofmgUU-SZDgbnHtWsg",
+        "context": "context: entity: identifier:0001438423 period: startdate:2024-01-01 enddate:2024-12-31",
+        "fact_id": "Tc_p5kiuYg76k2LSsCcqNiVOA_8_3",
+        "original_text": "24,276",
+        "scale": 3,
+        "sign": "+",
+        "url": "https://www.sec.gov/Archives/edgar/data/1438423/000155837025001827/mram-20241231x10k.htm#Tc_p5kiuYg76k2LSsCcqNiVOA_8_3",
+        "locator": "income_statement; inline XBRL #Tc_p5kiuYg76k2LSsCcqNiVOA_8_3, context Duration_1_1_2024_To_12_31_2024_WgaXofmgUU-SZDgbnHtWsg",
+        "evidence_block": "MRAM-10-K:income_statement"
+      }
+    ],
+    "reused_from_v1": [],
+    "grading": {
+      "expected_answer": {
+        "revenue24": {
+          "value": "50.402",
+          "kind": "number",
+          "unit": "USD million",
+          "absolute_tolerance": "0"
+        },
+        "annual_growth": {
+          "value": "-20.96",
+          "kind": "number",
+          "unit": "percent",
+          "absolute_tolerance": "0.01"
+        },
+        "annual_gm": {
+          "value": "51.84",
+          "kind": "number",
+          "unit": "percent",
+          "absolute_tolerance": "0.01"
+        }
+      },
+      "max_points": 5,
+      "rubric": {
+        "answer": 2,
+        "evidence": 1,
+        "scope_units": 1,
+        "dependency_and_method": 1
+      }
+    },
+    "verification": {
+      "checked_on": "2026-09-22",
+      "source_verified": true,
+      "agent_run_performed": false
+    }
+  },
+  "RAIN-V2-MRAM-002": {
+    "title_zh": "检查 Q1 是否改善及利润率方向",
+    "ticker": "MRAM",
+    "company": "Everspin Technologies, Inc.",
+    "depends_on": [
+      "RAIN-V2-MRAM-001"
+    ],
+    "input_bindings": {
+      "annual_growth": {
+        "kind": "prior",
+        "question_id": "RAIN-V2-MRAM-001",
+        "field": "annual_growth",
+        "value": "-20.95663765388536030737865600",
+        "unit": "percent"
+      },
+      "annual_gm": {
+        "kind": "prior",
+        "question_id": "RAIN-V2-MRAM-001",
+        "field": "annual_gm",
+        "value": "51.83524463314947819530970993",
+        "unit": "percent"
+      },
+      "q1_revenue": {
+        "kind": "source",
+        "value": "13.138",
+        "unit": "USD million",
+        "evidence_label": "q1_revenue",
+        "source_id": "MRAM-10-Q"
+      },
+      "prior_q1_revenue": {
+        "kind": "source",
+        "value": "14.430",
+        "unit": "USD million",
+        "evidence_label": "prior_q1_revenue",
+        "source_id": "MRAM-10-Q"
+      },
+      "q1_cogs": {
+        "kind": "source",
+        "value": "6.385",
+        "unit": "USD million",
+        "evidence_label": "q1_cogs",
+        "source_id": "MRAM-10-Q"
+      }
+    },
+    "derivations": [
+      {
+        "field": "q1_growth",
+        "expression": "(q1_revenue / prior_q1_revenue - 1) * 100",
+        "unit": "percent",
+        "decimal_places": 2
+      },
+      {
+        "field": "q1_gp",
+        "expression": "q1_revenue - q1_cogs",
+        "unit": "USD million",
+        "decimal_places": 3
+      },
+      {
+        "field": "q1_gm",
+        "expression": "q1_gp / q1_revenue * 100",
+        "unit": "percent",
+        "decimal_places": 2
+      },
+      {
+        "field": "growth_rate_improved",
+        "expression": "q1_growth > annual_growth",
+        "unit": "boolean",
+        "decimal_places": null
+      },
+      {
+        "field": "margin_change",
+        "expression": "q1_gm - annual_gm",
+        "unit": "percentage points",
+        "decimal_places": 2
+      }
+    ],
+    "output_nodes": {
+      "q1_revenue": "read_1",
+      "q1_growth": "derive_q1_growth",
+      "q1_gm": "derive_q1_gm",
+      "growth_rate_improved": "derive_growth_rate_improved",
+      "margin_change": "derive_margin_change"
+    },
+    "hop_definition": "conditional_evidence_depth_v2",
+    "hop_plan": [
+      {
+        "id": "input_annual_growth",
+        "kind": "prior",
+        "depends_on": [],
+        "outputs": [
+          "annual_growth"
+        ],
+        "question_id": "RAIN-V2-MRAM-001",
+        "field": "annual_growth",
+        "depth": 0
+      },
+      {
+        "id": "input_annual_gm",
+        "kind": "prior",
+        "depends_on": [],
+        "outputs": [
+          "annual_gm"
+        ],
+        "question_id": "RAIN-V2-MRAM-001",
+        "field": "annual_gm",
+        "depth": 0
+      },
+      {
+        "id": "read_1",
+        "kind": "retrieve",
+        "depends_on": [],
+        "evidence_block": "MRAM-10-Q:income_statement",
+        "source_ids": [
+          "MRAM-10-Q"
+        ],
+        "outputs": [
+          "q1_revenue",
+          "prior_q1_revenue",
+          "q1_cogs"
+        ],
+        "depth": 1
+      },
+      {
+        "id": "derive_q1_growth",
+        "kind": "calculate",
+        "depends_on": [
+          "read_1"
+        ],
+        "outputs": [
+          "q1_growth"
+        ],
+        "expression": "(q1_revenue / prior_q1_revenue - 1) * 100",
+        "depth": 2
+      },
+      {
+        "id": "derive_q1_gp",
+        "kind": "calculate",
+        "depends_on": [
+          "read_1"
+        ],
+        "outputs": [
+          "q1_gp"
+        ],
+        "expression": "q1_revenue - q1_cogs",
+        "depth": 2
+      },
+      {
+        "id": "derive_q1_gm",
+        "kind": "calculate",
+        "depends_on": [
+          "derive_q1_gp",
+          "read_1"
+        ],
+        "outputs": [
+          "q1_gm"
+        ],
+        "expression": "q1_gp / q1_revenue * 100",
+        "depth": 3
+      },
+      {
+        "id": "derive_growth_rate_improved",
+        "kind": "judge",
+        "depends_on": [
+          "input_annual_growth",
+          "derive_q1_growth"
+        ],
+        "outputs": [
+          "growth_rate_improved"
+        ],
+        "expression": "q1_growth > annual_growth",
+        "depth": 3
+      },
+      {
+        "id": "derive_margin_change",
+        "kind": "calculate",
+        "depends_on": [
+          "input_annual_gm",
+          "derive_q1_gm"
+        ],
+        "outputs": [
+          "margin_change"
+        ],
+        "expression": "q1_gm - annual_gm",
+        "depth": 4
+      }
+    ],
+    "hops": 4,
+    "evidence_records": [
+      {
+        "label": "q1_revenue",
+        "source_id": "MRAM-10-Q",
+        "value": "13.138",
+        "unit": "USD million",
+        "concept": "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax",
+        "context_id": "Duration_1_1_2025_To_3_31_2025_0pfAnY4koUqFn0HCqMlJTw",
+        "context": "context: entity: identifier:0001438423 period: startdate:2025-01-01 enddate:2025-03-31",
+        "fact_id": "Tc_FjkhCA801EamRv_YKiOc5Q_5_3",
+        "original_text": "13,138",
+        "scale": 3,
+        "sign": "+",
+        "url": "https://www.sec.gov/Archives/edgar/data/1438423/000155837025006020/mram-20250331x10q.htm#Tc_FjkhCA801EamRv_YKiOc5Q_5_3",
+        "locator": "income_statement; inline XBRL #Tc_FjkhCA801EamRv_YKiOc5Q_5_3, context Duration_1_1_2025_To_3_31_2025_0pfAnY4koUqFn0HCqMlJTw",
+        "evidence_block": "MRAM-10-Q:income_statement"
+      },
+      {
+        "label": "prior_q1_revenue",
+        "source_id": "MRAM-10-Q",
+        "value": "14.430",
+        "unit": "USD million",
+        "concept": "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax",
+        "context_id": "Duration_1_1_2024_To_3_31_2024_JblfxtK2E0uoAOgIwHp7ug",
+        "context": "context: entity: identifier:0001438423 period: startdate:2024-01-01 enddate:2024-03-31",
+        "fact_id": "Tc_9Rl43mlP402SatF1CJK0Iw_5_6",
+        "original_text": "14,430",
+        "scale": 3,
+        "sign": "+",
+        "url": "https://www.sec.gov/Archives/edgar/data/1438423/000155837025006020/mram-20250331x10q.htm#Tc_9Rl43mlP402SatF1CJK0Iw_5_6",
+        "locator": "income_statement; inline XBRL #Tc_9Rl43mlP402SatF1CJK0Iw_5_6, context Duration_1_1_2024_To_3_31_2024_JblfxtK2E0uoAOgIwHp7ug",
+        "evidence_block": "MRAM-10-Q:income_statement"
+      },
+      {
+        "label": "q1_cogs",
+        "source_id": "MRAM-10-Q",
+        "value": "6.385",
+        "unit": "USD million",
+        "concept": "us-gaap:CostOfGoodsAndServicesSold",
+        "context_id": "Duration_1_1_2025_To_3_31_2025_0pfAnY4koUqFn0HCqMlJTw",
+        "context": "context: entity: identifier:0001438423 period: startdate:2025-01-01 enddate:2025-03-31",
+        "fact_id": "Tc_jUdZLhJn60WRJ6wGT-FWBA_8_3",
+        "original_text": "6,385",
+        "scale": 3,
+        "sign": "+",
+        "url": "https://www.sec.gov/Archives/edgar/data/1438423/000155837025006020/mram-20250331x10q.htm#Tc_jUdZLhJn60WRJ6wGT-FWBA_8_3",
+        "locator": "income_statement; inline XBRL #Tc_jUdZLhJn60WRJ6wGT-FWBA_8_3, context Duration_1_1_2025_To_3_31_2025_0pfAnY4koUqFn0HCqMlJTw",
+        "evidence_block": "MRAM-10-Q:income_statement"
+      },
+      {
+        "label": "revenue23",
+        "source_id": "MRAM-10-K",
+        "value": "63.765",
+        "unit": "USD million",
+        "concept": "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax",
+        "context_id": "Duration_1_1_2023_To_12_31_2023_7rAZcCbIQUukfQdMtNqKLw",
+        "context": "context: entity: identifier:0001438423 period: startdate:2023-01-01 enddate:2023-12-31",
+        "fact_id": "Tc_w9d7U0S7p0yD7bUr3MZ6gQ_5_6",
+        "original_text": "63,765",
+        "scale": 3,
+        "sign": "+",
+        "url": "https://www.sec.gov/Archives/edgar/data/1438423/000155837025001827/mram-20241231x10k.htm#Tc_w9d7U0S7p0yD7bUr3MZ6gQ_5_6",
+        "locator": "income_statement; inline XBRL #Tc_w9d7U0S7p0yD7bUr3MZ6gQ_5_6, context Duration_1_1_2023_To_12_31_2023_7rAZcCbIQUukfQdMtNqKLw",
+        "evidence_block": "MRAM-10-K:income_statement"
+      },
+      {
+        "label": "revenue24",
+        "source_id": "MRAM-10-K",
+        "value": "50.402",
+        "unit": "USD million",
+        "concept": "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax",
+        "context_id": "Duration_1_1_2024_To_12_31_2024_WgaXofmgUU-SZDgbnHtWsg",
+        "context": "context: entity: identifier:0001438423 period: startdate:2024-01-01 enddate:2024-12-31",
+        "fact_id": "Tc_jutJA6h74k24C4eONuMtQQ_5_3",
+        "original_text": "50,402",
+        "scale": 3,
+        "sign": "+",
+        "url": "https://www.sec.gov/Archives/edgar/data/1438423/000155837025001827/mram-20241231x10k.htm#Tc_jutJA6h74k24C4eONuMtQQ_5_3",
+        "locator": "income_statement; inline XBRL #Tc_jutJA6h74k24C4eONuMtQQ_5_3, context Duration_1_1_2024_To_12_31_2024_WgaXofmgUU-SZDgbnHtWsg",
+        "evidence_block": "MRAM-10-K:income_statement"
+      },
+      {
+        "label": "cogs24",
+        "source_id": "MRAM-10-K",
+        "value": "24.276",
+        "unit": "USD million",
+        "concept": "us-gaap:CostOfGoodsAndServicesSold",
+        "context_id": "Duration_1_1_2024_To_12_31_2024_WgaXofmgUU-SZDgbnHtWsg",
+        "context": "context: entity: identifier:0001438423 period: startdate:2024-01-01 enddate:2024-12-31",
+        "fact_id": "Tc_p5kiuYg76k2LSsCcqNiVOA_8_3",
+        "original_text": "24,276",
+        "scale": 3,
+        "sign": "+",
+        "url": "https://www.sec.gov/Archives/edgar/data/1438423/000155837025001827/mram-20241231x10k.htm#Tc_p5kiuYg76k2LSsCcqNiVOA_8_3",
+        "locator": "income_statement; inline XBRL #Tc_p5kiuYg76k2LSsCcqNiVOA_8_3, context Duration_1_1_2024_To_12_31_2024_WgaXofmgUU-SZDgbnHtWsg",
+        "evidence_block": "MRAM-10-K:income_statement"
+      }
+    ],
+    "reused_from_v1": [],
+    "grading": {
+      "expected_answer": {
+        "q1_revenue": {
+          "value": "13.138",
+          "kind": "number",
+          "unit": "USD million",
+          "absolute_tolerance": "0"
+        },
+        "q1_growth": {
+          "value": "-8.95",
+          "kind": "number",
+          "unit": "percent",
+          "absolute_tolerance": "0.01"
+        },
+        "q1_gm": {
+          "value": "51.40",
+          "kind": "number",
+          "unit": "percent",
+          "absolute_tolerance": "0.01"
+        },
+        "growth_rate_improved": {
+          "value": true,
+          "kind": "boolean",
+          "unit": "boolean"
+        },
+        "margin_change": {
+          "value": "-0.43",
+          "kind": "number",
+          "unit": "percentage points",
+          "absolute_tolerance": "0.01"
+        }
+      },
+      "max_points": 5,
+      "rubric": {
+        "answer": 2,
+        "evidence": 1,
+        "scope_units": 1,
+        "dependency_and_method": 1
+      }
+    },
+    "verification": {
+      "checked_on": "2026-09-22",
+      "source_verified": true,
+      "agent_run_performed": false
+    }
+  },
+  "RAIN-V2-MRAM-003": {
+    "title_zh": "将 Q2 收入指引映射为环比区间",
+    "ticker": "MRAM",
+    "company": "Everspin Technologies, Inc.",
+    "depends_on": [
+      "RAIN-V2-MRAM-002"
+    ],
+    "input_bindings": {
+      "q1_revenue": {
+        "kind": "prior",
+        "question_id": "RAIN-V2-MRAM-002",
+        "field": "q1_revenue",
+        "value": "13.138",
+        "unit": "USD million"
+      },
+      "q2_low": {
+        "kind": "source",
+        "value": "12.5",
+        "unit": "USD million",
+        "evidence_label": "q2_low",
+        "source_id": "MRAM-8-K-ex0"
+      },
+      "q2_high": {
+        "kind": "source",
+        "value": "13.5",
+        "unit": "USD million",
+        "evidence_label": "q2_high",
+        "source_id": "MRAM-8-K-ex0"
+      }
+    },
+    "derivations": [
+      {
+        "field": "q2_mid",
+        "expression": "(q2_low + q2_high) / 2",
+        "unit": "USD million",
+        "decimal_places": 3
+      },
+      {
+        "field": "growth_low",
+        "expression": "(q2_low / q1_revenue - 1) * 100",
+        "unit": "percent",
+        "decimal_places": 2
+      },
+      {
+        "field": "growth_mid",
+        "expression": "(q2_mid / q1_revenue - 1) * 100",
+        "unit": "percent",
+        "decimal_places": 2
+      },
+      {
+        "field": "growth_high",
+        "expression": "(q2_high / q1_revenue - 1) * 100",
+        "unit": "percent",
+        "decimal_places": 2
+      }
+    ],
+    "output_nodes": {
+      "q2_low": "read_1",
+      "q2_high": "read_1",
+      "q2_mid": "derive_q2_mid",
+      "growth_low": "derive_growth_low",
+      "growth_mid": "derive_growth_mid",
+      "growth_high": "derive_growth_high"
+    },
+    "hop_definition": "conditional_evidence_depth_v2",
+    "hop_plan": [
+      {
+        "id": "input_q1_revenue",
+        "kind": "prior",
+        "depends_on": [],
+        "outputs": [
+          "q1_revenue"
+        ],
+        "question_id": "RAIN-V2-MRAM-002",
+        "field": "q1_revenue",
+        "depth": 0
+      },
+      {
+        "id": "read_1",
+        "kind": "retrieve",
+        "depends_on": [],
+        "evidence_block": "MRAM-8-K-ex0:Business Outlook",
+        "source_ids": [
+          "MRAM-8-K-ex0"
+        ],
+        "outputs": [
+          "q2_low",
+          "q2_high"
+        ],
+        "depth": 1
+      },
+      {
+        "id": "derive_q2_mid",
+        "kind": "calculate",
+        "depends_on": [
+          "read_1"
+        ],
+        "outputs": [
+          "q2_mid"
+        ],
+        "expression": "(q2_low + q2_high) / 2",
+        "depth": 2
+      },
+      {
+        "id": "derive_growth_low",
+        "kind": "calculate",
+        "depends_on": [
+          "input_q1_revenue",
+          "read_1"
+        ],
+        "outputs": [
+          "growth_low"
+        ],
+        "expression": "(q2_low / q1_revenue - 1) * 100",
+        "depth": 2
+      },
+      {
+        "id": "derive_growth_mid",
+        "kind": "calculate",
+        "depends_on": [
+          "input_q1_revenue",
+          "derive_q2_mid"
+        ],
+        "outputs": [
+          "growth_mid"
+        ],
+        "expression": "(q2_mid / q1_revenue - 1) * 100",
+        "depth": 3
+      },
+      {
+        "id": "derive_growth_high",
+        "kind": "calculate",
+        "depends_on": [
+          "input_q1_revenue",
+          "read_1"
+        ],
+        "outputs": [
+          "growth_high"
+        ],
+        "expression": "(q2_high / q1_revenue - 1) * 100",
+        "depth": 2
+      }
+    ],
+    "hops": 3,
+    "evidence_records": [
+      {
+        "label": "q2_low",
+        "source_id": "MRAM-8-K-ex0",
+        "value": "12.5",
+        "unit": "USD million",
+        "url": "https://www.sec.gov/Archives/edgar/data/1438423/000155837025005987/mram-20250430xex99d1.htm#:~:text=Business%20Outlook",
+        "locator": "Business Outlook; Q2 2025 revenue",
+        "text_fragment": "Business Outlook",
+        "evidence_block": "MRAM-8-K-ex0:Business Outlook"
+      },
+      {
+        "label": "q2_high",
+        "source_id": "MRAM-8-K-ex0",
+        "value": "13.5",
+        "unit": "USD million",
+        "url": "https://www.sec.gov/Archives/edgar/data/1438423/000155837025005987/mram-20250430xex99d1.htm#:~:text=Business%20Outlook",
+        "locator": "Business Outlook; Q2 2025 revenue",
+        "text_fragment": "Business Outlook",
+        "evidence_block": "MRAM-8-K-ex0:Business Outlook"
+      },
+      {
+        "label": "q1_revenue",
+        "source_id": "MRAM-10-Q",
+        "value": "13.138",
+        "unit": "USD million",
+        "concept": "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax",
+        "context_id": "Duration_1_1_2025_To_3_31_2025_0pfAnY4koUqFn0HCqMlJTw",
+        "context": "context: entity: identifier:0001438423 period: startdate:2025-01-01 enddate:2025-03-31",
+        "fact_id": "Tc_FjkhCA801EamRv_YKiOc5Q_5_3",
+        "original_text": "13,138",
+        "scale": 3,
+        "sign": "+",
+        "url": "https://www.sec.gov/Archives/edgar/data/1438423/000155837025006020/mram-20250331x10q.htm#Tc_FjkhCA801EamRv_YKiOc5Q_5_3",
+        "locator": "income_statement; inline XBRL #Tc_FjkhCA801EamRv_YKiOc5Q_5_3, context Duration_1_1_2025_To_3_31_2025_0pfAnY4koUqFn0HCqMlJTw",
+        "evidence_block": "MRAM-10-Q:income_statement"
+      }
+    ],
+    "reused_from_v1": [],
+    "grading": {
+      "expected_answer": {
+        "q2_low": {
+          "value": "12.5",
+          "kind": "number",
+          "unit": "USD million",
+          "absolute_tolerance": "0"
+        },
+        "q2_high": {
+          "value": "13.5",
+          "kind": "number",
+          "unit": "USD million",
+          "absolute_tolerance": "0"
+        },
+        "q2_mid": {
+          "value": "13.000",
+          "kind": "number",
+          "unit": "USD million",
+          "absolute_tolerance": "0.001"
+        },
+        "growth_low": {
+          "value": "-4.86",
+          "kind": "number",
+          "unit": "percent",
+          "absolute_tolerance": "0.01"
+        },
+        "growth_mid": {
+          "value": "-1.05",
+          "kind": "number",
+          "unit": "percent",
+          "absolute_tolerance": "0.01"
+        },
+        "growth_high": {
+          "value": "2.76",
+          "kind": "number",
+          "unit": "percent",
+          "absolute_tolerance": "0.01"
+        }
+      },
+      "max_points": 5,
+      "rubric": {
+        "answer": 2,
+        "evidence": 1,
+        "scope_units": 1,
+        "dependency_and_method": 1
+      }
+    },
+    "verification": {
+      "checked_on": "2026-09-22",
+      "source_verified": true,
+      "agent_run_performed": false
+    }
+  },
+  "RAIN-V2-MRAM-004": {
+    "title_zh": "反推回到上年收入所需的 H2",
+    "ticker": "MRAM",
+    "company": "Everspin Technologies, Inc.",
+    "depends_on": [
+      "RAIN-V2-MRAM-001",
+      "RAIN-V2-MRAM-002",
+      "RAIN-V2-MRAM-003"
+    ],
+    "input_bindings": {
+      "q2_mid": {
+        "kind": "prior",
+        "question_id": "RAIN-V2-MRAM-003",
+        "field": "q2_mid",
+        "value": "13.0",
+        "unit": "USD million"
+      },
+      "q1_revenue": {
+        "kind": "prior",
+        "question_id": "RAIN-V2-MRAM-002",
+        "field": "q1_revenue",
+        "value": "13.138",
+        "unit": "USD million"
+      },
+      "target": {
+        "kind": "prior",
+        "question_id": "RAIN-V2-MRAM-001",
+        "field": "revenue24",
+        "value": "50.402",
+        "unit": "USD million"
+      },
+      "h2_quarters": {
+        "kind": "assumption",
+        "value": "2",
+        "unit": "quarters",
+        "description": "Scenario assumption stated in the question"
+      }
+    },
+    "derivations": [
+      {
+        "field": "h1_scenario",
+        "expression": "q1_revenue + q2_mid",
+        "unit": "USD million",
+        "decimal_places": 3
+      },
+      {
+        "field": "required_h2",
+        "expression": "target - h1_scenario",
+        "unit": "USD million",
+        "decimal_places": 3
+      },
+      {
+        "field": "required_quarter_average",
+        "expression": "required_h2 / h2_quarters",
+        "unit": "USD million",
+        "decimal_places": 3
+      }
+    ],
+    "output_nodes": {
+      "h1_scenario": "derive_h1_scenario",
+      "required_h2": "derive_required_h2",
+      "required_quarter_average": "derive_required_quarter_average"
+    },
+    "hop_definition": "conditional_evidence_depth_v2",
+    "hop_plan": [
+      {
+        "id": "input_q2_mid",
+        "kind": "prior",
+        "depends_on": [],
+        "outputs": [
+          "q2_mid"
+        ],
+        "question_id": "RAIN-V2-MRAM-003",
+        "field": "q2_mid",
+        "depth": 0
+      },
+      {
+        "id": "input_q1_revenue",
+        "kind": "prior",
+        "depends_on": [],
+        "outputs": [
+          "q1_revenue"
+        ],
+        "question_id": "RAIN-V2-MRAM-002",
+        "field": "q1_revenue",
+        "depth": 0
+      },
+      {
+        "id": "input_target",
+        "kind": "prior",
+        "depends_on": [],
+        "outputs": [
+          "target"
+        ],
+        "question_id": "RAIN-V2-MRAM-001",
+        "field": "revenue24",
+        "depth": 0
+      },
+      {
+        "id": "input_h2_quarters",
+        "kind": "assumption",
+        "depends_on": [],
+        "outputs": [
+          "h2_quarters"
+        ],
+        "description": "Scenario assumption stated in the question",
+        "depth": 0
+      },
+      {
+        "id": "derive_h1_scenario",
+        "kind": "calculate",
+        "depends_on": [
+          "input_q1_revenue",
+          "input_q2_mid"
+        ],
+        "outputs": [
+          "h1_scenario"
+        ],
+        "expression": "q1_revenue + q2_mid",
+        "depth": 1
+      },
+      {
+        "id": "derive_required_h2",
+        "kind": "calculate",
+        "depends_on": [
+          "derive_h1_scenario",
+          "input_target"
+        ],
+        "outputs": [
+          "required_h2"
+        ],
+        "expression": "target - h1_scenario",
+        "depth": 2
+      },
+      {
+        "id": "derive_required_quarter_average",
+        "kind": "calculate",
+        "depends_on": [
+          "input_h2_quarters",
+          "derive_required_h2"
+        ],
+        "outputs": [
+          "required_quarter_average"
+        ],
+        "expression": "required_h2 / h2_quarters",
+        "depth": 3
+      }
+    ],
+    "hops": 3,
+    "evidence_records": [
+      {
+        "label": "q1_revenue",
+        "source_id": "MRAM-10-Q",
+        "value": "13.138",
+        "unit": "USD million",
+        "concept": "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax",
+        "context_id": "Duration_1_1_2025_To_3_31_2025_0pfAnY4koUqFn0HCqMlJTw",
+        "context": "context: entity: identifier:0001438423 period: startdate:2025-01-01 enddate:2025-03-31",
+        "fact_id": "Tc_FjkhCA801EamRv_YKiOc5Q_5_3",
+        "original_text": "13,138",
+        "scale": 3,
+        "sign": "+",
+        "url": "https://www.sec.gov/Archives/edgar/data/1438423/000155837025006020/mram-20250331x10q.htm#Tc_FjkhCA801EamRv_YKiOc5Q_5_3",
+        "locator": "income_statement; inline XBRL #Tc_FjkhCA801EamRv_YKiOc5Q_5_3, context Duration_1_1_2025_To_3_31_2025_0pfAnY4koUqFn0HCqMlJTw",
+        "evidence_block": "MRAM-10-Q:income_statement"
+      },
+      {
+        "label": "q2_high",
+        "source_id": "MRAM-8-K-ex0",
+        "value": "13.5",
+        "unit": "USD million",
+        "url": "https://www.sec.gov/Archives/edgar/data/1438423/000155837025005987/mram-20250430xex99d1.htm#:~:text=Business%20Outlook",
+        "locator": "Business Outlook; Q2 2025 revenue",
+        "text_fragment": "Business Outlook",
+        "evidence_block": "MRAM-8-K-ex0:Business Outlook"
+      },
+      {
+        "label": "q2_low",
+        "source_id": "MRAM-8-K-ex0",
+        "value": "12.5",
+        "unit": "USD million",
+        "url": "https://www.sec.gov/Archives/edgar/data/1438423/000155837025005987/mram-20250430xex99d1.htm#:~:text=Business%20Outlook",
+        "locator": "Business Outlook; Q2 2025 revenue",
+        "text_fragment": "Business Outlook",
+        "evidence_block": "MRAM-8-K-ex0:Business Outlook"
+      },
+      {
+        "label": "revenue24",
+        "source_id": "MRAM-10-K",
+        "value": "50.402",
+        "unit": "USD million",
+        "concept": "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax",
+        "context_id": "Duration_1_1_2024_To_12_31_2024_WgaXofmgUU-SZDgbnHtWsg",
+        "context": "context: entity: identifier:0001438423 period: startdate:2024-01-01 enddate:2024-12-31",
+        "fact_id": "Tc_jutJA6h74k24C4eONuMtQQ_5_3",
+        "original_text": "50,402",
+        "scale": 3,
+        "sign": "+",
+        "url": "https://www.sec.gov/Archives/edgar/data/1438423/000155837025001827/mram-20241231x10k.htm#Tc_jutJA6h74k24C4eONuMtQQ_5_3",
+        "locator": "income_statement; inline XBRL #Tc_jutJA6h74k24C4eONuMtQQ_5_3, context Duration_1_1_2024_To_12_31_2024_WgaXofmgUU-SZDgbnHtWsg",
+        "evidence_block": "MRAM-10-K:income_statement"
+      }
+    ],
+    "reused_from_v1": [],
+    "grading": {
+      "expected_answer": {
+        "h1_scenario": {
+          "value": "26.138",
+          "kind": "number",
+          "unit": "USD million",
+          "absolute_tolerance": "0.001"
+        },
+        "required_h2": {
+          "value": "24.264",
+          "kind": "number",
+          "unit": "USD million",
+          "absolute_tolerance": "0.001"
+        },
+        "required_quarter_average": {
+          "value": "12.132",
+          "kind": "number",
+          "unit": "USD million",
+          "absolute_tolerance": "0.001"
+        }
+      },
+      "max_points": 5,
+      "rubric": {
+        "answer": 2,
+        "evidence": 1,
+        "scope_units": 1,
+        "dependency_and_method": 1
+      }
+    },
+    "verification": {
+      "checked_on": "2026-09-22",
+      "source_verified": true,
+      "agent_run_performed": false
+    }
+  },
+  "RAIN-V2-MRAM-005": {
+    "title_zh": "收入情景通过不等于保证 GAAP 盈利",
+    "ticker": "MRAM",
+    "company": "Everspin Technologies, Inc.",
+    "depends_on": [
+      "RAIN-V2-MRAM-003",
+      "RAIN-V2-MRAM-004"
+    ],
+    "input_bindings": {
+      "required_h2": {
+        "kind": "prior",
+        "question_id": "RAIN-V2-MRAM-004",
+        "field": "required_h2",
+        "value": "24.264",
+        "unit": "USD million"
+      },
+      "q2_low": {
+        "kind": "prior",
+        "question_id": "RAIN-V2-MRAM-003",
+        "field": "q2_low",
+        "value": "12.5",
+        "unit": "USD million"
+      },
+      "h2_quarters": {
+        "kind": "assumption",
+        "value": "2",
+        "unit": "quarters",
+        "description": "Scenario assumption stated in the question"
+      },
+      "gaap_eps_low": {
+        "kind": "source",
+        "value": "-0.05",
+        "unit": "USD per basic share",
+        "evidence_label": "gaap_eps_low",
+        "source_id": "MRAM-8-K-ex0"
+      },
+      "gaap_eps_high": {
+        "kind": "source",
+        "value": "0",
+        "unit": "USD per basic share",
+        "evidence_label": "gaap_eps_high",
+        "source_id": "MRAM-8-K-ex0"
+      }
+    },
+    "derivations": [
+      {
+        "field": "h2_scenario",
+        "expression": "q2_low * h2_quarters",
+        "unit": "USD million",
+        "decimal_places": 3
+      },
+      {
+        "field": "revenue_surplus",
+        "expression": "h2_scenario - required_h2",
+        "unit": "USD million",
+        "decimal_places": 3
+      },
+      {
+        "field": "revenue_target_met",
+        "expression": "revenue_surplus >= 0",
+        "unit": "boolean",
+        "decimal_places": null
+      },
+      {
+        "field": "gaap_range_strictly_positive",
+        "expression": "gaap_eps_low > 0 and gaap_eps_high > 0",
+        "unit": "boolean",
+        "decimal_places": null
+      }
+    ],
+    "output_nodes": {
+      "h2_scenario": "derive_h2_scenario",
+      "revenue_surplus": "derive_revenue_surplus",
+      "revenue_target_met": "derive_revenue_target_met",
+      "gaap_eps_low": "read_1",
+      "gaap_eps_high": "read_1",
+      "gaap_range_strictly_positive": "derive_gaap_range_strictly_positive"
+    },
+    "hop_definition": "conditional_evidence_depth_v2",
+    "hop_plan": [
+      {
+        "id": "input_required_h2",
+        "kind": "prior",
+        "depends_on": [],
+        "outputs": [
+          "required_h2"
+        ],
+        "question_id": "RAIN-V2-MRAM-004",
+        "field": "required_h2",
+        "depth": 0
+      },
+      {
+        "id": "input_q2_low",
+        "kind": "prior",
+        "depends_on": [],
+        "outputs": [
+          "q2_low"
+        ],
+        "question_id": "RAIN-V2-MRAM-003",
+        "field": "q2_low",
+        "depth": 0
+      },
+      {
+        "id": "input_h2_quarters",
+        "kind": "assumption",
+        "depends_on": [],
+        "outputs": [
+          "h2_quarters"
+        ],
+        "description": "Scenario assumption stated in the question",
+        "depth": 0
+      },
+      {
+        "id": "read_1",
+        "kind": "retrieve",
+        "depends_on": [],
+        "evidence_block": "MRAM-8-K-ex0:Business Outlook",
+        "source_ids": [
+          "MRAM-8-K-ex0"
+        ],
+        "outputs": [
+          "gaap_eps_low",
+          "gaap_eps_high"
+        ],
+        "depth": 1
+      },
+      {
+        "id": "derive_h2_scenario",
+        "kind": "calculate",
+        "depends_on": [
+          "input_h2_quarters",
+          "input_q2_low"
+        ],
+        "outputs": [
+          "h2_scenario"
+        ],
+        "expression": "q2_low * h2_quarters",
+        "depth": 1
+      },
+      {
+        "id": "derive_revenue_surplus",
+        "kind": "calculate",
+        "depends_on": [
+          "derive_h2_scenario",
+          "input_required_h2"
+        ],
+        "outputs": [
+          "revenue_surplus"
+        ],
+        "expression": "h2_scenario - required_h2",
+        "depth": 2
+      },
+      {
+        "id": "derive_revenue_target_met",
+        "kind": "judge",
+        "depends_on": [
+          "derive_revenue_surplus"
+        ],
+        "outputs": [
+          "revenue_target_met"
+        ],
+        "expression": "revenue_surplus >= 0",
+        "depth": 3
+      },
+      {
+        "id": "derive_gaap_range_strictly_positive",
+        "kind": "judge",
+        "depends_on": [
+          "read_1"
+        ],
+        "outputs": [
+          "gaap_range_strictly_positive"
+        ],
+        "expression": "gaap_eps_low > 0 and gaap_eps_high > 0",
+        "depth": 2
+      }
+    ],
+    "hops": 3,
+    "evidence_records": [
+      {
+        "label": "gaap_eps_low",
+        "source_id": "MRAM-8-K-ex0",
+        "value": "-0.05",
+        "unit": "USD per basic share",
+        "url": "https://www.sec.gov/Archives/edgar/data/1438423/000155837025005987/mram-20250430xex99d1.htm#:~:text=Business%20Outlook",
+        "locator": "Business Outlook; Q2 GAAP net loss/income per basic share",
+        "text_fragment": "Business Outlook",
+        "evidence_block": "MRAM-8-K-ex0:Business Outlook"
+      },
+      {
+        "label": "gaap_eps_high",
+        "source_id": "MRAM-8-K-ex0",
+        "value": "0",
+        "unit": "USD per basic share",
+        "url": "https://www.sec.gov/Archives/edgar/data/1438423/000155837025005987/mram-20250430xex99d1.htm#:~:text=Business%20Outlook",
+        "locator": "Business Outlook; Q2 GAAP net loss/income per basic share",
+        "text_fragment": "Business Outlook",
+        "evidence_block": "MRAM-8-K-ex0:Business Outlook"
+      },
+      {
+        "label": "q2_low",
+        "source_id": "MRAM-8-K-ex0",
+        "value": "12.5",
+        "unit": "USD million",
+        "url": "https://www.sec.gov/Archives/edgar/data/1438423/000155837025005987/mram-20250430xex99d1.htm#:~:text=Business%20Outlook",
+        "locator": "Business Outlook; Q2 2025 revenue",
+        "text_fragment": "Business Outlook",
+        "evidence_block": "MRAM-8-K-ex0:Business Outlook"
+      },
+      {
+        "label": "q1_revenue",
+        "source_id": "MRAM-10-Q",
+        "value": "13.138",
+        "unit": "USD million",
+        "concept": "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax",
+        "context_id": "Duration_1_1_2025_To_3_31_2025_0pfAnY4koUqFn0HCqMlJTw",
+        "context": "context: entity: identifier:0001438423 period: startdate:2025-01-01 enddate:2025-03-31",
+        "fact_id": "Tc_FjkhCA801EamRv_YKiOc5Q_5_3",
+        "original_text": "13,138",
+        "scale": 3,
+        "sign": "+",
+        "url": "https://www.sec.gov/Archives/edgar/data/1438423/000155837025006020/mram-20250331x10q.htm#Tc_FjkhCA801EamRv_YKiOc5Q_5_3",
+        "locator": "income_statement; inline XBRL #Tc_FjkhCA801EamRv_YKiOc5Q_5_3, context Duration_1_1_2025_To_3_31_2025_0pfAnY4koUqFn0HCqMlJTw",
+        "evidence_block": "MRAM-10-Q:income_statement"
+      },
+      {
+        "label": "q2_high",
+        "source_id": "MRAM-8-K-ex0",
+        "value": "13.5",
+        "unit": "USD million",
+        "url": "https://www.sec.gov/Archives/edgar/data/1438423/000155837025005987/mram-20250430xex99d1.htm#:~:text=Business%20Outlook",
+        "locator": "Business Outlook; Q2 2025 revenue",
+        "text_fragment": "Business Outlook",
+        "evidence_block": "MRAM-8-K-ex0:Business Outlook"
+      },
+      {
+        "label": "revenue24",
+        "source_id": "MRAM-10-K",
+        "value": "50.402",
+        "unit": "USD million",
+        "concept": "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax",
+        "context_id": "Duration_1_1_2024_To_12_31_2024_WgaXofmgUU-SZDgbnHtWsg",
+        "context": "context: entity: identifier:0001438423 period: startdate:2024-01-01 enddate:2024-12-31",
+        "fact_id": "Tc_jutJA6h74k24C4eONuMtQQ_5_3",
+        "original_text": "50,402",
+        "scale": 3,
+        "sign": "+",
+        "url": "https://www.sec.gov/Archives/edgar/data/1438423/000155837025001827/mram-20241231x10k.htm#Tc_jutJA6h74k24C4eONuMtQQ_5_3",
+        "locator": "income_statement; inline XBRL #Tc_jutJA6h74k24C4eONuMtQQ_5_3, context Duration_1_1_2024_To_12_31_2024_WgaXofmgUU-SZDgbnHtWsg",
+        "evidence_block": "MRAM-10-K:income_statement"
+      }
+    ],
+    "reused_from_v1": [],
+    "grading": {
+      "expected_answer": {
+        "h2_scenario": {
+          "value": "25.000",
+          "kind": "number",
+          "unit": "USD million",
+          "absolute_tolerance": "0.001"
+        },
+        "revenue_surplus": {
+          "value": "0.736",
+          "kind": "number",
+          "unit": "USD million",
+          "absolute_tolerance": "0.001"
+        },
+        "revenue_target_met": {
+          "value": true,
+          "kind": "boolean",
+          "unit": "boolean"
+        },
+        "gaap_eps_low": {
+          "value": "-0.05",
+          "kind": "number",
+          "unit": "USD per basic share",
+          "absolute_tolerance": "0"
+        },
+        "gaap_eps_high": {
+          "value": "0",
+          "kind": "number",
+          "unit": "USD per basic share",
+          "absolute_tolerance": "0"
+        },
+        "gaap_range_strictly_positive": {
+          "value": false,
+          "kind": "boolean",
+          "unit": "boolean"
+        }
+      },
+      "max_points": 5,
+      "rubric": {
+        "answer": 2,
+        "evidence": 1,
+        "scope_units": 1,
+        "dependency_and_method": 1
+      }
+    },
+    "verification": {
+      "checked_on": "2026-09-22",
+      "source_verified": true,
+      "agent_run_performed": false
+    }
   }
 }
