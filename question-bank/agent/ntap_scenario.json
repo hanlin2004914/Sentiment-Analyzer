@@ -1,0 +1,119 @@
+[
+  {
+    "id": "RAIN-V2-NTAP-001",
+    "question": "Scenario: I am reviewing NetApp's capital-return budget. Determine whether dividends and buybacks were funded by simple FCF, set a no-external-funding buyback limit, then distinguish quarterly budget pacing from actual cash coverage. First, from the FY2025 10-K filed June 9, 2025 retrieve annual OCF and purchases of property and equipment. Define simple FCF as OCF less the positive capex outflow; calculate it for this workpaper. Return ocf: number (USD million); capex: number (USD million); fcf: number (USD million). Cite the SEC document and precise table/note/exhibit. Reuse prior-stage amounts without intermediate rounding; report percentages/ratios to two decimals and monetary derived amounts to three decimals unless specified.",
+    "scenario_id": "RAIN-V2-NTAP-001",
+    "workflow_step": 1,
+    "total_steps": 5,
+    "company": "NetApp, Inc.",
+    "ticker_at_filing": "NTAP",
+    "depends_on": [],
+    "document_scope": [
+      {
+        "company": "NetApp, Inc.",
+        "cik": "0001002047",
+        "form": "10-K",
+        "filed": "2025-06-09",
+        "report_date": "2025-04-25"
+      }
+    ]
+  },
+  {
+    "id": "RAIN-V2-NTAP-002",
+    "question": "Using Step 1's FCF, retrieve FY2025 cash dividends and common-stock repurchases from the same cash-flow statement. Calculate total shareholder cash returns and the signed funding gap, defined as returns minus FCF. A positive gap means simple FCF alone did not cover those returns; do not infer the specific financing source. Return dividends: number (USD million); buybacks: number (USD million); cash_returns: number (USD million); funding_gap: number (USD million). Cite the SEC document and precise table/note/exhibit. Reuse prior-stage amounts without intermediate rounding; report percentages/ratios to two decimals and monetary derived amounts to three decimals unless specified.",
+    "scenario_id": "RAIN-V2-NTAP-001",
+    "workflow_step": 2,
+    "total_steps": 5,
+    "company": "NetApp, Inc.",
+    "ticker_at_filing": "NTAP",
+    "depends_on": [
+      "RAIN-V2-NTAP-001"
+    ],
+    "document_scope": [
+      {
+        "company": "NetApp, Inc.",
+        "cik": "0001002047",
+        "form": "10-K",
+        "filed": "2025-06-09",
+        "report_date": "2025-04-25"
+      }
+    ]
+  },
+  {
+    "id": "RAIN-V2-NTAP-003",
+    "question": "Continue with Step 2's actual dividends, buybacks and funding gap. Under my hypothetical rule, retain those dividends but cap total shareholder returns at Step 1's FCF. Calculate maximum buybacks, the required reduction from actual buybacks, and the percentage reduction. This budget rule is not management guidance. Return max_buybacks: number (USD million); required_cut: number (USD million); cut_pct: number (percent). Cite the SEC document and precise table/note/exhibit. Reuse prior-stage amounts without intermediate rounding; report percentages/ratios to two decimals and monetary derived amounts to three decimals unless specified.",
+    "scenario_id": "RAIN-V2-NTAP-001",
+    "workflow_step": 3,
+    "total_steps": 5,
+    "company": "NetApp, Inc.",
+    "ticker_at_filing": "NTAP",
+    "depends_on": [
+      "RAIN-V2-NTAP-002"
+    ],
+    "document_scope": [
+      {
+        "company": "NetApp, Inc.",
+        "cik": "0001002047",
+        "form": "10-K",
+        "filed": "2025-06-09",
+        "report_date": "2025-04-25"
+      }
+    ]
+  },
+  {
+    "id": "RAIN-V2-NTAP-004",
+    "question": "Carry Step 3's maximum annual buyback budget forward solely as a hypothetical pacing benchmark, spread evenly over four quarters. In the FY2026 Q1 10-Q filed August 27, 2025, retrieve OCF, capex, dividends and repurchases for the three months ended July 25. Calculate quarterly FCF, cash remaining after returns, and actual buybacks minus one quarter of the hypothetical annual budget. Return quarter_fcf: number (USD million); cash_surplus: number (USD million); pacing_excess: number (USD million). Cite the SEC document and precise table/note/exhibit. Reuse prior-stage amounts without intermediate rounding; report percentages/ratios to two decimals and monetary derived amounts to three decimals unless specified.",
+    "scenario_id": "RAIN-V2-NTAP-001",
+    "workflow_step": 4,
+    "total_steps": 5,
+    "company": "NetApp, Inc.",
+    "ticker_at_filing": "NTAP",
+    "depends_on": [
+      "RAIN-V2-NTAP-003"
+    ],
+    "document_scope": [
+      {
+        "company": "NetApp, Inc.",
+        "cik": "0001002047",
+        "form": "10-Q",
+        "filed": "2025-08-27",
+        "report_date": "2025-07-25"
+      },
+      {
+        "company": "NetApp, Inc.",
+        "cik": "0001002047",
+        "form": "10-K",
+        "filed": "2025-06-09",
+        "report_date": "2025-04-25"
+      }
+    ]
+  },
+  {
+    "id": "RAIN-V2-NTAP-005",
+    "question": "Finish using Step 4's cash surplus and pacing excess. Return whether repurchases exceeded the equal-quarter budget benchmark, whether shareholder returns exceeded actual quarterly FCF, and the additional buyback headroom under the cash-coverage rule alone. Explain the distinction through these separate flags; a pacing overshoot does not automatically mean an external-funding shortfall. Return over_pacing_benchmark: boolean (boolean); cash_funding_shortfall: boolean (boolean); cash_only_headroom: number (USD million). Cite the SEC document and precise table/note/exhibit. Reuse prior-stage amounts without intermediate rounding; report percentages/ratios to two decimals and monetary derived amounts to three decimals unless specified.",
+    "scenario_id": "RAIN-V2-NTAP-001",
+    "workflow_step": 5,
+    "total_steps": 5,
+    "company": "NetApp, Inc.",
+    "ticker_at_filing": "NTAP",
+    "depends_on": [
+      "RAIN-V2-NTAP-004"
+    ],
+    "document_scope": [
+      {
+        "company": "NetApp, Inc.",
+        "cik": "0001002047",
+        "form": "10-K",
+        "filed": "2025-06-09",
+        "report_date": "2025-04-25"
+      },
+      {
+        "company": "NetApp, Inc.",
+        "cik": "0001002047",
+        "form": "10-Q",
+        "filed": "2025-08-27",
+        "report_date": "2025-07-25"
+      }
+    ]
+  }
+]

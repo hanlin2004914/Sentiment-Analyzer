@@ -1,0 +1,404 @@
+{
+  "MU": {
+    "company": "Micron Technology, Inc.",
+    "ticker_at_filing": "MU",
+    "title_zh": "财报会前核对：Q4 毛利加速与下一季指引",
+    "user_request": "I am preparing a Micron earnings briefing. Reconstruct Q4 from the annual and nine-month filings, reconcile it to the earnings release, then test whether the next-quarter guidance meets my stated revenue and gross-margin hurdles.",
+    "scope": "FY2025 annual/Q3/Q4 and FY2026 Q1 guidance as announced 2025-09-23",
+    "scenario_id": "RAIN-V2-MU-001",
+    "file": "mu_scenario.json",
+    "steps": [
+      {
+        "id": "RAIN-V2-MU-001",
+        "title_zh": "建立年度毛利基线",
+        "depends_on": [],
+        "hops": 3
+      },
+      {
+        "id": "RAIN-V2-MU-002",
+        "title_zh": "年度减累计反推 Q4",
+        "depends_on": [
+          "RAIN-V2-MU-001"
+        ],
+        "hops": 3
+      },
+      {
+        "id": "RAIN-V2-MU-003",
+        "title_zh": "与业绩附件对账",
+        "depends_on": [
+          "RAIN-V2-MU-002"
+        ],
+        "hops": 3
+      },
+      {
+        "id": "RAIN-V2-MU-004",
+        "title_zh": "指引区间相对实际季度的增长",
+        "depends_on": [
+          "RAIN-V2-MU-003"
+        ],
+        "hops": 3
+      },
+      {
+        "id": "RAIN-V2-MU-005",
+        "title_zh": "按用户双门槛形成简报结论",
+        "depends_on": [
+          "RAIN-V2-MU-003",
+          "RAIN-V2-MU-004"
+        ],
+        "hops": 4
+      }
+    ]
+  },
+  "STX": {
+    "company": "Seagate Technology Holdings plc",
+    "ticker_at_filing": "STX",
+    "title_zh": "现金股息承受力：从已实现现金流到压力测试",
+    "user_request": "I want a Seagate dividend-coverage workpaper. Establish annual cash generation, compare actual dividends, estimate the newly declared dividend run rate, and stress-test it without treating my assumptions as company guidance.",
+    "scope": "FY2025 ended 2025-06-27; dividend announced 2025-07-29; explicit hypothetical stress",
+    "scenario_id": "RAIN-V2-STX-001",
+    "file": "stx_scenario.json",
+    "steps": [
+      {
+        "id": "RAIN-V2-STX-001",
+        "title_zh": "取得现金流输入并计算 FCF",
+        "depends_on": [],
+        "hops": 2
+      },
+      {
+        "id": "RAIN-V2-STX-002",
+        "title_zh": "检验已支付股息覆盖",
+        "depends_on": [
+          "RAIN-V2-STX-001"
+        ],
+        "hops": 2
+      },
+      {
+        "id": "RAIN-V2-STX-003",
+        "title_zh": "估算新股息的全年现金负担",
+        "depends_on": [
+          "RAIN-V2-STX-002"
+        ],
+        "hops": 3
+      },
+      {
+        "id": "RAIN-V2-STX-004",
+        "title_zh": "现金流下降 15% 的覆盖压力",
+        "depends_on": [
+          "RAIN-V2-STX-001",
+          "RAIN-V2-STX-003"
+        ],
+        "hops": 3
+      },
+      {
+        "id": "RAIN-V2-STX-005",
+        "title_zh": "求最大可承受回撤并核对压力结果",
+        "depends_on": [
+          "RAIN-V2-STX-003",
+          "RAIN-V2-STX-004"
+        ],
+        "hops": 3
+      }
+    ]
+  },
+  "WDC": {
+    "company": "Western Digital Corporation",
+    "ticker_at_filing": "WDC",
+    "title_zh": "分拆后的盈利口径与季度利润桥",
+    "user_request": "I am reconciling Western Digital earnings after the Sandisk separation. Establish the correct continuing-operations boundary, bridge total and continuing profit, then check whether Q4 continuing net margin improved from Q3.",
+    "scope": "FY2025 ended 2025-06-27; recast continuing-operations presentation",
+    "scenario_id": "RAIN-V2-WDC-001",
+    "file": "wdc_scenario.json",
+    "steps": [
+      {
+        "id": "RAIN-V2-WDC-001",
+        "title_zh": "先确定分拆后的口径",
+        "depends_on": [],
+        "hops": 1
+      },
+      {
+        "id": "RAIN-V2-WDC-002",
+        "title_zh": "按上一步口径取年度财务基线",
+        "depends_on": [
+          "RAIN-V2-WDC-001"
+        ],
+        "hops": 1
+      },
+      {
+        "id": "RAIN-V2-WDC-003",
+        "title_zh": "年度总利润桥接到持续经营",
+        "depends_on": [
+          "RAIN-V2-WDC-002"
+        ],
+        "hops": 2
+      },
+      {
+        "id": "RAIN-V2-WDC-004",
+        "title_zh": "把 Q3 与年度持续经营基线对齐",
+        "depends_on": [
+          "RAIN-V2-WDC-003"
+        ],
+        "hops": 3
+      },
+      {
+        "id": "RAIN-V2-WDC-005",
+        "title_zh": "用 Q4 业绩附件完成季度趋势判断",
+        "depends_on": [
+          "RAIN-V2-WDC-004"
+        ],
+        "hops": 4
+      }
+    ]
+  },
+  "SNDK": {
+    "company": "Sandisk Corporation",
+    "ticker_at_filing": "SNDK",
+    "title_zh": "扭亏核验：减值消退还是经营改善",
+    "user_request": "I am checking whether Sandisk's apparent Q4 recovery reflects underlying operating improvement or a disappearing goodwill charge, and whether the next-quarter release actually confirms a GAAP EPS turnaround.",
+    "scope": "FY2025 Q3/Q4, FY2025 annual impairment, FY2026 Q1 guidance issued 2025-08-14",
+    "scenario_id": "RAIN-V2-SNDK-001",
+    "file": "sndk_scenario.json",
+    "steps": [
+      {
+        "id": "RAIN-V2-SNDK-001",
+        "title_zh": "建立 Q3 亏损基线",
+        "depends_on": [],
+        "hops": 1
+      },
+      {
+        "id": "RAIN-V2-SNDK-002",
+        "title_zh": "只加回商誉减值",
+        "depends_on": [
+          "RAIN-V2-SNDK-001"
+        ],
+        "hops": 2
+      },
+      {
+        "id": "RAIN-V2-SNDK-003",
+        "title_zh": "将 Q4 与原始及调整后 Q3 对比",
+        "depends_on": [
+          "RAIN-V2-SNDK-002"
+        ],
+        "hops": 2
+      },
+      {
+        "id": "RAIN-V2-SNDK-004",
+        "title_zh": "验证全年减值并量化利润桥",
+        "depends_on": [
+          "RAIN-V2-SNDK-002",
+          "RAIN-V2-SNDK-003"
+        ],
+        "hops": 4
+      },
+      {
+        "id": "RAIN-V2-SNDK-005",
+        "title_zh": "缺失 GAAP 指引时不宣称确认扭亏",
+        "depends_on": [
+          "RAIN-V2-SNDK-004"
+        ],
+        "hops": 3
+      }
+    ]
+  },
+  "NTAP": {
+    "company": "NetApp, Inc.",
+    "ticker_at_filing": "NTAP",
+    "title_zh": "资本回报预算：回购节奏与现金自给分开看",
+    "user_request": "I am reviewing NetApp's capital-return budget. Determine whether dividends and buybacks were funded by simple FCF, set a no-external-funding buyback limit, then distinguish quarterly budget pacing from actual cash coverage.",
+    "scope": "FY2025 ended 2025-04-25 and FY2026 Q1 ended 2025-07-25; explicit budget assumptions",
+    "scenario_id": "RAIN-V2-NTAP-001",
+    "file": "ntap_scenario.json",
+    "steps": [
+      {
+        "id": "RAIN-V2-NTAP-001",
+        "title_zh": "年度现金生成基线",
+        "depends_on": [],
+        "hops": 2
+      },
+      {
+        "id": "RAIN-V2-NTAP-002",
+        "title_zh": "对账年度分红与回购",
+        "depends_on": [
+          "RAIN-V2-NTAP-001"
+        ],
+        "hops": 3
+      },
+      {
+        "id": "RAIN-V2-NTAP-003",
+        "title_zh": "在现金自给规则下反推回购额度",
+        "depends_on": [
+          "RAIN-V2-NTAP-002"
+        ],
+        "hops": 1
+      },
+      {
+        "id": "RAIN-V2-NTAP-004",
+        "title_zh": "将年度预算与首季实际现金流对照",
+        "depends_on": [
+          "RAIN-V2-NTAP-003"
+        ],
+        "hops": 3
+      },
+      {
+        "id": "RAIN-V2-NTAP-005",
+        "title_zh": "形成双重约束下的资本回报结论",
+        "depends_on": [
+          "RAIN-V2-NTAP-004"
+        ],
+        "hops": 1
+      }
+    ]
+  },
+  "PSTG": {
+    "company": "Pure Storage, Inc. (name and ticker in the pinned filing)",
+    "ticker_at_filing": "PSTG",
+    "title_zh": "订阅转型复盘：收入结构是否转化为毛利增长",
+    "user_request": "I am preparing a Pure Storage subscription-transition review using its FY2025 filing. Trace revenue mix, category growth and category gross profit, then determine which business actually supplied the increase in total gross profit.",
+    "scope": "Pure Storage name/PSTG ticker as reported; FY2025 ended 2025-02-02 and FY2024 comparative",
+    "scenario_id": "RAIN-V2-PSTG-001",
+    "file": "pstg_scenario.json",
+    "steps": [
+      {
+        "id": "RAIN-V2-PSTG-001",
+        "title_zh": "从维度数据取得产品与订阅营收",
+        "depends_on": [],
+        "hops": 1
+      },
+      {
+        "id": "RAIN-V2-PSTG-002",
+        "title_zh": "对账收入结构并计算订阅占比",
+        "depends_on": [
+          "RAIN-V2-PSTG-001"
+        ],
+        "hops": 1
+      },
+      {
+        "id": "RAIN-V2-PSTG-003",
+        "title_zh": "把占比变化拆成两类收入增长",
+        "depends_on": [
+          "RAIN-V2-PSTG-001",
+          "RAIN-V2-PSTG-002"
+        ],
+        "hops": 3
+      },
+      {
+        "id": "RAIN-V2-PSTG-004",
+        "title_zh": "检查增长更快的业务是否毛利更高",
+        "depends_on": [
+          "RAIN-V2-PSTG-001",
+          "RAIN-V2-PSTG-003"
+        ],
+        "hops": 4
+      },
+      {
+        "id": "RAIN-V2-PSTG-005",
+        "title_zh": "完成毛利增长贡献桥",
+        "depends_on": [
+          "RAIN-V2-PSTG-003",
+          "RAIN-V2-PSTG-004"
+        ],
+        "hops": 5
+      }
+    ]
+  },
+  "RMBS": {
+    "company": "Rambus Inc.",
+    "ticker_at_filing": "RMBS",
+    "title_zh": "收入质量复核：GAAP royalties 与 licensing billings",
+    "user_request": "I am reviewing Rambus's Q1 2025 growth and a proposed Q2 revenue estimate. Check the GAAP revenue bridge, test whether licensing billings are interchangeable with royalties, and decide if adding the outlook components produces valid GAAP revenue guidance.",
+    "scope": "Q1 2025/2024 comparatives; Q2 2025 outlook in 8-K dated 2025-04-28",
+    "scenario_id": "RAIN-V2-RMBS-001",
+    "file": "rmbs_scenario.json",
+    "steps": [
+      {
+        "id": "RAIN-V2-RMBS-001",
+        "title_zh": "建立 GAAP 收入桥输入",
+        "depends_on": [],
+        "hops": 1
+      },
+      {
+        "id": "RAIN-V2-RMBS-002",
+        "title_zh": "将总收入增长拆到组成项目",
+        "depends_on": [
+          "RAIN-V2-RMBS-001"
+        ],
+        "hops": 3
+      },
+      {
+        "id": "RAIN-V2-RMBS-003",
+        "title_zh": "检验 billings 是否跟随 royalties",
+        "depends_on": [
+          "RAIN-V2-RMBS-002"
+        ],
+        "hops": 3
+      },
+      {
+        "id": "RAIN-V2-RMBS-004",
+        "title_zh": "用披露定义解释不可互换的指标",
+        "depends_on": [
+          "RAIN-V2-RMBS-003"
+        ],
+        "hops": 2
+      },
+      {
+        "id": "RAIN-V2-RMBS-005",
+        "title_zh": "避免把指引组成项错误相加为 GAAP 收入",
+        "depends_on": [
+          "RAIN-V2-RMBS-004"
+        ],
+        "hops": 3
+      }
+    ]
+  },
+  "MRAM": {
+    "company": "Everspin Technologies, Inc.",
+    "ticker_at_filing": "MRAM",
+    "title_zh": "收入修复路线：年度下滑、季度表现与指引边界",
+    "user_request": "I am checking Everspin's revenue-recovery path. Establish the prior annual decline, compare Q1, translate Q2 guidance into a first-half scenario, and determine what second-half revenue would be needed to regain the prior annual level without claiming earnings are guaranteed.",
+    "scope": "FY2024 ended 2024-12-31, Q1 2025, Q2 2025 outlook disclosed 2025-04-30; hypothetical H2 scenario",
+    "scenario_id": "RAIN-V2-MRAM-001",
+    "file": "mram_scenario.json",
+    "steps": [
+      {
+        "id": "RAIN-V2-MRAM-001",
+        "title_zh": "建立上年收入与毛利基线",
+        "depends_on": [],
+        "hops": 3
+      },
+      {
+        "id": "RAIN-V2-MRAM-002",
+        "title_zh": "检查 Q1 是否改善及利润率方向",
+        "depends_on": [
+          "RAIN-V2-MRAM-001"
+        ],
+        "hops": 4
+      },
+      {
+        "id": "RAIN-V2-MRAM-003",
+        "title_zh": "将 Q2 收入指引映射为环比区间",
+        "depends_on": [
+          "RAIN-V2-MRAM-002"
+        ],
+        "hops": 3
+      },
+      {
+        "id": "RAIN-V2-MRAM-004",
+        "title_zh": "反推回到上年收入所需的 H2",
+        "depends_on": [
+          "RAIN-V2-MRAM-001",
+          "RAIN-V2-MRAM-002",
+          "RAIN-V2-MRAM-003"
+        ],
+        "hops": 3
+      },
+      {
+        "id": "RAIN-V2-MRAM-005",
+        "title_zh": "收入情景通过不等于保证 GAAP 盈利",
+        "depends_on": [
+          "RAIN-V2-MRAM-003",
+          "RAIN-V2-MRAM-004"
+        ],
+        "hops": 3
+      }
+    ]
+  }
+}

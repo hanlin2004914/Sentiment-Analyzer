@@ -1,0 +1,150 @@
+[
+  {
+    "id": "RAIN-V2-MRAM-001",
+    "question": "Scenario: I am checking Everspin's revenue-recovery path. Establish the prior annual decline, compare Q1, translate Q2 guidance into a first-half scenario, and determine what second-half revenue would be needed to regain the prior annual level without claiming earnings are guaranteed. First, use the FY2024 10-K filed February 27, 2025 to retrieve 2024 revenue, 2023 revenue and 2024 cost of goods sold. Calculate the 2024 revenue decline and gross margin, preserving USD-thousand-to-million conversion. Return revenue24: number (USD million); annual_growth: number (percent); annual_gm: number (percent). Cite the SEC document and precise table/note/exhibit. Reuse prior-stage amounts without intermediate rounding; report percentages/ratios to two decimals and monetary derived amounts to three decimals unless specified.",
+    "scenario_id": "RAIN-V2-MRAM-001",
+    "workflow_step": 1,
+    "total_steps": 5,
+    "company": "Everspin Technologies, Inc.",
+    "ticker_at_filing": "MRAM",
+    "depends_on": [],
+    "document_scope": [
+      {
+        "company": "Everspin Technologies, Inc.",
+        "cik": "0001438423",
+        "form": "10-K",
+        "filed": "2025-02-27",
+        "report_date": "2024-12-31"
+      }
+    ]
+  },
+  {
+    "id": "RAIN-V2-MRAM-002",
+    "question": "Using Step 1's annual growth and gross-margin benchmarks, retrieve Q1 2025 revenue, Q1 2024 revenue and Q1 2025 cost of goods sold from the 10-Q filed April 30, 2025. Calculate quarterly revenue growth and gross margin; report whether revenue growth improved relative to the prior annual rate and the gross-margin difference from the annual benchmark. Return q1_revenue: number (USD million); q1_growth: number (percent); q1_gm: number (percent); growth_rate_improved: boolean (boolean); margin_change: number (percentage points). Cite the SEC document and precise table/note/exhibit. Reuse prior-stage amounts without intermediate rounding; report percentages/ratios to two decimals and monetary derived amounts to three decimals unless specified.",
+    "scenario_id": "RAIN-V2-MRAM-001",
+    "workflow_step": 2,
+    "total_steps": 5,
+    "company": "Everspin Technologies, Inc.",
+    "ticker_at_filing": "MRAM",
+    "depends_on": [
+      "RAIN-V2-MRAM-001"
+    ],
+    "document_scope": [
+      {
+        "company": "Everspin Technologies, Inc.",
+        "cik": "0001438423",
+        "form": "10-Q",
+        "filed": "2025-04-30",
+        "report_date": "2025-03-31"
+      },
+      {
+        "company": "Everspin Technologies, Inc.",
+        "cik": "0001438423",
+        "form": "10-K",
+        "filed": "2025-02-27",
+        "report_date": "2024-12-31"
+      }
+    ]
+  },
+  {
+    "id": "RAIN-V2-MRAM-003",
+    "question": "Use Step 2's actual Q1 revenue. In Exhibit 99.1 of the April 30, 2025 8-K, retrieve the Q2 revenue guidance range, calculate its midpoint, and compute sequential growth at the lower bound, midpoint and upper bound. Treat all three as guidance scenarios. Return q2_low: number (USD million); q2_high: number (USD million); q2_mid: number (USD million); growth_low: number (percent); growth_mid: number (percent); growth_high: number (percent). Cite the SEC document and precise table/note/exhibit. Reuse prior-stage amounts without intermediate rounding; report percentages/ratios to two decimals and monetary derived amounts to three decimals unless specified.",
+    "scenario_id": "RAIN-V2-MRAM-001",
+    "workflow_step": 3,
+    "total_steps": 5,
+    "company": "Everspin Technologies, Inc.",
+    "ticker_at_filing": "MRAM",
+    "depends_on": [
+      "RAIN-V2-MRAM-002"
+    ],
+    "document_scope": [
+      {
+        "company": "Everspin Technologies, Inc.",
+        "cik": "0001438423",
+        "form": "8-K",
+        "filed": "2025-04-30",
+        "report_date": "2025-04-30"
+      },
+      {
+        "company": "Everspin Technologies, Inc.",
+        "cik": "0001438423",
+        "form": "10-Q",
+        "filed": "2025-04-30",
+        "report_date": "2025-03-31"
+      }
+    ]
+  },
+  {
+    "id": "RAIN-V2-MRAM-004",
+    "question": "Continue from Step 3's Q2 midpoint, Step 2's actual Q1 revenue and Step 1's FY2024 revenue. Assume Q2 lands at the midpoint. Calculate first-half revenue, the second-half revenue required to match FY2024, and the average required in each of Q3 and Q4. This is user scenario arithmetic, not company H2 guidance. Return h1_scenario: number (USD million); required_h2: number (USD million); required_quarter_average: number (USD million). Cite the SEC document and precise table/note/exhibit. Reuse prior-stage amounts without intermediate rounding; report percentages/ratios to two decimals and monetary derived amounts to three decimals unless specified.",
+    "scenario_id": "RAIN-V2-MRAM-001",
+    "workflow_step": 4,
+    "total_steps": 5,
+    "company": "Everspin Technologies, Inc.",
+    "ticker_at_filing": "MRAM",
+    "depends_on": [
+      "RAIN-V2-MRAM-001",
+      "RAIN-V2-MRAM-002",
+      "RAIN-V2-MRAM-003"
+    ],
+    "document_scope": [
+      {
+        "company": "Everspin Technologies, Inc.",
+        "cik": "0001438423",
+        "form": "10-Q",
+        "filed": "2025-04-30",
+        "report_date": "2025-03-31"
+      },
+      {
+        "company": "Everspin Technologies, Inc.",
+        "cik": "0001438423",
+        "form": "8-K",
+        "filed": "2025-04-30",
+        "report_date": "2025-04-30"
+      },
+      {
+        "company": "Everspin Technologies, Inc.",
+        "cik": "0001438423",
+        "form": "10-K",
+        "filed": "2025-02-27",
+        "report_date": "2024-12-31"
+      }
+    ]
+  },
+  {
+    "id": "RAIN-V2-MRAM-005",
+    "question": "Finish the scenario using Step 4's required H2 revenue. Hypothetically let both H2 quarters equal the Q2 guidance lower bound from Step 3. Calculate H2 revenue and surplus over the required H2 amount; return whether the annual revenue target is met. Separately retrieve Q2 GAAP EPS guidance from the April 30 release and state whether the entire disclosed range is strictly positive. Do not turn the revenue scenario into a guaranteed profitability claim. Return h2_scenario: number (USD million); revenue_surplus: number (USD million); revenue_target_met: boolean (boolean); gaap_eps_low: number (USD per basic share); gaap_eps_high: number (USD per basic share); gaap_range_strictly_positive: boolean (boolean). Cite the SEC document and precise table/note/exhibit. Reuse prior-stage amounts without intermediate rounding; report percentages/ratios to two decimals and monetary derived amounts to three decimals unless specified.",
+    "scenario_id": "RAIN-V2-MRAM-001",
+    "workflow_step": 5,
+    "total_steps": 5,
+    "company": "Everspin Technologies, Inc.",
+    "ticker_at_filing": "MRAM",
+    "depends_on": [
+      "RAIN-V2-MRAM-003",
+      "RAIN-V2-MRAM-004"
+    ],
+    "document_scope": [
+      {
+        "company": "Everspin Technologies, Inc.",
+        "cik": "0001438423",
+        "form": "8-K",
+        "filed": "2025-04-30",
+        "report_date": "2025-04-30"
+      },
+      {
+        "company": "Everspin Technologies, Inc.",
+        "cik": "0001438423",
+        "form": "10-Q",
+        "filed": "2025-04-30",
+        "report_date": "2025-03-31"
+      },
+      {
+        "company": "Everspin Technologies, Inc.",
+        "cik": "0001438423",
+        "form": "10-K",
+        "filed": "2025-02-27",
+        "report_date": "2024-12-31"
+      }
+    ]
+  }
+]

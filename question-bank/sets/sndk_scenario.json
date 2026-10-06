@@ -1,0 +1,107 @@
+[
+  {
+    "id": "RAIN-V2-SNDK-001",
+    "question": "Scenario: I am checking whether Sandisk's apparent Q4 recovery reflects underlying operating improvement or a disappearing goodwill charge, and whether the next-quarter release actually confirms a GAAP EPS turnaround. First, from the 10-Q filed May 12, 2025 retrieve Q3 GAAP operating income (loss) and net income (loss), for the three months ended March 28. Preserve the signs and keep the two measures separate. Return operating_income: number (USD million); net_income: number (USD million). Cite the SEC document and precise table/note/exhibit. Reuse prior-stage amounts without intermediate rounding; report percentages/ratios to two decimals and monetary derived amounts to three decimals unless specified.",
+    "type": "XBRL Retrieval",
+    "answer": "{\"operating_income\": \"-1881\", \"net_income\": \"-1933\"}",
+    "scenario_id": "RAIN-V2-SNDK-001",
+    "workflow_step": 1,
+    "total_steps": 5,
+    "hops": 1,
+    "xbrl_concepts": [
+      "us-gaap:NetIncomeLoss",
+      "us-gaap:OperatingIncomeLoss"
+    ],
+    "filing_type": "10-Q",
+    "filing_period": "FY2025 Q3/Q4, FY2025 annual impairment, FY2026 Q1 guidance issued 2025-08-14",
+    "answer_type": "numeric_value",
+    "tool_required": "SEC EDGAR filing/iXBRL retrieval; structured extraction",
+    "source": "https://www.sec.gov/Archives/edgar/data/2023554/000202355425000027/sndk-20250328.htm#f-142",
+    "reasoning": "Prior-stage dependencies: none. Hop depth 1: depth 1: read_1. ",
+    "evidence": "Inline XBRL fact #f-142; context c-9 — https://www.sec.gov/Archives/edgar/data/2023554/000202355425000027/sndk-20250328.htm#f-142; Inline XBRL fact #f-170; context c-9 — https://www.sec.gov/Archives/edgar/data/2023554/000202355425000027/sndk-20250328.htm#f-170"
+  },
+  {
+    "id": "RAIN-V2-SNDK-002",
+    "question": "Using Step 1's operating loss, retrieve that quarter's goodwill impairment and calculate the operating result excluding only that charge. Retain the original operating result and the charge for the later bridge. Do not call this the company's non-GAAP operating income. Return q3_operating: number (USD million); q3_impairment: number (USD million); q3_excluding_only_goodwill: number (USD million). Cite the SEC document and precise table/note/exhibit. Reuse prior-stage amounts without intermediate rounding; report percentages/ratios to two decimals and monetary derived amounts to three decimals unless specified.",
+    "type": "XBRL Computation",
+    "answer": "{\"q3_operating\": \"-1881\", \"q3_impairment\": \"1830\", \"q3_excluding_only_goodwill\": \"-51.000\"}",
+    "scenario_id": "RAIN-V2-SNDK-001",
+    "workflow_step": 2,
+    "total_steps": 5,
+    "hops": 2,
+    "xbrl_concepts": [
+      "us-gaap:GoodwillImpairmentLoss",
+      "us-gaap:OperatingIncomeLoss"
+    ],
+    "filing_type": "10-Q",
+    "filing_period": "FY2025 Q3/Q4, FY2025 annual impairment, FY2026 Q1 guidance issued 2025-08-14",
+    "answer_type": "calculated_value",
+    "tool_required": "SEC EDGAR filing/iXBRL retrieval; retained prior scenario outputs; arithmetic/comparison",
+    "source": "https://www.sec.gov/Archives/edgar/data/2023554/000202355425000027/sndk-20250328.htm#f-122",
+    "reasoning": "Prior-stage dependencies: RAIN-V2-SNDK-001. Hop depth 2: depth 1: read_1 -> depth 2: derive_q3_excluding_only_goodwill. q3_excluding_only_goodwill = q3_operating + q3_impairment",
+    "evidence": "Inline XBRL fact #f-122; context c-9 — https://www.sec.gov/Archives/edgar/data/2023554/000202355425000027/sndk-20250328.htm#f-122; Inline XBRL fact #f-142; context c-9 — https://www.sec.gov/Archives/edgar/data/2023554/000202355425000027/sndk-20250328.htm#f-142"
+  },
+  {
+    "id": "RAIN-V2-SNDK-003",
+    "question": "From the August 14, 2025 8-K Exhibit 99.1 retrieve Q4 GAAP operating income. Using Step 2's original and single-charge-adjusted Q3 results, calculate Q4's improvement over each baseline. Do not assume these two improvements measure the same thing. Return q4_operating: number (USD million); reported_improvement: number (USD million); vs_q3_single_charge_adjusted: number (USD million). Cite the SEC document and precise table/note/exhibit. Reuse prior-stage amounts without intermediate rounding; report percentages/ratios to two decimals and monetary derived amounts to three decimals unless specified.",
+    "type": "SEC Computation",
+    "answer": "{\"q4_operating\": \"18\", \"reported_improvement\": \"1899.000\", \"vs_q3_single_charge_adjusted\": \"69.000\"}",
+    "scenario_id": "RAIN-V2-SNDK-001",
+    "workflow_step": 3,
+    "total_steps": 5,
+    "hops": 2,
+    "xbrl_concepts": [
+      "us-gaap:GoodwillImpairmentLoss",
+      "us-gaap:OperatingIncomeLoss"
+    ],
+    "filing_type": "8-K",
+    "filing_period": "FY2025 Q3/Q4, FY2025 annual impairment, FY2026 Q1 guidance issued 2025-08-14",
+    "answer_type": "calculated_value",
+    "tool_required": "SEC EDGAR filing/iXBRL retrieval; retained prior scenario outputs; arithmetic/comparison",
+    "source": "https://www.sec.gov/Archives/edgar/data/2023554/000119312525180782/d926236dex991.htm#:~:text=Q4%202025%20Financial%20Highlights",
+    "reasoning": "Prior-stage dependencies: RAIN-V2-SNDK-002. Hop depth 2: depth 1: read_1 -> depth 2: derive_reported_improvement, derive_vs_q3_single_charge_adjusted. reported_improvement = q4_operating - q3_reported; vs_q3_single_charge_adjusted = q4_operating - q3_adjusted",
+    "evidence": "Q4 2025 Financial Highlights; GAAP Operating Income (Loss) — https://www.sec.gov/Archives/edgar/data/2023554/000119312525180782/d926236dex991.htm#:~:text=Q4%202025%20Financial%20Highlights; Inline XBRL fact #f-142; context c-9 — https://www.sec.gov/Archives/edgar/data/2023554/000202355425000027/sndk-20250328.htm#f-142; Inline XBRL fact #f-122; context c-9 — https://www.sec.gov/Archives/edgar/data/2023554/000202355425000027/sndk-20250328.htm#f-122"
+  },
+  {
+    "id": "RAIN-V2-SNDK-004",
+    "question": "Use Step 3's reported operating improvement and Step 2's Q3 impairment. In the FY2025 10-K filed August 21, 2025 and the Q3 10-Q, retrieve full-year and nine-month goodwill impairment. Derive Q4 impairment by subtraction, then compute the reduction in the goodwill charge from Q3 to Q4 as a percentage of the reported operating improvement. This is an arithmetic bridge, not a causal attribution of every other cost. Return q4_impairment: number (USD million); charge_reduction: number (USD million); charge_reduction_share: number (percent). Cite the SEC document and precise table/note/exhibit. Reuse prior-stage amounts without intermediate rounding; report percentages/ratios to two decimals and monetary derived amounts to three decimals unless specified.",
+    "type": "XBRL Computation",
+    "answer": "{\"q4_impairment\": \"0.000\", \"charge_reduction\": \"1830.000\", \"charge_reduction_share\": \"96.37\"}",
+    "scenario_id": "RAIN-V2-SNDK-001",
+    "workflow_step": 4,
+    "total_steps": 5,
+    "hops": 4,
+    "xbrl_concepts": [
+      "us-gaap:GoodwillImpairmentLoss",
+      "us-gaap:OperatingIncomeLoss"
+    ],
+    "filing_type": "10-K",
+    "filing_period": "FY2025 Q3/Q4, FY2025 annual impairment, FY2026 Q1 guidance issued 2025-08-14",
+    "answer_type": "calculated_value",
+    "tool_required": "SEC EDGAR filing/iXBRL retrieval; retained prior scenario outputs; arithmetic/comparison",
+    "source": "https://www.sec.gov/Archives/edgar/data/2023554/000202355425000034/sndk-20250627.htm#f-140",
+    "reasoning": "Prior-stage dependencies: RAIN-V2-SNDK-002, RAIN-V2-SNDK-003. Hop depth 4: depth 1: read_1, read_2 -> depth 2: derive_q4_impairment -> depth 3: derive_charge_reduction -> depth 4: derive_charge_reduction_share. q4_impairment = annual_impairment - ytd_impairment; charge_reduction = q3_impairment - q4_impairment; charge_reduction_share = charge_reduction / reported_improvement * 100",
+    "evidence": "Inline XBRL fact #f-140; context c-1 — https://www.sec.gov/Archives/edgar/data/2023554/000202355425000034/sndk-20250627.htm#f-140; income_statement; inline XBRL #f-124, context c-1 — https://www.sec.gov/Archives/edgar/data/2023554/000202355425000027/sndk-20250328.htm#f-124; Inline XBRL fact #f-122; context c-9 — https://www.sec.gov/Archives/edgar/data/2023554/000202355425000027/sndk-20250328.htm#f-122; Inline XBRL fact #f-142; context c-9 — https://www.sec.gov/Archives/edgar/data/2023554/000202355425000027/sndk-20250328.htm#f-142; Q4 2025 Financial Highlights; GAAP Operating Income (Loss) — https://www.sec.gov/Archives/edgar/data/2023554/000119312525180782/d926236dex991.htm#:~:text=Q4%202025%20Financial%20Highlights"
+  },
+  {
+    "id": "RAIN-V2-SNDK-005",
+    "question": "Finish the user's check. My review rule requires numeric positive GAAP EPS guidance if Step 4 shows more than 90% of the operating-profit improvement is bridged by a smaller goodwill charge. Retrieve FY2026 Q1 GAAP EPS guidance and the non-GAAP EPS range from the August 14 release. Return whether the 90% condition is triggered and whether this release confirms the required GAAP turnaround. Preserve explicit N/A as null, not zero; do not substitute the non-GAAP range. Return adjustment_condition: boolean (boolean); gaap_guidance: null (USD per diluted share); non_gaap_low: number (USD per diluted share); non_gaap_high: number (USD per diluted share); required_confirmation_available: boolean (boolean). Cite the SEC document and precise table/note/exhibit. Reuse prior-stage amounts without intermediate rounding; report percentages/ratios to two decimals and monetary derived amounts to three decimals unless specified.",
+    "type": "SEC Computation",
+    "answer": "{\"adjustment_condition\": true, \"gaap_guidance\": null, \"non_gaap_low\": \"0.70\", \"non_gaap_high\": \"0.90\", \"required_confirmation_available\": false}",
+    "scenario_id": "RAIN-V2-SNDK-001",
+    "workflow_step": 5,
+    "total_steps": 5,
+    "hops": 3,
+    "xbrl_concepts": [
+      "us-gaap:GoodwillImpairmentLoss",
+      "us-gaap:OperatingIncomeLoss"
+    ],
+    "filing_type": "8-K",
+    "filing_period": "FY2025 Q3/Q4, FY2025 annual impairment, FY2026 Q1 guidance issued 2025-08-14",
+    "answer_type": "calculated_value",
+    "tool_required": "SEC EDGAR filing/iXBRL retrieval; retained prior scenario outputs; arithmetic/comparison",
+    "source": "https://www.sec.gov/Archives/edgar/data/2023554/000119312525180782/d926236dex991.htm#:~:text=Business%20Outlook%20for%20Fiscal%20First%20Quarter%20of%202026",
+    "reasoning": "Prior-stage dependencies: RAIN-V2-SNDK-004. Hop depth 3: depth 1: read_1, read_2, derive_adjustment_condition -> depth 2: derive_numeric_gaap_available -> depth 3: derive_required_confirmation_available. adjustment_condition = share > threshold; numeric_gaap_available = gaap_guidance != None and gaap_guidance > 0; required_confirmation_available = adjustment_condition and numeric_gaap_available",
+    "evidence": "Business Outlook, FY2026 Q1 diluted earnings (loss) per share, GAAP — https://www.sec.gov/Archives/edgar/data/2023554/000119312525180782/d926236dex991.htm#:~:text=Business%20Outlook%20for%20Fiscal%20First%20Quarter%20of%202026; Same table, non-GAAP EPS — https://www.sec.gov/Archives/edgar/data/2023554/000119312525180782/d926236dex991.htm#:~:text=Business%20Outlook%20for%20Fiscal%20First%20Quarter%20of%202026; Inline XBRL fact #f-122; context c-9 — https://www.sec.gov/Archives/edgar/data/2023554/000202355425000027/sndk-20250328.htm#f-122; Inline XBRL fact #f-140; context c-1 — https://www.sec.gov/Archives/edgar/data/2023554/000202355425000034/sndk-20250627.htm#f-140; income_statement; inline XBRL #f-124, context c-1 — https://www.sec.gov/Archives/edgar/data/2023554/000202355425000027/sndk-20250328.htm#f-124; Inline XBRL fact #f-142; context c-9 — https://www.sec.gov/Archives/edgar/data/2023554/000202355425000027/sndk-20250328.htm#f-142; Q4 2025 Financial Highlights; GAAP Operating Income (Loss) — https://www.sec.gov/Archives/edgar/data/2023554/000119312525180782/d926236dex991.htm#:~:text=Q4%202025%20Financial%20Highlights"
+  }
+]

@@ -1,0 +1,104 @@
+[
+  {
+    "id": "RAIN-V2-PSTG-001",
+    "question": "Scenario: I am preparing a Pure Storage subscription-transition review using its FY2025 filing. Trace revenue mix, category growth and category gross profit, then determine which business actually supplied the increase in total gross profit. First, use the 10-K filed March 27, 2025. Retrieve FY2025 product revenue, subscription-services revenue and consolidated revenue from the income statement/product-service XBRL contexts. Convert the filing's USD-thousand presentation to USD millions, retaining three decimal places. Return product: number (USD million); subscription: number (USD million); total: number (USD million). Cite the SEC document and precise table/note/exhibit. Reuse prior-stage amounts without intermediate rounding; report percentages/ratios to two decimals and monetary derived amounts to three decimals unless specified.",
+    "type": "XBRL Retrieval",
+    "answer": "{\"product\": \"1699.494\", \"subscription\": \"1468.670\", \"total\": \"3168.164\"}",
+    "scenario_id": "RAIN-V2-PSTG-001",
+    "workflow_step": 1,
+    "total_steps": 5,
+    "hops": 1,
+    "xbrl_concepts": [
+      "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax"
+    ],
+    "filing_type": "10-K",
+    "filing_period": "Pure Storage name/PSTG ticker as reported; FY2025 ended 2025-02-02 and FY2024 comparative",
+    "answer_type": "numeric_value",
+    "tool_required": "SEC EDGAR filing/iXBRL retrieval; structured extraction",
+    "source": "https://www.sec.gov/Archives/edgar/data/1474432/000162828025015044/pstg-20250202.htm#f-149",
+    "reasoning": "Prior-stage dependencies: none. Hop depth 1: depth 1: read_1. ",
+    "evidence": "income_statement; inline XBRL #f-149, context c-12 — https://www.sec.gov/Archives/edgar/data/1474432/000162828025015044/pstg-20250202.htm#f-149; income_statement; inline XBRL #f-152, context c-15 — https://www.sec.gov/Archives/edgar/data/1474432/000162828025015044/pstg-20250202.htm#f-152; income_statement; inline XBRL #f-155, context c-1 — https://www.sec.gov/Archives/edgar/data/1474432/000162828025015044/pstg-20250202.htm#f-155"
+  },
+  {
+    "id": "RAIN-V2-PSTG-002",
+    "question": "Using only Step 1's amounts, calculate subscription revenue as a percentage of total revenue and reconcile product plus subscription revenue to the consolidated total. Return the signed reconciliation difference and retain the unrounded subscription share. Return subscription_share: number (percent); reconciliation_difference: number (USD million). Cite the SEC document and precise table/note/exhibit. Reuse prior-stage amounts without intermediate rounding; report percentages/ratios to two decimals and monetary derived amounts to three decimals unless specified.",
+    "type": "XBRL Computation",
+    "answer": "{\"subscription_share\": \"46.36\", \"reconciliation_difference\": \"0.000\"}",
+    "scenario_id": "RAIN-V2-PSTG-001",
+    "workflow_step": 2,
+    "total_steps": 5,
+    "hops": 1,
+    "xbrl_concepts": [
+      "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax"
+    ],
+    "filing_type": "10-K",
+    "filing_period": "Pure Storage name/PSTG ticker as reported; FY2025 ended 2025-02-02 and FY2024 comparative",
+    "answer_type": "calculated_value",
+    "tool_required": "retained prior scenario outputs; arithmetic/comparison",
+    "source": "https://www.sec.gov/Archives/edgar/data/1474432/000162828025015044/pstg-20250202.htm#f-152",
+    "reasoning": "Prior-stage dependencies: RAIN-V2-PSTG-001. Hop depth 1: depth 1: derive_subscription_share, derive_reconciliation_difference. subscription_share = subscription / total * 100; reconciliation_difference = product + subscription - total",
+    "evidence": "income_statement; inline XBRL #f-152, context c-15 — https://www.sec.gov/Archives/edgar/data/1474432/000162828025015044/pstg-20250202.htm#f-152; income_statement; inline XBRL #f-155, context c-1 — https://www.sec.gov/Archives/edgar/data/1474432/000162828025015044/pstg-20250202.htm#f-155; income_statement; inline XBRL #f-149, context c-12 — https://www.sec.gov/Archives/edgar/data/1474432/000162828025015044/pstg-20250202.htm#f-149"
+  },
+  {
+    "id": "RAIN-V2-PSTG-003",
+    "question": "Continue from Step 2's subscription share and Step 1's category revenues. Retrieve FY2024 product and subscription revenues from the same 10-K. Calculate each category's growth rate, the prior subscription share, and the share change in percentage points. Identify whether subscription grew faster than product. Return prior_product: number (USD million); prior_subscription: number (USD million); product_growth: number (percent); subscription_growth: number (percent); mix_change: number (percentage points); subscription_faster: boolean (boolean). Cite the SEC document and precise table/note/exhibit. Reuse prior-stage amounts without intermediate rounding; report percentages/ratios to two decimals and monetary derived amounts to three decimals unless specified.",
+    "type": "XBRL Computation",
+    "answer": "{\"prior_product\": \"1622.869\", \"prior_subscription\": \"1207.752\", \"product_growth\": \"4.72\", \"subscription_growth\": \"21.60\", \"mix_change\": \"3.69\", \"subscription_faster\": true}",
+    "scenario_id": "RAIN-V2-PSTG-001",
+    "workflow_step": 3,
+    "total_steps": 5,
+    "hops": 3,
+    "xbrl_concepts": [
+      "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax"
+    ],
+    "filing_type": "10-K",
+    "filing_period": "Pure Storage name/PSTG ticker as reported; FY2025 ended 2025-02-02 and FY2024 comparative",
+    "answer_type": "calculated_value",
+    "tool_required": "SEC EDGAR filing/iXBRL retrieval; retained prior scenario outputs; arithmetic/comparison",
+    "source": "https://www.sec.gov/Archives/edgar/data/1474432/000162828025015044/pstg-20250202.htm#f-148",
+    "reasoning": "Prior-stage dependencies: RAIN-V2-PSTG-001, RAIN-V2-PSTG-002. Hop depth 3: depth 1: read_1 -> depth 2: derive_product_growth, derive_subscription_growth, derive_prior_share -> depth 3: derive_mix_change, derive_subscription_faster. product_growth = (product / prior_product - 1) * 100; subscription_growth = (subscription / prior_subscription - 1) * 100; prior_share = prior_subscription / prior_total * 100; mix_change = current_share - prior_share; subscription_faster = subscription_growth > product_growth",
+    "evidence": "income_statement; inline XBRL #f-148, context c-11 — https://www.sec.gov/Archives/edgar/data/1474432/000162828025015044/pstg-20250202.htm#f-148; income_statement; inline XBRL #f-151, context c-14 — https://www.sec.gov/Archives/edgar/data/1474432/000162828025015044/pstg-20250202.htm#f-151; income_statement; inline XBRL #f-154, context c-17 — https://www.sec.gov/Archives/edgar/data/1474432/000162828025015044/pstg-20250202.htm#f-154; income_statement; inline XBRL #f-149, context c-12 — https://www.sec.gov/Archives/edgar/data/1474432/000162828025015044/pstg-20250202.htm#f-149; income_statement; inline XBRL #f-152, context c-15 — https://www.sec.gov/Archives/edgar/data/1474432/000162828025015044/pstg-20250202.htm#f-152; income_statement; inline XBRL #f-155, context c-1 — https://www.sec.gov/Archives/edgar/data/1474432/000162828025015044/pstg-20250202.htm#f-155"
+  },
+  {
+    "id": "RAIN-V2-PSTG-004",
+    "question": "Use Step 3's faster-growth result and Step 1's FY2025 revenues. Retrieve FY2025 product cost of revenue and subscription-services cost of revenue from the same filing. Calculate each category's gross profit and margin, and whether the faster-growing subscription category also has the higher gross margin. Return product_gp: number (USD million); subscription_gp: number (USD million); product_margin: number (percent); subscription_margin: number (percent); faster_and_higher_margin: boolean (boolean). Cite the SEC document and precise table/note/exhibit. Reuse prior-stage amounts without intermediate rounding; report percentages/ratios to two decimals and monetary derived amounts to three decimals unless specified.",
+    "type": "XBRL Computation",
+    "answer": "{\"product_gp\": \"1124.147\", \"subscription_gp\": \"1088.562\", \"product_margin\": \"66.15\", \"subscription_margin\": \"74.12\", \"faster_and_higher_margin\": true}",
+    "scenario_id": "RAIN-V2-PSTG-001",
+    "workflow_step": 4,
+    "total_steps": 5,
+    "hops": 4,
+    "xbrl_concepts": [
+      "us-gaap:CostOfGoodsAndServicesSold",
+      "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax"
+    ],
+    "filing_type": "10-K",
+    "filing_period": "Pure Storage name/PSTG ticker as reported; FY2025 ended 2025-02-02 and FY2024 comparative",
+    "answer_type": "calculated_value",
+    "tool_required": "SEC EDGAR filing/iXBRL retrieval; retained prior scenario outputs; arithmetic/comparison",
+    "source": "https://www.sec.gov/Archives/edgar/data/1474432/000162828025015044/pstg-20250202.htm#f-158",
+    "reasoning": "Prior-stage dependencies: RAIN-V2-PSTG-001, RAIN-V2-PSTG-003. Hop depth 4: depth 1: read_1 -> depth 2: derive_product_gp, derive_subscription_gp -> depth 3: derive_product_margin, derive_subscription_margin -> depth 4: derive_faster_and_higher_margin. product_gp = product - product_cost; subscription_gp = subscription - subscription_cost; product_margin = product_gp / product * 100; subscription_margin = subscription_gp / subscription * 100; faster_and_higher_margin = subscription_faster and subscription_margin > product_margin",
+    "evidence": "income_statement; inline XBRL #f-158, context c-12 — https://www.sec.gov/Archives/edgar/data/1474432/000162828025015044/pstg-20250202.htm#f-158; income_statement; inline XBRL #f-161, context c-15 — https://www.sec.gov/Archives/edgar/data/1474432/000162828025015044/pstg-20250202.htm#f-161; income_statement; inline XBRL #f-149, context c-12 — https://www.sec.gov/Archives/edgar/data/1474432/000162828025015044/pstg-20250202.htm#f-149; income_statement; inline XBRL #f-152, context c-15 — https://www.sec.gov/Archives/edgar/data/1474432/000162828025015044/pstg-20250202.htm#f-152; income_statement; inline XBRL #f-148, context c-11 — https://www.sec.gov/Archives/edgar/data/1474432/000162828025015044/pstg-20250202.htm#f-148; income_statement; inline XBRL #f-151, context c-14 — https://www.sec.gov/Archives/edgar/data/1474432/000162828025015044/pstg-20250202.htm#f-151"
+  },
+  {
+    "id": "RAIN-V2-PSTG-005",
+    "question": "Finish using Step 4's current category gross profits and Step 3's FY2024 category revenues. Retrieve FY2024 cost of revenue for both categories. Compute each category's gross-profit change, the total change, and subscription's share of the total increase. Return whether subscription growth offset a product gross-profit decline. A contribution above 100% is permissible when the other category declines. Return product_gp_change: number (USD million); subscription_gp_change: number (USD million); total_gp_change: number (USD million); subscription_contribution: number (percent); offset_product_decline: boolean (boolean). Cite the SEC document and precise table/note/exhibit. Reuse prior-stage amounts without intermediate rounding; report percentages/ratios to two decimals and monetary derived amounts to three decimals unless specified.",
+    "type": "XBRL Computation",
+    "answer": "{\"product_gp_change\": \"-26.292\", \"subscription_gp_change\": \"217.810\", \"total_gp_change\": \"191.518\", \"subscription_contribution\": \"113.73\", \"offset_product_decline\": true}",
+    "scenario_id": "RAIN-V2-PSTG-001",
+    "workflow_step": 5,
+    "total_steps": 5,
+    "hops": 5,
+    "xbrl_concepts": [
+      "us-gaap:CostOfGoodsAndServicesSold",
+      "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax"
+    ],
+    "filing_type": "10-K",
+    "filing_period": "Pure Storage name/PSTG ticker as reported; FY2025 ended 2025-02-02 and FY2024 comparative",
+    "answer_type": "calculated_value",
+    "tool_required": "SEC EDGAR filing/iXBRL retrieval; retained prior scenario outputs; arithmetic/comparison",
+    "source": "https://www.sec.gov/Archives/edgar/data/1474432/000162828025015044/pstg-20250202.htm#f-157",
+    "reasoning": "Prior-stage dependencies: RAIN-V2-PSTG-003, RAIN-V2-PSTG-004. Hop depth 5: depth 1: read_1 -> depth 2: derive_prior_product_gp, derive_prior_subscription_gp -> depth 3: derive_product_gp_change, derive_subscription_gp_change -> depth 4: derive_total_gp_change -> depth 5: derive_subscription_contribution, derive_offset_product_decline. prior_product_gp = prior_product - prior_product_cost; prior_subscription_gp = prior_subscription - prior_subscription_cost; product_gp_change = current_product_gp - prior_product_gp; subscription_gp_change = current_subscription_gp - prior_subscription_gp; total_gp_change = product_gp_change + subscription_gp_change; subscription_contribution = subscription_gp_change / total_gp_change * 100; offset_product_decline = product_gp_change < 0 and total_gp_change > 0",
+    "evidence": "income_statement; inline XBRL #f-157, context c-11 — https://www.sec.gov/Archives/edgar/data/1474432/000162828025015044/pstg-20250202.htm#f-157; income_statement; inline XBRL #f-160, context c-14 — https://www.sec.gov/Archives/edgar/data/1474432/000162828025015044/pstg-20250202.htm#f-160; income_statement; inline XBRL #f-149, context c-12 — https://www.sec.gov/Archives/edgar/data/1474432/000162828025015044/pstg-20250202.htm#f-149; income_statement; inline XBRL #f-158, context c-12 — https://www.sec.gov/Archives/edgar/data/1474432/000162828025015044/pstg-20250202.htm#f-158; income_statement; inline XBRL #f-148, context c-11 — https://www.sec.gov/Archives/edgar/data/1474432/000162828025015044/pstg-20250202.htm#f-148; income_statement; inline XBRL #f-152, context c-15 — https://www.sec.gov/Archives/edgar/data/1474432/000162828025015044/pstg-20250202.htm#f-152; income_statement; inline XBRL #f-161, context c-15 — https://www.sec.gov/Archives/edgar/data/1474432/000162828025015044/pstg-20250202.htm#f-161; income_statement; inline XBRL #f-151, context c-14 — https://www.sec.gov/Archives/edgar/data/1474432/000162828025015044/pstg-20250202.htm#f-151"
+  }
+]

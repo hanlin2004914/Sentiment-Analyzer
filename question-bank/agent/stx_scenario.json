@@ -1,0 +1,128 @@
+[
+  {
+    "id": "RAIN-V2-STX-001",
+    "question": "Scenario: I want a Seagate dividend-coverage workpaper. Establish annual cash generation, compare actual dividends, estimate the newly declared dividend run rate, and stress-test it without treating my assumptions as company guidance. First, use the FY2025 10-K filed August 1, 2025 to retrieve operating cash flow and cash acquisitions of property, equipment and leasehold improvements. Calculate simple FCF as OCF minus the positive capex outflow magnitude. Return ocf: number (USD million); capex: number (USD million); fcf: number (USD million). Cite the SEC document and precise table/note/exhibit. Reuse prior-stage amounts without intermediate rounding; report percentages/ratios to two decimals and monetary derived amounts to three decimals unless specified.",
+    "scenario_id": "RAIN-V2-STX-001",
+    "workflow_step": 1,
+    "total_steps": 5,
+    "company": "Seagate Technology Holdings plc",
+    "ticker_at_filing": "STX",
+    "depends_on": [],
+    "document_scope": [
+      {
+        "company": "Seagate Technology Holdings plc",
+        "cik": "0001137789",
+        "form": "10-K",
+        "filed": "2025-08-01",
+        "report_date": "2025-06-27"
+      }
+    ]
+  },
+  {
+    "id": "RAIN-V2-STX-002",
+    "question": "Using Step 1's FCF, retrieve FY2025 cash dividends paid from that 10-K. Calculate FCF/dividends coverage and cash remaining after dividends. Retain the actual dividend amount for comparison with the new run rate. Return dividends: number (USD million); coverage: number (times); residual: number (USD million). Cite the SEC document and precise table/note/exhibit. Reuse prior-stage amounts without intermediate rounding; report percentages/ratios to two decimals and monetary derived amounts to three decimals unless specified.",
+    "scenario_id": "RAIN-V2-STX-001",
+    "workflow_step": 2,
+    "total_steps": 5,
+    "company": "Seagate Technology Holdings plc",
+    "ticker_at_filing": "STX",
+    "depends_on": [
+      "RAIN-V2-STX-001"
+    ],
+    "document_scope": [
+      {
+        "company": "Seagate Technology Holdings plc",
+        "cik": "0001137789",
+        "form": "10-K",
+        "filed": "2025-08-01",
+        "report_date": "2025-06-27"
+      }
+    ]
+  },
+  {
+    "id": "RAIN-V2-STX-003",
+    "question": "Compare with actual dividends from Step 2. In the July 29, 2025 8-K Exhibit 99.1, retrieve the newly declared quarterly dividend per share and the release's rounded year-end ordinary-share count. For this user scenario hold that rounded share count and dividend rate constant for four quarters; estimate annual cash dividends and the increase versus Step 2. This is a hypothetical run rate, not declared annual dividends. Return rate: number (USD per share); shares: number (million shares); annual_dividend_budget: number (USD million); increase: number (USD million). Cite the SEC document and precise table/note/exhibit. Reuse prior-stage amounts without intermediate rounding; report percentages/ratios to two decimals and monetary derived amounts to three decimals unless specified.",
+    "scenario_id": "RAIN-V2-STX-001",
+    "workflow_step": 3,
+    "total_steps": 5,
+    "company": "Seagate Technology Holdings plc",
+    "ticker_at_filing": "STX",
+    "depends_on": [
+      "RAIN-V2-STX-002"
+    ],
+    "document_scope": [
+      {
+        "company": "Seagate Technology Holdings plc",
+        "cik": "0001137789",
+        "form": "8-K",
+        "filed": "2025-07-29",
+        "report_date": "2025-07-29"
+      },
+      {
+        "company": "Seagate Technology Holdings plc",
+        "cik": "0001137789",
+        "form": "10-K",
+        "filed": "2025-08-01",
+        "report_date": "2025-06-27"
+      }
+    ]
+  },
+  {
+    "id": "RAIN-V2-STX-004",
+    "question": "Use Step 3's hypothetical annual dividend budget and Step 1's realized FCF. Assume FCF falls 15%, with no dividend-rate or share-count change. Calculate stressed FCF, stressed dividend coverage and cash left after dividends. Return whether coverage meets my minimum 1.20 times rule. Return stressed_fcf: number (USD million); stressed_coverage: number (times); residual: number (USD million); passes: boolean (boolean). Cite the SEC document and precise table/note/exhibit. Reuse prior-stage amounts without intermediate rounding; report percentages/ratios to two decimals and monetary derived amounts to three decimals unless specified.",
+    "scenario_id": "RAIN-V2-STX-001",
+    "workflow_step": 4,
+    "total_steps": 5,
+    "company": "Seagate Technology Holdings plc",
+    "ticker_at_filing": "STX",
+    "depends_on": [
+      "RAIN-V2-STX-001",
+      "RAIN-V2-STX-003"
+    ],
+    "document_scope": [
+      {
+        "company": "Seagate Technology Holdings plc",
+        "cik": "0001137789",
+        "form": "10-K",
+        "filed": "2025-08-01",
+        "report_date": "2025-06-27"
+      },
+      {
+        "company": "Seagate Technology Holdings plc",
+        "cik": "0001137789",
+        "form": "8-K",
+        "filed": "2025-07-29",
+        "report_date": "2025-07-29"
+      }
+    ]
+  },
+  {
+    "id": "RAIN-V2-STX-005",
+    "question": "Finish the same workpaper. Using Step 4's stressed FCF and the 15% haircut that produced it, recover the original FCF baseline and calculate the maximum percentage decline that would still preserve 1.20 times coverage of Step 3's dividend budget. Report whether the tested 15% decline exceeds that limit, consistent with Step 4's verdict. Return required_fcf: number (USD million); max_decline_pct: number (percent); tested_decline_exceeds_limit: boolean (boolean). Cite the SEC document and precise table/note/exhibit. Reuse prior-stage amounts without intermediate rounding; report percentages/ratios to two decimals and monetary derived amounts to three decimals unless specified.",
+    "scenario_id": "RAIN-V2-STX-001",
+    "workflow_step": 5,
+    "total_steps": 5,
+    "company": "Seagate Technology Holdings plc",
+    "ticker_at_filing": "STX",
+    "depends_on": [
+      "RAIN-V2-STX-003",
+      "RAIN-V2-STX-004"
+    ],
+    "document_scope": [
+      {
+        "company": "Seagate Technology Holdings plc",
+        "cik": "0001137789",
+        "form": "8-K",
+        "filed": "2025-07-29",
+        "report_date": "2025-07-29"
+      },
+      {
+        "company": "Seagate Technology Holdings plc",
+        "cik": "0001137789",
+        "form": "10-K",
+        "filed": "2025-08-01",
+        "report_date": "2025-06-27"
+      }
+    ]
+  }
+]

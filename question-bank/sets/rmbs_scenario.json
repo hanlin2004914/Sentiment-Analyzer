@@ -1,0 +1,102 @@
+[
+  {
+    "id": "RAIN-V2-RMBS-001",
+    "question": "Scenario: I am reviewing Rambus's Q1 2025 growth and a proposed Q2 revenue estimate. Check the GAAP revenue bridge, test whether licensing billings are interchangeable with royalties, and decide if adding the outlook components produces valid GAAP revenue guidance. First, from the 10-Q filed April 29, 2025 retrieve Q1 2025 and Q1 2024 product revenue, royalties, contract and other revenue, and total revenue. Use the USD-thousand statements converted to USD millions, not rounded release highlights. Return product25: number (USD million); royalties25: number (USD million); contract25: number (USD million); total25: number (USD million); product24: number (USD million); royalties24: number (USD million); contract24: number (USD million); total24: number (USD million). Cite the SEC document and precise table/note/exhibit. Reuse prior-stage amounts without intermediate rounding; report percentages/ratios to two decimals and monetary derived amounts to three decimals unless specified.",
+    "type": "XBRL Retrieval",
+    "answer": "{\"product25\": \"76.309\", \"royalties25\": \"73.975\", \"contract25\": \"16.380\", \"total25\": \"166.664\", \"product24\": \"50.360\", \"royalties24\": \"47.476\", \"contract24\": \"20.035\", \"total24\": \"117.871\"}",
+    "scenario_id": "RAIN-V2-RMBS-001",
+    "workflow_step": 1,
+    "total_steps": 5,
+    "hops": 1,
+    "xbrl_concepts": [
+      "us-gaap:RevenueFromContractWithCustomerIncludingAssessedTax"
+    ],
+    "filing_type": "10-Q",
+    "filing_period": "Q1 2025/2024 comparatives; Q2 2025 outlook in 8-K dated 2025-04-28",
+    "answer_type": "numeric_value",
+    "tool_required": "SEC EDGAR filing/iXBRL retrieval; structured extraction",
+    "source": "https://www.sec.gov/Archives/edgar/data/917273/000091727325000075/rmbs-20250331.htm#f-115",
+    "reasoning": "Prior-stage dependencies: none. Hop depth 1: depth 1: read_1. ",
+    "evidence": "income_statement; inline XBRL #f-115, context c-4 — https://www.sec.gov/Archives/edgar/data/917273/000091727325000075/rmbs-20250331.htm#f-115; income_statement; inline XBRL #f-117, context c-6 — https://www.sec.gov/Archives/edgar/data/917273/000091727325000075/rmbs-20250331.htm#f-117; income_statement; inline XBRL #f-119, context c-8 — https://www.sec.gov/Archives/edgar/data/917273/000091727325000075/rmbs-20250331.htm#f-119; income_statement; inline XBRL #f-121, context c-1 — https://www.sec.gov/Archives/edgar/data/917273/000091727325000075/rmbs-20250331.htm#f-121; income_statement; inline XBRL #f-116, context c-5 — https://www.sec.gov/Archives/edgar/data/917273/000091727325000075/rmbs-20250331.htm#f-116; income_statement; inline XBRL #f-118, context c-7 — https://www.sec.gov/Archives/edgar/data/917273/000091727325000075/rmbs-20250331.htm#f-118; income_statement; inline XBRL #f-120, context c-9 — https://www.sec.gov/Archives/edgar/data/917273/000091727325000075/rmbs-20250331.htm#f-120; income_statement; inline XBRL #f-122, context c-10 — https://www.sec.gov/Archives/edgar/data/917273/000091727325000075/rmbs-20250331.htm#f-122"
+  },
+  {
+    "id": "RAIN-V2-RMBS-002",
+    "question": "Using Step 1, calculate dollar changes in product, royalty and contract revenue and reconcile their sum to the total revenue increase. Calculate total and royalty revenue growth rates. Retain the royalty growth rate for comparison with billings. Return product_change: number (USD million); royalty_change: number (USD million); contract_change: number (USD million); bridge_difference: number (USD million); total_growth: number (percent); royalty_growth: number (percent). Cite the SEC document and precise table/note/exhibit. Reuse prior-stage amounts without intermediate rounding; report percentages/ratios to two decimals and monetary derived amounts to three decimals unless specified.",
+    "type": "XBRL Computation",
+    "answer": "{\"product_change\": \"25.949\", \"royalty_change\": \"26.499\", \"contract_change\": \"-3.655\", \"bridge_difference\": \"0.000\", \"total_growth\": \"41.40\", \"royalty_growth\": \"55.82\"}",
+    "scenario_id": "RAIN-V2-RMBS-001",
+    "workflow_step": 2,
+    "total_steps": 5,
+    "hops": 3,
+    "xbrl_concepts": [
+      "us-gaap:RevenueFromContractWithCustomerIncludingAssessedTax"
+    ],
+    "filing_type": "10-Q",
+    "filing_period": "Q1 2025/2024 comparatives; Q2 2025 outlook in 8-K dated 2025-04-28",
+    "answer_type": "calculated_value",
+    "tool_required": "retained prior scenario outputs; arithmetic/comparison",
+    "source": "https://www.sec.gov/Archives/edgar/data/917273/000091727325000075/rmbs-20250331.htm#f-116",
+    "reasoning": "Prior-stage dependencies: RAIN-V2-RMBS-001. Hop depth 3: depth 1: derive_product_change, derive_royalty_change, derive_contract_change, derive_total_change, derive_total_growth, derive_royalty_growth -> depth 2: derive_component_change -> depth 3: derive_bridge_difference. product_change = product25 - product24; royalty_change = royalties25 - royalties24; contract_change = contract25 - contract24; total_change = total25 - total24; component_change = product_change + royalty_change + contract_change; bridge_difference = component_change - total_change; total_growth = (total25 / total24 - 1) * 100; royalty_growth = (royalties25 / royalties24 - 1) * 100",
+    "evidence": "income_statement; inline XBRL #f-116, context c-5 — https://www.sec.gov/Archives/edgar/data/917273/000091727325000075/rmbs-20250331.htm#f-116; income_statement; inline XBRL #f-115, context c-4 — https://www.sec.gov/Archives/edgar/data/917273/000091727325000075/rmbs-20250331.htm#f-115; income_statement; inline XBRL #f-118, context c-7 — https://www.sec.gov/Archives/edgar/data/917273/000091727325000075/rmbs-20250331.htm#f-118; income_statement; inline XBRL #f-117, context c-6 — https://www.sec.gov/Archives/edgar/data/917273/000091727325000075/rmbs-20250331.htm#f-117; income_statement; inline XBRL #f-120, context c-9 — https://www.sec.gov/Archives/edgar/data/917273/000091727325000075/rmbs-20250331.htm#f-120; income_statement; inline XBRL #f-119, context c-8 — https://www.sec.gov/Archives/edgar/data/917273/000091727325000075/rmbs-20250331.htm#f-119; income_statement; inline XBRL #f-122, context c-10 — https://www.sec.gov/Archives/edgar/data/917273/000091727325000075/rmbs-20250331.htm#f-122; income_statement; inline XBRL #f-121, context c-1 — https://www.sec.gov/Archives/edgar/data/917273/000091727325000075/rmbs-20250331.htm#f-121"
+  },
+  {
+    "id": "RAIN-V2-RMBS-003",
+    "question": "Compare Step 2's GAAP royalty growth with licensing billings in Exhibit 99.1 of the April 28, 2025 8-K. Retrieve reported licensing billings for Q1 2025 and Q1 2024, use their disclosed one-decimal USD-million precision, calculate billings growth, and compute GAAP royalty growth minus billings growth in percentage points. Return billings25: number (USD million); billings24: number (USD million); billings_growth: number (percent); growth_gap: number (percentage points). Cite the SEC document and precise table/note/exhibit. Reuse prior-stage amounts without intermediate rounding; report percentages/ratios to two decimals and monetary derived amounts to three decimals unless specified.",
+    "type": "SEC Computation",
+    "answer": "{\"billings25\": \"73.3\", \"billings24\": \"63.2\", \"billings_growth\": \"15.98\", \"growth_gap\": \"39.83\"}",
+    "scenario_id": "RAIN-V2-RMBS-001",
+    "workflow_step": 3,
+    "total_steps": 5,
+    "hops": 3,
+    "xbrl_concepts": [
+      "us-gaap:RevenueFromContractWithCustomerIncludingAssessedTax"
+    ],
+    "filing_type": "8-K",
+    "filing_period": "Q1 2025/2024 comparatives; Q2 2025 outlook in 8-K dated 2025-04-28",
+    "answer_type": "calculated_value",
+    "tool_required": "SEC EDGAR filing/iXBRL retrieval; retained prior scenario outputs; arithmetic/comparison",
+    "source": "https://www.sec.gov/Archives/edgar/data/917273/000091727325000072/rmbs-ex991_2025331xer.htm#:~:text=Licensing%20billings%20%28operational%20metric%29",
+    "reasoning": "Prior-stage dependencies: RAIN-V2-RMBS-002. Hop depth 3: depth 1: read_1 -> depth 2: derive_billings_growth -> depth 3: derive_growth_gap. billings_growth = (billings25 / billings24 - 1) * 100; growth_gap = royalty_growth - billings_growth",
+    "evidence": "Quarterly Financial Review - Supplemental Information; Licensing billings 2025 — https://www.sec.gov/Archives/edgar/data/917273/000091727325000072/rmbs-ex991_2025331xer.htm#:~:text=Licensing%20billings%20%28operational%20metric%29; Quarterly Financial Review - Supplemental Information; Licensing billings 2024 — https://www.sec.gov/Archives/edgar/data/917273/000091727325000072/rmbs-ex991_2025331xer.htm#:~:text=Licensing%20billings%20%28operational%20metric%29; income_statement; inline XBRL #f-118, context c-7 — https://www.sec.gov/Archives/edgar/data/917273/000091727325000075/rmbs-20250331.htm#f-118; income_statement; inline XBRL #f-117, context c-6 — https://www.sec.gov/Archives/edgar/data/917273/000091727325000075/rmbs-20250331.htm#f-117"
+  },
+  {
+    "id": "RAIN-V2-RMBS-004",
+    "question": "Continue from Step 3's growth gap. Read the licensing-billings definition in the same release: classify whether it is a GAAP revenue metric or an operational invoicing metric adjusted for specified advance-payment differences. Return that classification, whether the previously calculated growth gap is nonzero, and whether substituting billings growth for GAAP royalty growth is supported by this definition. Return metric_basis: text (text); different_growth: boolean (boolean); substitution_supported: boolean (boolean). Cite the SEC document and precise table/note/exhibit. Reuse prior-stage amounts without intermediate rounding; report percentages/ratios to two decimals and monetary derived amounts to three decimals unless specified.",
+    "type": "SEC Computation",
+    "answer": "{\"metric_basis\": \"operational invoicing metric\", \"different_growth\": true, \"substitution_supported\": false}",
+    "scenario_id": "RAIN-V2-RMBS-001",
+    "workflow_step": 4,
+    "total_steps": 5,
+    "hops": 2,
+    "xbrl_concepts": [
+      "us-gaap:RevenueFromContractWithCustomerIncludingAssessedTax"
+    ],
+    "filing_type": "8-K",
+    "filing_period": "Q1 2025/2024 comparatives; Q2 2025 outlook in 8-K dated 2025-04-28",
+    "answer_type": "calculated_value",
+    "tool_required": "SEC EDGAR filing/iXBRL retrieval; retained prior scenario outputs; arithmetic/comparison",
+    "source": "https://www.sec.gov/Archives/edgar/data/917273/000091727325000072/rmbs-ex991_2025331xer.htm#:~:text=Licensing%20billings%20is%20an%20operational%20metric",
+    "reasoning": "Prior-stage dependencies: RAIN-V2-RMBS-003. Hop depth 2: depth 1: read_1, derive_different_growth -> depth 2: derive_substitution_supported. different_growth = growth_gap != 0; substitution_supported = metric_basis == 'GAAP revenue metric' and growth_gap == 0",
+    "evidence": "Supplemental Information; licensing billings definition footnote — https://www.sec.gov/Archives/edgar/data/917273/000091727325000072/rmbs-ex991_2025331xer.htm#:~:text=Licensing%20billings%20is%20an%20operational%20metric; Quarterly Financial Review - Supplemental Information; Licensing billings 2024 — https://www.sec.gov/Archives/edgar/data/917273/000091727325000072/rmbs-ex991_2025331xer.htm#:~:text=Licensing%20billings%20%28operational%20metric%29; Quarterly Financial Review - Supplemental Information; Licensing billings 2025 — https://www.sec.gov/Archives/edgar/data/917273/000091727325000072/rmbs-ex991_2025331xer.htm#:~:text=Licensing%20billings%20%28operational%20metric%29; income_statement; inline XBRL #f-118, context c-7 — https://www.sec.gov/Archives/edgar/data/917273/000091727325000075/rmbs-20250331.htm#f-118; income_statement; inline XBRL #f-117, context c-6 — https://www.sec.gov/Archives/edgar/data/917273/000091727325000075/rmbs-20250331.htm#f-117"
+  },
+  {
+    "id": "RAIN-V2-RMBS-005",
+    "question": "Apply Step 4's metric classification to the Q2 outlook in the same SEC exhibit. Retrieve the ranges for licensing billings, product revenue and contract/other revenue; calculate their component midpoints and the sum. State whether that sum can be labeled GAAP total revenue guidance. Also state whether a numeric total GAAP revenue guidance is provided in this exhibit itself; it says full revenue guidance will be discussed on the call. Do not invent a total or use an external transcript. Return billing_mid: number (USD million); product_mid: number (USD million); contract_mid: number (USD million); component_sum: number (USD million); valid_gaap_total: boolean (boolean); gaap_total_guidance: null (USD million). Cite the SEC document and precise table/note/exhibit. Reuse prior-stage amounts without intermediate rounding; report percentages/ratios to two decimals and monetary derived amounts to three decimals unless specified.",
+    "type": "SEC Computation",
+    "answer": "{\"billing_mid\": \"67.000\", \"product_mid\": \"80.000\", \"contract_mid\": \"20.000\", \"component_sum\": \"167.000\", \"valid_gaap_total\": false, \"gaap_total_guidance\": null}",
+    "scenario_id": "RAIN-V2-RMBS-001",
+    "workflow_step": 5,
+    "total_steps": 5,
+    "hops": 3,
+    "xbrl_concepts": [
+      "us-gaap:RevenueFromContractWithCustomerIncludingAssessedTax"
+    ],
+    "filing_type": "8-K",
+    "filing_period": "Q1 2025/2024 comparatives; Q2 2025 outlook in 8-K dated 2025-04-28",
+    "answer_type": "calculated_value",
+    "tool_required": "SEC EDGAR filing/iXBRL retrieval; retained prior scenario outputs; arithmetic/comparison",
+    "source": "https://www.sec.gov/Archives/edgar/data/917273/000091727325000072/rmbs-ex991_2025331xer.htm#:~:text=2025%20Second%20Quarter%20Outlook",
+    "reasoning": "Prior-stage dependencies: RAIN-V2-RMBS-004. Hop depth 3: depth 1: read_1 -> depth 2: derive_billing_mid, derive_product_mid, derive_contract_mid, derive_valid_gaap_total -> depth 3: derive_component_sum. billing_mid = (billing_low + billing_high) / 2; product_mid = (product_low + product_high) / 2; contract_mid = (contract_low + contract_high) / 2; component_sum = billing_mid + product_mid + contract_mid; valid_gaap_total = substitution_supported and gaap_total_guidance != None",
+    "evidence": "2025 Second Quarter Outlook; Licensing billings — https://www.sec.gov/Archives/edgar/data/917273/000091727325000072/rmbs-ex991_2025331xer.htm#:~:text=2025%20Second%20Quarter%20Outlook; 2025 Second Quarter Outlook; Product revenue — https://www.sec.gov/Archives/edgar/data/917273/000091727325000072/rmbs-ex991_2025331xer.htm#:~:text=2025%20Second%20Quarter%20Outlook; 2025 Second Quarter Outlook; Contract and other revenue — https://www.sec.gov/Archives/edgar/data/917273/000091727325000072/rmbs-ex991_2025331xer.htm#:~:text=2025%20Second%20Quarter%20Outlook; 2025 Second Quarter Outlook; full revenue guidance deferred to call — https://www.sec.gov/Archives/edgar/data/917273/000091727325000072/rmbs-ex991_2025331xer.htm#:~:text=The%20Company%20will%20discuss%20its%20full%20revenue%20guidance; Quarterly Financial Review - Supplemental Information; Licensing billings 2024 — https://www.sec.gov/Archives/edgar/data/917273/000091727325000072/rmbs-ex991_2025331xer.htm#:~:text=Licensing%20billings%20%28operational%20metric%29; Quarterly Financial Review - Supplemental Information; Licensing billings 2025 — https://www.sec.gov/Archives/edgar/data/917273/000091727325000072/rmbs-ex991_2025331xer.htm#:~:text=Licensing%20billings%20%28operational%20metric%29; income_statement; inline XBRL #f-118, context c-7 — https://www.sec.gov/Archives/edgar/data/917273/000091727325000075/rmbs-20250331.htm#f-118; income_statement; inline XBRL #f-117, context c-6 — https://www.sec.gov/Archives/edgar/data/917273/000091727325000075/rmbs-20250331.htm#f-117; Supplemental Information; licensing billings definition footnote — https://www.sec.gov/Archives/edgar/data/917273/000091727325000072/rmbs-ex991_2025331xer.htm#:~:text=Licensing%20billings%20is%20an%20operational%20metric"
+  }
+]

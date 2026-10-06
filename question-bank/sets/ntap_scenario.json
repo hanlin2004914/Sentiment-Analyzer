@@ -1,0 +1,115 @@
+[
+  {
+    "id": "RAIN-V2-NTAP-001",
+    "question": "Scenario: I am reviewing NetApp's capital-return budget. Determine whether dividends and buybacks were funded by simple FCF, set a no-external-funding buyback limit, then distinguish quarterly budget pacing from actual cash coverage. First, from the FY2025 10-K filed June 9, 2025 retrieve annual OCF and purchases of property and equipment. Define simple FCF as OCF less the positive capex outflow; calculate it for this workpaper. Return ocf: number (USD million); capex: number (USD million); fcf: number (USD million). Cite the SEC document and precise table/note/exhibit. Reuse prior-stage amounts without intermediate rounding; report percentages/ratios to two decimals and monetary derived amounts to three decimals unless specified.",
+    "type": "XBRL Computation",
+    "answer": "{\"ocf\": \"1506\", \"capex\": \"168\", \"fcf\": \"1338.000\"}",
+    "scenario_id": "RAIN-V2-NTAP-001",
+    "workflow_step": 1,
+    "total_steps": 5,
+    "hops": 2,
+    "xbrl_concepts": [
+      "us-gaap:NetCashProvidedByUsedInOperatingActivities",
+      "us-gaap:PaymentsToAcquirePropertyPlantAndEquipment"
+    ],
+    "filing_type": "10-K",
+    "filing_period": "FY2025 ended 2025-04-25 and FY2026 Q1 ended 2025-07-25; explicit budget assumptions",
+    "answer_type": "calculated_value",
+    "tool_required": "SEC EDGAR filing/iXBRL retrieval; arithmetic/comparison",
+    "source": "https://www.sec.gov/Archives/edgar/data/1002047/000095017025083705/ntap-20250425.htm#F_a0fe11f1-2c4b-4d75-ab7a-175c8da6a420",
+    "reasoning": "Prior-stage dependencies: none. Hop depth 2: depth 1: read_1 -> depth 2: derive_fcf. fcf = ocf - capex",
+    "evidence": "cash_flow_statement; inline XBRL #F_a0fe11f1-2c4b-4d75-ab7a-175c8da6a420, context C_f2fb2466-cb01-4ab5-b44d-0d5b9de47556 — https://www.sec.gov/Archives/edgar/data/1002047/000095017025083705/ntap-20250425.htm#F_a0fe11f1-2c4b-4d75-ab7a-175c8da6a420; cash_flow_statement; inline XBRL #F_8a8875e1-1c6e-40fc-a8f1-82d6747cc8fd, context C_f2fb2466-cb01-4ab5-b44d-0d5b9de47556 — https://www.sec.gov/Archives/edgar/data/1002047/000095017025083705/ntap-20250425.htm#F_8a8875e1-1c6e-40fc-a8f1-82d6747cc8fd"
+  },
+  {
+    "id": "RAIN-V2-NTAP-002",
+    "question": "Using Step 1's FCF, retrieve FY2025 cash dividends and common-stock repurchases from the same cash-flow statement. Calculate total shareholder cash returns and the signed funding gap, defined as returns minus FCF. A positive gap means simple FCF alone did not cover those returns; do not infer the specific financing source. Return dividends: number (USD million); buybacks: number (USD million); cash_returns: number (USD million); funding_gap: number (USD million). Cite the SEC document and precise table/note/exhibit. Reuse prior-stage amounts without intermediate rounding; report percentages/ratios to two decimals and monetary derived amounts to three decimals unless specified.",
+    "type": "XBRL Computation",
+    "answer": "{\"dividends\": \"424\", \"buybacks\": \"1150\", \"cash_returns\": \"1574.000\", \"funding_gap\": \"236.000\"}",
+    "scenario_id": "RAIN-V2-NTAP-001",
+    "workflow_step": 2,
+    "total_steps": 5,
+    "hops": 3,
+    "xbrl_concepts": [
+      "us-gaap:NetCashProvidedByUsedInOperatingActivities",
+      "us-gaap:PaymentsForRepurchaseOfCommonStock",
+      "us-gaap:PaymentsOfDividends",
+      "us-gaap:PaymentsToAcquirePropertyPlantAndEquipment"
+    ],
+    "filing_type": "10-K",
+    "filing_period": "FY2025 ended 2025-04-25 and FY2026 Q1 ended 2025-07-25; explicit budget assumptions",
+    "answer_type": "calculated_value",
+    "tool_required": "SEC EDGAR filing/iXBRL retrieval; retained prior scenario outputs; arithmetic/comparison",
+    "source": "https://www.sec.gov/Archives/edgar/data/1002047/000095017025083705/ntap-20250425.htm#F_9936df1b-82b6-4e96-8501-14bd3b11eb48",
+    "reasoning": "Prior-stage dependencies: RAIN-V2-NTAP-001. Hop depth 3: depth 1: read_1 -> depth 2: derive_cash_returns -> depth 3: derive_funding_gap. cash_returns = dividends + buybacks; funding_gap = cash_returns - fcf",
+    "evidence": "cash_flow_statement; inline XBRL #F_9936df1b-82b6-4e96-8501-14bd3b11eb48, context C_f2fb2466-cb01-4ab5-b44d-0d5b9de47556 — https://www.sec.gov/Archives/edgar/data/1002047/000095017025083705/ntap-20250425.htm#F_9936df1b-82b6-4e96-8501-14bd3b11eb48; cash_flow_statement; inline XBRL #F_5c042745-d155-47d8-808a-04bf54e496af, context C_f2fb2466-cb01-4ab5-b44d-0d5b9de47556 — https://www.sec.gov/Archives/edgar/data/1002047/000095017025083705/ntap-20250425.htm#F_5c042745-d155-47d8-808a-04bf54e496af; cash_flow_statement; inline XBRL #F_8a8875e1-1c6e-40fc-a8f1-82d6747cc8fd, context C_f2fb2466-cb01-4ab5-b44d-0d5b9de47556 — https://www.sec.gov/Archives/edgar/data/1002047/000095017025083705/ntap-20250425.htm#F_8a8875e1-1c6e-40fc-a8f1-82d6747cc8fd; cash_flow_statement; inline XBRL #F_a0fe11f1-2c4b-4d75-ab7a-175c8da6a420, context C_f2fb2466-cb01-4ab5-b44d-0d5b9de47556 — https://www.sec.gov/Archives/edgar/data/1002047/000095017025083705/ntap-20250425.htm#F_a0fe11f1-2c4b-4d75-ab7a-175c8da6a420"
+  },
+  {
+    "id": "RAIN-V2-NTAP-003",
+    "question": "Continue with Step 2's actual dividends, buybacks and funding gap. Under my hypothetical rule, retain those dividends but cap total shareholder returns at Step 1's FCF. Calculate maximum buybacks, the required reduction from actual buybacks, and the percentage reduction. This budget rule is not management guidance. Return max_buybacks: number (USD million); required_cut: number (USD million); cut_pct: number (percent). Cite the SEC document and precise table/note/exhibit. Reuse prior-stage amounts without intermediate rounding; report percentages/ratios to two decimals and monetary derived amounts to three decimals unless specified.",
+    "type": "XBRL Computation",
+    "answer": "{\"max_buybacks\": \"914.000\", \"required_cut\": \"236\", \"cut_pct\": \"20.52\"}",
+    "scenario_id": "RAIN-V2-NTAP-001",
+    "workflow_step": 3,
+    "total_steps": 5,
+    "hops": 1,
+    "xbrl_concepts": [
+      "us-gaap:NetCashProvidedByUsedInOperatingActivities",
+      "us-gaap:PaymentsForRepurchaseOfCommonStock",
+      "us-gaap:PaymentsOfDividends",
+      "us-gaap:PaymentsToAcquirePropertyPlantAndEquipment"
+    ],
+    "filing_type": "10-K",
+    "filing_period": "FY2025 ended 2025-04-25 and FY2026 Q1 ended 2025-07-25; explicit budget assumptions",
+    "answer_type": "calculated_value",
+    "tool_required": "retained prior scenario outputs; arithmetic/comparison",
+    "source": "https://www.sec.gov/Archives/edgar/data/1002047/000095017025083705/ntap-20250425.htm#F_5c042745-d155-47d8-808a-04bf54e496af",
+    "reasoning": "Prior-stage dependencies: RAIN-V2-NTAP-002. Hop depth 1: depth 1: derive_max_buybacks, derive_cut_pct. max_buybacks = actual_buybacks - required_cut; cut_pct = required_cut / actual_buybacks * 100",
+    "evidence": "cash_flow_statement; inline XBRL #F_5c042745-d155-47d8-808a-04bf54e496af, context C_f2fb2466-cb01-4ab5-b44d-0d5b9de47556 — https://www.sec.gov/Archives/edgar/data/1002047/000095017025083705/ntap-20250425.htm#F_5c042745-d155-47d8-808a-04bf54e496af; cash_flow_statement; inline XBRL #F_9936df1b-82b6-4e96-8501-14bd3b11eb48, context C_f2fb2466-cb01-4ab5-b44d-0d5b9de47556 — https://www.sec.gov/Archives/edgar/data/1002047/000095017025083705/ntap-20250425.htm#F_9936df1b-82b6-4e96-8501-14bd3b11eb48; cash_flow_statement; inline XBRL #F_8a8875e1-1c6e-40fc-a8f1-82d6747cc8fd, context C_f2fb2466-cb01-4ab5-b44d-0d5b9de47556 — https://www.sec.gov/Archives/edgar/data/1002047/000095017025083705/ntap-20250425.htm#F_8a8875e1-1c6e-40fc-a8f1-82d6747cc8fd; cash_flow_statement; inline XBRL #F_a0fe11f1-2c4b-4d75-ab7a-175c8da6a420, context C_f2fb2466-cb01-4ab5-b44d-0d5b9de47556 — https://www.sec.gov/Archives/edgar/data/1002047/000095017025083705/ntap-20250425.htm#F_a0fe11f1-2c4b-4d75-ab7a-175c8da6a420"
+  },
+  {
+    "id": "RAIN-V2-NTAP-004",
+    "question": "Carry Step 3's maximum annual buyback budget forward solely as a hypothetical pacing benchmark, spread evenly over four quarters. In the FY2026 Q1 10-Q filed August 27, 2025, retrieve OCF, capex, dividends and repurchases for the three months ended July 25. Calculate quarterly FCF, cash remaining after returns, and actual buybacks minus one quarter of the hypothetical annual budget. Return quarter_fcf: number (USD million); cash_surplus: number (USD million); pacing_excess: number (USD million). Cite the SEC document and precise table/note/exhibit. Reuse prior-stage amounts without intermediate rounding; report percentages/ratios to two decimals and monetary derived amounts to three decimals unless specified.",
+    "type": "XBRL Computation",
+    "answer": "{\"quarter_fcf\": \"620.000\", \"cash_surplus\": \"216.000\", \"pacing_excess\": \"71.500\"}",
+    "scenario_id": "RAIN-V2-NTAP-001",
+    "workflow_step": 4,
+    "total_steps": 5,
+    "hops": 3,
+    "xbrl_concepts": [
+      "us-gaap:NetCashProvidedByUsedInOperatingActivities",
+      "us-gaap:PaymentsForRepurchaseOfCommonStock",
+      "us-gaap:PaymentsOfDividends",
+      "us-gaap:PaymentsToAcquirePropertyPlantAndEquipment"
+    ],
+    "filing_type": "10-Q",
+    "filing_period": "FY2025 ended 2025-04-25 and FY2026 Q1 ended 2025-07-25; explicit budget assumptions",
+    "answer_type": "calculated_value",
+    "tool_required": "SEC EDGAR filing/iXBRL retrieval; retained prior scenario outputs; arithmetic/comparison",
+    "source": "https://www.sec.gov/Archives/edgar/data/1002047/000119312525189700/ntap-20250725.htm#F_5f63e9b1-dcc0-4f34-b07d-50c11cf00c1c",
+    "reasoning": "Prior-stage dependencies: RAIN-V2-NTAP-003. Hop depth 3: depth 1: read_1 -> depth 2: derive_quarter_fcf, derive_pacing_excess -> depth 3: derive_cash_surplus. quarter_fcf = ocf - capex; cash_surplus = quarter_fcf - dividends - buybacks; pacing_excess = buybacks - annual_budget / quarters",
+    "evidence": "cash_flow_statement; inline XBRL #F_5f63e9b1-dcc0-4f34-b07d-50c11cf00c1c, context C_05082623-6c4f-41f9-9b4d-1efc6387cf9d — https://www.sec.gov/Archives/edgar/data/1002047/000119312525189700/ntap-20250725.htm#F_5f63e9b1-dcc0-4f34-b07d-50c11cf00c1c; cash_flow_statement; inline XBRL #F_c21d39d6-d7b5-4837-87b2-dbfa6e69c505, context C_05082623-6c4f-41f9-9b4d-1efc6387cf9d — https://www.sec.gov/Archives/edgar/data/1002047/000119312525189700/ntap-20250725.htm#F_c21d39d6-d7b5-4837-87b2-dbfa6e69c505; cash_flow_statement; inline XBRL #F_476b7657-e9e0-4f4e-9ea0-a89d5309fea4, context C_05082623-6c4f-41f9-9b4d-1efc6387cf9d — https://www.sec.gov/Archives/edgar/data/1002047/000119312525189700/ntap-20250725.htm#F_476b7657-e9e0-4f4e-9ea0-a89d5309fea4; cash_flow_statement; inline XBRL #F_9fc1fbf1-e8bf-4a2b-abde-11c948b6c576, context C_05082623-6c4f-41f9-9b4d-1efc6387cf9d — https://www.sec.gov/Archives/edgar/data/1002047/000119312525189700/ntap-20250725.htm#F_9fc1fbf1-e8bf-4a2b-abde-11c948b6c576; cash_flow_statement; inline XBRL #F_5c042745-d155-47d8-808a-04bf54e496af, context C_f2fb2466-cb01-4ab5-b44d-0d5b9de47556 — https://www.sec.gov/Archives/edgar/data/1002047/000095017025083705/ntap-20250425.htm#F_5c042745-d155-47d8-808a-04bf54e496af; cash_flow_statement; inline XBRL #F_9936df1b-82b6-4e96-8501-14bd3b11eb48, context C_f2fb2466-cb01-4ab5-b44d-0d5b9de47556 — https://www.sec.gov/Archives/edgar/data/1002047/000095017025083705/ntap-20250425.htm#F_9936df1b-82b6-4e96-8501-14bd3b11eb48; cash_flow_statement; inline XBRL #F_8a8875e1-1c6e-40fc-a8f1-82d6747cc8fd, context C_f2fb2466-cb01-4ab5-b44d-0d5b9de47556 — https://www.sec.gov/Archives/edgar/data/1002047/000095017025083705/ntap-20250425.htm#F_8a8875e1-1c6e-40fc-a8f1-82d6747cc8fd; cash_flow_statement; inline XBRL #F_a0fe11f1-2c4b-4d75-ab7a-175c8da6a420, context C_f2fb2466-cb01-4ab5-b44d-0d5b9de47556 — https://www.sec.gov/Archives/edgar/data/1002047/000095017025083705/ntap-20250425.htm#F_a0fe11f1-2c4b-4d75-ab7a-175c8da6a420"
+  },
+  {
+    "id": "RAIN-V2-NTAP-005",
+    "question": "Finish using Step 4's cash surplus and pacing excess. Return whether repurchases exceeded the equal-quarter budget benchmark, whether shareholder returns exceeded actual quarterly FCF, and the additional buyback headroom under the cash-coverage rule alone. Explain the distinction through these separate flags; a pacing overshoot does not automatically mean an external-funding shortfall. Return over_pacing_benchmark: boolean (boolean); cash_funding_shortfall: boolean (boolean); cash_only_headroom: number (USD million). Cite the SEC document and precise table/note/exhibit. Reuse prior-stage amounts without intermediate rounding; report percentages/ratios to two decimals and monetary derived amounts to three decimals unless specified.",
+    "type": "XBRL Computation",
+    "answer": "{\"over_pacing_benchmark\": true, \"cash_funding_shortfall\": false, \"cash_only_headroom\": \"216.000\"}",
+    "scenario_id": "RAIN-V2-NTAP-001",
+    "workflow_step": 5,
+    "total_steps": 5,
+    "hops": 1,
+    "xbrl_concepts": [
+      "us-gaap:NetCashProvidedByUsedInOperatingActivities",
+      "us-gaap:PaymentsForRepurchaseOfCommonStock",
+      "us-gaap:PaymentsOfDividends",
+      "us-gaap:PaymentsToAcquirePropertyPlantAndEquipment"
+    ],
+    "filing_type": "10-K",
+    "filing_period": "FY2025 ended 2025-04-25 and FY2026 Q1 ended 2025-07-25; explicit budget assumptions",
+    "answer_type": "calculated_value",
+    "tool_required": "retained prior scenario outputs; arithmetic/comparison",
+    "source": "https://www.sec.gov/Archives/edgar/data/1002047/000095017025083705/ntap-20250425.htm#F_5c042745-d155-47d8-808a-04bf54e496af",
+    "reasoning": "Prior-stage dependencies: RAIN-V2-NTAP-004. Hop depth 1: depth 1: derive_over_pacing_benchmark, derive_cash_funding_shortfall. over_pacing_benchmark = pacing_excess > 0; cash_funding_shortfall = surplus < 0; cash_only_headroom = surplus",
+    "evidence": "cash_flow_statement; inline XBRL #F_5c042745-d155-47d8-808a-04bf54e496af, context C_f2fb2466-cb01-4ab5-b44d-0d5b9de47556 — https://www.sec.gov/Archives/edgar/data/1002047/000095017025083705/ntap-20250425.htm#F_5c042745-d155-47d8-808a-04bf54e496af; cash_flow_statement; inline XBRL #F_9936df1b-82b6-4e96-8501-14bd3b11eb48, context C_f2fb2466-cb01-4ab5-b44d-0d5b9de47556 — https://www.sec.gov/Archives/edgar/data/1002047/000095017025083705/ntap-20250425.htm#F_9936df1b-82b6-4e96-8501-14bd3b11eb48; cash_flow_statement; inline XBRL #F_8a8875e1-1c6e-40fc-a8f1-82d6747cc8fd, context C_f2fb2466-cb01-4ab5-b44d-0d5b9de47556 — https://www.sec.gov/Archives/edgar/data/1002047/000095017025083705/ntap-20250425.htm#F_8a8875e1-1c6e-40fc-a8f1-82d6747cc8fd; cash_flow_statement; inline XBRL #F_a0fe11f1-2c4b-4d75-ab7a-175c8da6a420, context C_f2fb2466-cb01-4ab5-b44d-0d5b9de47556 — https://www.sec.gov/Archives/edgar/data/1002047/000095017025083705/ntap-20250425.htm#F_a0fe11f1-2c4b-4d75-ab7a-175c8da6a420; cash_flow_statement; inline XBRL #F_9fc1fbf1-e8bf-4a2b-abde-11c948b6c576, context C_05082623-6c4f-41f9-9b4d-1efc6387cf9d — https://www.sec.gov/Archives/edgar/data/1002047/000119312525189700/ntap-20250725.htm#F_9fc1fbf1-e8bf-4a2b-abde-11c948b6c576; cash_flow_statement; inline XBRL #F_476b7657-e9e0-4f4e-9ea0-a89d5309fea4, context C_05082623-6c4f-41f9-9b4d-1efc6387cf9d — https://www.sec.gov/Archives/edgar/data/1002047/000119312525189700/ntap-20250725.htm#F_476b7657-e9e0-4f4e-9ea0-a89d5309fea4; cash_flow_statement; inline XBRL #F_c21d39d6-d7b5-4837-87b2-dbfa6e69c505, context C_05082623-6c4f-41f9-9b4d-1efc6387cf9d — https://www.sec.gov/Archives/edgar/data/1002047/000119312525189700/ntap-20250725.htm#F_c21d39d6-d7b5-4837-87b2-dbfa6e69c505; cash_flow_statement; inline XBRL #F_5f63e9b1-dcc0-4f34-b07d-50c11cf00c1c, context C_05082623-6c4f-41f9-9b4d-1efc6387cf9d — https://www.sec.gov/Archives/edgar/data/1002047/000119312525189700/ntap-20250725.htm#F_5f63e9b1-dcc0-4f34-b07d-50c11cf00c1c"
+  }
+]

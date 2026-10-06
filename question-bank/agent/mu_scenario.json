@@ -1,0 +1,127 @@
+[
+  {
+    "id": "RAIN-V2-MU-001",
+    "question": "Scenario: I am preparing a Micron earnings briefing. Reconstruct Q4 from the annual and nine-month filings, reconcile it to the earnings release, then test whether the next-quarter guidance meets my stated revenue and gross-margin hurdles. First, use the FY2025 10-K filed October 3, 2025 to retrieve FY2025 and FY2024 revenue and gross profit in USD millions. Calculate FY2025 gross margin and its change from FY2024 in percentage points. Keep the dollar inputs for the next step. Return rev25: number (USD million); gp25: number (USD million); rev24: number (USD million); gp24: number (USD million); gm25: number (percent); gm_change: number (percentage points). Cite the SEC document and precise table/note/exhibit. Reuse prior-stage amounts without intermediate rounding; report percentages/ratios to two decimals and monetary derived amounts to three decimals unless specified.",
+    "scenario_id": "RAIN-V2-MU-001",
+    "workflow_step": 1,
+    "total_steps": 5,
+    "company": "Micron Technology, Inc.",
+    "ticker_at_filing": "MU",
+    "depends_on": [],
+    "document_scope": [
+      {
+        "company": "Micron Technology, Inc.",
+        "cik": "0000723125",
+        "form": "10-K",
+        "filed": "2025-10-03",
+        "report_date": "2025-08-28"
+      }
+    ]
+  },
+  {
+    "id": "RAIN-V2-MU-002",
+    "question": "Continue from Step 1. In the 10-Q filed June 26, 2025, retrieve revenue and gross profit for the nine months ended May 29. Subtract these from the annual amounts you retained to reconstruct Q4 revenue and gross profit; calculate the reconstructed Q4 gross margin. Return q4_rev: number (USD million); q4_gp: number (USD million); q4_gm: number (percent). Cite the SEC document and precise table/note/exhibit. Reuse prior-stage amounts without intermediate rounding; report percentages/ratios to two decimals and monetary derived amounts to three decimals unless specified.",
+    "scenario_id": "RAIN-V2-MU-001",
+    "workflow_step": 2,
+    "total_steps": 5,
+    "company": "Micron Technology, Inc.",
+    "ticker_at_filing": "MU",
+    "depends_on": [
+      "RAIN-V2-MU-001"
+    ],
+    "document_scope": [
+      {
+        "company": "Micron Technology, Inc.",
+        "cik": "0000723125",
+        "form": "10-Q",
+        "filed": "2025-06-26",
+        "report_date": "2025-05-29"
+      },
+      {
+        "company": "Micron Technology, Inc.",
+        "cik": "0000723125",
+        "form": "10-K",
+        "filed": "2025-10-03",
+        "report_date": "2025-08-28"
+      }
+    ]
+  },
+  {
+    "id": "RAIN-V2-MU-003",
+    "question": "Continue with the Q4 amounts reconstructed in Step 2. Locate Exhibit 99.1 of the September 23, 2025 8-K and retrieve the detailed-table GAAP Q4 revenue and gross profit. Report both dollar discrepancies as reported minus reconstructed and whether both reconcile exactly at the filing's USD-million precision. Carry the reconciled actual amounts forward. Return actual_rev: number (USD million); actual_gp: number (USD million); actual_gm: number (percent); revenue_difference: number (USD million); gross_profit_difference: number (USD million); reconciles: boolean (boolean). Cite the SEC document and precise table/note/exhibit. Reuse prior-stage amounts without intermediate rounding; report percentages/ratios to two decimals and monetary derived amounts to three decimals unless specified.",
+    "scenario_id": "RAIN-V2-MU-001",
+    "workflow_step": 3,
+    "total_steps": 5,
+    "company": "Micron Technology, Inc.",
+    "ticker_at_filing": "MU",
+    "depends_on": [
+      "RAIN-V2-MU-002"
+    ],
+    "document_scope": [
+      {
+        "company": "Micron Technology, Inc.",
+        "cik": "0000723125",
+        "form": "8-K",
+        "filed": "2025-09-23",
+        "report_date": "2025-09-23"
+      },
+      {
+        "company": "Micron Technology, Inc.",
+        "cik": "0000723125",
+        "form": "10-K",
+        "filed": "2025-10-03",
+        "report_date": "2025-08-28"
+      },
+      {
+        "company": "Micron Technology, Inc.",
+        "cik": "0000723125",
+        "form": "10-Q",
+        "filed": "2025-06-26",
+        "report_date": "2025-05-29"
+      }
+    ]
+  },
+  {
+    "id": "RAIN-V2-MU-004",
+    "question": "Use the reconciled Q4 revenue from Step 3. From the same 8-K exhibit's FY2026 Q1 outlook, retrieve the revenue midpoint and plus/minus amount, convert to USD millions, and calculate both guidance bounds and each bound's sequential growth over Q4. These are implied guidance outcomes, not realized results. Return low: number (USD million); high: number (USD million); low_growth: number (percent); high_growth: number (percent). Cite the SEC document and precise table/note/exhibit. Reuse prior-stage amounts without intermediate rounding; report percentages/ratios to two decimals and monetary derived amounts to three decimals unless specified.",
+    "scenario_id": "RAIN-V2-MU-001",
+    "workflow_step": 4,
+    "total_steps": 5,
+    "company": "Micron Technology, Inc.",
+    "ticker_at_filing": "MU",
+    "depends_on": [
+      "RAIN-V2-MU-003"
+    ],
+    "document_scope": [
+      {
+        "company": "Micron Technology, Inc.",
+        "cik": "0000723125",
+        "form": "8-K",
+        "filed": "2025-09-23",
+        "report_date": "2025-09-23"
+      }
+    ]
+  },
+  {
+    "id": "RAIN-V2-MU-005",
+    "question": "Finish the briefing using Step 4's lower-bound revenue growth and Step 3's reconciled Q4 gross margin. My briefing rule requires at least 5% sequential revenue growth at the guidance low end AND at least a 3-percentage-point increase in GAAP gross margin at its guidance low end. Retrieve FY2026 Q1 GAAP gross-margin guidance from the same exhibit, compute its lower bound and uplift versus Q4, and return whether both hurdles pass. Do not substitute non-GAAP guidance. Return gm_low: number (percent); uplift: number (percentage points); both_pass: boolean (boolean). Cite the SEC document and precise table/note/exhibit. Reuse prior-stage amounts without intermediate rounding; report percentages/ratios to two decimals and monetary derived amounts to three decimals unless specified.",
+    "scenario_id": "RAIN-V2-MU-001",
+    "workflow_step": 5,
+    "total_steps": 5,
+    "company": "Micron Technology, Inc.",
+    "ticker_at_filing": "MU",
+    "depends_on": [
+      "RAIN-V2-MU-003",
+      "RAIN-V2-MU-004"
+    ],
+    "document_scope": [
+      {
+        "company": "Micron Technology, Inc.",
+        "cik": "0000723125",
+        "form": "8-K",
+        "filed": "2025-09-23",
+        "report_date": "2025-09-23"
+      }
+    ]
+  }
+]

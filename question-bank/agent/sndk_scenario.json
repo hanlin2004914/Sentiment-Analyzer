@@ -1,0 +1,141 @@
+[
+  {
+    "id": "RAIN-V2-SNDK-001",
+    "question": "Scenario: I am checking whether Sandisk's apparent Q4 recovery reflects underlying operating improvement or a disappearing goodwill charge, and whether the next-quarter release actually confirms a GAAP EPS turnaround. First, from the 10-Q filed May 12, 2025 retrieve Q3 GAAP operating income (loss) and net income (loss), for the three months ended March 28. Preserve the signs and keep the two measures separate. Return operating_income: number (USD million); net_income: number (USD million). Cite the SEC document and precise table/note/exhibit. Reuse prior-stage amounts without intermediate rounding; report percentages/ratios to two decimals and monetary derived amounts to three decimals unless specified.",
+    "scenario_id": "RAIN-V2-SNDK-001",
+    "workflow_step": 1,
+    "total_steps": 5,
+    "company": "Sandisk Corporation",
+    "ticker_at_filing": "SNDK",
+    "depends_on": [],
+    "document_scope": [
+      {
+        "company": "Sandisk Corporation",
+        "cik": "0002023554",
+        "form": "10-Q",
+        "filed": "2025-05-12",
+        "report_date": "2025-03-28"
+      }
+    ]
+  },
+  {
+    "id": "RAIN-V2-SNDK-002",
+    "question": "Using Step 1's operating loss, retrieve that quarter's goodwill impairment and calculate the operating result excluding only that charge. Retain the original operating result and the charge for the later bridge. Do not call this the company's non-GAAP operating income. Return q3_operating: number (USD million); q3_impairment: number (USD million); q3_excluding_only_goodwill: number (USD million). Cite the SEC document and precise table/note/exhibit. Reuse prior-stage amounts without intermediate rounding; report percentages/ratios to two decimals and monetary derived amounts to three decimals unless specified.",
+    "scenario_id": "RAIN-V2-SNDK-001",
+    "workflow_step": 2,
+    "total_steps": 5,
+    "company": "Sandisk Corporation",
+    "ticker_at_filing": "SNDK",
+    "depends_on": [
+      "RAIN-V2-SNDK-001"
+    ],
+    "document_scope": [
+      {
+        "company": "Sandisk Corporation",
+        "cik": "0002023554",
+        "form": "10-Q",
+        "filed": "2025-05-12",
+        "report_date": "2025-03-28"
+      }
+    ]
+  },
+  {
+    "id": "RAIN-V2-SNDK-003",
+    "question": "From the August 14, 2025 8-K Exhibit 99.1 retrieve Q4 GAAP operating income. Using Step 2's original and single-charge-adjusted Q3 results, calculate Q4's improvement over each baseline. Do not assume these two improvements measure the same thing. Return q4_operating: number (USD million); reported_improvement: number (USD million); vs_q3_single_charge_adjusted: number (USD million). Cite the SEC document and precise table/note/exhibit. Reuse prior-stage amounts without intermediate rounding; report percentages/ratios to two decimals and monetary derived amounts to three decimals unless specified.",
+    "scenario_id": "RAIN-V2-SNDK-001",
+    "workflow_step": 3,
+    "total_steps": 5,
+    "company": "Sandisk Corporation",
+    "ticker_at_filing": "SNDK",
+    "depends_on": [
+      "RAIN-V2-SNDK-002"
+    ],
+    "document_scope": [
+      {
+        "company": "Sandisk Corporation",
+        "cik": "0002023554",
+        "form": "8-K",
+        "filed": "2025-08-14",
+        "report_date": "2025-08-14"
+      },
+      {
+        "company": "Sandisk Corporation",
+        "cik": "0002023554",
+        "form": "10-Q",
+        "filed": "2025-05-12",
+        "report_date": "2025-03-28"
+      }
+    ]
+  },
+  {
+    "id": "RAIN-V2-SNDK-004",
+    "question": "Use Step 3's reported operating improvement and Step 2's Q3 impairment. In the FY2025 10-K filed August 21, 2025 and the Q3 10-Q, retrieve full-year and nine-month goodwill impairment. Derive Q4 impairment by subtraction, then compute the reduction in the goodwill charge from Q3 to Q4 as a percentage of the reported operating improvement. This is an arithmetic bridge, not a causal attribution of every other cost. Return q4_impairment: number (USD million); charge_reduction: number (USD million); charge_reduction_share: number (percent). Cite the SEC document and precise table/note/exhibit. Reuse prior-stage amounts without intermediate rounding; report percentages/ratios to two decimals and monetary derived amounts to three decimals unless specified.",
+    "scenario_id": "RAIN-V2-SNDK-001",
+    "workflow_step": 4,
+    "total_steps": 5,
+    "company": "Sandisk Corporation",
+    "ticker_at_filing": "SNDK",
+    "depends_on": [
+      "RAIN-V2-SNDK-002",
+      "RAIN-V2-SNDK-003"
+    ],
+    "document_scope": [
+      {
+        "company": "Sandisk Corporation",
+        "cik": "0002023554",
+        "form": "10-K",
+        "filed": "2025-08-21",
+        "report_date": "2025-06-27"
+      },
+      {
+        "company": "Sandisk Corporation",
+        "cik": "0002023554",
+        "form": "10-Q",
+        "filed": "2025-05-12",
+        "report_date": "2025-03-28"
+      },
+      {
+        "company": "Sandisk Corporation",
+        "cik": "0002023554",
+        "form": "8-K",
+        "filed": "2025-08-14",
+        "report_date": "2025-08-14"
+      }
+    ]
+  },
+  {
+    "id": "RAIN-V2-SNDK-005",
+    "question": "Finish the user's check. My review rule requires numeric positive GAAP EPS guidance if Step 4 shows more than 90% of the operating-profit improvement is bridged by a smaller goodwill charge. Retrieve FY2026 Q1 GAAP EPS guidance and the non-GAAP EPS range from the August 14 release. Return whether the 90% condition is triggered and whether this release confirms the required GAAP turnaround. Preserve explicit N/A as null, not zero; do not substitute the non-GAAP range. Return adjustment_condition: boolean (boolean); gaap_guidance: null (USD per diluted share); non_gaap_low: number (USD per diluted share); non_gaap_high: number (USD per diluted share); required_confirmation_available: boolean (boolean). Cite the SEC document and precise table/note/exhibit. Reuse prior-stage amounts without intermediate rounding; report percentages/ratios to two decimals and monetary derived amounts to three decimals unless specified.",
+    "scenario_id": "RAIN-V2-SNDK-001",
+    "workflow_step": 5,
+    "total_steps": 5,
+    "company": "Sandisk Corporation",
+    "ticker_at_filing": "SNDK",
+    "depends_on": [
+      "RAIN-V2-SNDK-004"
+    ],
+    "document_scope": [
+      {
+        "company": "Sandisk Corporation",
+        "cik": "0002023554",
+        "form": "8-K",
+        "filed": "2025-08-14",
+        "report_date": "2025-08-14"
+      },
+      {
+        "company": "Sandisk Corporation",
+        "cik": "0002023554",
+        "form": "10-Q",
+        "filed": "2025-05-12",
+        "report_date": "2025-03-28"
+      },
+      {
+        "company": "Sandisk Corporation",
+        "cik": "0002023554",
+        "form": "10-K",
+        "filed": "2025-08-21",
+        "report_date": "2025-06-27"
+      }
+    ]
+  }
+]
