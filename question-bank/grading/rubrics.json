@@ -3426,5 +3426,1058 @@
       "source_verified": true,
       "agent_run_performed": false
     }
+  },
+  "RAIN-V2-SNDK-001": {
+    "title_zh": "建立 Q3 亏损基线",
+    "ticker": "SNDK",
+    "company": "Sandisk Corporation",
+    "depends_on": [],
+    "input_bindings": {
+      "operating_income": {
+        "kind": "source",
+        "value": "-1881",
+        "unit": "USD million",
+        "evidence_label": "operating_income",
+        "source_id": "SNDK-10-Q",
+        "reused_from": "RAIN-SNDK-004"
+      },
+      "net_income": {
+        "kind": "source",
+        "value": "-1933",
+        "unit": "USD million",
+        "evidence_label": "net_income",
+        "source_id": "SNDK-10-Q",
+        "reused_from": "RAIN-SNDK-004"
+      }
+    },
+    "derivations": [],
+    "output_nodes": {
+      "operating_income": "read_1",
+      "net_income": "read_1"
+    },
+    "hop_definition": "conditional_evidence_depth_v2",
+    "hop_plan": [
+      {
+        "id": "read_1",
+        "kind": "retrieve",
+        "depends_on": [],
+        "evidence_block": "SNDK-10-Q:income_statement",
+        "source_ids": [
+          "SNDK-10-Q"
+        ],
+        "outputs": [
+          "operating_income",
+          "net_income"
+        ],
+        "depth": 1
+      }
+    ],
+    "hops": 1,
+    "evidence_records": [
+      {
+        "label": "operating_income",
+        "value": "-1881",
+        "unit": "USD million",
+        "source_id": "SNDK-10-Q",
+        "locator": "Inline XBRL fact #f-142; context c-9",
+        "fact_id": "f-142",
+        "concept": "us-gaap:OperatingIncomeLoss",
+        "context_id": "c-9",
+        "context": "context: entity: identifier:0002023554 period: startdate:2024-12-28 enddate:2025-03-28",
+        "scale": 6,
+        "decimals": "-6",
+        "original_text": "1,881",
+        "sign": "-",
+        "url": "https://www.sec.gov/Archives/edgar/data/2023554/000202355425000027/sndk-20250328.htm#f-142",
+        "evidence_block": "SNDK-10-Q:income_statement"
+      },
+      {
+        "label": "net_income",
+        "value": "-1933",
+        "unit": "USD million",
+        "source_id": "SNDK-10-Q",
+        "locator": "Inline XBRL fact #f-170; context c-9",
+        "fact_id": "f-170",
+        "concept": "us-gaap:NetIncomeLoss",
+        "context_id": "c-9",
+        "context": "context: entity: identifier:0002023554 period: startdate:2024-12-28 enddate:2025-03-28",
+        "scale": 6,
+        "decimals": "-6",
+        "original_text": "1,933",
+        "sign": "-",
+        "url": "https://www.sec.gov/Archives/edgar/data/2023554/000202355425000027/sndk-20250328.htm#f-170",
+        "evidence_block": "SNDK-10-Q:income_statement"
+      }
+    ],
+    "reused_from_v1": [
+      "RAIN-SNDK-004"
+    ],
+    "grading": {
+      "expected_answer": {
+        "operating_income": {
+          "value": "-1881",
+          "kind": "number",
+          "unit": "USD million",
+          "absolute_tolerance": "0"
+        },
+        "net_income": {
+          "value": "-1933",
+          "kind": "number",
+          "unit": "USD million",
+          "absolute_tolerance": "0"
+        }
+      },
+      "max_points": 5,
+      "rubric": {
+        "answer": 2,
+        "evidence": 1,
+        "scope_units": 1,
+        "dependency_and_method": 1
+      }
+    },
+    "verification": {
+      "checked_on": "2026-09-22",
+      "source_verified": true,
+      "agent_run_performed": false
+    }
+  },
+  "RAIN-V2-SNDK-002": {
+    "title_zh": "只加回商誉减值",
+    "ticker": "SNDK",
+    "company": "Sandisk Corporation",
+    "depends_on": [
+      "RAIN-V2-SNDK-001"
+    ],
+    "input_bindings": {
+      "q3_operating": {
+        "kind": "prior",
+        "question_id": "RAIN-V2-SNDK-001",
+        "field": "operating_income",
+        "value": "-1881",
+        "unit": "USD million"
+      },
+      "q3_impairment": {
+        "kind": "source",
+        "value": "1830",
+        "unit": "USD million",
+        "evidence_label": "goodwill_impairment",
+        "source_id": "SNDK-10-Q",
+        "reused_from": "RAIN-SNDK-005"
+      }
+    },
+    "derivations": [
+      {
+        "field": "q3_excluding_only_goodwill",
+        "expression": "q3_operating + q3_impairment",
+        "unit": "USD million",
+        "decimal_places": 3
+      }
+    ],
+    "output_nodes": {
+      "q3_operating": "input_q3_operating",
+      "q3_impairment": "read_1",
+      "q3_excluding_only_goodwill": "derive_q3_excluding_only_goodwill"
+    },
+    "hop_definition": "conditional_evidence_depth_v2",
+    "hop_plan": [
+      {
+        "id": "input_q3_operating",
+        "kind": "prior",
+        "depends_on": [],
+        "outputs": [
+          "q3_operating"
+        ],
+        "question_id": "RAIN-V2-SNDK-001",
+        "field": "operating_income",
+        "depth": 0
+      },
+      {
+        "id": "read_1",
+        "kind": "retrieve",
+        "depends_on": [],
+        "evidence_block": "SNDK-10-Q:income_statement",
+        "source_ids": [
+          "SNDK-10-Q"
+        ],
+        "outputs": [
+          "q3_impairment"
+        ],
+        "depth": 1
+      },
+      {
+        "id": "derive_q3_excluding_only_goodwill",
+        "kind": "calculate",
+        "depends_on": [
+          "read_1",
+          "input_q3_operating"
+        ],
+        "outputs": [
+          "q3_excluding_only_goodwill"
+        ],
+        "expression": "q3_operating + q3_impairment",
+        "depth": 2
+      }
+    ],
+    "hops": 2,
+    "evidence_records": [
+      {
+        "label": "goodwill_impairment",
+        "value": "1830",
+        "unit": "USD million",
+        "source_id": "SNDK-10-Q",
+        "locator": "Inline XBRL fact #f-122; context c-9",
+        "fact_id": "f-122",
+        "concept": "us-gaap:GoodwillImpairmentLoss",
+        "context_id": "c-9",
+        "context": "context: entity: identifier:0002023554 period: startdate:2024-12-28 enddate:2025-03-28",
+        "scale": 6,
+        "decimals": "-6",
+        "original_text": "1,830",
+        "sign": "+",
+        "url": "https://www.sec.gov/Archives/edgar/data/2023554/000202355425000027/sndk-20250328.htm#f-122",
+        "evidence_block": "SNDK-10-Q:income_statement"
+      },
+      {
+        "label": "operating_income",
+        "value": "-1881",
+        "unit": "USD million",
+        "source_id": "SNDK-10-Q",
+        "locator": "Inline XBRL fact #f-142; context c-9",
+        "fact_id": "f-142",
+        "concept": "us-gaap:OperatingIncomeLoss",
+        "context_id": "c-9",
+        "context": "context: entity: identifier:0002023554 period: startdate:2024-12-28 enddate:2025-03-28",
+        "scale": 6,
+        "decimals": "-6",
+        "original_text": "1,881",
+        "sign": "-",
+        "url": "https://www.sec.gov/Archives/edgar/data/2023554/000202355425000027/sndk-20250328.htm#f-142",
+        "evidence_block": "SNDK-10-Q:income_statement"
+      }
+    ],
+    "reused_from_v1": [
+      "RAIN-SNDK-005"
+    ],
+    "grading": {
+      "expected_answer": {
+        "q3_operating": {
+          "value": "-1881",
+          "kind": "number",
+          "unit": "USD million",
+          "absolute_tolerance": "0"
+        },
+        "q3_impairment": {
+          "value": "1830",
+          "kind": "number",
+          "unit": "USD million",
+          "absolute_tolerance": "0"
+        },
+        "q3_excluding_only_goodwill": {
+          "value": "-51.000",
+          "kind": "number",
+          "unit": "USD million",
+          "absolute_tolerance": "0.001"
+        }
+      },
+      "max_points": 5,
+      "rubric": {
+        "answer": 2,
+        "evidence": 1,
+        "scope_units": 1,
+        "dependency_and_method": 1
+      }
+    },
+    "verification": {
+      "checked_on": "2026-09-22",
+      "source_verified": true,
+      "agent_run_performed": false
+    }
+  },
+  "RAIN-V2-SNDK-003": {
+    "title_zh": "将 Q4 与原始及调整后 Q3 对比",
+    "ticker": "SNDK",
+    "company": "Sandisk Corporation",
+    "depends_on": [
+      "RAIN-V2-SNDK-002"
+    ],
+    "input_bindings": {
+      "q3_reported": {
+        "kind": "prior",
+        "question_id": "RAIN-V2-SNDK-002",
+        "field": "q3_operating",
+        "value": "-1881",
+        "unit": "USD million"
+      },
+      "q3_adjusted": {
+        "kind": "prior",
+        "question_id": "RAIN-V2-SNDK-002",
+        "field": "q3_excluding_only_goodwill",
+        "value": "-51",
+        "unit": "USD million"
+      },
+      "q4_operating": {
+        "kind": "source",
+        "value": "18",
+        "unit": "USD million",
+        "evidence_label": "q4_operating",
+        "source_id": "SNDK-8-K-ex0"
+      }
+    },
+    "derivations": [
+      {
+        "field": "reported_improvement",
+        "expression": "q4_operating - q3_reported",
+        "unit": "USD million",
+        "decimal_places": 3
+      },
+      {
+        "field": "vs_q3_single_charge_adjusted",
+        "expression": "q4_operating - q3_adjusted",
+        "unit": "USD million",
+        "decimal_places": 3
+      }
+    ],
+    "output_nodes": {
+      "q4_operating": "read_1",
+      "reported_improvement": "derive_reported_improvement",
+      "vs_q3_single_charge_adjusted": "derive_vs_q3_single_charge_adjusted"
+    },
+    "hop_definition": "conditional_evidence_depth_v2",
+    "hop_plan": [
+      {
+        "id": "input_q3_reported",
+        "kind": "prior",
+        "depends_on": [],
+        "outputs": [
+          "q3_reported"
+        ],
+        "question_id": "RAIN-V2-SNDK-002",
+        "field": "q3_operating",
+        "depth": 0
+      },
+      {
+        "id": "input_q3_adjusted",
+        "kind": "prior",
+        "depends_on": [],
+        "outputs": [
+          "q3_adjusted"
+        ],
+        "question_id": "RAIN-V2-SNDK-002",
+        "field": "q3_excluding_only_goodwill",
+        "depth": 0
+      },
+      {
+        "id": "read_1",
+        "kind": "retrieve",
+        "depends_on": [],
+        "evidence_block": "SNDK-8-K-ex0:Q4 2025 Financial Highlights",
+        "source_ids": [
+          "SNDK-8-K-ex0"
+        ],
+        "outputs": [
+          "q4_operating"
+        ],
+        "depth": 1
+      },
+      {
+        "id": "derive_reported_improvement",
+        "kind": "calculate",
+        "depends_on": [
+          "input_q3_reported",
+          "read_1"
+        ],
+        "outputs": [
+          "reported_improvement"
+        ],
+        "expression": "q4_operating - q3_reported",
+        "depth": 2
+      },
+      {
+        "id": "derive_vs_q3_single_charge_adjusted",
+        "kind": "calculate",
+        "depends_on": [
+          "input_q3_adjusted",
+          "read_1"
+        ],
+        "outputs": [
+          "vs_q3_single_charge_adjusted"
+        ],
+        "expression": "q4_operating - q3_adjusted",
+        "depth": 2
+      }
+    ],
+    "hops": 2,
+    "evidence_records": [
+      {
+        "label": "q4_operating",
+        "source_id": "SNDK-8-K-ex0",
+        "value": "18",
+        "unit": "USD million",
+        "url": "https://www.sec.gov/Archives/edgar/data/2023554/000119312525180782/d926236dex991.htm#:~:text=Q4%202025%20Financial%20Highlights",
+        "locator": "Q4 2025 Financial Highlights; GAAP Operating Income (Loss)",
+        "text_fragment": "Q4 2025 Financial Highlights",
+        "evidence_block": "SNDK-8-K-ex0:Q4 2025 Financial Highlights"
+      },
+      {
+        "label": "operating_income",
+        "value": "-1881",
+        "unit": "USD million",
+        "source_id": "SNDK-10-Q",
+        "locator": "Inline XBRL fact #f-142; context c-9",
+        "fact_id": "f-142",
+        "concept": "us-gaap:OperatingIncomeLoss",
+        "context_id": "c-9",
+        "context": "context: entity: identifier:0002023554 period: startdate:2024-12-28 enddate:2025-03-28",
+        "scale": 6,
+        "decimals": "-6",
+        "original_text": "1,881",
+        "sign": "-",
+        "url": "https://www.sec.gov/Archives/edgar/data/2023554/000202355425000027/sndk-20250328.htm#f-142",
+        "evidence_block": "SNDK-10-Q:income_statement"
+      },
+      {
+        "label": "goodwill_impairment",
+        "value": "1830",
+        "unit": "USD million",
+        "source_id": "SNDK-10-Q",
+        "locator": "Inline XBRL fact #f-122; context c-9",
+        "fact_id": "f-122",
+        "concept": "us-gaap:GoodwillImpairmentLoss",
+        "context_id": "c-9",
+        "context": "context: entity: identifier:0002023554 period: startdate:2024-12-28 enddate:2025-03-28",
+        "scale": 6,
+        "decimals": "-6",
+        "original_text": "1,830",
+        "sign": "+",
+        "url": "https://www.sec.gov/Archives/edgar/data/2023554/000202355425000027/sndk-20250328.htm#f-122",
+        "evidence_block": "SNDK-10-Q:income_statement"
+      }
+    ],
+    "reused_from_v1": [],
+    "grading": {
+      "expected_answer": {
+        "q4_operating": {
+          "value": "18",
+          "kind": "number",
+          "unit": "USD million",
+          "absolute_tolerance": "0"
+        },
+        "reported_improvement": {
+          "value": "1899.000",
+          "kind": "number",
+          "unit": "USD million",
+          "absolute_tolerance": "0.001"
+        },
+        "vs_q3_single_charge_adjusted": {
+          "value": "69.000",
+          "kind": "number",
+          "unit": "USD million",
+          "absolute_tolerance": "0.001"
+        }
+      },
+      "max_points": 5,
+      "rubric": {
+        "answer": 2,
+        "evidence": 1,
+        "scope_units": 1,
+        "dependency_and_method": 1
+      }
+    },
+    "verification": {
+      "checked_on": "2026-09-22",
+      "source_verified": true,
+      "agent_run_performed": false
+    }
+  },
+  "RAIN-V2-SNDK-004": {
+    "title_zh": "验证全年减值并量化利润桥",
+    "ticker": "SNDK",
+    "company": "Sandisk Corporation",
+    "depends_on": [
+      "RAIN-V2-SNDK-002",
+      "RAIN-V2-SNDK-003"
+    ],
+    "input_bindings": {
+      "reported_improvement": {
+        "kind": "prior",
+        "question_id": "RAIN-V2-SNDK-003",
+        "field": "reported_improvement",
+        "value": "1899",
+        "unit": "USD million"
+      },
+      "q3_impairment": {
+        "kind": "prior",
+        "question_id": "RAIN-V2-SNDK-002",
+        "field": "q3_impairment",
+        "value": "1830",
+        "unit": "USD million"
+      },
+      "annual_impairment": {
+        "kind": "source",
+        "value": "1830",
+        "unit": "USD million",
+        "evidence_label": "impairment",
+        "source_id": "SNDK-10-K",
+        "reused_from": "RAIN-SNDK-001"
+      },
+      "ytd_impairment": {
+        "kind": "source",
+        "value": "1830",
+        "unit": "USD million",
+        "evidence_label": "ytd_impairment",
+        "source_id": "SNDK-10-Q"
+      }
+    },
+    "derivations": [
+      {
+        "field": "q4_impairment",
+        "expression": "annual_impairment - ytd_impairment",
+        "unit": "USD million",
+        "decimal_places": 3
+      },
+      {
+        "field": "charge_reduction",
+        "expression": "q3_impairment - q4_impairment",
+        "unit": "USD million",
+        "decimal_places": 3
+      },
+      {
+        "field": "charge_reduction_share",
+        "expression": "charge_reduction / reported_improvement * 100",
+        "unit": "percent",
+        "decimal_places": 2
+      }
+    ],
+    "output_nodes": {
+      "q4_impairment": "derive_q4_impairment",
+      "charge_reduction": "derive_charge_reduction",
+      "charge_reduction_share": "derive_charge_reduction_share"
+    },
+    "hop_definition": "conditional_evidence_depth_v2",
+    "hop_plan": [
+      {
+        "id": "input_reported_improvement",
+        "kind": "prior",
+        "depends_on": [],
+        "outputs": [
+          "reported_improvement"
+        ],
+        "question_id": "RAIN-V2-SNDK-003",
+        "field": "reported_improvement",
+        "depth": 0
+      },
+      {
+        "id": "input_q3_impairment",
+        "kind": "prior",
+        "depends_on": [],
+        "outputs": [
+          "q3_impairment"
+        ],
+        "question_id": "RAIN-V2-SNDK-002",
+        "field": "q3_impairment",
+        "depth": 0
+      },
+      {
+        "id": "read_1",
+        "kind": "retrieve",
+        "depends_on": [],
+        "evidence_block": "SNDK-10-K:income_statement",
+        "source_ids": [
+          "SNDK-10-K"
+        ],
+        "outputs": [
+          "annual_impairment"
+        ],
+        "depth": 1
+      },
+      {
+        "id": "read_2",
+        "kind": "retrieve",
+        "depends_on": [],
+        "evidence_block": "SNDK-10-Q:income_statement",
+        "source_ids": [
+          "SNDK-10-Q"
+        ],
+        "outputs": [
+          "ytd_impairment"
+        ],
+        "depth": 1
+      },
+      {
+        "id": "derive_q4_impairment",
+        "kind": "calculate",
+        "depends_on": [
+          "read_1",
+          "read_2"
+        ],
+        "outputs": [
+          "q4_impairment"
+        ],
+        "expression": "annual_impairment - ytd_impairment",
+        "depth": 2
+      },
+      {
+        "id": "derive_charge_reduction",
+        "kind": "calculate",
+        "depends_on": [
+          "input_q3_impairment",
+          "derive_q4_impairment"
+        ],
+        "outputs": [
+          "charge_reduction"
+        ],
+        "expression": "q3_impairment - q4_impairment",
+        "depth": 3
+      },
+      {
+        "id": "derive_charge_reduction_share",
+        "kind": "calculate",
+        "depends_on": [
+          "derive_charge_reduction",
+          "input_reported_improvement"
+        ],
+        "outputs": [
+          "charge_reduction_share"
+        ],
+        "expression": "charge_reduction / reported_improvement * 100",
+        "depth": 4
+      }
+    ],
+    "hops": 4,
+    "evidence_records": [
+      {
+        "label": "impairment",
+        "value": "1830",
+        "unit": "USD million",
+        "source_id": "SNDK-10-K",
+        "locator": "Inline XBRL fact #f-140; context c-1",
+        "fact_id": "f-140",
+        "concept": "us-gaap:GoodwillImpairmentLoss",
+        "context_id": "c-1",
+        "context": "context: entity: identifier:0002023554 period: startdate:2024-06-29 enddate:2025-06-27",
+        "scale": 6,
+        "decimals": "-6",
+        "original_text": "1,830",
+        "sign": "+",
+        "url": "https://www.sec.gov/Archives/edgar/data/2023554/000202355425000034/sndk-20250627.htm#f-140",
+        "evidence_block": "SNDK-10-K:income_statement"
+      },
+      {
+        "label": "ytd_impairment",
+        "source_id": "SNDK-10-Q",
+        "value": "1830",
+        "unit": "USD million",
+        "concept": "us-gaap:GoodwillImpairmentLoss",
+        "context_id": "c-1",
+        "context": "context: entity: identifier:0002023554 period: startdate:2024-06-29 enddate:2025-03-28",
+        "fact_id": "f-124",
+        "original_text": "1,830",
+        "scale": 6,
+        "sign": "+",
+        "url": "https://www.sec.gov/Archives/edgar/data/2023554/000202355425000027/sndk-20250328.htm#f-124",
+        "locator": "income_statement; inline XBRL #f-124, context c-1",
+        "evidence_block": "SNDK-10-Q:income_statement"
+      },
+      {
+        "label": "goodwill_impairment",
+        "value": "1830",
+        "unit": "USD million",
+        "source_id": "SNDK-10-Q",
+        "locator": "Inline XBRL fact #f-122; context c-9",
+        "fact_id": "f-122",
+        "concept": "us-gaap:GoodwillImpairmentLoss",
+        "context_id": "c-9",
+        "context": "context: entity: identifier:0002023554 period: startdate:2024-12-28 enddate:2025-03-28",
+        "scale": 6,
+        "decimals": "-6",
+        "original_text": "1,830",
+        "sign": "+",
+        "url": "https://www.sec.gov/Archives/edgar/data/2023554/000202355425000027/sndk-20250328.htm#f-122",
+        "evidence_block": "SNDK-10-Q:income_statement"
+      },
+      {
+        "label": "operating_income",
+        "value": "-1881",
+        "unit": "USD million",
+        "source_id": "SNDK-10-Q",
+        "locator": "Inline XBRL fact #f-142; context c-9",
+        "fact_id": "f-142",
+        "concept": "us-gaap:OperatingIncomeLoss",
+        "context_id": "c-9",
+        "context": "context: entity: identifier:0002023554 period: startdate:2024-12-28 enddate:2025-03-28",
+        "scale": 6,
+        "decimals": "-6",
+        "original_text": "1,881",
+        "sign": "-",
+        "url": "https://www.sec.gov/Archives/edgar/data/2023554/000202355425000027/sndk-20250328.htm#f-142",
+        "evidence_block": "SNDK-10-Q:income_statement"
+      },
+      {
+        "label": "q4_operating",
+        "source_id": "SNDK-8-K-ex0",
+        "value": "18",
+        "unit": "USD million",
+        "url": "https://www.sec.gov/Archives/edgar/data/2023554/000119312525180782/d926236dex991.htm#:~:text=Q4%202025%20Financial%20Highlights",
+        "locator": "Q4 2025 Financial Highlights; GAAP Operating Income (Loss)",
+        "text_fragment": "Q4 2025 Financial Highlights",
+        "evidence_block": "SNDK-8-K-ex0:Q4 2025 Financial Highlights"
+      }
+    ],
+    "reused_from_v1": [
+      "RAIN-SNDK-001"
+    ],
+    "grading": {
+      "expected_answer": {
+        "q4_impairment": {
+          "value": "0.000",
+          "kind": "number",
+          "unit": "USD million",
+          "absolute_tolerance": "0.001"
+        },
+        "charge_reduction": {
+          "value": "1830.000",
+          "kind": "number",
+          "unit": "USD million",
+          "absolute_tolerance": "0.001"
+        },
+        "charge_reduction_share": {
+          "value": "96.37",
+          "kind": "number",
+          "unit": "percent",
+          "absolute_tolerance": "0.01"
+        }
+      },
+      "max_points": 5,
+      "rubric": {
+        "answer": 2,
+        "evidence": 1,
+        "scope_units": 1,
+        "dependency_and_method": 1
+      }
+    },
+    "verification": {
+      "checked_on": "2026-09-22",
+      "source_verified": true,
+      "agent_run_performed": false
+    }
+  },
+  "RAIN-V2-SNDK-005": {
+    "title_zh": "缺失 GAAP 指引时不宣称确认扭亏",
+    "ticker": "SNDK",
+    "company": "Sandisk Corporation",
+    "depends_on": [
+      "RAIN-V2-SNDK-004"
+    ],
+    "input_bindings": {
+      "share": {
+        "kind": "prior",
+        "question_id": "RAIN-V2-SNDK-004",
+        "field": "charge_reduction_share",
+        "value": "96.36650868878357030015797788",
+        "unit": "percent"
+      },
+      "threshold": {
+        "kind": "assumption",
+        "value": "90",
+        "unit": "percent",
+        "description": "Scenario assumption stated in the question"
+      },
+      "gaap_guidance": {
+        "kind": "source",
+        "value": null,
+        "unit": "USD per diluted share",
+        "evidence_label": "gaap_eps_guidance",
+        "source_id": "SNDK-8-K-ex0",
+        "reused_from": "RAIN-SNDK-008"
+      },
+      "non_gaap_low": {
+        "kind": "source",
+        "value": "0.70",
+        "unit": "USD per diluted share",
+        "evidence_label": "non_gaap_low",
+        "source_id": "SNDK-8-K-ex0",
+        "reused_from": "RAIN-SNDK-008"
+      },
+      "non_gaap_high": {
+        "kind": "source",
+        "value": "0.90",
+        "unit": "USD per diluted share",
+        "evidence_label": "non_gaap_high",
+        "source_id": "SNDK-8-K-ex0",
+        "reused_from": "RAIN-SNDK-008"
+      }
+    },
+    "derivations": [
+      {
+        "field": "adjustment_condition",
+        "expression": "share > threshold",
+        "unit": "boolean",
+        "decimal_places": null
+      },
+      {
+        "field": "numeric_gaap_available",
+        "expression": "gaap_guidance != None and gaap_guidance > 0",
+        "unit": "boolean",
+        "decimal_places": null
+      },
+      {
+        "field": "required_confirmation_available",
+        "expression": "adjustment_condition and numeric_gaap_available",
+        "unit": "boolean",
+        "decimal_places": null
+      }
+    ],
+    "output_nodes": {
+      "adjustment_condition": "derive_adjustment_condition",
+      "gaap_guidance": "read_1",
+      "non_gaap_low": "read_2",
+      "non_gaap_high": "read_2",
+      "required_confirmation_available": "derive_required_confirmation_available"
+    },
+    "hop_definition": "conditional_evidence_depth_v2",
+    "hop_plan": [
+      {
+        "id": "input_share",
+        "kind": "prior",
+        "depends_on": [],
+        "outputs": [
+          "share"
+        ],
+        "question_id": "RAIN-V2-SNDK-004",
+        "field": "charge_reduction_share",
+        "depth": 0
+      },
+      {
+        "id": "input_threshold",
+        "kind": "assumption",
+        "depends_on": [],
+        "outputs": [
+          "threshold"
+        ],
+        "description": "Scenario assumption stated in the question",
+        "depth": 0
+      },
+      {
+        "id": "read_1",
+        "kind": "retrieve",
+        "depends_on": [],
+        "evidence_block": "SNDK-8-K-ex0:Business Outlook",
+        "source_ids": [
+          "SNDK-8-K-ex0"
+        ],
+        "outputs": [
+          "gaap_guidance"
+        ],
+        "depth": 1
+      },
+      {
+        "id": "read_2",
+        "kind": "retrieve",
+        "depends_on": [],
+        "evidence_block": "SNDK-8-K-ex0:Same table",
+        "source_ids": [
+          "SNDK-8-K-ex0"
+        ],
+        "outputs": [
+          "non_gaap_low",
+          "non_gaap_high"
+        ],
+        "depth": 1
+      },
+      {
+        "id": "derive_adjustment_condition",
+        "kind": "judge",
+        "depends_on": [
+          "input_share",
+          "input_threshold"
+        ],
+        "outputs": [
+          "adjustment_condition"
+        ],
+        "expression": "share > threshold",
+        "depth": 1
+      },
+      {
+        "id": "derive_numeric_gaap_available",
+        "kind": "judge",
+        "depends_on": [
+          "read_1"
+        ],
+        "outputs": [
+          "numeric_gaap_available"
+        ],
+        "expression": "gaap_guidance != None and gaap_guidance > 0",
+        "depth": 2
+      },
+      {
+        "id": "derive_required_confirmation_available",
+        "kind": "judge",
+        "depends_on": [
+          "derive_adjustment_condition",
+          "derive_numeric_gaap_available"
+        ],
+        "outputs": [
+          "required_confirmation_available"
+        ],
+        "expression": "adjustment_condition and numeric_gaap_available",
+        "depth": 3
+      }
+    ],
+    "hops": 3,
+    "evidence_records": [
+      {
+        "label": "gaap_eps_guidance",
+        "value": null,
+        "unit": "USD per diluted share",
+        "source_id": "SNDK-8-K-ex0",
+        "locator": "Business Outlook, FY2026 Q1 diluted earnings (loss) per share, GAAP",
+        "url": "https://www.sec.gov/Archives/edgar/data/2023554/000119312525180782/d926236dex991.htm#:~:text=Business%20Outlook%20for%20Fiscal%20First%20Quarter%20of%202026",
+        "text_fragment": "Business Outlook for Fiscal First Quarter of 2026",
+        "evidence_block": "SNDK-8-K-ex0:Business Outlook"
+      },
+      {
+        "label": "non_gaap_low",
+        "value": "0.70",
+        "unit": "USD per diluted share",
+        "source_id": "SNDK-8-K-ex0",
+        "locator": "Same table, non-GAAP EPS",
+        "url": "https://www.sec.gov/Archives/edgar/data/2023554/000119312525180782/d926236dex991.htm#:~:text=Business%20Outlook%20for%20Fiscal%20First%20Quarter%20of%202026",
+        "text_fragment": "Business Outlook for Fiscal First Quarter of 2026",
+        "evidence_block": "SNDK-8-K-ex0:Same table"
+      },
+      {
+        "label": "non_gaap_high",
+        "value": "0.90",
+        "unit": "USD per diluted share",
+        "source_id": "SNDK-8-K-ex0",
+        "locator": "Same table, non-GAAP EPS",
+        "url": "https://www.sec.gov/Archives/edgar/data/2023554/000119312525180782/d926236dex991.htm#:~:text=Business%20Outlook%20for%20Fiscal%20First%20Quarter%20of%202026",
+        "text_fragment": "Business Outlook for Fiscal First Quarter of 2026",
+        "evidence_block": "SNDK-8-K-ex0:Same table"
+      },
+      {
+        "label": "goodwill_impairment",
+        "value": "1830",
+        "unit": "USD million",
+        "source_id": "SNDK-10-Q",
+        "locator": "Inline XBRL fact #f-122; context c-9",
+        "fact_id": "f-122",
+        "concept": "us-gaap:GoodwillImpairmentLoss",
+        "context_id": "c-9",
+        "context": "context: entity: identifier:0002023554 period: startdate:2024-12-28 enddate:2025-03-28",
+        "scale": 6,
+        "decimals": "-6",
+        "original_text": "1,830",
+        "sign": "+",
+        "url": "https://www.sec.gov/Archives/edgar/data/2023554/000202355425000027/sndk-20250328.htm#f-122",
+        "evidence_block": "SNDK-10-Q:income_statement"
+      },
+      {
+        "label": "impairment",
+        "value": "1830",
+        "unit": "USD million",
+        "source_id": "SNDK-10-K",
+        "locator": "Inline XBRL fact #f-140; context c-1",
+        "fact_id": "f-140",
+        "concept": "us-gaap:GoodwillImpairmentLoss",
+        "context_id": "c-1",
+        "context": "context: entity: identifier:0002023554 period: startdate:2024-06-29 enddate:2025-06-27",
+        "scale": 6,
+        "decimals": "-6",
+        "original_text": "1,830",
+        "sign": "+",
+        "url": "https://www.sec.gov/Archives/edgar/data/2023554/000202355425000034/sndk-20250627.htm#f-140",
+        "evidence_block": "SNDK-10-K:income_statement"
+      },
+      {
+        "label": "ytd_impairment",
+        "source_id": "SNDK-10-Q",
+        "value": "1830",
+        "unit": "USD million",
+        "concept": "us-gaap:GoodwillImpairmentLoss",
+        "context_id": "c-1",
+        "context": "context: entity: identifier:0002023554 period: startdate:2024-06-29 enddate:2025-03-28",
+        "fact_id": "f-124",
+        "original_text": "1,830",
+        "scale": 6,
+        "sign": "+",
+        "url": "https://www.sec.gov/Archives/edgar/data/2023554/000202355425000027/sndk-20250328.htm#f-124",
+        "locator": "income_statement; inline XBRL #f-124, context c-1",
+        "evidence_block": "SNDK-10-Q:income_statement"
+      },
+      {
+        "label": "operating_income",
+        "value": "-1881",
+        "unit": "USD million",
+        "source_id": "SNDK-10-Q",
+        "locator": "Inline XBRL fact #f-142; context c-9",
+        "fact_id": "f-142",
+        "concept": "us-gaap:OperatingIncomeLoss",
+        "context_id": "c-9",
+        "context": "context: entity: identifier:0002023554 period: startdate:2024-12-28 enddate:2025-03-28",
+        "scale": 6,
+        "decimals": "-6",
+        "original_text": "1,881",
+        "sign": "-",
+        "url": "https://www.sec.gov/Archives/edgar/data/2023554/000202355425000027/sndk-20250328.htm#f-142",
+        "evidence_block": "SNDK-10-Q:income_statement"
+      },
+      {
+        "label": "q4_operating",
+        "source_id": "SNDK-8-K-ex0",
+        "value": "18",
+        "unit": "USD million",
+        "url": "https://www.sec.gov/Archives/edgar/data/2023554/000119312525180782/d926236dex991.htm#:~:text=Q4%202025%20Financial%20Highlights",
+        "locator": "Q4 2025 Financial Highlights; GAAP Operating Income (Loss)",
+        "text_fragment": "Q4 2025 Financial Highlights",
+        "evidence_block": "SNDK-8-K-ex0:Q4 2025 Financial Highlights"
+      }
+    ],
+    "reused_from_v1": [
+      "RAIN-SNDK-008"
+    ],
+    "grading": {
+      "expected_answer": {
+        "adjustment_condition": {
+          "value": true,
+          "kind": "boolean",
+          "unit": "boolean"
+        },
+        "gaap_guidance": {
+          "value": null,
+          "kind": "null",
+          "unit": "USD per diluted share"
+        },
+        "non_gaap_low": {
+          "value": "0.70",
+          "kind": "number",
+          "unit": "USD per diluted share",
+          "absolute_tolerance": "0"
+        },
+        "non_gaap_high": {
+          "value": "0.90",
+          "kind": "number",
+          "unit": "USD per diluted share",
+          "absolute_tolerance": "0"
+        },
+        "required_confirmation_available": {
+          "value": false,
+          "kind": "boolean",
+          "unit": "boolean"
+        }
+      },
+      "max_points": 5,
+      "rubric": {
+        "answer": 2,
+        "evidence": 1,
+        "scope_units": 1,
+        "dependency_and_method": 1
+      }
+    },
+    "verification": {
+      "checked_on": "2026-09-22",
+      "source_verified": true,
+      "agent_run_performed": false
+    }
   }
 }

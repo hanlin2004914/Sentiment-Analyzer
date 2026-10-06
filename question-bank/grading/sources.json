@@ -49,6 +49,56 @@
     "parent_source_id": "MU-8-K",
     "exhibit": "99.1"
   },
+  "SNDK-10-K": {
+    "ticker": "SNDK",
+    "cik": "0002023554",
+    "form": "10-K",
+    "filed": "2025-08-21",
+    "report_date": "2025-06-27",
+    "accession": "0002023554-25-000034",
+    "url": "https://www.sec.gov/Archives/edgar/data/2023554/000202355425000034/sndk-20250627.htm",
+    "company": "Sandisk Corporation",
+    "retrieved_on": "2026-09-22",
+    "sha256": "8146d1f1ab6c3b531ebf877a17d30fee7afce2915c590973bc7dd48aeae8c77f"
+  },
+  "SNDK-10-Q": {
+    "ticker": "SNDK",
+    "cik": "0002023554",
+    "form": "10-Q",
+    "filed": "2025-05-12",
+    "report_date": "2025-03-28",
+    "accession": "0002023554-25-000027",
+    "url": "https://www.sec.gov/Archives/edgar/data/2023554/000202355425000027/sndk-20250328.htm",
+    "company": "Sandisk Corporation",
+    "retrieved_on": "2026-09-22",
+    "sha256": "083324cbcd44be9ad8ccd821dcc428ee11d3ff0edf2dff6cb7f2f067da373a90"
+  },
+  "SNDK-8-K": {
+    "ticker": "SNDK",
+    "cik": "0002023554",
+    "form": "8-K",
+    "filed": "2025-08-14",
+    "report_date": "2025-08-14",
+    "accession": "0001193125-25-180782",
+    "url": "https://www.sec.gov/Archives/edgar/data/2023554/000119312525180782/d926236d8k.htm",
+    "company": "Sandisk Corporation",
+    "retrieved_on": "2026-09-22",
+    "sha256": "09d0a90cfb9faa48a4327a405c476d0339c405d8fc63ac7f730763e9d34c9d88"
+  },
+  "SNDK-8-K-ex0": {
+    "ticker": "SNDK",
+    "cik": "0002023554",
+    "form": "8-K",
+    "filed": "2025-08-14",
+    "report_date": "2025-08-14",
+    "accession": "0001193125-25-180782",
+    "url": "https://www.sec.gov/Archives/edgar/data/2023554/000119312525180782/d926236dex991.htm",
+    "company": "Sandisk Corporation",
+    "retrieved_on": "2026-09-22",
+    "sha256": "d9212cfd065ed20c7804529e0cf10d812bd64c1ef828e79805c474965e954a34",
+    "parent_source_id": "SNDK-8-K",
+    "exhibit": "99.1"
+  },
   "STX-10-K": {
     "ticker": "STX",
     "cik": "0001137789",

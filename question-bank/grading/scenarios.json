@@ -148,5 +148,55 @@
         "hops": 4
       }
     ]
+  },
+  "SNDK": {
+    "company": "Sandisk Corporation",
+    "ticker_at_filing": "SNDK",
+    "title_zh": "扭亏核验：减值消退还是经营改善",
+    "user_request": "I am checking whether Sandisk's apparent Q4 recovery reflects underlying operating improvement or a disappearing goodwill charge, and whether the next-quarter release actually confirms a GAAP EPS turnaround.",
+    "scope": "FY2025 Q3/Q4, FY2025 annual impairment, FY2026 Q1 guidance issued 2025-08-14",
+    "scenario_id": "RAIN-V2-SNDK-001",
+    "file": "sndk_scenario.json",
+    "steps": [
+      {
+        "id": "RAIN-V2-SNDK-001",
+        "title_zh": "建立 Q3 亏损基线",
+        "depends_on": [],
+        "hops": 1
+      },
+      {
+        "id": "RAIN-V2-SNDK-002",
+        "title_zh": "只加回商誉减值",
+        "depends_on": [
+          "RAIN-V2-SNDK-001"
+        ],
+        "hops": 2
+      },
+      {
+        "id": "RAIN-V2-SNDK-003",
+        "title_zh": "将 Q4 与原始及调整后 Q3 对比",
+        "depends_on": [
+          "RAIN-V2-SNDK-002"
+        ],
+        "hops": 2
+      },
+      {
+        "id": "RAIN-V2-SNDK-004",
+        "title_zh": "验证全年减值并量化利润桥",
+        "depends_on": [
+          "RAIN-V2-SNDK-002",
+          "RAIN-V2-SNDK-003"
+        ],
+        "hops": 4
+      },
+      {
+        "id": "RAIN-V2-SNDK-005",
+        "title_zh": "缺失 GAAP 指引时不宣称确认扭亏",
+        "depends_on": [
+          "RAIN-V2-SNDK-004"
+        ],
+        "hops": 3
+      }
+    ]
   }
 }
