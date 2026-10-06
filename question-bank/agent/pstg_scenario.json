@@ -1,0 +1,108 @@
+[
+  {
+    "id": "RAIN-V2-PSTG-001",
+    "question": "Scenario: I am preparing a Pure Storage subscription-transition review using its FY2025 filing. Trace revenue mix, category growth and category gross profit, then determine which business actually supplied the increase in total gross profit. First, use the 10-K filed March 27, 2025. Retrieve FY2025 product revenue, subscription-services revenue and consolidated revenue from the income statement/product-service XBRL contexts. Convert the filing's USD-thousand presentation to USD millions, retaining three decimal places. Return product: number (USD million); subscription: number (USD million); total: number (USD million). Cite the SEC document and precise table/note/exhibit. Reuse prior-stage amounts without intermediate rounding; report percentages/ratios to two decimals and monetary derived amounts to three decimals unless specified.",
+    "scenario_id": "RAIN-V2-PSTG-001",
+    "workflow_step": 1,
+    "total_steps": 5,
+    "company": "Pure Storage, Inc. (name and ticker in the pinned filing)",
+    "ticker_at_filing": "PSTG",
+    "depends_on": [],
+    "document_scope": [
+      {
+        "company": "Pure Storage, Inc. (name and ticker in the pinned filing)",
+        "cik": "0001474432",
+        "form": "10-K",
+        "filed": "2025-03-27",
+        "report_date": "2025-02-02"
+      }
+    ]
+  },
+  {
+    "id": "RAIN-V2-PSTG-002",
+    "question": "Using only Step 1's amounts, calculate subscription revenue as a percentage of total revenue and reconcile product plus subscription revenue to the consolidated total. Return the signed reconciliation difference and retain the unrounded subscription share. Return subscription_share: number (percent); reconciliation_difference: number (USD million). Cite the SEC document and precise table/note/exhibit. Reuse prior-stage amounts without intermediate rounding; report percentages/ratios to two decimals and monetary derived amounts to three decimals unless specified.",
+    "scenario_id": "RAIN-V2-PSTG-001",
+    "workflow_step": 2,
+    "total_steps": 5,
+    "company": "Pure Storage, Inc. (name and ticker in the pinned filing)",
+    "ticker_at_filing": "PSTG",
+    "depends_on": [
+      "RAIN-V2-PSTG-001"
+    ],
+    "document_scope": [
+      {
+        "company": "Pure Storage, Inc. (name and ticker in the pinned filing)",
+        "cik": "0001474432",
+        "form": "10-K",
+        "filed": "2025-03-27",
+        "report_date": "2025-02-02"
+      }
+    ]
+  },
+  {
+    "id": "RAIN-V2-PSTG-003",
+    "question": "Continue from Step 2's subscription share and Step 1's category revenues. Retrieve FY2024 product and subscription revenues from the same 10-K. Calculate each category's growth rate, the prior subscription share, and the share change in percentage points. Identify whether subscription grew faster than product. Return prior_product: number (USD million); prior_subscription: number (USD million); product_growth: number (percent); subscription_growth: number (percent); mix_change: number (percentage points); subscription_faster: boolean (boolean). Cite the SEC document and precise table/note/exhibit. Reuse prior-stage amounts without intermediate rounding; report percentages/ratios to two decimals and monetary derived amounts to three decimals unless specified.",
+    "scenario_id": "RAIN-V2-PSTG-001",
+    "workflow_step": 3,
+    "total_steps": 5,
+    "company": "Pure Storage, Inc. (name and ticker in the pinned filing)",
+    "ticker_at_filing": "PSTG",
+    "depends_on": [
+      "RAIN-V2-PSTG-001",
+      "RAIN-V2-PSTG-002"
+    ],
+    "document_scope": [
+      {
+        "company": "Pure Storage, Inc. (name and ticker in the pinned filing)",
+        "cik": "0001474432",
+        "form": "10-K",
+        "filed": "2025-03-27",
+        "report_date": "2025-02-02"
+      }
+    ]
+  },
+  {
+    "id": "RAIN-V2-PSTG-004",
+    "question": "Use Step 3's faster-growth result and Step 1's FY2025 revenues. Retrieve FY2025 product cost of revenue and subscription-services cost of revenue from the same filing. Calculate each category's gross profit and margin, and whether the faster-growing subscription category also has the higher gross margin. Return product_gp: number (USD million); subscription_gp: number (USD million); product_margin: number (percent); subscription_margin: number (percent); faster_and_higher_margin: boolean (boolean). Cite the SEC document and precise table/note/exhibit. Reuse prior-stage amounts without intermediate rounding; report percentages/ratios to two decimals and monetary derived amounts to three decimals unless specified.",
+    "scenario_id": "RAIN-V2-PSTG-001",
+    "workflow_step": 4,
+    "total_steps": 5,
+    "company": "Pure Storage, Inc. (name and ticker in the pinned filing)",
+    "ticker_at_filing": "PSTG",
+    "depends_on": [
+      "RAIN-V2-PSTG-001",
+      "RAIN-V2-PSTG-003"
+    ],
+    "document_scope": [
+      {
+        "company": "Pure Storage, Inc. (name and ticker in the pinned filing)",
+        "cik": "0001474432",
+        "form": "10-K",
+        "filed": "2025-03-27",
+        "report_date": "2025-02-02"
+      }
+    ]
+  },
+  {
+    "id": "RAIN-V2-PSTG-005",
+    "question": "Finish using Step 4's current category gross profits and Step 3's FY2024 category revenues. Retrieve FY2024 cost of revenue for both categories. Compute each category's gross-profit change, the total change, and subscription's share of the total increase. Return whether subscription growth offset a product gross-profit decline. A contribution above 100% is permissible when the other category declines. Return product_gp_change: number (USD million); subscription_gp_change: number (USD million); total_gp_change: number (USD million); subscription_contribution: number (percent); offset_product_decline: boolean (boolean). Cite the SEC document and precise table/note/exhibit. Reuse prior-stage amounts without intermediate rounding; report percentages/ratios to two decimals and monetary derived amounts to three decimals unless specified.",
+    "scenario_id": "RAIN-V2-PSTG-001",
+    "workflow_step": 5,
+    "total_steps": 5,
+    "company": "Pure Storage, Inc. (name and ticker in the pinned filing)",
+    "ticker_at_filing": "PSTG",
+    "depends_on": [
+      "RAIN-V2-PSTG-003",
+      "RAIN-V2-PSTG-004"
+    ],
+    "document_scope": [
+      {
+        "company": "Pure Storage, Inc. (name and ticker in the pinned filing)",
+        "cik": "0001474432",
+        "form": "10-K",
+        "filed": "2025-03-27",
+        "report_date": "2025-02-02"
+      }
+    ]
+  }
+]

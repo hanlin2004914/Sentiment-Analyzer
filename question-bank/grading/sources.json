@@ -73,6 +73,18 @@
     "retrieved_on": "2026-09-22",
     "sha256": "6948e3510a39763e2ec74f67d4f62e885acc9a9c447c43017c748dc4e518f8e8"
   },
+  "PSTG-10-K": {
+    "ticker": "PSTG",
+    "cik": "0001474432",
+    "form": "10-K",
+    "filed": "2025-03-27",
+    "report_date": "2025-02-02",
+    "accession": "0001628280-25-015044",
+    "url": "https://www.sec.gov/Archives/edgar/data/1474432/000162828025015044/pstg-20250202.htm",
+    "company": "Pure Storage, Inc. (name and ticker in the pinned filing)",
+    "retrieved_on": "2026-09-22",
+    "sha256": "9704314697dd8f7594ecd7be687690145c7d031d0d1c940f8b845c2d5b0d262e"
+  },
   "SNDK-10-K": {
     "ticker": "SNDK",
     "cik": "0002023554",

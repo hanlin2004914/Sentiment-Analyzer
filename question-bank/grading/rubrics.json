@@ -5616,5 +5616,1474 @@
       "source_verified": true,
       "agent_run_performed": false
     }
+  },
+  "RAIN-V2-PSTG-001": {
+    "title_zh": "从维度数据取得产品与订阅营收",
+    "ticker": "PSTG",
+    "company": "Pure Storage, Inc. (name and ticker in the pinned filing)",
+    "depends_on": [],
+    "input_bindings": {
+      "product": {
+        "kind": "source",
+        "value": "1699.494",
+        "unit": "USD million",
+        "evidence_label": "product",
+        "source_id": "PSTG-10-K"
+      },
+      "subscription": {
+        "kind": "source",
+        "value": "1468.670",
+        "unit": "USD million",
+        "evidence_label": "subscription",
+        "source_id": "PSTG-10-K"
+      },
+      "total": {
+        "kind": "source",
+        "value": "3168.164",
+        "unit": "USD million",
+        "evidence_label": "total",
+        "source_id": "PSTG-10-K"
+      }
+    },
+    "derivations": [],
+    "output_nodes": {
+      "product": "read_1",
+      "subscription": "read_1",
+      "total": "read_1"
+    },
+    "hop_definition": "conditional_evidence_depth_v2",
+    "hop_plan": [
+      {
+        "id": "read_1",
+        "kind": "retrieve",
+        "depends_on": [],
+        "evidence_block": "PSTG-10-K:income_statement",
+        "source_ids": [
+          "PSTG-10-K"
+        ],
+        "outputs": [
+          "product",
+          "subscription",
+          "total"
+        ],
+        "depth": 1
+      }
+    ],
+    "hops": 1,
+    "evidence_records": [
+      {
+        "label": "product",
+        "source_id": "PSTG-10-K",
+        "value": "1699.494",
+        "unit": "USD million",
+        "concept": "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax",
+        "context_id": "c-12",
+        "context": "context: entity: identifier:0001474432 segment:us-gaap:ProductMember period: startdate:2024-02-05 enddate:2025-02-02",
+        "fact_id": "f-149",
+        "original_text": "1,699,494",
+        "scale": 3,
+        "sign": "+",
+        "url": "https://www.sec.gov/Archives/edgar/data/1474432/000162828025015044/pstg-20250202.htm#f-149",
+        "locator": "income_statement; inline XBRL #f-149, context c-12",
+        "evidence_block": "PSTG-10-K:income_statement"
+      },
+      {
+        "label": "subscription",
+        "source_id": "PSTG-10-K",
+        "value": "1468.670",
+        "unit": "USD million",
+        "concept": "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax",
+        "context_id": "c-15",
+        "context": "context: entity: identifier:0001474432 segment:us-gaap:ServiceMember period: startdate:2024-02-05 enddate:2025-02-02",
+        "fact_id": "f-152",
+        "original_text": "1,468,670",
+        "scale": 3,
+        "sign": "+",
+        "url": "https://www.sec.gov/Archives/edgar/data/1474432/000162828025015044/pstg-20250202.htm#f-152",
+        "locator": "income_statement; inline XBRL #f-152, context c-15",
+        "evidence_block": "PSTG-10-K:income_statement"
+      },
+      {
+        "label": "total",
+        "source_id": "PSTG-10-K",
+        "value": "3168.164",
+        "unit": "USD million",
+        "concept": "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax",
+        "context_id": "c-1",
+        "context": "context: entity: identifier:0001474432 period: startdate:2024-02-05 enddate:2025-02-02",
+        "fact_id": "f-155",
+        "original_text": "3,168,164",
+        "scale": 3,
+        "sign": "+",
+        "url": "https://www.sec.gov/Archives/edgar/data/1474432/000162828025015044/pstg-20250202.htm#f-155",
+        "locator": "income_statement; inline XBRL #f-155, context c-1",
+        "evidence_block": "PSTG-10-K:income_statement"
+      }
+    ],
+    "reused_from_v1": [],
+    "grading": {
+      "expected_answer": {
+        "product": {
+          "value": "1699.494",
+          "kind": "number",
+          "unit": "USD million",
+          "absolute_tolerance": "0"
+        },
+        "subscription": {
+          "value": "1468.670",
+          "kind": "number",
+          "unit": "USD million",
+          "absolute_tolerance": "0"
+        },
+        "total": {
+          "value": "3168.164",
+          "kind": "number",
+          "unit": "USD million",
+          "absolute_tolerance": "0"
+        }
+      },
+      "max_points": 5,
+      "rubric": {
+        "answer": 2,
+        "evidence": 1,
+        "scope_units": 1,
+        "dependency_and_method": 1
+      }
+    },
+    "verification": {
+      "checked_on": "2026-09-22",
+      "source_verified": true,
+      "agent_run_performed": false
+    }
+  },
+  "RAIN-V2-PSTG-002": {
+    "title_zh": "对账收入结构并计算订阅占比",
+    "ticker": "PSTG",
+    "company": "Pure Storage, Inc. (name and ticker in the pinned filing)",
+    "depends_on": [
+      "RAIN-V2-PSTG-001"
+    ],
+    "input_bindings": {
+      "product": {
+        "kind": "prior",
+        "question_id": "RAIN-V2-PSTG-001",
+        "field": "product",
+        "value": "1699.494",
+        "unit": "USD million"
+      },
+      "subscription": {
+        "kind": "prior",
+        "question_id": "RAIN-V2-PSTG-001",
+        "field": "subscription",
+        "value": "1468.670",
+        "unit": "USD million"
+      },
+      "total": {
+        "kind": "prior",
+        "question_id": "RAIN-V2-PSTG-001",
+        "field": "total",
+        "value": "3168.164",
+        "unit": "USD million"
+      }
+    },
+    "derivations": [
+      {
+        "field": "subscription_share",
+        "expression": "subscription / total * 100",
+        "unit": "percent",
+        "decimal_places": 2
+      },
+      {
+        "field": "reconciliation_difference",
+        "expression": "product + subscription - total",
+        "unit": "USD million",
+        "decimal_places": 3
+      }
+    ],
+    "output_nodes": {
+      "subscription_share": "derive_subscription_share",
+      "reconciliation_difference": "derive_reconciliation_difference"
+    },
+    "hop_definition": "conditional_evidence_depth_v2",
+    "hop_plan": [
+      {
+        "id": "input_product",
+        "kind": "prior",
+        "depends_on": [],
+        "outputs": [
+          "product"
+        ],
+        "question_id": "RAIN-V2-PSTG-001",
+        "field": "product",
+        "depth": 0
+      },
+      {
+        "id": "input_subscription",
+        "kind": "prior",
+        "depends_on": [],
+        "outputs": [
+          "subscription"
+        ],
+        "question_id": "RAIN-V2-PSTG-001",
+        "field": "subscription",
+        "depth": 0
+      },
+      {
+        "id": "input_total",
+        "kind": "prior",
+        "depends_on": [],
+        "outputs": [
+          "total"
+        ],
+        "question_id": "RAIN-V2-PSTG-001",
+        "field": "total",
+        "depth": 0
+      },
+      {
+        "id": "derive_subscription_share",
+        "kind": "calculate",
+        "depends_on": [
+          "input_subscription",
+          "input_total"
+        ],
+        "outputs": [
+          "subscription_share"
+        ],
+        "expression": "subscription / total * 100",
+        "depth": 1
+      },
+      {
+        "id": "derive_reconciliation_difference",
+        "kind": "calculate",
+        "depends_on": [
+          "input_product",
+          "input_subscription",
+          "input_total"
+        ],
+        "outputs": [
+          "reconciliation_difference"
+        ],
+        "expression": "product + subscription - total",
+        "depth": 1
+      }
+    ],
+    "hops": 1,
+    "evidence_records": [
+      {
+        "label": "subscription",
+        "source_id": "PSTG-10-K",
+        "value": "1468.670",
+        "unit": "USD million",
+        "concept": "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax",
+        "context_id": "c-15",
+        "context": "context: entity: identifier:0001474432 segment:us-gaap:ServiceMember period: startdate:2024-02-05 enddate:2025-02-02",
+        "fact_id": "f-152",
+        "original_text": "1,468,670",
+        "scale": 3,
+        "sign": "+",
+        "url": "https://www.sec.gov/Archives/edgar/data/1474432/000162828025015044/pstg-20250202.htm#f-152",
+        "locator": "income_statement; inline XBRL #f-152, context c-15",
+        "evidence_block": "PSTG-10-K:income_statement"
+      },
+      {
+        "label": "total",
+        "source_id": "PSTG-10-K",
+        "value": "3168.164",
+        "unit": "USD million",
+        "concept": "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax",
+        "context_id": "c-1",
+        "context": "context: entity: identifier:0001474432 period: startdate:2024-02-05 enddate:2025-02-02",
+        "fact_id": "f-155",
+        "original_text": "3,168,164",
+        "scale": 3,
+        "sign": "+",
+        "url": "https://www.sec.gov/Archives/edgar/data/1474432/000162828025015044/pstg-20250202.htm#f-155",
+        "locator": "income_statement; inline XBRL #f-155, context c-1",
+        "evidence_block": "PSTG-10-K:income_statement"
+      },
+      {
+        "label": "product",
+        "source_id": "PSTG-10-K",
+        "value": "1699.494",
+        "unit": "USD million",
+        "concept": "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax",
+        "context_id": "c-12",
+        "context": "context: entity: identifier:0001474432 segment:us-gaap:ProductMember period: startdate:2024-02-05 enddate:2025-02-02",
+        "fact_id": "f-149",
+        "original_text": "1,699,494",
+        "scale": 3,
+        "sign": "+",
+        "url": "https://www.sec.gov/Archives/edgar/data/1474432/000162828025015044/pstg-20250202.htm#f-149",
+        "locator": "income_statement; inline XBRL #f-149, context c-12",
+        "evidence_block": "PSTG-10-K:income_statement"
+      }
+    ],
+    "reused_from_v1": [],
+    "grading": {
+      "expected_answer": {
+        "subscription_share": {
+          "value": "46.36",
+          "kind": "number",
+          "unit": "percent",
+          "absolute_tolerance": "0.01"
+        },
+        "reconciliation_difference": {
+          "value": "0.000",
+          "kind": "number",
+          "unit": "USD million",
+          "absolute_tolerance": "0.001"
+        }
+      },
+      "max_points": 5,
+      "rubric": {
+        "answer": 2,
+        "evidence": 1,
+        "scope_units": 1,
+        "dependency_and_method": 1
+      }
+    },
+    "verification": {
+      "checked_on": "2026-09-22",
+      "source_verified": true,
+      "agent_run_performed": false
+    }
+  },
+  "RAIN-V2-PSTG-003": {
+    "title_zh": "把占比变化拆成两类收入增长",
+    "ticker": "PSTG",
+    "company": "Pure Storage, Inc. (name and ticker in the pinned filing)",
+    "depends_on": [
+      "RAIN-V2-PSTG-001",
+      "RAIN-V2-PSTG-002"
+    ],
+    "input_bindings": {
+      "current_share": {
+        "kind": "prior",
+        "question_id": "RAIN-V2-PSTG-002",
+        "field": "subscription_share",
+        "value": "46.35713302720439977223401314",
+        "unit": "percent"
+      },
+      "product": {
+        "kind": "prior",
+        "question_id": "RAIN-V2-PSTG-001",
+        "field": "product",
+        "value": "1699.494",
+        "unit": "USD million"
+      },
+      "subscription": {
+        "kind": "prior",
+        "question_id": "RAIN-V2-PSTG-001",
+        "field": "subscription",
+        "value": "1468.670",
+        "unit": "USD million"
+      },
+      "prior_product": {
+        "kind": "source",
+        "value": "1622.869",
+        "unit": "USD million",
+        "evidence_label": "prior_product",
+        "source_id": "PSTG-10-K"
+      },
+      "prior_subscription": {
+        "kind": "source",
+        "value": "1207.752",
+        "unit": "USD million",
+        "evidence_label": "prior_subscription",
+        "source_id": "PSTG-10-K"
+      },
+      "prior_total": {
+        "kind": "source",
+        "value": "2830.621",
+        "unit": "USD million",
+        "evidence_label": "prior_total",
+        "source_id": "PSTG-10-K"
+      }
+    },
+    "derivations": [
+      {
+        "field": "product_growth",
+        "expression": "(product / prior_product - 1) * 100",
+        "unit": "percent",
+        "decimal_places": 2
+      },
+      {
+        "field": "subscription_growth",
+        "expression": "(subscription / prior_subscription - 1) * 100",
+        "unit": "percent",
+        "decimal_places": 2
+      },
+      {
+        "field": "prior_share",
+        "expression": "prior_subscription / prior_total * 100",
+        "unit": "percent",
+        "decimal_places": 2
+      },
+      {
+        "field": "mix_change",
+        "expression": "current_share - prior_share",
+        "unit": "percentage points",
+        "decimal_places": 2
+      },
+      {
+        "field": "subscription_faster",
+        "expression": "subscription_growth > product_growth",
+        "unit": "boolean",
+        "decimal_places": null
+      }
+    ],
+    "output_nodes": {
+      "prior_product": "read_1",
+      "prior_subscription": "read_1",
+      "product_growth": "derive_product_growth",
+      "subscription_growth": "derive_subscription_growth",
+      "mix_change": "derive_mix_change",
+      "subscription_faster": "derive_subscription_faster"
+    },
+    "hop_definition": "conditional_evidence_depth_v2",
+    "hop_plan": [
+      {
+        "id": "input_current_share",
+        "kind": "prior",
+        "depends_on": [],
+        "outputs": [
+          "current_share"
+        ],
+        "question_id": "RAIN-V2-PSTG-002",
+        "field": "subscription_share",
+        "depth": 0
+      },
+      {
+        "id": "input_product",
+        "kind": "prior",
+        "depends_on": [],
+        "outputs": [
+          "product"
+        ],
+        "question_id": "RAIN-V2-PSTG-001",
+        "field": "product",
+        "depth": 0
+      },
+      {
+        "id": "input_subscription",
+        "kind": "prior",
+        "depends_on": [],
+        "outputs": [
+          "subscription"
+        ],
+        "question_id": "RAIN-V2-PSTG-001",
+        "field": "subscription",
+        "depth": 0
+      },
+      {
+        "id": "read_1",
+        "kind": "retrieve",
+        "depends_on": [],
+        "evidence_block": "PSTG-10-K:income_statement",
+        "source_ids": [
+          "PSTG-10-K"
+        ],
+        "outputs": [
+          "prior_product",
+          "prior_subscription",
+          "prior_total"
+        ],
+        "depth": 1
+      },
+      {
+        "id": "derive_product_growth",
+        "kind": "calculate",
+        "depends_on": [
+          "read_1",
+          "input_product"
+        ],
+        "outputs": [
+          "product_growth"
+        ],
+        "expression": "(product / prior_product - 1) * 100",
+        "depth": 2
+      },
+      {
+        "id": "derive_subscription_growth",
+        "kind": "calculate",
+        "depends_on": [
+          "read_1",
+          "input_subscription"
+        ],
+        "outputs": [
+          "subscription_growth"
+        ],
+        "expression": "(subscription / prior_subscription - 1) * 100",
+        "depth": 2
+      },
+      {
+        "id": "derive_prior_share",
+        "kind": "calculate",
+        "depends_on": [
+          "read_1"
+        ],
+        "outputs": [
+          "prior_share"
+        ],
+        "expression": "prior_subscription / prior_total * 100",
+        "depth": 2
+      },
+      {
+        "id": "derive_mix_change",
+        "kind": "calculate",
+        "depends_on": [
+          "input_current_share",
+          "derive_prior_share"
+        ],
+        "outputs": [
+          "mix_change"
+        ],
+        "expression": "current_share - prior_share",
+        "depth": 3
+      },
+      {
+        "id": "derive_subscription_faster",
+        "kind": "judge",
+        "depends_on": [
+          "derive_product_growth",
+          "derive_subscription_growth"
+        ],
+        "outputs": [
+          "subscription_faster"
+        ],
+        "expression": "subscription_growth > product_growth",
+        "depth": 3
+      }
+    ],
+    "hops": 3,
+    "evidence_records": [
+      {
+        "label": "prior_product",
+        "source_id": "PSTG-10-K",
+        "value": "1622.869",
+        "unit": "USD million",
+        "concept": "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax",
+        "context_id": "c-11",
+        "context": "context: entity: identifier:0001474432 segment:us-gaap:ProductMember period: startdate:2023-02-06 enddate:2024-02-04",
+        "fact_id": "f-148",
+        "original_text": "1,622,869",
+        "scale": 3,
+        "sign": "+",
+        "url": "https://www.sec.gov/Archives/edgar/data/1474432/000162828025015044/pstg-20250202.htm#f-148",
+        "locator": "income_statement; inline XBRL #f-148, context c-11",
+        "evidence_block": "PSTG-10-K:income_statement"
+      },
+      {
+        "label": "prior_subscription",
+        "source_id": "PSTG-10-K",
+        "value": "1207.752",
+        "unit": "USD million",
+        "concept": "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax",
+        "context_id": "c-14",
+        "context": "context: entity: identifier:0001474432 segment:us-gaap:ServiceMember period: startdate:2023-02-06 enddate:2024-02-04",
+        "fact_id": "f-151",
+        "original_text": "1,207,752",
+        "scale": 3,
+        "sign": "+",
+        "url": "https://www.sec.gov/Archives/edgar/data/1474432/000162828025015044/pstg-20250202.htm#f-151",
+        "locator": "income_statement; inline XBRL #f-151, context c-14",
+        "evidence_block": "PSTG-10-K:income_statement"
+      },
+      {
+        "label": "prior_total",
+        "source_id": "PSTG-10-K",
+        "value": "2830.621",
+        "unit": "USD million",
+        "concept": "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax",
+        "context_id": "c-17",
+        "context": "context: entity: identifier:0001474432 period: startdate:2023-02-06 enddate:2024-02-04",
+        "fact_id": "f-154",
+        "original_text": "2,830,621",
+        "scale": 3,
+        "sign": "+",
+        "url": "https://www.sec.gov/Archives/edgar/data/1474432/000162828025015044/pstg-20250202.htm#f-154",
+        "locator": "income_statement; inline XBRL #f-154, context c-17",
+        "evidence_block": "PSTG-10-K:income_statement"
+      },
+      {
+        "label": "product",
+        "source_id": "PSTG-10-K",
+        "value": "1699.494",
+        "unit": "USD million",
+        "concept": "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax",
+        "context_id": "c-12",
+        "context": "context: entity: identifier:0001474432 segment:us-gaap:ProductMember period: startdate:2024-02-05 enddate:2025-02-02",
+        "fact_id": "f-149",
+        "original_text": "1,699,494",
+        "scale": 3,
+        "sign": "+",
+        "url": "https://www.sec.gov/Archives/edgar/data/1474432/000162828025015044/pstg-20250202.htm#f-149",
+        "locator": "income_statement; inline XBRL #f-149, context c-12",
+        "evidence_block": "PSTG-10-K:income_statement"
+      },
+      {
+        "label": "subscription",
+        "source_id": "PSTG-10-K",
+        "value": "1468.670",
+        "unit": "USD million",
+        "concept": "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax",
+        "context_id": "c-15",
+        "context": "context: entity: identifier:0001474432 segment:us-gaap:ServiceMember period: startdate:2024-02-05 enddate:2025-02-02",
+        "fact_id": "f-152",
+        "original_text": "1,468,670",
+        "scale": 3,
+        "sign": "+",
+        "url": "https://www.sec.gov/Archives/edgar/data/1474432/000162828025015044/pstg-20250202.htm#f-152",
+        "locator": "income_statement; inline XBRL #f-152, context c-15",
+        "evidence_block": "PSTG-10-K:income_statement"
+      },
+      {
+        "label": "total",
+        "source_id": "PSTG-10-K",
+        "value": "3168.164",
+        "unit": "USD million",
+        "concept": "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax",
+        "context_id": "c-1",
+        "context": "context: entity: identifier:0001474432 period: startdate:2024-02-05 enddate:2025-02-02",
+        "fact_id": "f-155",
+        "original_text": "3,168,164",
+        "scale": 3,
+        "sign": "+",
+        "url": "https://www.sec.gov/Archives/edgar/data/1474432/000162828025015044/pstg-20250202.htm#f-155",
+        "locator": "income_statement; inline XBRL #f-155, context c-1",
+        "evidence_block": "PSTG-10-K:income_statement"
+      }
+    ],
+    "reused_from_v1": [],
+    "grading": {
+      "expected_answer": {
+        "prior_product": {
+          "value": "1622.869",
+          "kind": "number",
+          "unit": "USD million",
+          "absolute_tolerance": "0"
+        },
+        "prior_subscription": {
+          "value": "1207.752",
+          "kind": "number",
+          "unit": "USD million",
+          "absolute_tolerance": "0"
+        },
+        "product_growth": {
+          "value": "4.72",
+          "kind": "number",
+          "unit": "percent",
+          "absolute_tolerance": "0.01"
+        },
+        "subscription_growth": {
+          "value": "21.60",
+          "kind": "number",
+          "unit": "percent",
+          "absolute_tolerance": "0.01"
+        },
+        "mix_change": {
+          "value": "3.69",
+          "kind": "number",
+          "unit": "percentage points",
+          "absolute_tolerance": "0.01"
+        },
+        "subscription_faster": {
+          "value": true,
+          "kind": "boolean",
+          "unit": "boolean"
+        }
+      },
+      "max_points": 5,
+      "rubric": {
+        "answer": 2,
+        "evidence": 1,
+        "scope_units": 1,
+        "dependency_and_method": 1
+      }
+    },
+    "verification": {
+      "checked_on": "2026-09-22",
+      "source_verified": true,
+      "agent_run_performed": false
+    }
+  },
+  "RAIN-V2-PSTG-004": {
+    "title_zh": "检查增长更快的业务是否毛利更高",
+    "ticker": "PSTG",
+    "company": "Pure Storage, Inc. (name and ticker in the pinned filing)",
+    "depends_on": [
+      "RAIN-V2-PSTG-001",
+      "RAIN-V2-PSTG-003"
+    ],
+    "input_bindings": {
+      "subscription_faster": {
+        "kind": "prior",
+        "question_id": "RAIN-V2-PSTG-003",
+        "field": "subscription_faster",
+        "value": true,
+        "unit": "boolean"
+      },
+      "product": {
+        "kind": "prior",
+        "question_id": "RAIN-V2-PSTG-001",
+        "field": "product",
+        "value": "1699.494",
+        "unit": "USD million"
+      },
+      "subscription": {
+        "kind": "prior",
+        "question_id": "RAIN-V2-PSTG-001",
+        "field": "subscription",
+        "value": "1468.670",
+        "unit": "USD million"
+      },
+      "product_cost": {
+        "kind": "source",
+        "value": "575.347",
+        "unit": "USD million",
+        "evidence_label": "product_cost",
+        "source_id": "PSTG-10-K"
+      },
+      "subscription_cost": {
+        "kind": "source",
+        "value": "380.108",
+        "unit": "USD million",
+        "evidence_label": "subscription_cost",
+        "source_id": "PSTG-10-K"
+      }
+    },
+    "derivations": [
+      {
+        "field": "product_gp",
+        "expression": "product - product_cost",
+        "unit": "USD million",
+        "decimal_places": 3
+      },
+      {
+        "field": "subscription_gp",
+        "expression": "subscription - subscription_cost",
+        "unit": "USD million",
+        "decimal_places": 3
+      },
+      {
+        "field": "product_margin",
+        "expression": "product_gp / product * 100",
+        "unit": "percent",
+        "decimal_places": 2
+      },
+      {
+        "field": "subscription_margin",
+        "expression": "subscription_gp / subscription * 100",
+        "unit": "percent",
+        "decimal_places": 2
+      },
+      {
+        "field": "faster_and_higher_margin",
+        "expression": "subscription_faster and subscription_margin > product_margin",
+        "unit": "boolean",
+        "decimal_places": null
+      }
+    ],
+    "output_nodes": {
+      "product_gp": "derive_product_gp",
+      "subscription_gp": "derive_subscription_gp",
+      "product_margin": "derive_product_margin",
+      "subscription_margin": "derive_subscription_margin",
+      "faster_and_higher_margin": "derive_faster_and_higher_margin"
+    },
+    "hop_definition": "conditional_evidence_depth_v2",
+    "hop_plan": [
+      {
+        "id": "input_subscription_faster",
+        "kind": "prior",
+        "depends_on": [],
+        "outputs": [
+          "subscription_faster"
+        ],
+        "question_id": "RAIN-V2-PSTG-003",
+        "field": "subscription_faster",
+        "depth": 0
+      },
+      {
+        "id": "input_product",
+        "kind": "prior",
+        "depends_on": [],
+        "outputs": [
+          "product"
+        ],
+        "question_id": "RAIN-V2-PSTG-001",
+        "field": "product",
+        "depth": 0
+      },
+      {
+        "id": "input_subscription",
+        "kind": "prior",
+        "depends_on": [],
+        "outputs": [
+          "subscription"
+        ],
+        "question_id": "RAIN-V2-PSTG-001",
+        "field": "subscription",
+        "depth": 0
+      },
+      {
+        "id": "read_1",
+        "kind": "retrieve",
+        "depends_on": [],
+        "evidence_block": "PSTG-10-K:income_statement",
+        "source_ids": [
+          "PSTG-10-K"
+        ],
+        "outputs": [
+          "product_cost",
+          "subscription_cost"
+        ],
+        "depth": 1
+      },
+      {
+        "id": "derive_product_gp",
+        "kind": "calculate",
+        "depends_on": [
+          "input_product",
+          "read_1"
+        ],
+        "outputs": [
+          "product_gp"
+        ],
+        "expression": "product - product_cost",
+        "depth": 2
+      },
+      {
+        "id": "derive_subscription_gp",
+        "kind": "calculate",
+        "depends_on": [
+          "input_subscription",
+          "read_1"
+        ],
+        "outputs": [
+          "subscription_gp"
+        ],
+        "expression": "subscription - subscription_cost",
+        "depth": 2
+      },
+      {
+        "id": "derive_product_margin",
+        "kind": "calculate",
+        "depends_on": [
+          "input_product",
+          "derive_product_gp"
+        ],
+        "outputs": [
+          "product_margin"
+        ],
+        "expression": "product_gp / product * 100",
+        "depth": 3
+      },
+      {
+        "id": "derive_subscription_margin",
+        "kind": "calculate",
+        "depends_on": [
+          "input_subscription",
+          "derive_subscription_gp"
+        ],
+        "outputs": [
+          "subscription_margin"
+        ],
+        "expression": "subscription_gp / subscription * 100",
+        "depth": 3
+      },
+      {
+        "id": "derive_faster_and_higher_margin",
+        "kind": "judge",
+        "depends_on": [
+          "derive_product_margin",
+          "input_subscription_faster",
+          "derive_subscription_margin"
+        ],
+        "outputs": [
+          "faster_and_higher_margin"
+        ],
+        "expression": "subscription_faster and subscription_margin > product_margin",
+        "depth": 4
+      }
+    ],
+    "hops": 4,
+    "evidence_records": [
+      {
+        "label": "product_cost",
+        "source_id": "PSTG-10-K",
+        "value": "575.347",
+        "unit": "USD million",
+        "concept": "us-gaap:CostOfGoodsAndServicesSold",
+        "context_id": "c-12",
+        "context": "context: entity: identifier:0001474432 segment:us-gaap:ProductMember period: startdate:2024-02-05 enddate:2025-02-02",
+        "fact_id": "f-158",
+        "original_text": "575,347",
+        "scale": 3,
+        "sign": "+",
+        "url": "https://www.sec.gov/Archives/edgar/data/1474432/000162828025015044/pstg-20250202.htm#f-158",
+        "locator": "income_statement; inline XBRL #f-158, context c-12",
+        "evidence_block": "PSTG-10-K:income_statement"
+      },
+      {
+        "label": "subscription_cost",
+        "source_id": "PSTG-10-K",
+        "value": "380.108",
+        "unit": "USD million",
+        "concept": "us-gaap:CostOfGoodsAndServicesSold",
+        "context_id": "c-15",
+        "context": "context: entity: identifier:0001474432 segment:us-gaap:ServiceMember period: startdate:2024-02-05 enddate:2025-02-02",
+        "fact_id": "f-161",
+        "original_text": "380,108",
+        "scale": 3,
+        "sign": "+",
+        "url": "https://www.sec.gov/Archives/edgar/data/1474432/000162828025015044/pstg-20250202.htm#f-161",
+        "locator": "income_statement; inline XBRL #f-161, context c-15",
+        "evidence_block": "PSTG-10-K:income_statement"
+      },
+      {
+        "label": "product",
+        "source_id": "PSTG-10-K",
+        "value": "1699.494",
+        "unit": "USD million",
+        "concept": "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax",
+        "context_id": "c-12",
+        "context": "context: entity: identifier:0001474432 segment:us-gaap:ProductMember period: startdate:2024-02-05 enddate:2025-02-02",
+        "fact_id": "f-149",
+        "original_text": "1,699,494",
+        "scale": 3,
+        "sign": "+",
+        "url": "https://www.sec.gov/Archives/edgar/data/1474432/000162828025015044/pstg-20250202.htm#f-149",
+        "locator": "income_statement; inline XBRL #f-149, context c-12",
+        "evidence_block": "PSTG-10-K:income_statement"
+      },
+      {
+        "label": "subscription",
+        "source_id": "PSTG-10-K",
+        "value": "1468.670",
+        "unit": "USD million",
+        "concept": "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax",
+        "context_id": "c-15",
+        "context": "context: entity: identifier:0001474432 segment:us-gaap:ServiceMember period: startdate:2024-02-05 enddate:2025-02-02",
+        "fact_id": "f-152",
+        "original_text": "1,468,670",
+        "scale": 3,
+        "sign": "+",
+        "url": "https://www.sec.gov/Archives/edgar/data/1474432/000162828025015044/pstg-20250202.htm#f-152",
+        "locator": "income_statement; inline XBRL #f-152, context c-15",
+        "evidence_block": "PSTG-10-K:income_statement"
+      },
+      {
+        "label": "prior_product",
+        "source_id": "PSTG-10-K",
+        "value": "1622.869",
+        "unit": "USD million",
+        "concept": "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax",
+        "context_id": "c-11",
+        "context": "context: entity: identifier:0001474432 segment:us-gaap:ProductMember period: startdate:2023-02-06 enddate:2024-02-04",
+        "fact_id": "f-148",
+        "original_text": "1,622,869",
+        "scale": 3,
+        "sign": "+",
+        "url": "https://www.sec.gov/Archives/edgar/data/1474432/000162828025015044/pstg-20250202.htm#f-148",
+        "locator": "income_statement; inline XBRL #f-148, context c-11",
+        "evidence_block": "PSTG-10-K:income_statement"
+      },
+      {
+        "label": "prior_subscription",
+        "source_id": "PSTG-10-K",
+        "value": "1207.752",
+        "unit": "USD million",
+        "concept": "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax",
+        "context_id": "c-14",
+        "context": "context: entity: identifier:0001474432 segment:us-gaap:ServiceMember period: startdate:2023-02-06 enddate:2024-02-04",
+        "fact_id": "f-151",
+        "original_text": "1,207,752",
+        "scale": 3,
+        "sign": "+",
+        "url": "https://www.sec.gov/Archives/edgar/data/1474432/000162828025015044/pstg-20250202.htm#f-151",
+        "locator": "income_statement; inline XBRL #f-151, context c-14",
+        "evidence_block": "PSTG-10-K:income_statement"
+      }
+    ],
+    "reused_from_v1": [],
+    "grading": {
+      "expected_answer": {
+        "product_gp": {
+          "value": "1124.147",
+          "kind": "number",
+          "unit": "USD million",
+          "absolute_tolerance": "0.001"
+        },
+        "subscription_gp": {
+          "value": "1088.562",
+          "kind": "number",
+          "unit": "USD million",
+          "absolute_tolerance": "0.001"
+        },
+        "product_margin": {
+          "value": "66.15",
+          "kind": "number",
+          "unit": "percent",
+          "absolute_tolerance": "0.01"
+        },
+        "subscription_margin": {
+          "value": "74.12",
+          "kind": "number",
+          "unit": "percent",
+          "absolute_tolerance": "0.01"
+        },
+        "faster_and_higher_margin": {
+          "value": true,
+          "kind": "boolean",
+          "unit": "boolean"
+        }
+      },
+      "max_points": 5,
+      "rubric": {
+        "answer": 2,
+        "evidence": 1,
+        "scope_units": 1,
+        "dependency_and_method": 1
+      }
+    },
+    "verification": {
+      "checked_on": "2026-09-22",
+      "source_verified": true,
+      "agent_run_performed": false
+    }
+  },
+  "RAIN-V2-PSTG-005": {
+    "title_zh": "完成毛利增长贡献桥",
+    "ticker": "PSTG",
+    "company": "Pure Storage, Inc. (name and ticker in the pinned filing)",
+    "depends_on": [
+      "RAIN-V2-PSTG-003",
+      "RAIN-V2-PSTG-004"
+    ],
+    "input_bindings": {
+      "current_product_gp": {
+        "kind": "prior",
+        "question_id": "RAIN-V2-PSTG-004",
+        "field": "product_gp",
+        "value": "1124.147",
+        "unit": "USD million"
+      },
+      "current_subscription_gp": {
+        "kind": "prior",
+        "question_id": "RAIN-V2-PSTG-004",
+        "field": "subscription_gp",
+        "value": "1088.562",
+        "unit": "USD million"
+      },
+      "prior_product": {
+        "kind": "prior",
+        "question_id": "RAIN-V2-PSTG-003",
+        "field": "prior_product",
+        "value": "1622.869",
+        "unit": "USD million"
+      },
+      "prior_subscription": {
+        "kind": "prior",
+        "question_id": "RAIN-V2-PSTG-003",
+        "field": "prior_subscription",
+        "value": "1207.752",
+        "unit": "USD million"
+      },
+      "prior_product_cost": {
+        "kind": "source",
+        "value": "472.430",
+        "unit": "USD million",
+        "evidence_label": "prior_product_cost",
+        "source_id": "PSTG-10-K"
+      },
+      "prior_subscription_cost": {
+        "kind": "source",
+        "value": "337.000",
+        "unit": "USD million",
+        "evidence_label": "prior_subscription_cost",
+        "source_id": "PSTG-10-K"
+      }
+    },
+    "derivations": [
+      {
+        "field": "prior_product_gp",
+        "expression": "prior_product - prior_product_cost",
+        "unit": "USD million",
+        "decimal_places": 3
+      },
+      {
+        "field": "prior_subscription_gp",
+        "expression": "prior_subscription - prior_subscription_cost",
+        "unit": "USD million",
+        "decimal_places": 3
+      },
+      {
+        "field": "product_gp_change",
+        "expression": "current_product_gp - prior_product_gp",
+        "unit": "USD million",
+        "decimal_places": 3
+      },
+      {
+        "field": "subscription_gp_change",
+        "expression": "current_subscription_gp - prior_subscription_gp",
+        "unit": "USD million",
+        "decimal_places": 3
+      },
+      {
+        "field": "total_gp_change",
+        "expression": "product_gp_change + subscription_gp_change",
+        "unit": "USD million",
+        "decimal_places": 3
+      },
+      {
+        "field": "subscription_contribution",
+        "expression": "subscription_gp_change / total_gp_change * 100",
+        "unit": "percent",
+        "decimal_places": 2
+      },
+      {
+        "field": "offset_product_decline",
+        "expression": "product_gp_change < 0 and total_gp_change > 0",
+        "unit": "boolean",
+        "decimal_places": null
+      }
+    ],
+    "output_nodes": {
+      "product_gp_change": "derive_product_gp_change",
+      "subscription_gp_change": "derive_subscription_gp_change",
+      "total_gp_change": "derive_total_gp_change",
+      "subscription_contribution": "derive_subscription_contribution",
+      "offset_product_decline": "derive_offset_product_decline"
+    },
+    "hop_definition": "conditional_evidence_depth_v2",
+    "hop_plan": [
+      {
+        "id": "input_current_product_gp",
+        "kind": "prior",
+        "depends_on": [],
+        "outputs": [
+          "current_product_gp"
+        ],
+        "question_id": "RAIN-V2-PSTG-004",
+        "field": "product_gp",
+        "depth": 0
+      },
+      {
+        "id": "input_current_subscription_gp",
+        "kind": "prior",
+        "depends_on": [],
+        "outputs": [
+          "current_subscription_gp"
+        ],
+        "question_id": "RAIN-V2-PSTG-004",
+        "field": "subscription_gp",
+        "depth": 0
+      },
+      {
+        "id": "input_prior_product",
+        "kind": "prior",
+        "depends_on": [],
+        "outputs": [
+          "prior_product"
+        ],
+        "question_id": "RAIN-V2-PSTG-003",
+        "field": "prior_product",
+        "depth": 0
+      },
+      {
+        "id": "input_prior_subscription",
+        "kind": "prior",
+        "depends_on": [],
+        "outputs": [
+          "prior_subscription"
+        ],
+        "question_id": "RAIN-V2-PSTG-003",
+        "field": "prior_subscription",
+        "depth": 0
+      },
+      {
+        "id": "read_1",
+        "kind": "retrieve",
+        "depends_on": [],
+        "evidence_block": "PSTG-10-K:income_statement",
+        "source_ids": [
+          "PSTG-10-K"
+        ],
+        "outputs": [
+          "prior_product_cost",
+          "prior_subscription_cost"
+        ],
+        "depth": 1
+      },
+      {
+        "id": "derive_prior_product_gp",
+        "kind": "calculate",
+        "depends_on": [
+          "input_prior_product",
+          "read_1"
+        ],
+        "outputs": [
+          "prior_product_gp"
+        ],
+        "expression": "prior_product - prior_product_cost",
+        "depth": 2
+      },
+      {
+        "id": "derive_prior_subscription_gp",
+        "kind": "calculate",
+        "depends_on": [
+          "input_prior_subscription",
+          "read_1"
+        ],
+        "outputs": [
+          "prior_subscription_gp"
+        ],
+        "expression": "prior_subscription - prior_subscription_cost",
+        "depth": 2
+      },
+      {
+        "id": "derive_product_gp_change",
+        "kind": "calculate",
+        "depends_on": [
+          "input_current_product_gp",
+          "derive_prior_product_gp"
+        ],
+        "outputs": [
+          "product_gp_change"
+        ],
+        "expression": "current_product_gp - prior_product_gp",
+        "depth": 3
+      },
+      {
+        "id": "derive_subscription_gp_change",
+        "kind": "calculate",
+        "depends_on": [
+          "input_current_subscription_gp",
+          "derive_prior_subscription_gp"
+        ],
+        "outputs": [
+          "subscription_gp_change"
+        ],
+        "expression": "current_subscription_gp - prior_subscription_gp",
+        "depth": 3
+      },
+      {
+        "id": "derive_total_gp_change",
+        "kind": "calculate",
+        "depends_on": [
+          "derive_product_gp_change",
+          "derive_subscription_gp_change"
+        ],
+        "outputs": [
+          "total_gp_change"
+        ],
+        "expression": "product_gp_change + subscription_gp_change",
+        "depth": 4
+      },
+      {
+        "id": "derive_subscription_contribution",
+        "kind": "calculate",
+        "depends_on": [
+          "derive_subscription_gp_change",
+          "derive_total_gp_change"
+        ],
+        "outputs": [
+          "subscription_contribution"
+        ],
+        "expression": "subscription_gp_change / total_gp_change * 100",
+        "depth": 5
+      },
+      {
+        "id": "derive_offset_product_decline",
+        "kind": "judge",
+        "depends_on": [
+          "derive_product_gp_change",
+          "derive_total_gp_change"
+        ],
+        "outputs": [
+          "offset_product_decline"
+        ],
+        "expression": "product_gp_change < 0 and total_gp_change > 0",
+        "depth": 5
+      }
+    ],
+    "hops": 5,
+    "evidence_records": [
+      {
+        "label": "prior_product_cost",
+        "source_id": "PSTG-10-K",
+        "value": "472.430",
+        "unit": "USD million",
+        "concept": "us-gaap:CostOfGoodsAndServicesSold",
+        "context_id": "c-11",
+        "context": "context: entity: identifier:0001474432 segment:us-gaap:ProductMember period: startdate:2023-02-06 enddate:2024-02-04",
+        "fact_id": "f-157",
+        "original_text": "472,430",
+        "scale": 3,
+        "sign": "+",
+        "url": "https://www.sec.gov/Archives/edgar/data/1474432/000162828025015044/pstg-20250202.htm#f-157",
+        "locator": "income_statement; inline XBRL #f-157, context c-11",
+        "evidence_block": "PSTG-10-K:income_statement"
+      },
+      {
+        "label": "prior_subscription_cost",
+        "source_id": "PSTG-10-K",
+        "value": "337.000",
+        "unit": "USD million",
+        "concept": "us-gaap:CostOfGoodsAndServicesSold",
+        "context_id": "c-14",
+        "context": "context: entity: identifier:0001474432 segment:us-gaap:ServiceMember period: startdate:2023-02-06 enddate:2024-02-04",
+        "fact_id": "f-160",
+        "original_text": "337,000",
+        "scale": 3,
+        "sign": "+",
+        "url": "https://www.sec.gov/Archives/edgar/data/1474432/000162828025015044/pstg-20250202.htm#f-160",
+        "locator": "income_statement; inline XBRL #f-160, context c-14",
+        "evidence_block": "PSTG-10-K:income_statement"
+      },
+      {
+        "label": "product",
+        "source_id": "PSTG-10-K",
+        "value": "1699.494",
+        "unit": "USD million",
+        "concept": "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax",
+        "context_id": "c-12",
+        "context": "context: entity: identifier:0001474432 segment:us-gaap:ProductMember period: startdate:2024-02-05 enddate:2025-02-02",
+        "fact_id": "f-149",
+        "original_text": "1,699,494",
+        "scale": 3,
+        "sign": "+",
+        "url": "https://www.sec.gov/Archives/edgar/data/1474432/000162828025015044/pstg-20250202.htm#f-149",
+        "locator": "income_statement; inline XBRL #f-149, context c-12",
+        "evidence_block": "PSTG-10-K:income_statement"
+      },
+      {
+        "label": "product_cost",
+        "source_id": "PSTG-10-K",
+        "value": "575.347",
+        "unit": "USD million",
+        "concept": "us-gaap:CostOfGoodsAndServicesSold",
+        "context_id": "c-12",
+        "context": "context: entity: identifier:0001474432 segment:us-gaap:ProductMember period: startdate:2024-02-05 enddate:2025-02-02",
+        "fact_id": "f-158",
+        "original_text": "575,347",
+        "scale": 3,
+        "sign": "+",
+        "url": "https://www.sec.gov/Archives/edgar/data/1474432/000162828025015044/pstg-20250202.htm#f-158",
+        "locator": "income_statement; inline XBRL #f-158, context c-12",
+        "evidence_block": "PSTG-10-K:income_statement"
+      },
+      {
+        "label": "prior_product",
+        "source_id": "PSTG-10-K",
+        "value": "1622.869",
+        "unit": "USD million",
+        "concept": "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax",
+        "context_id": "c-11",
+        "context": "context: entity: identifier:0001474432 segment:us-gaap:ProductMember period: startdate:2023-02-06 enddate:2024-02-04",
+        "fact_id": "f-148",
+        "original_text": "1,622,869",
+        "scale": 3,
+        "sign": "+",
+        "url": "https://www.sec.gov/Archives/edgar/data/1474432/000162828025015044/pstg-20250202.htm#f-148",
+        "locator": "income_statement; inline XBRL #f-148, context c-11",
+        "evidence_block": "PSTG-10-K:income_statement"
+      },
+      {
+        "label": "subscription",
+        "source_id": "PSTG-10-K",
+        "value": "1468.670",
+        "unit": "USD million",
+        "concept": "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax",
+        "context_id": "c-15",
+        "context": "context: entity: identifier:0001474432 segment:us-gaap:ServiceMember period: startdate:2024-02-05 enddate:2025-02-02",
+        "fact_id": "f-152",
+        "original_text": "1,468,670",
+        "scale": 3,
+        "sign": "+",
+        "url": "https://www.sec.gov/Archives/edgar/data/1474432/000162828025015044/pstg-20250202.htm#f-152",
+        "locator": "income_statement; inline XBRL #f-152, context c-15",
+        "evidence_block": "PSTG-10-K:income_statement"
+      },
+      {
+        "label": "subscription_cost",
+        "source_id": "PSTG-10-K",
+        "value": "380.108",
+        "unit": "USD million",
+        "concept": "us-gaap:CostOfGoodsAndServicesSold",
+        "context_id": "c-15",
+        "context": "context: entity: identifier:0001474432 segment:us-gaap:ServiceMember period: startdate:2024-02-05 enddate:2025-02-02",
+        "fact_id": "f-161",
+        "original_text": "380,108",
+        "scale": 3,
+        "sign": "+",
+        "url": "https://www.sec.gov/Archives/edgar/data/1474432/000162828025015044/pstg-20250202.htm#f-161",
+        "locator": "income_statement; inline XBRL #f-161, context c-15",
+        "evidence_block": "PSTG-10-K:income_statement"
+      },
+      {
+        "label": "prior_subscription",
+        "source_id": "PSTG-10-K",
+        "value": "1207.752",
+        "unit": "USD million",
+        "concept": "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax",
+        "context_id": "c-14",
+        "context": "context: entity: identifier:0001474432 segment:us-gaap:ServiceMember period: startdate:2023-02-06 enddate:2024-02-04",
+        "fact_id": "f-151",
+        "original_text": "1,207,752",
+        "scale": 3,
+        "sign": "+",
+        "url": "https://www.sec.gov/Archives/edgar/data/1474432/000162828025015044/pstg-20250202.htm#f-151",
+        "locator": "income_statement; inline XBRL #f-151, context c-14",
+        "evidence_block": "PSTG-10-K:income_statement"
+      }
+    ],
+    "reused_from_v1": [],
+    "grading": {
+      "expected_answer": {
+        "product_gp_change": {
+          "value": "-26.292",
+          "kind": "number",
+          "unit": "USD million",
+          "absolute_tolerance": "0.001"
+        },
+        "subscription_gp_change": {
+          "value": "217.810",
+          "kind": "number",
+          "unit": "USD million",
+          "absolute_tolerance": "0.001"
+        },
+        "total_gp_change": {
+          "value": "191.518",
+          "kind": "number",
+          "unit": "USD million",
+          "absolute_tolerance": "0.001"
+        },
+        "subscription_contribution": {
+          "value": "113.73",
+          "kind": "number",
+          "unit": "percent",
+          "absolute_tolerance": "0.01"
+        },
+        "offset_product_decline": {
+          "value": true,
+          "kind": "boolean",
+          "unit": "boolean"
+        }
+      },
+      "max_points": 5,
+      "rubric": {
+        "answer": 2,
+        "evidence": 1,
+        "scope_units": 1,
+        "dependency_and_method": 1
+      }
+    },
+    "verification": {
+      "checked_on": "2026-09-22",
+      "source_verified": true,
+      "agent_run_performed": false
+    }
   }
 }

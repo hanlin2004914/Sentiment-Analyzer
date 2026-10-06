@@ -247,5 +247,57 @@
         "hops": 1
       }
     ]
+  },
+  "PSTG": {
+    "company": "Pure Storage, Inc. (name and ticker in the pinned filing)",
+    "ticker_at_filing": "PSTG",
+    "title_zh": "订阅转型复盘：收入结构是否转化为毛利增长",
+    "user_request": "I am preparing a Pure Storage subscription-transition review using its FY2025 filing. Trace revenue mix, category growth and category gross profit, then determine which business actually supplied the increase in total gross profit.",
+    "scope": "Pure Storage name/PSTG ticker as reported; FY2025 ended 2025-02-02 and FY2024 comparative",
+    "scenario_id": "RAIN-V2-PSTG-001",
+    "file": "pstg_scenario.json",
+    "steps": [
+      {
+        "id": "RAIN-V2-PSTG-001",
+        "title_zh": "从维度数据取得产品与订阅营收",
+        "depends_on": [],
+        "hops": 1
+      },
+      {
+        "id": "RAIN-V2-PSTG-002",
+        "title_zh": "对账收入结构并计算订阅占比",
+        "depends_on": [
+          "RAIN-V2-PSTG-001"
+        ],
+        "hops": 1
+      },
+      {
+        "id": "RAIN-V2-PSTG-003",
+        "title_zh": "把占比变化拆成两类收入增长",
+        "depends_on": [
+          "RAIN-V2-PSTG-001",
+          "RAIN-V2-PSTG-002"
+        ],
+        "hops": 3
+      },
+      {
+        "id": "RAIN-V2-PSTG-004",
+        "title_zh": "检查增长更快的业务是否毛利更高",
+        "depends_on": [
+          "RAIN-V2-PSTG-001",
+          "RAIN-V2-PSTG-003"
+        ],
+        "hops": 4
+      },
+      {
+        "id": "RAIN-V2-PSTG-005",
+        "title_zh": "完成毛利增长贡献桥",
+        "depends_on": [
+          "RAIN-V2-PSTG-003",
+          "RAIN-V2-PSTG-004"
+        ],
+        "hops": 5
+      }
+    ]
   }
 }
