@@ -1,0 +1,106 @@
+[
+  {
+    "id": "XBRL-CMP-006",
+    "question": "Using Tesla's FY2025 Q2 10-Q XBRL facts (SEC accession 0001628280-25-035806), calculate Q2 2025 gross margin using tagged gross profit and revenue for April 1 through June 30. Return a percentage rounded to two decimal places. Use the listed us-gaap concepts and only facts from this accession.",
+    "type": "XBRL Computation",
+    "answer": "TSLA_FY2025Q2_quarterly_gross_margin",
+    "scenario_id": "XBRL-COMPUTE-002",
+    "workflow_step": 1,
+    "total_steps": 5,
+    "hops": 2,
+    "xbrl_concepts": [
+      "us-gaap:GrossProfit",
+      "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax"
+    ],
+    "filing_type": "10-Q",
+    "filing_period": "FY2025 Q2 report ended 2025-06-30; duration start=2025-04-01, end=2025-06-30",
+    "answer_type": "calculated_value",
+    "tool_required": "edgartools (XBRL facts and period filtering) + calculation",
+    "source": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001318605.json",
+    "reasoning": "Compute GrossProfit / RevenueFromContractWithCustomerExcludingAssessedTax * 100 with matching quarterly durations. Match accession, dates and units rather than relying on fy/fp alone; API USD values are already in full dollars.",
+    "evidence": "https://www.sec.gov/Archives/edgar/data/1318605/000162828025035806/tsla-20250630.htm; Statements of Operations; gross profit and total revenues; accession 0001628280-25-035806, filed 2025-07-24; duration start=2025-04-01, end=2025-06-30; unit=USD."
+  },
+  {
+    "id": "XBRL-CMP-007",
+    "question": "Using Tesla's FY2025 Q2 10-Q XBRL facts (SEC accession 0001628280-25-035806), calculate Q2 2025 research and development expense as a percentage of revenue for April 1 through June 30. Round to two decimal places. Use the listed us-gaap concepts and only facts from this accession.",
+    "type": "XBRL Computation",
+    "answer": "TSLA_FY2025Q2_quarterly_RD_intensity",
+    "scenario_id": "XBRL-COMPUTE-002",
+    "workflow_step": 2,
+    "total_steps": 5,
+    "hops": 2,
+    "xbrl_concepts": [
+      "us-gaap:ResearchAndDevelopmentExpense",
+      "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax"
+    ],
+    "filing_type": "10-Q",
+    "filing_period": "FY2025 Q2 report ended 2025-06-30; duration start=2025-04-01, end=2025-06-30",
+    "answer_type": "calculated_value",
+    "tool_required": "edgartools (XBRL facts and period filtering) + calculation",
+    "source": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001318605.json",
+    "reasoning": "Compute ResearchAndDevelopmentExpense / RevenueFromContractWithCustomerExcludingAssessedTax * 100 with matching quarterly durations. Match accession, dates and units rather than relying on fy/fp alone; API USD values are already in full dollars.",
+    "evidence": "https://www.sec.gov/Archives/edgar/data/1318605/000162828025035806/tsla-20250630.htm; Statements of Operations; research and development and total revenues; accession 0001628280-25-035806, filed 2025-07-24; duration start=2025-04-01, end=2025-06-30; unit=USD."
+  },
+  {
+    "id": "XBRL-CMP-008",
+    "question": "Using Tesla's FY2025 Q2 10-Q XBRL facts (SEC accession 0001628280-25-035806), calculate simple free cash flow for January 1 through June 30, 2025, defined for this task as operating cash flow minus purchases of property, plant and equipment. Return USD millions. Use the listed us-gaap concepts and only facts from this accession.",
+    "type": "XBRL Computation",
+    "answer": "TSLA_FY2025Q2_YTD_simple_FCF",
+    "scenario_id": "XBRL-COMPUTE-002",
+    "workflow_step": 3,
+    "total_steps": 5,
+    "hops": 2,
+    "xbrl_concepts": [
+      "us-gaap:NetCashProvidedByUsedInOperatingActivities",
+      "us-gaap:PaymentsToAcquirePropertyPlantAndEquipment"
+    ],
+    "filing_type": "10-Q",
+    "filing_period": "FY2025 Q2 report ended 2025-06-30; duration start=2025-01-01, end=2025-06-30",
+    "answer_type": "calculated_value",
+    "tool_required": "edgartools (XBRL facts and period filtering) + calculation",
+    "source": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001318605.json",
+    "reasoning": "Compute NetCashProvidedByUsedInOperatingActivities - PaymentsToAcquirePropertyPlantAndEquipment, treating payments as a positive outflow magnitude, then divide by 1,000,000. This task-defined measure does not assert a universal free-cash-flow definition. Match accession, dates and units rather than relying on fy/fp alone; API USD values are already in full dollars.",
+    "evidence": "https://www.sec.gov/Archives/edgar/data/1318605/000162828025035806/tsla-20250630.htm; Statements of Cash Flows; operating cash flow and purchases of property and equipment; accession 0001628280-25-035806, filed 2025-07-24; duration start=2025-01-01, end=2025-06-30; unit=USD."
+  },
+  {
+    "id": "XBRL-CMP-009",
+    "question": "Using Tesla's FY2025 Q2 10-Q XBRL facts (SEC accession 0001628280-25-035806), calculate working capital as of June 30, 2025, defined as current assets minus current liabilities. Return USD millions. Use the listed us-gaap concepts and only facts from this accession.",
+    "type": "XBRL Computation",
+    "answer": "TSLA_FY2025Q2_closing_working_capital",
+    "scenario_id": "XBRL-COMPUTE-002",
+    "workflow_step": 4,
+    "total_steps": 5,
+    "hops": 2,
+    "xbrl_concepts": [
+      "us-gaap:AssetsCurrent",
+      "us-gaap:LiabilitiesCurrent"
+    ],
+    "filing_type": "10-Q",
+    "filing_period": "FY2025 Q2 report ended 2025-06-30; instant end=2025-06-30",
+    "answer_type": "calculated_value",
+    "tool_required": "edgartools (XBRL facts and period filtering) + calculation",
+    "source": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001318605.json",
+    "reasoning": "Subtract LiabilitiesCurrent from AssetsCurrent for the same instant and divide by 1,000,000. Match accession, dates and units rather than relying on fy/fp alone; API USD values are already in full dollars.",
+    "evidence": "https://www.sec.gov/Archives/edgar/data/1318605/000162828025035806/tsla-20250630.htm; Balance Sheets; total current assets and total current liabilities; accession 0001628280-25-035806, filed 2025-07-24; instant end=2025-06-30; unit=USD."
+  },
+  {
+    "id": "XBRL-CMP-010",
+    "question": "Using Tesla's FY2025 Q2 10-Q XBRL facts (SEC accession 0001628280-25-035806), derive Q1 2025 operating income by subtracting Q2 operating income (April 1 through June 30) from first-half operating income (January 1 through June 30). Return USD millions. Use the listed us-gaap concepts and only facts from this accession.",
+    "type": "XBRL Computation",
+    "answer": "TSLA_FY2025Q2_Q1_derived_operating_income",
+    "scenario_id": "XBRL-COMPUTE-002",
+    "workflow_step": 5,
+    "total_steps": 5,
+    "hops": 3,
+    "xbrl_concepts": [
+      "us-gaap:OperatingIncomeLoss"
+    ],
+    "filing_type": "10-Q",
+    "filing_period": "FY2025 Q2 report ended 2025-06-30; two durations: start=2025-04-01 and start=2025-01-01, both end=2025-06-30",
+    "answer_type": "calculated_value",
+    "tool_required": "edgartools (XBRL facts and period filtering) + calculation",
+    "source": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001318605.json",
+    "reasoning": "Select two durations for OperatingIncomeLoss at the same end date; compute first-half minus second-quarter operating income and divide by 1,000,000. Match accession, dates and units rather than relying on fy/fp alone; API USD values are already in full dollars.",
+    "evidence": "https://www.sec.gov/Archives/edgar/data/1318605/000162828025035806/tsla-20250630.htm; Statements of Operations; income from operations, three- and six-month columns; accession 0001628280-25-035806, filed 2025-07-24; two durations: start=2025-04-01 and start=2025-01-01, both end=2025-06-30; unit=USD."
+  }
+]
