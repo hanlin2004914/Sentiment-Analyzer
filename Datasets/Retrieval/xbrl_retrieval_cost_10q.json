@@ -1,0 +1,102 @@
+[
+  {
+    "id": "XBRL-RET-031",
+    "question": "Using Costco's FY2025 Q3 10-Q XBRL facts (accession 0000909832-25-000033; 2025-02-17 through 2025-05-11), retrieve total revenue, including membership fees, for the 12-week quarter. Return USD millions. Use the listed concepts and only facts from this accession.",
+    "type": "XBRL Retrieval",
+    "answer": "COST_FY2025_Q3_quarter_total_revenue",
+    "scenario_id": "XBRL-RETRIEVAL-007",
+    "workflow_step": 1,
+    "total_steps": 5,
+    "hops": 1,
+    "xbrl_concepts": [
+      "us-gaap:Revenues"
+    ],
+    "filing_type": "10-Q",
+    "filing_period": "FY2025 Q3; 2025-02-17 through 2025-05-11",
+    "answer_type": "numeric_value",
+    "tool_required": "edgartools (XBRL facts and period filtering)",
+    "source": "https://data.sec.gov/api/xbrl/companyfacts/CIK0000909832.json",
+    "reasoning": "Use consolidated Revenues for the 12-week period, not net sales alone. Match accession, exact dates and unit USD; do not select by fy/fp alone. SEC API USD facts are in full dollars; convert to millions only when requested.",
+    "evidence": "https://www.sec.gov/Archives/edgar/data/909832/000090983225000033/cost-20250511.htm; Statements of Income; Total revenue; accession 0000909832-25-000033, filed 2025-06-05; 2025-02-17 through 2025-05-11; unit USD."
+  },
+  {
+    "id": "XBRL-RET-032",
+    "question": "Using Costco's FY2025 Q3 10-Q XBRL facts (accession 0000909832-25-000033; 2025-02-17 through 2025-05-11), retrieve net income for the 12-week quarter. Return USD millions. Use the listed concepts and only facts from this accession.",
+    "type": "XBRL Retrieval",
+    "answer": "COST_FY2025_Q3_quarter_net_income",
+    "scenario_id": "XBRL-RETRIEVAL-007",
+    "workflow_step": 2,
+    "total_steps": 5,
+    "hops": 1,
+    "xbrl_concepts": [
+      "us-gaap:NetIncomeLoss"
+    ],
+    "filing_type": "10-Q",
+    "filing_period": "FY2025 Q3; 2025-02-17 through 2025-05-11",
+    "answer_type": "numeric_value",
+    "tool_required": "edgartools (XBRL facts and period filtering)",
+    "source": "https://data.sec.gov/api/xbrl/companyfacts/CIK0000909832.json",
+    "reasoning": "Select the quarterly NetIncomeLoss fact rather than 36-week net income. Match accession, exact dates and unit USD; do not select by fy/fp alone. SEC API USD facts are in full dollars; convert to millions only when requested.",
+    "evidence": "https://www.sec.gov/Archives/edgar/data/909832/000090983225000033/cost-20250511.htm; Statements of Income; Net income; accession 0000909832-25-000033, filed 2025-06-05; 2025-02-17 through 2025-05-11; unit USD."
+  },
+  {
+    "id": "XBRL-RET-033",
+    "question": "Using Costco's FY2025 Q3 10-Q XBRL facts (accession 0000909832-25-000033; 2024-09-02 through 2025-05-11), retrieve operating cash flow for the 36-week year-to-date period. Return USD millions. Use the listed concepts and only facts from this accession.",
+    "type": "XBRL Retrieval",
+    "answer": "COST_FY2025_Q3_YTD_operating_cash_flow",
+    "scenario_id": "XBRL-RETRIEVAL-007",
+    "workflow_step": 3,
+    "total_steps": 5,
+    "hops": 1,
+    "xbrl_concepts": [
+      "us-gaap:NetCashProvidedByUsedInOperatingActivities"
+    ],
+    "filing_type": "10-Q",
+    "filing_period": "FY2025 Q3; 2024-09-02 through 2025-05-11",
+    "answer_type": "numeric_value",
+    "tool_required": "edgartools (XBRL facts and period filtering)",
+    "source": "https://data.sec.gov/api/xbrl/companyfacts/CIK0000909832.json",
+    "reasoning": "Use the duration beginning September 2, 2024; it is 36 weeks, not six months. Match accession, exact dates and unit USD; do not select by fy/fp alone. SEC API USD facts are in full dollars; convert to millions only when requested.",
+    "evidence": "https://www.sec.gov/Archives/edgar/data/909832/000090983225000033/cost-20250511.htm; Statements of Cash Flows; Net cash provided by operating activities; accession 0000909832-25-000033, filed 2025-06-05; 2024-09-02 through 2025-05-11; unit USD."
+  },
+  {
+    "id": "XBRL-RET-034",
+    "question": "Using Costco's FY2025 Q3 10-Q XBRL facts (accession 0000909832-25-000033; as of 2025-05-11), retrieve cash and cash equivalents at the reporting date, excluding short-term investments. Return USD millions. Use the listed concepts and only facts from this accession.",
+    "type": "XBRL Retrieval",
+    "answer": "COST_FY2025_Q3_closing_cash",
+    "scenario_id": "XBRL-RETRIEVAL-007",
+    "workflow_step": 4,
+    "total_steps": 5,
+    "hops": 1,
+    "xbrl_concepts": [
+      "us-gaap:CashAndCashEquivalentsAtCarryingValue"
+    ],
+    "filing_type": "10-Q",
+    "filing_period": "FY2025 Q3; as of 2025-05-11",
+    "answer_type": "numeric_value",
+    "tool_required": "edgartools (XBRL facts and period filtering)",
+    "source": "https://data.sec.gov/api/xbrl/companyfacts/CIK0000909832.json",
+    "reasoning": "Use CashAndCashEquivalentsAtCarryingValue at May 11, 2025, not a combined cash-and-investment amount. Match accession, exact dates and unit USD; do not select by fy/fp alone. SEC API USD facts are in full dollars; convert to millions only when requested.",
+    "evidence": "https://www.sec.gov/Archives/edgar/data/909832/000090983225000033/cost-20250511.htm; Balance Sheets; Cash and cash equivalents; accession 0000909832-25-000033, filed 2025-06-05; as of 2025-05-11; unit USD."
+  },
+  {
+    "id": "XBRL-RET-035",
+    "question": "Using Costco's FY2025 Q3 10-Q XBRL facts (accession 0000909832-25-000033; 2024-09-02 through 2025-05-11), retrieve cash dividends paid for the 36-week year-to-date period. Return the positive payment magnitude in USD millions. Use the listed concepts and only facts from this accession.",
+    "type": "XBRL Retrieval",
+    "answer": "COST_FY2025_Q3_YTD_dividend_payments",
+    "scenario_id": "XBRL-RETRIEVAL-007",
+    "workflow_step": 5,
+    "total_steps": 5,
+    "hops": 1,
+    "xbrl_concepts": [
+      "us-gaap:PaymentsOfDividends"
+    ],
+    "filing_type": "10-Q",
+    "filing_period": "FY2025 Q3; 2024-09-02 through 2025-05-11",
+    "answer_type": "numeric_value",
+    "tool_required": "edgartools (XBRL facts and period filtering)",
+    "source": "https://data.sec.gov/api/xbrl/companyfacts/CIK0000909832.json",
+    "reasoning": "Use payments rather than dividends declared or per-share dividend rates. Match accession, exact dates and unit USD; do not select by fy/fp alone. SEC API USD facts are in full dollars; convert to millions only when requested.",
+    "evidence": "https://www.sec.gov/Archives/edgar/data/909832/000090983225000033/cost-20250511.htm; Statements of Cash Flows; Cash dividend payments; accession 0000909832-25-000033, filed 2025-06-05; 2024-09-02 through 2025-05-11; unit USD."
+  }
+]
