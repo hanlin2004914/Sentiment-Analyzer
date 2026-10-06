@@ -99,5 +99,54 @@
         "hops": 3
       }
     ]
+  },
+  "WDC": {
+    "company": "Western Digital Corporation",
+    "ticker_at_filing": "WDC",
+    "title_zh": "分拆后的盈利口径与季度利润桥",
+    "user_request": "I am reconciling Western Digital earnings after the Sandisk separation. Establish the correct continuing-operations boundary, bridge total and continuing profit, then check whether Q4 continuing net margin improved from Q3.",
+    "scope": "FY2025 ended 2025-06-27; recast continuing-operations presentation",
+    "scenario_id": "RAIN-V2-WDC-001",
+    "file": "wdc_scenario.json",
+    "steps": [
+      {
+        "id": "RAIN-V2-WDC-001",
+        "title_zh": "先确定分拆后的口径",
+        "depends_on": [],
+        "hops": 1
+      },
+      {
+        "id": "RAIN-V2-WDC-002",
+        "title_zh": "按上一步口径取年度财务基线",
+        "depends_on": [
+          "RAIN-V2-WDC-001"
+        ],
+        "hops": 1
+      },
+      {
+        "id": "RAIN-V2-WDC-003",
+        "title_zh": "年度总利润桥接到持续经营",
+        "depends_on": [
+          "RAIN-V2-WDC-002"
+        ],
+        "hops": 2
+      },
+      {
+        "id": "RAIN-V2-WDC-004",
+        "title_zh": "把 Q3 与年度持续经营基线对齐",
+        "depends_on": [
+          "RAIN-V2-WDC-003"
+        ],
+        "hops": 3
+      },
+      {
+        "id": "RAIN-V2-WDC-005",
+        "title_zh": "用 Q4 业绩附件完成季度趋势判断",
+        "depends_on": [
+          "RAIN-V2-WDC-004"
+        ],
+        "hops": 4
+      }
+    ]
   }
 }

@@ -1,0 +1,126 @@
+[
+  {
+    "id": "RAIN-V2-WDC-001",
+    "question": "Scenario: I am reconciling Western Digital earnings after the Sandisk separation. Establish the correct continuing-operations boundary, bridge total and continuing profit, then check whether Q4 continuing net margin improved from Q3. First, read the 10-Q filed May 2, 2025. Retrieve the Flash separation date, how historical Sandisk results are presented, and the remaining continuing-operations reportable segment. These answers determine the scope used in subsequent steps. Return separation_date: text (date); presentation: text (text); remaining_segment: text (text). Cite the SEC document and precise table/note/exhibit. Reuse prior-stage amounts without intermediate rounding; report percentages/ratios to two decimals and monetary derived amounts to three decimals unless specified.",
+    "scenario_id": "RAIN-V2-WDC-001",
+    "workflow_step": 1,
+    "total_steps": 5,
+    "company": "Western Digital Corporation",
+    "ticker_at_filing": "WDC",
+    "depends_on": [],
+    "document_scope": [
+      {
+        "company": "Western Digital Corporation",
+        "cik": "0000106040",
+        "form": "10-Q",
+        "filed": "2025-05-02",
+        "report_date": "2025-03-28"
+      }
+    ]
+  },
+  {
+    "id": "RAIN-V2-WDC-002",
+    "question": "Apply Step 1's reporting boundary to the FY2025 10-K filed August 14, 2025. Retrieve continuing-operations revenue, income from continuing operations, and total net income. Confirm that your extraction uses the remaining HDD segment and treats historical Sandisk results as discontinued operations; do not use profit attributable to common shareholders. Return revenue: number (USD million); continuing_income: number (USD million); total_net_income: number (USD million); scope_confirmed: boolean (boolean). Cite the SEC document and precise table/note/exhibit. Reuse prior-stage amounts without intermediate rounding; report percentages/ratios to two decimals and monetary derived amounts to three decimals unless specified.",
+    "scenario_id": "RAIN-V2-WDC-001",
+    "workflow_step": 2,
+    "total_steps": 5,
+    "company": "Western Digital Corporation",
+    "ticker_at_filing": "WDC",
+    "depends_on": [
+      "RAIN-V2-WDC-001"
+    ],
+    "document_scope": [
+      {
+        "company": "Western Digital Corporation",
+        "cik": "0000106040",
+        "form": "10-K",
+        "filed": "2025-08-14",
+        "report_date": "2025-06-27"
+      },
+      {
+        "company": "Western Digital Corporation",
+        "cik": "0000106040",
+        "form": "10-Q",
+        "filed": "2025-05-02",
+        "report_date": "2025-03-28"
+      }
+    ]
+  },
+  {
+    "id": "RAIN-V2-WDC-003",
+    "question": "Using the Step 2 amounts, calculate income from discontinued operations, its percentage of total net income, and the annual continuing net margin. Use total net income minus continuing income for the profit bridge. Retain the unrounded annual margin for the next comparison. Return discontinued_income: number (USD million); discontinued_share_pct: number (percent); annual_continuing_margin: number (percent). Cite the SEC document and precise table/note/exhibit. Reuse prior-stage amounts without intermediate rounding; report percentages/ratios to two decimals and monetary derived amounts to three decimals unless specified.",
+    "scenario_id": "RAIN-V2-WDC-001",
+    "workflow_step": 3,
+    "total_steps": 5,
+    "company": "Western Digital Corporation",
+    "ticker_at_filing": "WDC",
+    "depends_on": [
+      "RAIN-V2-WDC-002"
+    ],
+    "document_scope": [
+      {
+        "company": "Western Digital Corporation",
+        "cik": "0000106040",
+        "form": "10-K",
+        "filed": "2025-08-14",
+        "report_date": "2025-06-27"
+      }
+    ]
+  },
+  {
+    "id": "RAIN-V2-WDC-004",
+    "question": "Now compare against the annual continuing margin from Step 3. From the May 2, 2025 10-Q retrieve revenue and continuing-operations income for the three months ended March 28, 2025. Calculate Q3 continuing net margin and its percentage-point difference from the annual baseline. Keep the quarterly inputs for Step 5. Return q3_revenue: number (USD million); q3_continuing_income: number (USD million); q3_margin: number (percent); vs_annual_pp: number (percentage points). Cite the SEC document and precise table/note/exhibit. Reuse prior-stage amounts without intermediate rounding; report percentages/ratios to two decimals and monetary derived amounts to three decimals unless specified.",
+    "scenario_id": "RAIN-V2-WDC-001",
+    "workflow_step": 4,
+    "total_steps": 5,
+    "company": "Western Digital Corporation",
+    "ticker_at_filing": "WDC",
+    "depends_on": [
+      "RAIN-V2-WDC-003"
+    ],
+    "document_scope": [
+      {
+        "company": "Western Digital Corporation",
+        "cik": "0000106040",
+        "form": "10-Q",
+        "filed": "2025-05-02",
+        "report_date": "2025-03-28"
+      },
+      {
+        "company": "Western Digital Corporation",
+        "cik": "0000106040",
+        "form": "10-K",
+        "filed": "2025-08-14",
+        "report_date": "2025-06-27"
+      }
+    ]
+  },
+  {
+    "id": "RAIN-V2-WDC-005",
+    "question": "Finish the reconciliation using Step 4's Q3 inputs. In the July 30, 2025 8-K Exhibit 99.1, retrieve Q4 revenue and GAAP net income from continuing operations before allocation to common shareholders. Calculate Q4 continuing net margin, its change from Q3 in percentage points, and whether the continuing margin improved. Keep discontinued operations outside both denominators and numerators. Return q4_revenue: number (USD million); q4_income: number (USD million); q4_margin: number (percent); change_pp: number (percentage points); improved: boolean (boolean). Cite the SEC document and precise table/note/exhibit. Reuse prior-stage amounts without intermediate rounding; report percentages/ratios to two decimals and monetary derived amounts to three decimals unless specified.",
+    "scenario_id": "RAIN-V2-WDC-001",
+    "workflow_step": 5,
+    "total_steps": 5,
+    "company": "Western Digital Corporation",
+    "ticker_at_filing": "WDC",
+    "depends_on": [
+      "RAIN-V2-WDC-004"
+    ],
+    "document_scope": [
+      {
+        "company": "Western Digital Corporation",
+        "cik": "0000106040",
+        "form": "8-K",
+        "filed": "2025-07-30",
+        "report_date": "2025-07-30"
+      },
+      {
+        "company": "Western Digital Corporation",
+        "cik": "0000106040",
+        "form": "10-Q",
+        "filed": "2025-05-02",
+        "report_date": "2025-03-28"
+      }
+    ]
+  }
+]

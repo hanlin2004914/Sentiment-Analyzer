@@ -86,5 +86,55 @@
     "sha256": "482a9100cb66a82366dacf860fc2b0e245c960991836275310c37a9cf25a2e6b",
     "parent_source_id": "STX-8-K",
     "exhibit": "99.1"
+  },
+  "WDC-10-K": {
+    "ticker": "WDC",
+    "cik": "0000106040",
+    "form": "10-K",
+    "filed": "2025-08-14",
+    "report_date": "2025-06-27",
+    "accession": "0000106040-25-000038",
+    "url": "https://www.sec.gov/Archives/edgar/data/106040/000010604025000038/wdc-20250627.htm",
+    "company": "Western Digital Corporation",
+    "retrieved_on": "2026-09-22",
+    "sha256": "976a69a0ab6390cbb9f2a0e328c612a95dfcd81b56eee1290038e50a343a865e"
+  },
+  "WDC-10-Q": {
+    "ticker": "WDC",
+    "cik": "0000106040",
+    "form": "10-Q",
+    "filed": "2025-05-02",
+    "report_date": "2025-03-28",
+    "accession": "0000106040-25-000026",
+    "url": "https://www.sec.gov/Archives/edgar/data/106040/000010604025000026/wdc-20250328.htm",
+    "company": "Western Digital Corporation",
+    "retrieved_on": "2026-09-22",
+    "sha256": "4fcaf7b431ce9274a2b1ee198016219313285423499b466a1ed4895e165e7e6c"
+  },
+  "WDC-8-K": {
+    "ticker": "WDC",
+    "cik": "0000106040",
+    "form": "8-K",
+    "filed": "2025-07-30",
+    "report_date": "2025-07-30",
+    "accession": "0000106040-25-000030",
+    "url": "https://www.sec.gov/Archives/edgar/data/106040/000010604025000030/wdc-20250730.htm",
+    "company": "Western Digital Corporation",
+    "retrieved_on": "2026-09-22",
+    "sha256": "60b4ecc0b6d462ff22f6768c1d0198052fe0ecbd26e2b174baf77892018903ec"
+  },
+  "WDC-8-K-ex0": {
+    "ticker": "WDC",
+    "cik": "0000106040",
+    "form": "8-K",
+    "filed": "2025-07-30",
+    "report_date": "2025-07-30",
+    "accession": "0000106040-25-000030",
+    "url": "https://www.sec.gov/Archives/edgar/data/106040/000010604025000030/a4ex991-pressreleaseq425.htm",
+    "company": "Western Digital Corporation",
+    "retrieved_on": "2026-09-22",
+    "sha256": "d90692e66883eda7c03a4c0452eac2d7477699a9e3cc407e599645685ce179d9",
+    "parent_source_id": "WDC-8-K",
+    "exhibit": "99.1"
   }
 }

@@ -2363,5 +2363,1068 @@
       "source_verified": true,
       "agent_run_performed": false
     }
+  },
+  "RAIN-V2-WDC-001": {
+    "title_zh": "先确定分拆后的口径",
+    "ticker": "WDC",
+    "company": "Western Digital Corporation",
+    "depends_on": [],
+    "input_bindings": {
+      "separation_date": {
+        "kind": "source",
+        "value": "2025-02-21",
+        "unit": "date",
+        "evidence_label": "separation_date",
+        "source_id": "WDC-10-Q",
+        "reused_from": "RAIN-WDC-006"
+      },
+      "presentation": {
+        "kind": "source",
+        "value": "discontinued operations",
+        "unit": "text",
+        "evidence_label": "flash_presentation",
+        "source_id": "WDC-10-Q",
+        "reused_from": "RAIN-WDC-006"
+      },
+      "remaining_segment": {
+        "kind": "source",
+        "value": "HDD",
+        "unit": "text",
+        "evidence_label": "remaining_segment",
+        "source_id": "WDC-10-Q",
+        "reused_from": "RAIN-WDC-006"
+      }
+    },
+    "derivations": [],
+    "output_nodes": {
+      "separation_date": "read_1",
+      "presentation": "read_2",
+      "remaining_segment": "read_3"
+    },
+    "hop_definition": "conditional_evidence_depth_v2",
+    "hop_plan": [
+      {
+        "id": "read_1",
+        "kind": "retrieve",
+        "depends_on": [],
+        "evidence_block": "WDC-10-Q:Note 3",
+        "source_ids": [
+          "WDC-10-Q"
+        ],
+        "outputs": [
+          "separation_date"
+        ],
+        "depth": 1
+      },
+      {
+        "id": "read_2",
+        "kind": "retrieve",
+        "depends_on": [],
+        "evidence_block": "WDC-10-Q:Note 3 and segment discussion",
+        "source_ids": [
+          "WDC-10-Q"
+        ],
+        "outputs": [
+          "presentation"
+        ],
+        "depth": 1
+      },
+      {
+        "id": "read_3",
+        "kind": "retrieve",
+        "depends_on": [],
+        "evidence_block": "WDC-10-Q:Note 1 / segment reporting discussion",
+        "source_ids": [
+          "WDC-10-Q"
+        ],
+        "outputs": [
+          "remaining_segment"
+        ],
+        "depth": 1
+      }
+    ],
+    "hops": 1,
+    "evidence_records": [
+      {
+        "label": "separation_date",
+        "value": "2025-02-21",
+        "unit": "date",
+        "source_id": "WDC-10-Q",
+        "locator": "Note 3, Discontinued Operations",
+        "url": "https://www.sec.gov/Archives/edgar/data/106040/000010604025000026/wdc-20250328.htm#:~:text=On%20February%2021%2C%202025%2C%20the%20Company%20completed",
+        "text_fragment": "On February 21, 2025, the Company completed",
+        "evidence_block": "WDC-10-Q:Note 3"
+      },
+      {
+        "label": "flash_presentation",
+        "value": "discontinued operations",
+        "unit": "text",
+        "source_id": "WDC-10-Q",
+        "locator": "Note 3 and segment discussion",
+        "url": "https://www.sec.gov/Archives/edgar/data/106040/000010604025000026/wdc-20250328.htm#:~:text=The%20historical%20results%20of%20Sandisk%20have%20been%20reflected%20as%20discontinued%20operations",
+        "text_fragment": "The historical results of Sandisk have been reflected as discontinued operations",
+        "evidence_block": "WDC-10-Q:Note 3 and segment discussion"
+      },
+      {
+        "label": "remaining_segment",
+        "value": "HDD",
+        "unit": "text",
+        "source_id": "WDC-10-Q",
+        "locator": "Note 1 / segment reporting discussion",
+        "url": "https://www.sec.gov/Archives/edgar/data/106040/000010604025000026/wdc-20250328.htm#:~:text=single%20reportable%20segment%2C%20HDD",
+        "text_fragment": "single reportable segment, HDD",
+        "evidence_block": "WDC-10-Q:Note 1 / segment reporting discussion"
+      }
+    ],
+    "reused_from_v1": [
+      "RAIN-WDC-006"
+    ],
+    "grading": {
+      "expected_answer": {
+        "separation_date": {
+          "value": "2025-02-21",
+          "kind": "text",
+          "unit": "date"
+        },
+        "presentation": {
+          "value": "discontinued operations",
+          "kind": "text",
+          "unit": "text"
+        },
+        "remaining_segment": {
+          "value": "HDD",
+          "kind": "text",
+          "unit": "text"
+        }
+      },
+      "max_points": 5,
+      "rubric": {
+        "answer": 2,
+        "evidence": 1,
+        "scope_units": 1,
+        "dependency_and_method": 1
+      }
+    },
+    "verification": {
+      "checked_on": "2026-09-22",
+      "source_verified": true,
+      "agent_run_performed": false
+    }
+  },
+  "RAIN-V2-WDC-002": {
+    "title_zh": "按上一步口径取年度财务基线",
+    "ticker": "WDC",
+    "company": "Western Digital Corporation",
+    "depends_on": [
+      "RAIN-V2-WDC-001"
+    ],
+    "input_bindings": {
+      "segment": {
+        "kind": "prior",
+        "question_id": "RAIN-V2-WDC-001",
+        "field": "remaining_segment",
+        "value": "HDD",
+        "unit": "text"
+      },
+      "presentation": {
+        "kind": "prior",
+        "question_id": "RAIN-V2-WDC-001",
+        "field": "presentation",
+        "value": "discontinued operations",
+        "unit": "text"
+      },
+      "revenue": {
+        "kind": "source",
+        "value": "9520",
+        "unit": "USD million",
+        "evidence_label": "revenue",
+        "source_id": "WDC-10-K",
+        "reused_from": "RAIN-WDC-001"
+      },
+      "continuing_income": {
+        "kind": "source",
+        "value": "1643",
+        "unit": "USD million",
+        "evidence_label": "continuing_income",
+        "source_id": "WDC-10-K",
+        "reused_from": "RAIN-WDC-002"
+      },
+      "total_net_income": {
+        "kind": "source",
+        "value": "1889",
+        "unit": "USD million",
+        "evidence_label": "total_net_income",
+        "source_id": "WDC-10-K",
+        "reused_from": "RAIN-WDC-002"
+      }
+    },
+    "derivations": [
+      {
+        "field": "scope_confirmed",
+        "expression": "segment == 'HDD' and presentation == 'discontinued operations'",
+        "unit": "boolean",
+        "decimal_places": null
+      }
+    ],
+    "output_nodes": {
+      "revenue": "read_1",
+      "continuing_income": "read_1",
+      "total_net_income": "read_1",
+      "scope_confirmed": "derive_scope_confirmed"
+    },
+    "hop_definition": "conditional_evidence_depth_v2",
+    "hop_plan": [
+      {
+        "id": "input_segment",
+        "kind": "prior",
+        "depends_on": [],
+        "outputs": [
+          "segment"
+        ],
+        "question_id": "RAIN-V2-WDC-001",
+        "field": "remaining_segment",
+        "depth": 0
+      },
+      {
+        "id": "input_presentation",
+        "kind": "prior",
+        "depends_on": [],
+        "outputs": [
+          "presentation"
+        ],
+        "question_id": "RAIN-V2-WDC-001",
+        "field": "presentation",
+        "depth": 0
+      },
+      {
+        "id": "read_1",
+        "kind": "retrieve",
+        "depends_on": [],
+        "evidence_block": "WDC-10-K:income_statement",
+        "source_ids": [
+          "WDC-10-K"
+        ],
+        "outputs": [
+          "revenue",
+          "continuing_income",
+          "total_net_income"
+        ],
+        "depth": 1
+      },
+      {
+        "id": "derive_scope_confirmed",
+        "kind": "judge",
+        "depends_on": [
+          "input_presentation",
+          "input_segment"
+        ],
+        "outputs": [
+          "scope_confirmed"
+        ],
+        "expression": "segment == 'HDD' and presentation == 'discontinued operations'",
+        "depth": 1
+      }
+    ],
+    "hops": 1,
+    "evidence_records": [
+      {
+        "label": "revenue",
+        "value": "9520",
+        "unit": "USD million",
+        "source_id": "WDC-10-K",
+        "locator": "Inline XBRL fact #f-136; context c-1",
+        "fact_id": "f-136",
+        "concept": "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax",
+        "context_id": "c-1",
+        "context": "context: entity: identifier:0000106040 period: startdate:2024-06-29 enddate:2025-06-27",
+        "scale": 6,
+        "decimals": "-6",
+        "original_text": "9,520",
+        "sign": "+",
+        "url": "https://www.sec.gov/Archives/edgar/data/106040/000010604025000038/wdc-20250627.htm#f-136",
+        "evidence_block": "WDC-10-K:income_statement"
+      },
+      {
+        "label": "continuing_income",
+        "value": "1643",
+        "unit": "USD million",
+        "source_id": "WDC-10-K",
+        "locator": "Inline XBRL fact #f-187; context c-1",
+        "fact_id": "f-187",
+        "concept": "us-gaap:IncomeLossFromContinuingOperations",
+        "context_id": "c-1",
+        "context": "context: entity: identifier:0000106040 period: startdate:2024-06-29 enddate:2025-06-27",
+        "scale": 6,
+        "decimals": "-6",
+        "original_text": "1,643",
+        "sign": "+",
+        "url": "https://www.sec.gov/Archives/edgar/data/106040/000010604025000038/wdc-20250627.htm#f-187",
+        "evidence_block": "WDC-10-K:income_statement"
+      },
+      {
+        "label": "total_net_income",
+        "value": "1889",
+        "unit": "USD million",
+        "source_id": "WDC-10-K",
+        "locator": "Inline XBRL fact #f-193; context c-1",
+        "fact_id": "f-193",
+        "concept": "us-gaap:NetIncomeLoss",
+        "context_id": "c-1",
+        "context": "context: entity: identifier:0000106040 period: startdate:2024-06-29 enddate:2025-06-27",
+        "scale": 6,
+        "decimals": "-6",
+        "original_text": "1,889",
+        "sign": "+",
+        "url": "https://www.sec.gov/Archives/edgar/data/106040/000010604025000038/wdc-20250627.htm#f-193",
+        "evidence_block": "WDC-10-K:income_statement"
+      },
+      {
+        "label": "flash_presentation",
+        "value": "discontinued operations",
+        "unit": "text",
+        "source_id": "WDC-10-Q",
+        "locator": "Note 3 and segment discussion",
+        "url": "https://www.sec.gov/Archives/edgar/data/106040/000010604025000026/wdc-20250328.htm#:~:text=The%20historical%20results%20of%20Sandisk%20have%20been%20reflected%20as%20discontinued%20operations",
+        "text_fragment": "The historical results of Sandisk have been reflected as discontinued operations",
+        "evidence_block": "WDC-10-Q:Note 3 and segment discussion"
+      },
+      {
+        "label": "remaining_segment",
+        "value": "HDD",
+        "unit": "text",
+        "source_id": "WDC-10-Q",
+        "locator": "Note 1 / segment reporting discussion",
+        "url": "https://www.sec.gov/Archives/edgar/data/106040/000010604025000026/wdc-20250328.htm#:~:text=single%20reportable%20segment%2C%20HDD",
+        "text_fragment": "single reportable segment, HDD",
+        "evidence_block": "WDC-10-Q:Note 1 / segment reporting discussion"
+      }
+    ],
+    "reused_from_v1": [
+      "RAIN-WDC-001",
+      "RAIN-WDC-002"
+    ],
+    "grading": {
+      "expected_answer": {
+        "revenue": {
+          "value": "9520",
+          "kind": "number",
+          "unit": "USD million",
+          "absolute_tolerance": "0"
+        },
+        "continuing_income": {
+          "value": "1643",
+          "kind": "number",
+          "unit": "USD million",
+          "absolute_tolerance": "0"
+        },
+        "total_net_income": {
+          "value": "1889",
+          "kind": "number",
+          "unit": "USD million",
+          "absolute_tolerance": "0"
+        },
+        "scope_confirmed": {
+          "value": true,
+          "kind": "boolean",
+          "unit": "boolean"
+        }
+      },
+      "max_points": 5,
+      "rubric": {
+        "answer": 2,
+        "evidence": 1,
+        "scope_units": 1,
+        "dependency_and_method": 1
+      }
+    },
+    "verification": {
+      "checked_on": "2026-09-22",
+      "source_verified": true,
+      "agent_run_performed": false
+    }
+  },
+  "RAIN-V2-WDC-003": {
+    "title_zh": "年度总利润桥接到持续经营",
+    "ticker": "WDC",
+    "company": "Western Digital Corporation",
+    "depends_on": [
+      "RAIN-V2-WDC-002"
+    ],
+    "input_bindings": {
+      "revenue": {
+        "kind": "prior",
+        "question_id": "RAIN-V2-WDC-002",
+        "field": "revenue",
+        "value": "9520",
+        "unit": "USD million"
+      },
+      "continuing_income": {
+        "kind": "prior",
+        "question_id": "RAIN-V2-WDC-002",
+        "field": "continuing_income",
+        "value": "1643",
+        "unit": "USD million"
+      },
+      "total_net_income": {
+        "kind": "prior",
+        "question_id": "RAIN-V2-WDC-002",
+        "field": "total_net_income",
+        "value": "1889",
+        "unit": "USD million"
+      }
+    },
+    "derivations": [
+      {
+        "field": "discontinued_income",
+        "expression": "total_net_income - continuing_income",
+        "unit": "USD million",
+        "decimal_places": 3
+      },
+      {
+        "field": "discontinued_share_pct",
+        "expression": "discontinued_income / total_net_income * 100",
+        "unit": "percent",
+        "decimal_places": 2
+      },
+      {
+        "field": "annual_continuing_margin",
+        "expression": "continuing_income / revenue * 100",
+        "unit": "percent",
+        "decimal_places": 2
+      }
+    ],
+    "output_nodes": {
+      "discontinued_income": "derive_discontinued_income",
+      "discontinued_share_pct": "derive_discontinued_share_pct",
+      "annual_continuing_margin": "derive_annual_continuing_margin"
+    },
+    "hop_definition": "conditional_evidence_depth_v2",
+    "hop_plan": [
+      {
+        "id": "input_revenue",
+        "kind": "prior",
+        "depends_on": [],
+        "outputs": [
+          "revenue"
+        ],
+        "question_id": "RAIN-V2-WDC-002",
+        "field": "revenue",
+        "depth": 0
+      },
+      {
+        "id": "input_continuing_income",
+        "kind": "prior",
+        "depends_on": [],
+        "outputs": [
+          "continuing_income"
+        ],
+        "question_id": "RAIN-V2-WDC-002",
+        "field": "continuing_income",
+        "depth": 0
+      },
+      {
+        "id": "input_total_net_income",
+        "kind": "prior",
+        "depends_on": [],
+        "outputs": [
+          "total_net_income"
+        ],
+        "question_id": "RAIN-V2-WDC-002",
+        "field": "total_net_income",
+        "depth": 0
+      },
+      {
+        "id": "derive_discontinued_income",
+        "kind": "calculate",
+        "depends_on": [
+          "input_continuing_income",
+          "input_total_net_income"
+        ],
+        "outputs": [
+          "discontinued_income"
+        ],
+        "expression": "total_net_income - continuing_income",
+        "depth": 1
+      },
+      {
+        "id": "derive_discontinued_share_pct",
+        "kind": "calculate",
+        "depends_on": [
+          "derive_discontinued_income",
+          "input_total_net_income"
+        ],
+        "outputs": [
+          "discontinued_share_pct"
+        ],
+        "expression": "discontinued_income / total_net_income * 100",
+        "depth": 2
+      },
+      {
+        "id": "derive_annual_continuing_margin",
+        "kind": "calculate",
+        "depends_on": [
+          "input_continuing_income",
+          "input_revenue"
+        ],
+        "outputs": [
+          "annual_continuing_margin"
+        ],
+        "expression": "continuing_income / revenue * 100",
+        "depth": 1
+      }
+    ],
+    "hops": 2,
+    "evidence_records": [
+      {
+        "label": "continuing_income",
+        "value": "1643",
+        "unit": "USD million",
+        "source_id": "WDC-10-K",
+        "locator": "Inline XBRL fact #f-187; context c-1",
+        "fact_id": "f-187",
+        "concept": "us-gaap:IncomeLossFromContinuingOperations",
+        "context_id": "c-1",
+        "context": "context: entity: identifier:0000106040 period: startdate:2024-06-29 enddate:2025-06-27",
+        "scale": 6,
+        "decimals": "-6",
+        "original_text": "1,643",
+        "sign": "+",
+        "url": "https://www.sec.gov/Archives/edgar/data/106040/000010604025000038/wdc-20250627.htm#f-187",
+        "evidence_block": "WDC-10-K:income_statement"
+      },
+      {
+        "label": "total_net_income",
+        "value": "1889",
+        "unit": "USD million",
+        "source_id": "WDC-10-K",
+        "locator": "Inline XBRL fact #f-193; context c-1",
+        "fact_id": "f-193",
+        "concept": "us-gaap:NetIncomeLoss",
+        "context_id": "c-1",
+        "context": "context: entity: identifier:0000106040 period: startdate:2024-06-29 enddate:2025-06-27",
+        "scale": 6,
+        "decimals": "-6",
+        "original_text": "1,889",
+        "sign": "+",
+        "url": "https://www.sec.gov/Archives/edgar/data/106040/000010604025000038/wdc-20250627.htm#f-193",
+        "evidence_block": "WDC-10-K:income_statement"
+      },
+      {
+        "label": "revenue",
+        "value": "9520",
+        "unit": "USD million",
+        "source_id": "WDC-10-K",
+        "locator": "Inline XBRL fact #f-136; context c-1",
+        "fact_id": "f-136",
+        "concept": "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax",
+        "context_id": "c-1",
+        "context": "context: entity: identifier:0000106040 period: startdate:2024-06-29 enddate:2025-06-27",
+        "scale": 6,
+        "decimals": "-6",
+        "original_text": "9,520",
+        "sign": "+",
+        "url": "https://www.sec.gov/Archives/edgar/data/106040/000010604025000038/wdc-20250627.htm#f-136",
+        "evidence_block": "WDC-10-K:income_statement"
+      }
+    ],
+    "reused_from_v1": [
+      "RAIN-WDC-002"
+    ],
+    "grading": {
+      "expected_answer": {
+        "discontinued_income": {
+          "value": "246.000",
+          "kind": "number",
+          "unit": "USD million",
+          "absolute_tolerance": "0.001"
+        },
+        "discontinued_share_pct": {
+          "value": "13.02",
+          "kind": "number",
+          "unit": "percent",
+          "absolute_tolerance": "0.01"
+        },
+        "annual_continuing_margin": {
+          "value": "17.26",
+          "kind": "number",
+          "unit": "percent",
+          "absolute_tolerance": "0.01"
+        }
+      },
+      "max_points": 5,
+      "rubric": {
+        "answer": 2,
+        "evidence": 1,
+        "scope_units": 1,
+        "dependency_and_method": 1
+      }
+    },
+    "verification": {
+      "checked_on": "2026-09-22",
+      "source_verified": true,
+      "agent_run_performed": false
+    }
+  },
+  "RAIN-V2-WDC-004": {
+    "title_zh": "把 Q3 与年度持续经营基线对齐",
+    "ticker": "WDC",
+    "company": "Western Digital Corporation",
+    "depends_on": [
+      "RAIN-V2-WDC-003"
+    ],
+    "input_bindings": {
+      "annual_margin": {
+        "kind": "prior",
+        "question_id": "RAIN-V2-WDC-003",
+        "field": "annual_continuing_margin",
+        "value": "17.25840336134453781512605042",
+        "unit": "percent"
+      },
+      "q3_revenue": {
+        "kind": "source",
+        "value": "2294",
+        "unit": "USD million",
+        "evidence_label": "revenue",
+        "source_id": "WDC-10-Q",
+        "reused_from": "RAIN-WDC-005"
+      },
+      "q3_continuing_income": {
+        "kind": "source",
+        "value": "772",
+        "unit": "USD million",
+        "evidence_label": "continuing_income",
+        "source_id": "WDC-10-Q",
+        "reused_from": "RAIN-WDC-005"
+      }
+    },
+    "derivations": [
+      {
+        "field": "q3_margin",
+        "expression": "q3_continuing_income / q3_revenue * 100",
+        "unit": "percent",
+        "decimal_places": 2
+      },
+      {
+        "field": "vs_annual_pp",
+        "expression": "q3_margin - annual_margin",
+        "unit": "percentage points",
+        "decimal_places": 2
+      }
+    ],
+    "output_nodes": {
+      "q3_revenue": "read_1",
+      "q3_continuing_income": "read_1",
+      "q3_margin": "derive_q3_margin",
+      "vs_annual_pp": "derive_vs_annual_pp"
+    },
+    "hop_definition": "conditional_evidence_depth_v2",
+    "hop_plan": [
+      {
+        "id": "input_annual_margin",
+        "kind": "prior",
+        "depends_on": [],
+        "outputs": [
+          "annual_margin"
+        ],
+        "question_id": "RAIN-V2-WDC-003",
+        "field": "annual_continuing_margin",
+        "depth": 0
+      },
+      {
+        "id": "read_1",
+        "kind": "retrieve",
+        "depends_on": [],
+        "evidence_block": "WDC-10-Q:income_statement",
+        "source_ids": [
+          "WDC-10-Q"
+        ],
+        "outputs": [
+          "q3_revenue",
+          "q3_continuing_income"
+        ],
+        "depth": 1
+      },
+      {
+        "id": "derive_q3_margin",
+        "kind": "calculate",
+        "depends_on": [
+          "read_1"
+        ],
+        "outputs": [
+          "q3_margin"
+        ],
+        "expression": "q3_continuing_income / q3_revenue * 100",
+        "depth": 2
+      },
+      {
+        "id": "derive_vs_annual_pp",
+        "kind": "calculate",
+        "depends_on": [
+          "input_annual_margin",
+          "derive_q3_margin"
+        ],
+        "outputs": [
+          "vs_annual_pp"
+        ],
+        "expression": "q3_margin - annual_margin",
+        "depth": 3
+      }
+    ],
+    "hops": 3,
+    "evidence_records": [
+      {
+        "label": "revenue",
+        "value": "2294",
+        "unit": "USD million",
+        "source_id": "WDC-10-Q",
+        "locator": "Inline XBRL fact #f-112; context c-7",
+        "fact_id": "f-112",
+        "concept": "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax",
+        "context_id": "c-7",
+        "context": "context: entity: identifier:0000106040 period: startdate:2024-12-28 enddate:2025-03-28",
+        "scale": 6,
+        "decimals": "-6",
+        "original_text": "2,294",
+        "sign": "+",
+        "url": "https://www.sec.gov/Archives/edgar/data/106040/000010604025000026/wdc-20250328.htm#f-112",
+        "evidence_block": "WDC-10-Q:income_statement"
+      },
+      {
+        "label": "continuing_income",
+        "value": "772",
+        "unit": "USD million",
+        "source_id": "WDC-10-Q",
+        "locator": "Inline XBRL fact #f-176; context c-7",
+        "fact_id": "f-176",
+        "concept": "us-gaap:IncomeLossFromContinuingOperations",
+        "context_id": "c-7",
+        "context": "context: entity: identifier:0000106040 period: startdate:2024-12-28 enddate:2025-03-28",
+        "scale": 6,
+        "decimals": "-6",
+        "original_text": "772",
+        "sign": "+",
+        "url": "https://www.sec.gov/Archives/edgar/data/106040/000010604025000026/wdc-20250328.htm#f-176",
+        "evidence_block": "WDC-10-Q:income_statement"
+      },
+      {
+        "label": "continuing_income",
+        "value": "1643",
+        "unit": "USD million",
+        "source_id": "WDC-10-K",
+        "locator": "Inline XBRL fact #f-187; context c-1",
+        "fact_id": "f-187",
+        "concept": "us-gaap:IncomeLossFromContinuingOperations",
+        "context_id": "c-1",
+        "context": "context: entity: identifier:0000106040 period: startdate:2024-06-29 enddate:2025-06-27",
+        "scale": 6,
+        "decimals": "-6",
+        "original_text": "1,643",
+        "sign": "+",
+        "url": "https://www.sec.gov/Archives/edgar/data/106040/000010604025000038/wdc-20250627.htm#f-187",
+        "evidence_block": "WDC-10-K:income_statement"
+      },
+      {
+        "label": "revenue",
+        "value": "9520",
+        "unit": "USD million",
+        "source_id": "WDC-10-K",
+        "locator": "Inline XBRL fact #f-136; context c-1",
+        "fact_id": "f-136",
+        "concept": "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax",
+        "context_id": "c-1",
+        "context": "context: entity: identifier:0000106040 period: startdate:2024-06-29 enddate:2025-06-27",
+        "scale": 6,
+        "decimals": "-6",
+        "original_text": "9,520",
+        "sign": "+",
+        "url": "https://www.sec.gov/Archives/edgar/data/106040/000010604025000038/wdc-20250627.htm#f-136",
+        "evidence_block": "WDC-10-K:income_statement"
+      }
+    ],
+    "reused_from_v1": [
+      "RAIN-WDC-005"
+    ],
+    "grading": {
+      "expected_answer": {
+        "q3_revenue": {
+          "value": "2294",
+          "kind": "number",
+          "unit": "USD million",
+          "absolute_tolerance": "0"
+        },
+        "q3_continuing_income": {
+          "value": "772",
+          "kind": "number",
+          "unit": "USD million",
+          "absolute_tolerance": "0"
+        },
+        "q3_margin": {
+          "value": "33.65",
+          "kind": "number",
+          "unit": "percent",
+          "absolute_tolerance": "0.01"
+        },
+        "vs_annual_pp": {
+          "value": "16.39",
+          "kind": "number",
+          "unit": "percentage points",
+          "absolute_tolerance": "0.01"
+        }
+      },
+      "max_points": 5,
+      "rubric": {
+        "answer": 2,
+        "evidence": 1,
+        "scope_units": 1,
+        "dependency_and_method": 1
+      }
+    },
+    "verification": {
+      "checked_on": "2026-09-22",
+      "source_verified": true,
+      "agent_run_performed": false
+    }
+  },
+  "RAIN-V2-WDC-005": {
+    "title_zh": "用 Q4 业绩附件完成季度趋势判断",
+    "ticker": "WDC",
+    "company": "Western Digital Corporation",
+    "depends_on": [
+      "RAIN-V2-WDC-004"
+    ],
+    "input_bindings": {
+      "q3_margin": {
+        "kind": "prior",
+        "question_id": "RAIN-V2-WDC-004",
+        "field": "q3_margin",
+        "value": "33.65300784655623365300784656",
+        "unit": "percent"
+      },
+      "q4_revenue": {
+        "kind": "source",
+        "value": "2605",
+        "unit": "USD million",
+        "evidence_label": "q4_actual",
+        "source_id": "WDC-8-K-ex0",
+        "reused_from": "RAIN-WDC-010"
+      },
+      "q4_income": {
+        "kind": "source",
+        "value": "252",
+        "unit": "USD million",
+        "evidence_label": "q4_continuing_income",
+        "source_id": "WDC-8-K-ex0"
+      }
+    },
+    "derivations": [
+      {
+        "field": "q4_margin",
+        "expression": "q4_income / q4_revenue * 100",
+        "unit": "percent",
+        "decimal_places": 2
+      },
+      {
+        "field": "change_pp",
+        "expression": "q4_margin - q3_margin",
+        "unit": "percentage points",
+        "decimal_places": 2
+      },
+      {
+        "field": "improved",
+        "expression": "change_pp > 0",
+        "unit": "boolean",
+        "decimal_places": null
+      }
+    ],
+    "output_nodes": {
+      "q4_revenue": "read_1",
+      "q4_income": "read_2",
+      "q4_margin": "derive_q4_margin",
+      "change_pp": "derive_change_pp",
+      "improved": "derive_improved"
+    },
+    "hop_definition": "conditional_evidence_depth_v2",
+    "hop_plan": [
+      {
+        "id": "input_q3_margin",
+        "kind": "prior",
+        "depends_on": [],
+        "outputs": [
+          "q3_margin"
+        ],
+        "question_id": "RAIN-V2-WDC-004",
+        "field": "q3_margin",
+        "depth": 0
+      },
+      {
+        "id": "read_1",
+        "kind": "retrieve",
+        "depends_on": [],
+        "evidence_block": "WDC-8-K-ex0:Q4FY25 Financial Highlights",
+        "source_ids": [
+          "WDC-8-K-ex0"
+        ],
+        "outputs": [
+          "q4_revenue"
+        ],
+        "depth": 1
+      },
+      {
+        "id": "read_2",
+        "kind": "retrieve",
+        "depends_on": [],
+        "evidence_block": "WDC-8-K-ex0:Condensed Consolidated Statements of Operations",
+        "source_ids": [
+          "WDC-8-K-ex0"
+        ],
+        "outputs": [
+          "q4_income"
+        ],
+        "depth": 1
+      },
+      {
+        "id": "derive_q4_margin",
+        "kind": "calculate",
+        "depends_on": [
+          "read_2",
+          "read_1"
+        ],
+        "outputs": [
+          "q4_margin"
+        ],
+        "expression": "q4_income / q4_revenue * 100",
+        "depth": 2
+      },
+      {
+        "id": "derive_change_pp",
+        "kind": "calculate",
+        "depends_on": [
+          "input_q3_margin",
+          "derive_q4_margin"
+        ],
+        "outputs": [
+          "change_pp"
+        ],
+        "expression": "q4_margin - q3_margin",
+        "depth": 3
+      },
+      {
+        "id": "derive_improved",
+        "kind": "judge",
+        "depends_on": [
+          "derive_change_pp"
+        ],
+        "outputs": [
+          "improved"
+        ],
+        "expression": "change_pp > 0",
+        "depth": 4
+      }
+    ],
+    "hops": 4,
+    "evidence_records": [
+      {
+        "label": "q4_actual",
+        "value": "2605",
+        "unit": "USD million",
+        "source_id": "WDC-8-K-ex0",
+        "locator": "Q4FY25 Financial Highlights, Revenue",
+        "url": "https://www.sec.gov/Archives/edgar/data/106040/000010604025000030/a4ex991-pressreleaseq425.htm#:~:text=Q4FY25%20Financial%20Highlights",
+        "text_fragment": "Q4FY25 Financial Highlights",
+        "evidence_block": "WDC-8-K-ex0:Q4FY25 Financial Highlights"
+      },
+      {
+        "label": "q4_continuing_income",
+        "source_id": "WDC-8-K-ex0",
+        "value": "252",
+        "unit": "USD million",
+        "url": "https://www.sec.gov/Archives/edgar/data/106040/000010604025000030/a4ex991-pressreleaseq425.htm#:~:text=Net%20income%20%28loss%29%20from%20continuing%20operations",
+        "locator": "Condensed Consolidated Statements of Operations; Q4 net income from continuing operations",
+        "text_fragment": "Net income (loss) from continuing operations",
+        "evidence_block": "WDC-8-K-ex0:Condensed Consolidated Statements of Operations"
+      },
+      {
+        "label": "continuing_income",
+        "value": "772",
+        "unit": "USD million",
+        "source_id": "WDC-10-Q",
+        "locator": "Inline XBRL fact #f-176; context c-7",
+        "fact_id": "f-176",
+        "concept": "us-gaap:IncomeLossFromContinuingOperations",
+        "context_id": "c-7",
+        "context": "context: entity: identifier:0000106040 period: startdate:2024-12-28 enddate:2025-03-28",
+        "scale": 6,
+        "decimals": "-6",
+        "original_text": "772",
+        "sign": "+",
+        "url": "https://www.sec.gov/Archives/edgar/data/106040/000010604025000026/wdc-20250328.htm#f-176",
+        "evidence_block": "WDC-10-Q:income_statement"
+      },
+      {
+        "label": "revenue",
+        "value": "2294",
+        "unit": "USD million",
+        "source_id": "WDC-10-Q",
+        "locator": "Inline XBRL fact #f-112; context c-7",
+        "fact_id": "f-112",
+        "concept": "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax",
+        "context_id": "c-7",
+        "context": "context: entity: identifier:0000106040 period: startdate:2024-12-28 enddate:2025-03-28",
+        "scale": 6,
+        "decimals": "-6",
+        "original_text": "2,294",
+        "sign": "+",
+        "url": "https://www.sec.gov/Archives/edgar/data/106040/000010604025000026/wdc-20250328.htm#f-112",
+        "evidence_block": "WDC-10-Q:income_statement"
+      }
+    ],
+    "reused_from_v1": [
+      "RAIN-WDC-010"
+    ],
+    "grading": {
+      "expected_answer": {
+        "q4_revenue": {
+          "value": "2605",
+          "kind": "number",
+          "unit": "USD million",
+          "absolute_tolerance": "0"
+        },
+        "q4_income": {
+          "value": "252",
+          "kind": "number",
+          "unit": "USD million",
+          "absolute_tolerance": "0"
+        },
+        "q4_margin": {
+          "value": "9.67",
+          "kind": "number",
+          "unit": "percent",
+          "absolute_tolerance": "0.01"
+        },
+        "change_pp": {
+          "value": "-23.98",
+          "kind": "number",
+          "unit": "percentage points",
+          "absolute_tolerance": "0.01"
+        },
+        "improved": {
+          "value": false,
+          "kind": "boolean",
+          "unit": "boolean"
+        }
+      },
+      "max_points": 5,
+      "rubric": {
+        "answer": 2,
+        "evidence": 1,
+        "scope_units": 1,
+        "dependency_and_method": 1
+      }
+    },
+    "verification": {
+      "checked_on": "2026-09-22",
+      "source_verified": true,
+      "agent_run_performed": false
+    }
   }
 }

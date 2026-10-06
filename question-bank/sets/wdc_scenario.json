@@ -1,0 +1,106 @@
+[
+  {
+    "id": "RAIN-V2-WDC-001",
+    "question": "Scenario: I am reconciling Western Digital earnings after the Sandisk separation. Establish the correct continuing-operations boundary, bridge total and continuing profit, then check whether Q4 continuing net margin improved from Q3. First, read the 10-Q filed May 2, 2025. Retrieve the Flash separation date, how historical Sandisk results are presented, and the remaining continuing-operations reportable segment. These answers determine the scope used in subsequent steps. Return separation_date: text (date); presentation: text (text); remaining_segment: text (text). Cite the SEC document and precise table/note/exhibit. Reuse prior-stage amounts without intermediate rounding; report percentages/ratios to two decimals and monetary derived amounts to three decimals unless specified.",
+    "type": "SEC Retrieval",
+    "answer": "{\"separation_date\": \"2025-02-21\", \"presentation\": \"discontinued operations\", \"remaining_segment\": \"HDD\"}",
+    "scenario_id": "RAIN-V2-WDC-001",
+    "workflow_step": 1,
+    "total_steps": 5,
+    "hops": 1,
+    "xbrl_concepts": [],
+    "filing_type": "10-Q",
+    "filing_period": "FY2025 ended 2025-06-27; recast continuing-operations presentation",
+    "answer_type": "text_summary",
+    "tool_required": "SEC EDGAR filing/iXBRL retrieval; structured extraction",
+    "source": "https://www.sec.gov/Archives/edgar/data/106040/000010604025000026/wdc-20250328.htm#:~:text=On%20February%2021%2C%202025%2C%20the%20Company%20completed",
+    "reasoning": "Prior-stage dependencies: none. Hop depth 1: depth 1: read_1, read_2, read_3. ",
+    "evidence": "Note 3, Discontinued Operations — https://www.sec.gov/Archives/edgar/data/106040/000010604025000026/wdc-20250328.htm#:~:text=On%20February%2021%2C%202025%2C%20the%20Company%20completed; Note 3 and segment discussion — https://www.sec.gov/Archives/edgar/data/106040/000010604025000026/wdc-20250328.htm#:~:text=The%20historical%20results%20of%20Sandisk%20have%20been%20reflected%20as%20discontinued%20operations; Note 1 / segment reporting discussion — https://www.sec.gov/Archives/edgar/data/106040/000010604025000026/wdc-20250328.htm#:~:text=single%20reportable%20segment%2C%20HDD"
+  },
+  {
+    "id": "RAIN-V2-WDC-002",
+    "question": "Apply Step 1's reporting boundary to the FY2025 10-K filed August 14, 2025. Retrieve continuing-operations revenue, income from continuing operations, and total net income. Confirm that your extraction uses the remaining HDD segment and treats historical Sandisk results as discontinued operations; do not use profit attributable to common shareholders. Return revenue: number (USD million); continuing_income: number (USD million); total_net_income: number (USD million); scope_confirmed: boolean (boolean). Cite the SEC document and precise table/note/exhibit. Reuse prior-stage amounts without intermediate rounding; report percentages/ratios to two decimals and monetary derived amounts to three decimals unless specified.",
+    "type": "XBRL Computation",
+    "answer": "{\"revenue\": \"9520\", \"continuing_income\": \"1643\", \"total_net_income\": \"1889\", \"scope_confirmed\": true}",
+    "scenario_id": "RAIN-V2-WDC-001",
+    "workflow_step": 2,
+    "total_steps": 5,
+    "hops": 1,
+    "xbrl_concepts": [
+      "us-gaap:IncomeLossFromContinuingOperations",
+      "us-gaap:NetIncomeLoss",
+      "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax"
+    ],
+    "filing_type": "10-K",
+    "filing_period": "FY2025 ended 2025-06-27; recast continuing-operations presentation",
+    "answer_type": "calculated_value",
+    "tool_required": "SEC EDGAR filing/iXBRL retrieval; retained prior scenario outputs; arithmetic/comparison",
+    "source": "https://www.sec.gov/Archives/edgar/data/106040/000010604025000038/wdc-20250627.htm#f-136",
+    "reasoning": "Prior-stage dependencies: RAIN-V2-WDC-001. Hop depth 1: depth 1: read_1, derive_scope_confirmed. scope_confirmed = segment == 'HDD' and presentation == 'discontinued operations'",
+    "evidence": "Inline XBRL fact #f-136; context c-1 — https://www.sec.gov/Archives/edgar/data/106040/000010604025000038/wdc-20250627.htm#f-136; Inline XBRL fact #f-187; context c-1 — https://www.sec.gov/Archives/edgar/data/106040/000010604025000038/wdc-20250627.htm#f-187; Inline XBRL fact #f-193; context c-1 — https://www.sec.gov/Archives/edgar/data/106040/000010604025000038/wdc-20250627.htm#f-193; Note 3 and segment discussion — https://www.sec.gov/Archives/edgar/data/106040/000010604025000026/wdc-20250328.htm#:~:text=The%20historical%20results%20of%20Sandisk%20have%20been%20reflected%20as%20discontinued%20operations; Note 1 / segment reporting discussion — https://www.sec.gov/Archives/edgar/data/106040/000010604025000026/wdc-20250328.htm#:~:text=single%20reportable%20segment%2C%20HDD"
+  },
+  {
+    "id": "RAIN-V2-WDC-003",
+    "question": "Using the Step 2 amounts, calculate income from discontinued operations, its percentage of total net income, and the annual continuing net margin. Use total net income minus continuing income for the profit bridge. Retain the unrounded annual margin for the next comparison. Return discontinued_income: number (USD million); discontinued_share_pct: number (percent); annual_continuing_margin: number (percent). Cite the SEC document and precise table/note/exhibit. Reuse prior-stage amounts without intermediate rounding; report percentages/ratios to two decimals and monetary derived amounts to three decimals unless specified.",
+    "type": "XBRL Computation",
+    "answer": "{\"discontinued_income\": \"246.000\", \"discontinued_share_pct\": \"13.02\", \"annual_continuing_margin\": \"17.26\"}",
+    "scenario_id": "RAIN-V2-WDC-001",
+    "workflow_step": 3,
+    "total_steps": 5,
+    "hops": 2,
+    "xbrl_concepts": [
+      "us-gaap:IncomeLossFromContinuingOperations",
+      "us-gaap:NetIncomeLoss",
+      "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax"
+    ],
+    "filing_type": "10-K",
+    "filing_period": "FY2025 ended 2025-06-27; recast continuing-operations presentation",
+    "answer_type": "calculated_value",
+    "tool_required": "retained prior scenario outputs; arithmetic/comparison",
+    "source": "https://www.sec.gov/Archives/edgar/data/106040/000010604025000038/wdc-20250627.htm#f-187",
+    "reasoning": "Prior-stage dependencies: RAIN-V2-WDC-002. Hop depth 2: depth 1: derive_discontinued_income, derive_annual_continuing_margin -> depth 2: derive_discontinued_share_pct. discontinued_income = total_net_income - continuing_income; discontinued_share_pct = discontinued_income / total_net_income * 100; annual_continuing_margin = continuing_income / revenue * 100",
+    "evidence": "Inline XBRL fact #f-187; context c-1 — https://www.sec.gov/Archives/edgar/data/106040/000010604025000038/wdc-20250627.htm#f-187; Inline XBRL fact #f-193; context c-1 — https://www.sec.gov/Archives/edgar/data/106040/000010604025000038/wdc-20250627.htm#f-193; Inline XBRL fact #f-136; context c-1 — https://www.sec.gov/Archives/edgar/data/106040/000010604025000038/wdc-20250627.htm#f-136"
+  },
+  {
+    "id": "RAIN-V2-WDC-004",
+    "question": "Now compare against the annual continuing margin from Step 3. From the May 2, 2025 10-Q retrieve revenue and continuing-operations income for the three months ended March 28, 2025. Calculate Q3 continuing net margin and its percentage-point difference from the annual baseline. Keep the quarterly inputs for Step 5. Return q3_revenue: number (USD million); q3_continuing_income: number (USD million); q3_margin: number (percent); vs_annual_pp: number (percentage points). Cite the SEC document and precise table/note/exhibit. Reuse prior-stage amounts without intermediate rounding; report percentages/ratios to two decimals and monetary derived amounts to three decimals unless specified.",
+    "type": "XBRL Computation",
+    "answer": "{\"q3_revenue\": \"2294\", \"q3_continuing_income\": \"772\", \"q3_margin\": \"33.65\", \"vs_annual_pp\": \"16.39\"}",
+    "scenario_id": "RAIN-V2-WDC-001",
+    "workflow_step": 4,
+    "total_steps": 5,
+    "hops": 3,
+    "xbrl_concepts": [
+      "us-gaap:IncomeLossFromContinuingOperations",
+      "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax"
+    ],
+    "filing_type": "10-Q",
+    "filing_period": "FY2025 ended 2025-06-27; recast continuing-operations presentation",
+    "answer_type": "calculated_value",
+    "tool_required": "SEC EDGAR filing/iXBRL retrieval; retained prior scenario outputs; arithmetic/comparison",
+    "source": "https://www.sec.gov/Archives/edgar/data/106040/000010604025000026/wdc-20250328.htm#f-112",
+    "reasoning": "Prior-stage dependencies: RAIN-V2-WDC-003. Hop depth 3: depth 1: read_1 -> depth 2: derive_q3_margin -> depth 3: derive_vs_annual_pp. q3_margin = q3_continuing_income / q3_revenue * 100; vs_annual_pp = q3_margin - annual_margin",
+    "evidence": "Inline XBRL fact #f-112; context c-7 — https://www.sec.gov/Archives/edgar/data/106040/000010604025000026/wdc-20250328.htm#f-112; Inline XBRL fact #f-176; context c-7 — https://www.sec.gov/Archives/edgar/data/106040/000010604025000026/wdc-20250328.htm#f-176; Inline XBRL fact #f-187; context c-1 — https://www.sec.gov/Archives/edgar/data/106040/000010604025000038/wdc-20250627.htm#f-187; Inline XBRL fact #f-136; context c-1 — https://www.sec.gov/Archives/edgar/data/106040/000010604025000038/wdc-20250627.htm#f-136"
+  },
+  {
+    "id": "RAIN-V2-WDC-005",
+    "question": "Finish the reconciliation using Step 4's Q3 inputs. In the July 30, 2025 8-K Exhibit 99.1, retrieve Q4 revenue and GAAP net income from continuing operations before allocation to common shareholders. Calculate Q4 continuing net margin, its change from Q3 in percentage points, and whether the continuing margin improved. Keep discontinued operations outside both denominators and numerators. Return q4_revenue: number (USD million); q4_income: number (USD million); q4_margin: number (percent); change_pp: number (percentage points); improved: boolean (boolean). Cite the SEC document and precise table/note/exhibit. Reuse prior-stage amounts without intermediate rounding; report percentages/ratios to two decimals and monetary derived amounts to three decimals unless specified.",
+    "type": "SEC Computation",
+    "answer": "{\"q4_revenue\": \"2605\", \"q4_income\": \"252\", \"q4_margin\": \"9.67\", \"change_pp\": \"-23.98\", \"improved\": false}",
+    "scenario_id": "RAIN-V2-WDC-001",
+    "workflow_step": 5,
+    "total_steps": 5,
+    "hops": 4,
+    "xbrl_concepts": [
+      "us-gaap:IncomeLossFromContinuingOperations",
+      "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax"
+    ],
+    "filing_type": "8-K",
+    "filing_period": "FY2025 ended 2025-06-27; recast continuing-operations presentation",
+    "answer_type": "calculated_value",
+    "tool_required": "SEC EDGAR filing/iXBRL retrieval; retained prior scenario outputs; arithmetic/comparison",
+    "source": "https://www.sec.gov/Archives/edgar/data/106040/000010604025000030/a4ex991-pressreleaseq425.htm#:~:text=Q4FY25%20Financial%20Highlights",
+    "reasoning": "Prior-stage dependencies: RAIN-V2-WDC-004. Hop depth 4: depth 1: read_1, read_2 -> depth 2: derive_q4_margin -> depth 3: derive_change_pp -> depth 4: derive_improved. q4_margin = q4_income / q4_revenue * 100; change_pp = q4_margin - q3_margin; improved = change_pp > 0",
+    "evidence": "Q4FY25 Financial Highlights, Revenue — https://www.sec.gov/Archives/edgar/data/106040/000010604025000030/a4ex991-pressreleaseq425.htm#:~:text=Q4FY25%20Financial%20Highlights; Condensed Consolidated Statements of Operations; Q4 net income from continuing operations — https://www.sec.gov/Archives/edgar/data/106040/000010604025000030/a4ex991-pressreleaseq425.htm#:~:text=Net%20income%20%28loss%29%20from%20continuing%20operations; Inline XBRL fact #f-176; context c-7 — https://www.sec.gov/Archives/edgar/data/106040/000010604025000026/wdc-20250328.htm#f-176; Inline XBRL fact #f-112; context c-7 — https://www.sec.gov/Archives/edgar/data/106040/000010604025000026/wdc-20250328.htm#f-112"
+  }
+]
