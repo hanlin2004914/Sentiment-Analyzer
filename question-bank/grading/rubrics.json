@@ -4479,5 +4479,1142 @@
       "source_verified": true,
       "agent_run_performed": false
     }
+  },
+  "RAIN-V2-NTAP-001": {
+    "title_zh": "年度现金生成基线",
+    "ticker": "NTAP",
+    "company": "NetApp, Inc.",
+    "depends_on": [],
+    "input_bindings": {
+      "ocf": {
+        "kind": "source",
+        "value": "1506",
+        "unit": "USD million",
+        "evidence_label": "ocf",
+        "source_id": "NTAP-10-K"
+      },
+      "capex": {
+        "kind": "source",
+        "value": "168",
+        "unit": "USD million",
+        "evidence_label": "capex",
+        "source_id": "NTAP-10-K"
+      }
+    },
+    "derivations": [
+      {
+        "field": "fcf",
+        "expression": "ocf - capex",
+        "unit": "USD million",
+        "decimal_places": 3
+      }
+    ],
+    "output_nodes": {
+      "ocf": "read_1",
+      "capex": "read_1",
+      "fcf": "derive_fcf"
+    },
+    "hop_definition": "conditional_evidence_depth_v2",
+    "hop_plan": [
+      {
+        "id": "read_1",
+        "kind": "retrieve",
+        "depends_on": [],
+        "evidence_block": "NTAP-10-K:cash_flow_statement",
+        "source_ids": [
+          "NTAP-10-K"
+        ],
+        "outputs": [
+          "ocf",
+          "capex"
+        ],
+        "depth": 1
+      },
+      {
+        "id": "derive_fcf",
+        "kind": "calculate",
+        "depends_on": [
+          "read_1"
+        ],
+        "outputs": [
+          "fcf"
+        ],
+        "expression": "ocf - capex",
+        "depth": 2
+      }
+    ],
+    "hops": 2,
+    "evidence_records": [
+      {
+        "label": "ocf",
+        "source_id": "NTAP-10-K",
+        "value": "1506",
+        "unit": "USD million",
+        "concept": "us-gaap:NetCashProvidedByUsedInOperatingActivities",
+        "context_id": "C_f2fb2466-cb01-4ab5-b44d-0d5b9de47556",
+        "context": "context: entity: identifier:0001002047 period: startdate:2024-04-27 enddate:2025-04-25",
+        "fact_id": "F_a0fe11f1-2c4b-4d75-ab7a-175c8da6a420",
+        "original_text": "1,506",
+        "scale": 6,
+        "sign": "+",
+        "url": "https://www.sec.gov/Archives/edgar/data/1002047/000095017025083705/ntap-20250425.htm#F_a0fe11f1-2c4b-4d75-ab7a-175c8da6a420",
+        "locator": "cash_flow_statement; inline XBRL #F_a0fe11f1-2c4b-4d75-ab7a-175c8da6a420, context C_f2fb2466-cb01-4ab5-b44d-0d5b9de47556",
+        "evidence_block": "NTAP-10-K:cash_flow_statement"
+      },
+      {
+        "label": "capex",
+        "source_id": "NTAP-10-K",
+        "value": "168",
+        "unit": "USD million",
+        "concept": "us-gaap:PaymentsToAcquirePropertyPlantAndEquipment",
+        "context_id": "C_f2fb2466-cb01-4ab5-b44d-0d5b9de47556",
+        "context": "context: entity: identifier:0001002047 period: startdate:2024-04-27 enddate:2025-04-25",
+        "fact_id": "F_8a8875e1-1c6e-40fc-a8f1-82d6747cc8fd",
+        "original_text": "168",
+        "scale": 6,
+        "sign": "+",
+        "url": "https://www.sec.gov/Archives/edgar/data/1002047/000095017025083705/ntap-20250425.htm#F_8a8875e1-1c6e-40fc-a8f1-82d6747cc8fd",
+        "locator": "cash_flow_statement; inline XBRL #F_8a8875e1-1c6e-40fc-a8f1-82d6747cc8fd, context C_f2fb2466-cb01-4ab5-b44d-0d5b9de47556",
+        "evidence_block": "NTAP-10-K:cash_flow_statement"
+      }
+    ],
+    "reused_from_v1": [],
+    "grading": {
+      "expected_answer": {
+        "ocf": {
+          "value": "1506",
+          "kind": "number",
+          "unit": "USD million",
+          "absolute_tolerance": "0"
+        },
+        "capex": {
+          "value": "168",
+          "kind": "number",
+          "unit": "USD million",
+          "absolute_tolerance": "0"
+        },
+        "fcf": {
+          "value": "1338.000",
+          "kind": "number",
+          "unit": "USD million",
+          "absolute_tolerance": "0.001"
+        }
+      },
+      "max_points": 5,
+      "rubric": {
+        "answer": 2,
+        "evidence": 1,
+        "scope_units": 1,
+        "dependency_and_method": 1
+      }
+    },
+    "verification": {
+      "checked_on": "2026-09-22",
+      "source_verified": true,
+      "agent_run_performed": false
+    }
+  },
+  "RAIN-V2-NTAP-002": {
+    "title_zh": "对账年度分红与回购",
+    "ticker": "NTAP",
+    "company": "NetApp, Inc.",
+    "depends_on": [
+      "RAIN-V2-NTAP-001"
+    ],
+    "input_bindings": {
+      "fcf": {
+        "kind": "prior",
+        "question_id": "RAIN-V2-NTAP-001",
+        "field": "fcf",
+        "value": "1338",
+        "unit": "USD million"
+      },
+      "dividends": {
+        "kind": "source",
+        "value": "424",
+        "unit": "USD million",
+        "evidence_label": "dividends",
+        "source_id": "NTAP-10-K"
+      },
+      "buybacks": {
+        "kind": "source",
+        "value": "1150",
+        "unit": "USD million",
+        "evidence_label": "buybacks",
+        "source_id": "NTAP-10-K"
+      }
+    },
+    "derivations": [
+      {
+        "field": "cash_returns",
+        "expression": "dividends + buybacks",
+        "unit": "USD million",
+        "decimal_places": 3
+      },
+      {
+        "field": "funding_gap",
+        "expression": "cash_returns - fcf",
+        "unit": "USD million",
+        "decimal_places": 3
+      }
+    ],
+    "output_nodes": {
+      "dividends": "read_1",
+      "buybacks": "read_1",
+      "cash_returns": "derive_cash_returns",
+      "funding_gap": "derive_funding_gap"
+    },
+    "hop_definition": "conditional_evidence_depth_v2",
+    "hop_plan": [
+      {
+        "id": "input_fcf",
+        "kind": "prior",
+        "depends_on": [],
+        "outputs": [
+          "fcf"
+        ],
+        "question_id": "RAIN-V2-NTAP-001",
+        "field": "fcf",
+        "depth": 0
+      },
+      {
+        "id": "read_1",
+        "kind": "retrieve",
+        "depends_on": [],
+        "evidence_block": "NTAP-10-K:cash_flow_statement",
+        "source_ids": [
+          "NTAP-10-K"
+        ],
+        "outputs": [
+          "dividends",
+          "buybacks"
+        ],
+        "depth": 1
+      },
+      {
+        "id": "derive_cash_returns",
+        "kind": "calculate",
+        "depends_on": [
+          "read_1"
+        ],
+        "outputs": [
+          "cash_returns"
+        ],
+        "expression": "dividends + buybacks",
+        "depth": 2
+      },
+      {
+        "id": "derive_funding_gap",
+        "kind": "calculate",
+        "depends_on": [
+          "derive_cash_returns",
+          "input_fcf"
+        ],
+        "outputs": [
+          "funding_gap"
+        ],
+        "expression": "cash_returns - fcf",
+        "depth": 3
+      }
+    ],
+    "hops": 3,
+    "evidence_records": [
+      {
+        "label": "dividends",
+        "source_id": "NTAP-10-K",
+        "value": "424",
+        "unit": "USD million",
+        "concept": "us-gaap:PaymentsOfDividends",
+        "context_id": "C_f2fb2466-cb01-4ab5-b44d-0d5b9de47556",
+        "context": "context: entity: identifier:0001002047 period: startdate:2024-04-27 enddate:2025-04-25",
+        "fact_id": "F_9936df1b-82b6-4e96-8501-14bd3b11eb48",
+        "original_text": "424",
+        "scale": 6,
+        "sign": "+",
+        "url": "https://www.sec.gov/Archives/edgar/data/1002047/000095017025083705/ntap-20250425.htm#F_9936df1b-82b6-4e96-8501-14bd3b11eb48",
+        "locator": "cash_flow_statement; inline XBRL #F_9936df1b-82b6-4e96-8501-14bd3b11eb48, context C_f2fb2466-cb01-4ab5-b44d-0d5b9de47556",
+        "evidence_block": "NTAP-10-K:cash_flow_statement"
+      },
+      {
+        "label": "buybacks",
+        "source_id": "NTAP-10-K",
+        "value": "1150",
+        "unit": "USD million",
+        "concept": "us-gaap:PaymentsForRepurchaseOfCommonStock",
+        "context_id": "C_f2fb2466-cb01-4ab5-b44d-0d5b9de47556",
+        "context": "context: entity: identifier:0001002047 period: startdate:2024-04-27 enddate:2025-04-25",
+        "fact_id": "F_5c042745-d155-47d8-808a-04bf54e496af",
+        "original_text": "1,150",
+        "scale": 6,
+        "sign": "+",
+        "url": "https://www.sec.gov/Archives/edgar/data/1002047/000095017025083705/ntap-20250425.htm#F_5c042745-d155-47d8-808a-04bf54e496af",
+        "locator": "cash_flow_statement; inline XBRL #F_5c042745-d155-47d8-808a-04bf54e496af, context C_f2fb2466-cb01-4ab5-b44d-0d5b9de47556",
+        "evidence_block": "NTAP-10-K:cash_flow_statement"
+      },
+      {
+        "label": "capex",
+        "source_id": "NTAP-10-K",
+        "value": "168",
+        "unit": "USD million",
+        "concept": "us-gaap:PaymentsToAcquirePropertyPlantAndEquipment",
+        "context_id": "C_f2fb2466-cb01-4ab5-b44d-0d5b9de47556",
+        "context": "context: entity: identifier:0001002047 period: startdate:2024-04-27 enddate:2025-04-25",
+        "fact_id": "F_8a8875e1-1c6e-40fc-a8f1-82d6747cc8fd",
+        "original_text": "168",
+        "scale": 6,
+        "sign": "+",
+        "url": "https://www.sec.gov/Archives/edgar/data/1002047/000095017025083705/ntap-20250425.htm#F_8a8875e1-1c6e-40fc-a8f1-82d6747cc8fd",
+        "locator": "cash_flow_statement; inline XBRL #F_8a8875e1-1c6e-40fc-a8f1-82d6747cc8fd, context C_f2fb2466-cb01-4ab5-b44d-0d5b9de47556",
+        "evidence_block": "NTAP-10-K:cash_flow_statement"
+      },
+      {
+        "label": "ocf",
+        "source_id": "NTAP-10-K",
+        "value": "1506",
+        "unit": "USD million",
+        "concept": "us-gaap:NetCashProvidedByUsedInOperatingActivities",
+        "context_id": "C_f2fb2466-cb01-4ab5-b44d-0d5b9de47556",
+        "context": "context: entity: identifier:0001002047 period: startdate:2024-04-27 enddate:2025-04-25",
+        "fact_id": "F_a0fe11f1-2c4b-4d75-ab7a-175c8da6a420",
+        "original_text": "1,506",
+        "scale": 6,
+        "sign": "+",
+        "url": "https://www.sec.gov/Archives/edgar/data/1002047/000095017025083705/ntap-20250425.htm#F_a0fe11f1-2c4b-4d75-ab7a-175c8da6a420",
+        "locator": "cash_flow_statement; inline XBRL #F_a0fe11f1-2c4b-4d75-ab7a-175c8da6a420, context C_f2fb2466-cb01-4ab5-b44d-0d5b9de47556",
+        "evidence_block": "NTAP-10-K:cash_flow_statement"
+      }
+    ],
+    "reused_from_v1": [],
+    "grading": {
+      "expected_answer": {
+        "dividends": {
+          "value": "424",
+          "kind": "number",
+          "unit": "USD million",
+          "absolute_tolerance": "0"
+        },
+        "buybacks": {
+          "value": "1150",
+          "kind": "number",
+          "unit": "USD million",
+          "absolute_tolerance": "0"
+        },
+        "cash_returns": {
+          "value": "1574.000",
+          "kind": "number",
+          "unit": "USD million",
+          "absolute_tolerance": "0.001"
+        },
+        "funding_gap": {
+          "value": "236.000",
+          "kind": "number",
+          "unit": "USD million",
+          "absolute_tolerance": "0.001"
+        }
+      },
+      "max_points": 5,
+      "rubric": {
+        "answer": 2,
+        "evidence": 1,
+        "scope_units": 1,
+        "dependency_and_method": 1
+      }
+    },
+    "verification": {
+      "checked_on": "2026-09-22",
+      "source_verified": true,
+      "agent_run_performed": false
+    }
+  },
+  "RAIN-V2-NTAP-003": {
+    "title_zh": "在现金自给规则下反推回购额度",
+    "ticker": "NTAP",
+    "company": "NetApp, Inc.",
+    "depends_on": [
+      "RAIN-V2-NTAP-002"
+    ],
+    "input_bindings": {
+      "actual_buybacks": {
+        "kind": "prior",
+        "question_id": "RAIN-V2-NTAP-002",
+        "field": "buybacks",
+        "value": "1150",
+        "unit": "USD million"
+      },
+      "required_cut": {
+        "kind": "prior",
+        "question_id": "RAIN-V2-NTAP-002",
+        "field": "funding_gap",
+        "value": "236",
+        "unit": "USD million"
+      }
+    },
+    "derivations": [
+      {
+        "field": "max_buybacks",
+        "expression": "actual_buybacks - required_cut",
+        "unit": "USD million",
+        "decimal_places": 3
+      },
+      {
+        "field": "cut_pct",
+        "expression": "required_cut / actual_buybacks * 100",
+        "unit": "percent",
+        "decimal_places": 2
+      }
+    ],
+    "output_nodes": {
+      "max_buybacks": "derive_max_buybacks",
+      "required_cut": "input_required_cut",
+      "cut_pct": "derive_cut_pct"
+    },
+    "hop_definition": "conditional_evidence_depth_v2",
+    "hop_plan": [
+      {
+        "id": "input_actual_buybacks",
+        "kind": "prior",
+        "depends_on": [],
+        "outputs": [
+          "actual_buybacks"
+        ],
+        "question_id": "RAIN-V2-NTAP-002",
+        "field": "buybacks",
+        "depth": 0
+      },
+      {
+        "id": "input_required_cut",
+        "kind": "prior",
+        "depends_on": [],
+        "outputs": [
+          "required_cut"
+        ],
+        "question_id": "RAIN-V2-NTAP-002",
+        "field": "funding_gap",
+        "depth": 0
+      },
+      {
+        "id": "derive_max_buybacks",
+        "kind": "calculate",
+        "depends_on": [
+          "input_actual_buybacks",
+          "input_required_cut"
+        ],
+        "outputs": [
+          "max_buybacks"
+        ],
+        "expression": "actual_buybacks - required_cut",
+        "depth": 1
+      },
+      {
+        "id": "derive_cut_pct",
+        "kind": "calculate",
+        "depends_on": [
+          "input_actual_buybacks",
+          "input_required_cut"
+        ],
+        "outputs": [
+          "cut_pct"
+        ],
+        "expression": "required_cut / actual_buybacks * 100",
+        "depth": 1
+      }
+    ],
+    "hops": 1,
+    "evidence_records": [
+      {
+        "label": "buybacks",
+        "source_id": "NTAP-10-K",
+        "value": "1150",
+        "unit": "USD million",
+        "concept": "us-gaap:PaymentsForRepurchaseOfCommonStock",
+        "context_id": "C_f2fb2466-cb01-4ab5-b44d-0d5b9de47556",
+        "context": "context: entity: identifier:0001002047 period: startdate:2024-04-27 enddate:2025-04-25",
+        "fact_id": "F_5c042745-d155-47d8-808a-04bf54e496af",
+        "original_text": "1,150",
+        "scale": 6,
+        "sign": "+",
+        "url": "https://www.sec.gov/Archives/edgar/data/1002047/000095017025083705/ntap-20250425.htm#F_5c042745-d155-47d8-808a-04bf54e496af",
+        "locator": "cash_flow_statement; inline XBRL #F_5c042745-d155-47d8-808a-04bf54e496af, context C_f2fb2466-cb01-4ab5-b44d-0d5b9de47556",
+        "evidence_block": "NTAP-10-K:cash_flow_statement"
+      },
+      {
+        "label": "dividends",
+        "source_id": "NTAP-10-K",
+        "value": "424",
+        "unit": "USD million",
+        "concept": "us-gaap:PaymentsOfDividends",
+        "context_id": "C_f2fb2466-cb01-4ab5-b44d-0d5b9de47556",
+        "context": "context: entity: identifier:0001002047 period: startdate:2024-04-27 enddate:2025-04-25",
+        "fact_id": "F_9936df1b-82b6-4e96-8501-14bd3b11eb48",
+        "original_text": "424",
+        "scale": 6,
+        "sign": "+",
+        "url": "https://www.sec.gov/Archives/edgar/data/1002047/000095017025083705/ntap-20250425.htm#F_9936df1b-82b6-4e96-8501-14bd3b11eb48",
+        "locator": "cash_flow_statement; inline XBRL #F_9936df1b-82b6-4e96-8501-14bd3b11eb48, context C_f2fb2466-cb01-4ab5-b44d-0d5b9de47556",
+        "evidence_block": "NTAP-10-K:cash_flow_statement"
+      },
+      {
+        "label": "capex",
+        "source_id": "NTAP-10-K",
+        "value": "168",
+        "unit": "USD million",
+        "concept": "us-gaap:PaymentsToAcquirePropertyPlantAndEquipment",
+        "context_id": "C_f2fb2466-cb01-4ab5-b44d-0d5b9de47556",
+        "context": "context: entity: identifier:0001002047 period: startdate:2024-04-27 enddate:2025-04-25",
+        "fact_id": "F_8a8875e1-1c6e-40fc-a8f1-82d6747cc8fd",
+        "original_text": "168",
+        "scale": 6,
+        "sign": "+",
+        "url": "https://www.sec.gov/Archives/edgar/data/1002047/000095017025083705/ntap-20250425.htm#F_8a8875e1-1c6e-40fc-a8f1-82d6747cc8fd",
+        "locator": "cash_flow_statement; inline XBRL #F_8a8875e1-1c6e-40fc-a8f1-82d6747cc8fd, context C_f2fb2466-cb01-4ab5-b44d-0d5b9de47556",
+        "evidence_block": "NTAP-10-K:cash_flow_statement"
+      },
+      {
+        "label": "ocf",
+        "source_id": "NTAP-10-K",
+        "value": "1506",
+        "unit": "USD million",
+        "concept": "us-gaap:NetCashProvidedByUsedInOperatingActivities",
+        "context_id": "C_f2fb2466-cb01-4ab5-b44d-0d5b9de47556",
+        "context": "context: entity: identifier:0001002047 period: startdate:2024-04-27 enddate:2025-04-25",
+        "fact_id": "F_a0fe11f1-2c4b-4d75-ab7a-175c8da6a420",
+        "original_text": "1,506",
+        "scale": 6,
+        "sign": "+",
+        "url": "https://www.sec.gov/Archives/edgar/data/1002047/000095017025083705/ntap-20250425.htm#F_a0fe11f1-2c4b-4d75-ab7a-175c8da6a420",
+        "locator": "cash_flow_statement; inline XBRL #F_a0fe11f1-2c4b-4d75-ab7a-175c8da6a420, context C_f2fb2466-cb01-4ab5-b44d-0d5b9de47556",
+        "evidence_block": "NTAP-10-K:cash_flow_statement"
+      }
+    ],
+    "reused_from_v1": [],
+    "grading": {
+      "expected_answer": {
+        "max_buybacks": {
+          "value": "914.000",
+          "kind": "number",
+          "unit": "USD million",
+          "absolute_tolerance": "0.001"
+        },
+        "required_cut": {
+          "value": "236",
+          "kind": "number",
+          "unit": "USD million",
+          "absolute_tolerance": "0"
+        },
+        "cut_pct": {
+          "value": "20.52",
+          "kind": "number",
+          "unit": "percent",
+          "absolute_tolerance": "0.01"
+        }
+      },
+      "max_points": 5,
+      "rubric": {
+        "answer": 2,
+        "evidence": 1,
+        "scope_units": 1,
+        "dependency_and_method": 1
+      }
+    },
+    "verification": {
+      "checked_on": "2026-09-22",
+      "source_verified": true,
+      "agent_run_performed": false
+    }
+  },
+  "RAIN-V2-NTAP-004": {
+    "title_zh": "将年度预算与首季实际现金流对照",
+    "ticker": "NTAP",
+    "company": "NetApp, Inc.",
+    "depends_on": [
+      "RAIN-V2-NTAP-003"
+    ],
+    "input_bindings": {
+      "annual_budget": {
+        "kind": "prior",
+        "question_id": "RAIN-V2-NTAP-003",
+        "field": "max_buybacks",
+        "value": "914",
+        "unit": "USD million"
+      },
+      "ocf": {
+        "kind": "source",
+        "value": "673",
+        "unit": "USD million",
+        "evidence_label": "ocf",
+        "source_id": "NTAP-10-Q"
+      },
+      "capex": {
+        "kind": "source",
+        "value": "53",
+        "unit": "USD million",
+        "evidence_label": "capex",
+        "source_id": "NTAP-10-Q"
+      },
+      "dividends": {
+        "kind": "source",
+        "value": "104",
+        "unit": "USD million",
+        "evidence_label": "dividends",
+        "source_id": "NTAP-10-Q"
+      },
+      "buybacks": {
+        "kind": "source",
+        "value": "300",
+        "unit": "USD million",
+        "evidence_label": "buybacks",
+        "source_id": "NTAP-10-Q"
+      },
+      "quarters": {
+        "kind": "assumption",
+        "value": "4",
+        "unit": "quarters",
+        "description": "Scenario assumption stated in the question"
+      }
+    },
+    "derivations": [
+      {
+        "field": "quarter_fcf",
+        "expression": "ocf - capex",
+        "unit": "USD million",
+        "decimal_places": 3
+      },
+      {
+        "field": "cash_surplus",
+        "expression": "quarter_fcf - dividends - buybacks",
+        "unit": "USD million",
+        "decimal_places": 3
+      },
+      {
+        "field": "pacing_excess",
+        "expression": "buybacks - annual_budget / quarters",
+        "unit": "USD million",
+        "decimal_places": 3
+      }
+    ],
+    "output_nodes": {
+      "quarter_fcf": "derive_quarter_fcf",
+      "cash_surplus": "derive_cash_surplus",
+      "pacing_excess": "derive_pacing_excess"
+    },
+    "hop_definition": "conditional_evidence_depth_v2",
+    "hop_plan": [
+      {
+        "id": "input_annual_budget",
+        "kind": "prior",
+        "depends_on": [],
+        "outputs": [
+          "annual_budget"
+        ],
+        "question_id": "RAIN-V2-NTAP-003",
+        "field": "max_buybacks",
+        "depth": 0
+      },
+      {
+        "id": "read_1",
+        "kind": "retrieve",
+        "depends_on": [],
+        "evidence_block": "NTAP-10-Q:cash_flow_statement",
+        "source_ids": [
+          "NTAP-10-Q"
+        ],
+        "outputs": [
+          "ocf",
+          "capex",
+          "dividends",
+          "buybacks"
+        ],
+        "depth": 1
+      },
+      {
+        "id": "input_quarters",
+        "kind": "assumption",
+        "depends_on": [],
+        "outputs": [
+          "quarters"
+        ],
+        "description": "Scenario assumption stated in the question",
+        "depth": 0
+      },
+      {
+        "id": "derive_quarter_fcf",
+        "kind": "calculate",
+        "depends_on": [
+          "read_1"
+        ],
+        "outputs": [
+          "quarter_fcf"
+        ],
+        "expression": "ocf - capex",
+        "depth": 2
+      },
+      {
+        "id": "derive_cash_surplus",
+        "kind": "calculate",
+        "depends_on": [
+          "read_1",
+          "derive_quarter_fcf"
+        ],
+        "outputs": [
+          "cash_surplus"
+        ],
+        "expression": "quarter_fcf - dividends - buybacks",
+        "depth": 3
+      },
+      {
+        "id": "derive_pacing_excess",
+        "kind": "calculate",
+        "depends_on": [
+          "input_annual_budget",
+          "read_1",
+          "input_quarters"
+        ],
+        "outputs": [
+          "pacing_excess"
+        ],
+        "expression": "buybacks - annual_budget / quarters",
+        "depth": 2
+      }
+    ],
+    "hops": 3,
+    "evidence_records": [
+      {
+        "label": "ocf",
+        "source_id": "NTAP-10-Q",
+        "value": "673",
+        "unit": "USD million",
+        "concept": "us-gaap:NetCashProvidedByUsedInOperatingActivities",
+        "context_id": "C_05082623-6c4f-41f9-9b4d-1efc6387cf9d",
+        "context": "context: entity: identifier:0001002047 period: startdate:2025-04-26 enddate:2025-07-25",
+        "fact_id": "F_5f63e9b1-dcc0-4f34-b07d-50c11cf00c1c",
+        "original_text": "673",
+        "scale": 6,
+        "sign": "+",
+        "url": "https://www.sec.gov/Archives/edgar/data/1002047/000119312525189700/ntap-20250725.htm#F_5f63e9b1-dcc0-4f34-b07d-50c11cf00c1c",
+        "locator": "cash_flow_statement; inline XBRL #F_5f63e9b1-dcc0-4f34-b07d-50c11cf00c1c, context C_05082623-6c4f-41f9-9b4d-1efc6387cf9d",
+        "evidence_block": "NTAP-10-Q:cash_flow_statement"
+      },
+      {
+        "label": "capex",
+        "source_id": "NTAP-10-Q",
+        "value": "53",
+        "unit": "USD million",
+        "concept": "us-gaap:PaymentsToAcquirePropertyPlantAndEquipment",
+        "context_id": "C_05082623-6c4f-41f9-9b4d-1efc6387cf9d",
+        "context": "context: entity: identifier:0001002047 period: startdate:2025-04-26 enddate:2025-07-25",
+        "fact_id": "F_c21d39d6-d7b5-4837-87b2-dbfa6e69c505",
+        "original_text": "53",
+        "scale": 6,
+        "sign": "+",
+        "url": "https://www.sec.gov/Archives/edgar/data/1002047/000119312525189700/ntap-20250725.htm#F_c21d39d6-d7b5-4837-87b2-dbfa6e69c505",
+        "locator": "cash_flow_statement; inline XBRL #F_c21d39d6-d7b5-4837-87b2-dbfa6e69c505, context C_05082623-6c4f-41f9-9b4d-1efc6387cf9d",
+        "evidence_block": "NTAP-10-Q:cash_flow_statement"
+      },
+      {
+        "label": "dividends",
+        "source_id": "NTAP-10-Q",
+        "value": "104",
+        "unit": "USD million",
+        "concept": "us-gaap:PaymentsOfDividends",
+        "context_id": "C_05082623-6c4f-41f9-9b4d-1efc6387cf9d",
+        "context": "context: entity: identifier:0001002047 period: startdate:2025-04-26 enddate:2025-07-25",
+        "fact_id": "F_476b7657-e9e0-4f4e-9ea0-a89d5309fea4",
+        "original_text": "104",
+        "scale": 6,
+        "sign": "+",
+        "url": "https://www.sec.gov/Archives/edgar/data/1002047/000119312525189700/ntap-20250725.htm#F_476b7657-e9e0-4f4e-9ea0-a89d5309fea4",
+        "locator": "cash_flow_statement; inline XBRL #F_476b7657-e9e0-4f4e-9ea0-a89d5309fea4, context C_05082623-6c4f-41f9-9b4d-1efc6387cf9d",
+        "evidence_block": "NTAP-10-Q:cash_flow_statement"
+      },
+      {
+        "label": "buybacks",
+        "source_id": "NTAP-10-Q",
+        "value": "300",
+        "unit": "USD million",
+        "concept": "us-gaap:PaymentsForRepurchaseOfCommonStock",
+        "context_id": "C_05082623-6c4f-41f9-9b4d-1efc6387cf9d",
+        "context": "context: entity: identifier:0001002047 period: startdate:2025-04-26 enddate:2025-07-25",
+        "fact_id": "F_9fc1fbf1-e8bf-4a2b-abde-11c948b6c576",
+        "original_text": "300",
+        "scale": 6,
+        "sign": "+",
+        "url": "https://www.sec.gov/Archives/edgar/data/1002047/000119312525189700/ntap-20250725.htm#F_9fc1fbf1-e8bf-4a2b-abde-11c948b6c576",
+        "locator": "cash_flow_statement; inline XBRL #F_9fc1fbf1-e8bf-4a2b-abde-11c948b6c576, context C_05082623-6c4f-41f9-9b4d-1efc6387cf9d",
+        "evidence_block": "NTAP-10-Q:cash_flow_statement"
+      },
+      {
+        "label": "buybacks",
+        "source_id": "NTAP-10-K",
+        "value": "1150",
+        "unit": "USD million",
+        "concept": "us-gaap:PaymentsForRepurchaseOfCommonStock",
+        "context_id": "C_f2fb2466-cb01-4ab5-b44d-0d5b9de47556",
+        "context": "context: entity: identifier:0001002047 period: startdate:2024-04-27 enddate:2025-04-25",
+        "fact_id": "F_5c042745-d155-47d8-808a-04bf54e496af",
+        "original_text": "1,150",
+        "scale": 6,
+        "sign": "+",
+        "url": "https://www.sec.gov/Archives/edgar/data/1002047/000095017025083705/ntap-20250425.htm#F_5c042745-d155-47d8-808a-04bf54e496af",
+        "locator": "cash_flow_statement; inline XBRL #F_5c042745-d155-47d8-808a-04bf54e496af, context C_f2fb2466-cb01-4ab5-b44d-0d5b9de47556",
+        "evidence_block": "NTAP-10-K:cash_flow_statement"
+      },
+      {
+        "label": "dividends",
+        "source_id": "NTAP-10-K",
+        "value": "424",
+        "unit": "USD million",
+        "concept": "us-gaap:PaymentsOfDividends",
+        "context_id": "C_f2fb2466-cb01-4ab5-b44d-0d5b9de47556",
+        "context": "context: entity: identifier:0001002047 period: startdate:2024-04-27 enddate:2025-04-25",
+        "fact_id": "F_9936df1b-82b6-4e96-8501-14bd3b11eb48",
+        "original_text": "424",
+        "scale": 6,
+        "sign": "+",
+        "url": "https://www.sec.gov/Archives/edgar/data/1002047/000095017025083705/ntap-20250425.htm#F_9936df1b-82b6-4e96-8501-14bd3b11eb48",
+        "locator": "cash_flow_statement; inline XBRL #F_9936df1b-82b6-4e96-8501-14bd3b11eb48, context C_f2fb2466-cb01-4ab5-b44d-0d5b9de47556",
+        "evidence_block": "NTAP-10-K:cash_flow_statement"
+      },
+      {
+        "label": "capex",
+        "source_id": "NTAP-10-K",
+        "value": "168",
+        "unit": "USD million",
+        "concept": "us-gaap:PaymentsToAcquirePropertyPlantAndEquipment",
+        "context_id": "C_f2fb2466-cb01-4ab5-b44d-0d5b9de47556",
+        "context": "context: entity: identifier:0001002047 period: startdate:2024-04-27 enddate:2025-04-25",
+        "fact_id": "F_8a8875e1-1c6e-40fc-a8f1-82d6747cc8fd",
+        "original_text": "168",
+        "scale": 6,
+        "sign": "+",
+        "url": "https://www.sec.gov/Archives/edgar/data/1002047/000095017025083705/ntap-20250425.htm#F_8a8875e1-1c6e-40fc-a8f1-82d6747cc8fd",
+        "locator": "cash_flow_statement; inline XBRL #F_8a8875e1-1c6e-40fc-a8f1-82d6747cc8fd, context C_f2fb2466-cb01-4ab5-b44d-0d5b9de47556",
+        "evidence_block": "NTAP-10-K:cash_flow_statement"
+      },
+      {
+        "label": "ocf",
+        "source_id": "NTAP-10-K",
+        "value": "1506",
+        "unit": "USD million",
+        "concept": "us-gaap:NetCashProvidedByUsedInOperatingActivities",
+        "context_id": "C_f2fb2466-cb01-4ab5-b44d-0d5b9de47556",
+        "context": "context: entity: identifier:0001002047 period: startdate:2024-04-27 enddate:2025-04-25",
+        "fact_id": "F_a0fe11f1-2c4b-4d75-ab7a-175c8da6a420",
+        "original_text": "1,506",
+        "scale": 6,
+        "sign": "+",
+        "url": "https://www.sec.gov/Archives/edgar/data/1002047/000095017025083705/ntap-20250425.htm#F_a0fe11f1-2c4b-4d75-ab7a-175c8da6a420",
+        "locator": "cash_flow_statement; inline XBRL #F_a0fe11f1-2c4b-4d75-ab7a-175c8da6a420, context C_f2fb2466-cb01-4ab5-b44d-0d5b9de47556",
+        "evidence_block": "NTAP-10-K:cash_flow_statement"
+      }
+    ],
+    "reused_from_v1": [],
+    "grading": {
+      "expected_answer": {
+        "quarter_fcf": {
+          "value": "620.000",
+          "kind": "number",
+          "unit": "USD million",
+          "absolute_tolerance": "0.001"
+        },
+        "cash_surplus": {
+          "value": "216.000",
+          "kind": "number",
+          "unit": "USD million",
+          "absolute_tolerance": "0.001"
+        },
+        "pacing_excess": {
+          "value": "71.500",
+          "kind": "number",
+          "unit": "USD million",
+          "absolute_tolerance": "0.001"
+        }
+      },
+      "max_points": 5,
+      "rubric": {
+        "answer": 2,
+        "evidence": 1,
+        "scope_units": 1,
+        "dependency_and_method": 1
+      }
+    },
+    "verification": {
+      "checked_on": "2026-09-22",
+      "source_verified": true,
+      "agent_run_performed": false
+    }
+  },
+  "RAIN-V2-NTAP-005": {
+    "title_zh": "形成双重约束下的资本回报结论",
+    "ticker": "NTAP",
+    "company": "NetApp, Inc.",
+    "depends_on": [
+      "RAIN-V2-NTAP-004"
+    ],
+    "input_bindings": {
+      "surplus": {
+        "kind": "prior",
+        "question_id": "RAIN-V2-NTAP-004",
+        "field": "cash_surplus",
+        "value": "216",
+        "unit": "USD million"
+      },
+      "pacing_excess": {
+        "kind": "prior",
+        "question_id": "RAIN-V2-NTAP-004",
+        "field": "pacing_excess",
+        "value": "71.5",
+        "unit": "USD million"
+      }
+    },
+    "derivations": [
+      {
+        "field": "over_pacing_benchmark",
+        "expression": "pacing_excess > 0",
+        "unit": "boolean",
+        "decimal_places": null
+      },
+      {
+        "field": "cash_funding_shortfall",
+        "expression": "surplus < 0",
+        "unit": "boolean",
+        "decimal_places": null
+      },
+      {
+        "field": "cash_only_headroom",
+        "expression": "surplus",
+        "unit": "USD million",
+        "decimal_places": 3
+      }
+    ],
+    "output_nodes": {
+      "over_pacing_benchmark": "derive_over_pacing_benchmark",
+      "cash_funding_shortfall": "derive_cash_funding_shortfall",
+      "cash_only_headroom": "derive_cash_only_headroom"
+    },
+    "hop_definition": "conditional_evidence_depth_v2",
+    "hop_plan": [
+      {
+        "id": "input_surplus",
+        "kind": "prior",
+        "depends_on": [],
+        "outputs": [
+          "surplus"
+        ],
+        "question_id": "RAIN-V2-NTAP-004",
+        "field": "cash_surplus",
+        "depth": 0
+      },
+      {
+        "id": "input_pacing_excess",
+        "kind": "prior",
+        "depends_on": [],
+        "outputs": [
+          "pacing_excess"
+        ],
+        "question_id": "RAIN-V2-NTAP-004",
+        "field": "pacing_excess",
+        "depth": 0
+      },
+      {
+        "id": "derive_over_pacing_benchmark",
+        "kind": "judge",
+        "depends_on": [
+          "input_pacing_excess"
+        ],
+        "outputs": [
+          "over_pacing_benchmark"
+        ],
+        "expression": "pacing_excess > 0",
+        "depth": 1
+      },
+      {
+        "id": "derive_cash_funding_shortfall",
+        "kind": "judge",
+        "depends_on": [
+          "input_surplus"
+        ],
+        "outputs": [
+          "cash_funding_shortfall"
+        ],
+        "expression": "surplus < 0",
+        "depth": 1
+      },
+      {
+        "id": "derive_cash_only_headroom",
+        "kind": "alias",
+        "depends_on": [
+          "input_surplus"
+        ],
+        "outputs": [
+          "cash_only_headroom"
+        ],
+        "expression": "surplus",
+        "depth": 0
+      }
+    ],
+    "hops": 1,
+    "evidence_records": [
+      {
+        "label": "buybacks",
+        "source_id": "NTAP-10-K",
+        "value": "1150",
+        "unit": "USD million",
+        "concept": "us-gaap:PaymentsForRepurchaseOfCommonStock",
+        "context_id": "C_f2fb2466-cb01-4ab5-b44d-0d5b9de47556",
+        "context": "context: entity: identifier:0001002047 period: startdate:2024-04-27 enddate:2025-04-25",
+        "fact_id": "F_5c042745-d155-47d8-808a-04bf54e496af",
+        "original_text": "1,150",
+        "scale": 6,
+        "sign": "+",
+        "url": "https://www.sec.gov/Archives/edgar/data/1002047/000095017025083705/ntap-20250425.htm#F_5c042745-d155-47d8-808a-04bf54e496af",
+        "locator": "cash_flow_statement; inline XBRL #F_5c042745-d155-47d8-808a-04bf54e496af, context C_f2fb2466-cb01-4ab5-b44d-0d5b9de47556",
+        "evidence_block": "NTAP-10-K:cash_flow_statement"
+      },
+      {
+        "label": "dividends",
+        "source_id": "NTAP-10-K",
+        "value": "424",
+        "unit": "USD million",
+        "concept": "us-gaap:PaymentsOfDividends",
+        "context_id": "C_f2fb2466-cb01-4ab5-b44d-0d5b9de47556",
+        "context": "context: entity: identifier:0001002047 period: startdate:2024-04-27 enddate:2025-04-25",
+        "fact_id": "F_9936df1b-82b6-4e96-8501-14bd3b11eb48",
+        "original_text": "424",
+        "scale": 6,
+        "sign": "+",
+        "url": "https://www.sec.gov/Archives/edgar/data/1002047/000095017025083705/ntap-20250425.htm#F_9936df1b-82b6-4e96-8501-14bd3b11eb48",
+        "locator": "cash_flow_statement; inline XBRL #F_9936df1b-82b6-4e96-8501-14bd3b11eb48, context C_f2fb2466-cb01-4ab5-b44d-0d5b9de47556",
+        "evidence_block": "NTAP-10-K:cash_flow_statement"
+      },
+      {
+        "label": "capex",
+        "source_id": "NTAP-10-K",
+        "value": "168",
+        "unit": "USD million",
+        "concept": "us-gaap:PaymentsToAcquirePropertyPlantAndEquipment",
+        "context_id": "C_f2fb2466-cb01-4ab5-b44d-0d5b9de47556",
+        "context": "context: entity: identifier:0001002047 period: startdate:2024-04-27 enddate:2025-04-25",
+        "fact_id": "F_8a8875e1-1c6e-40fc-a8f1-82d6747cc8fd",
+        "original_text": "168",
+        "scale": 6,
+        "sign": "+",
+        "url": "https://www.sec.gov/Archives/edgar/data/1002047/000095017025083705/ntap-20250425.htm#F_8a8875e1-1c6e-40fc-a8f1-82d6747cc8fd",
+        "locator": "cash_flow_statement; inline XBRL #F_8a8875e1-1c6e-40fc-a8f1-82d6747cc8fd, context C_f2fb2466-cb01-4ab5-b44d-0d5b9de47556",
+        "evidence_block": "NTAP-10-K:cash_flow_statement"
+      },
+      {
+        "label": "ocf",
+        "source_id": "NTAP-10-K",
+        "value": "1506",
+        "unit": "USD million",
+        "concept": "us-gaap:NetCashProvidedByUsedInOperatingActivities",
+        "context_id": "C_f2fb2466-cb01-4ab5-b44d-0d5b9de47556",
+        "context": "context: entity: identifier:0001002047 period: startdate:2024-04-27 enddate:2025-04-25",
+        "fact_id": "F_a0fe11f1-2c4b-4d75-ab7a-175c8da6a420",
+        "original_text": "1,506",
+        "scale": 6,
+        "sign": "+",
+        "url": "https://www.sec.gov/Archives/edgar/data/1002047/000095017025083705/ntap-20250425.htm#F_a0fe11f1-2c4b-4d75-ab7a-175c8da6a420",
+        "locator": "cash_flow_statement; inline XBRL #F_a0fe11f1-2c4b-4d75-ab7a-175c8da6a420, context C_f2fb2466-cb01-4ab5-b44d-0d5b9de47556",
+        "evidence_block": "NTAP-10-K:cash_flow_statement"
+      },
+      {
+        "label": "buybacks",
+        "source_id": "NTAP-10-Q",
+        "value": "300",
+        "unit": "USD million",
+        "concept": "us-gaap:PaymentsForRepurchaseOfCommonStock",
+        "context_id": "C_05082623-6c4f-41f9-9b4d-1efc6387cf9d",
+        "context": "context: entity: identifier:0001002047 period: startdate:2025-04-26 enddate:2025-07-25",
+        "fact_id": "F_9fc1fbf1-e8bf-4a2b-abde-11c948b6c576",
+        "original_text": "300",
+        "scale": 6,
+        "sign": "+",
+        "url": "https://www.sec.gov/Archives/edgar/data/1002047/000119312525189700/ntap-20250725.htm#F_9fc1fbf1-e8bf-4a2b-abde-11c948b6c576",
+        "locator": "cash_flow_statement; inline XBRL #F_9fc1fbf1-e8bf-4a2b-abde-11c948b6c576, context C_05082623-6c4f-41f9-9b4d-1efc6387cf9d",
+        "evidence_block": "NTAP-10-Q:cash_flow_statement"
+      },
+      {
+        "label": "dividends",
+        "source_id": "NTAP-10-Q",
+        "value": "104",
+        "unit": "USD million",
+        "concept": "us-gaap:PaymentsOfDividends",
+        "context_id": "C_05082623-6c4f-41f9-9b4d-1efc6387cf9d",
+        "context": "context: entity: identifier:0001002047 period: startdate:2025-04-26 enddate:2025-07-25",
+        "fact_id": "F_476b7657-e9e0-4f4e-9ea0-a89d5309fea4",
+        "original_text": "104",
+        "scale": 6,
+        "sign": "+",
+        "url": "https://www.sec.gov/Archives/edgar/data/1002047/000119312525189700/ntap-20250725.htm#F_476b7657-e9e0-4f4e-9ea0-a89d5309fea4",
+        "locator": "cash_flow_statement; inline XBRL #F_476b7657-e9e0-4f4e-9ea0-a89d5309fea4, context C_05082623-6c4f-41f9-9b4d-1efc6387cf9d",
+        "evidence_block": "NTAP-10-Q:cash_flow_statement"
+      },
+      {
+        "label": "capex",
+        "source_id": "NTAP-10-Q",
+        "value": "53",
+        "unit": "USD million",
+        "concept": "us-gaap:PaymentsToAcquirePropertyPlantAndEquipment",
+        "context_id": "C_05082623-6c4f-41f9-9b4d-1efc6387cf9d",
+        "context": "context: entity: identifier:0001002047 period: startdate:2025-04-26 enddate:2025-07-25",
+        "fact_id": "F_c21d39d6-d7b5-4837-87b2-dbfa6e69c505",
+        "original_text": "53",
+        "scale": 6,
+        "sign": "+",
+        "url": "https://www.sec.gov/Archives/edgar/data/1002047/000119312525189700/ntap-20250725.htm#F_c21d39d6-d7b5-4837-87b2-dbfa6e69c505",
+        "locator": "cash_flow_statement; inline XBRL #F_c21d39d6-d7b5-4837-87b2-dbfa6e69c505, context C_05082623-6c4f-41f9-9b4d-1efc6387cf9d",
+        "evidence_block": "NTAP-10-Q:cash_flow_statement"
+      },
+      {
+        "label": "ocf",
+        "source_id": "NTAP-10-Q",
+        "value": "673",
+        "unit": "USD million",
+        "concept": "us-gaap:NetCashProvidedByUsedInOperatingActivities",
+        "context_id": "C_05082623-6c4f-41f9-9b4d-1efc6387cf9d",
+        "context": "context: entity: identifier:0001002047 period: startdate:2025-04-26 enddate:2025-07-25",
+        "fact_id": "F_5f63e9b1-dcc0-4f34-b07d-50c11cf00c1c",
+        "original_text": "673",
+        "scale": 6,
+        "sign": "+",
+        "url": "https://www.sec.gov/Archives/edgar/data/1002047/000119312525189700/ntap-20250725.htm#F_5f63e9b1-dcc0-4f34-b07d-50c11cf00c1c",
+        "locator": "cash_flow_statement; inline XBRL #F_5f63e9b1-dcc0-4f34-b07d-50c11cf00c1c, context C_05082623-6c4f-41f9-9b4d-1efc6387cf9d",
+        "evidence_block": "NTAP-10-Q:cash_flow_statement"
+      }
+    ],
+    "reused_from_v1": [],
+    "grading": {
+      "expected_answer": {
+        "over_pacing_benchmark": {
+          "value": true,
+          "kind": "boolean",
+          "unit": "boolean"
+        },
+        "cash_funding_shortfall": {
+          "value": false,
+          "kind": "boolean",
+          "unit": "boolean"
+        },
+        "cash_only_headroom": {
+          "value": "216.000",
+          "kind": "number",
+          "unit": "USD million",
+          "absolute_tolerance": "0.001"
+        }
+      },
+      "max_points": 5,
+      "rubric": {
+        "answer": 2,
+        "evidence": 1,
+        "scope_units": 1,
+        "dependency_and_method": 1
+      }
+    },
+    "verification": {
+      "checked_on": "2026-09-22",
+      "source_verified": true,
+      "agent_run_performed": false
+    }
   }
 }

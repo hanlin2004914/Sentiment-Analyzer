@@ -198,5 +198,54 @@
         "hops": 3
       }
     ]
+  },
+  "NTAP": {
+    "company": "NetApp, Inc.",
+    "ticker_at_filing": "NTAP",
+    "title_zh": "资本回报预算：回购节奏与现金自给分开看",
+    "user_request": "I am reviewing NetApp's capital-return budget. Determine whether dividends and buybacks were funded by simple FCF, set a no-external-funding buyback limit, then distinguish quarterly budget pacing from actual cash coverage.",
+    "scope": "FY2025 ended 2025-04-25 and FY2026 Q1 ended 2025-07-25; explicit budget assumptions",
+    "scenario_id": "RAIN-V2-NTAP-001",
+    "file": "ntap_scenario.json",
+    "steps": [
+      {
+        "id": "RAIN-V2-NTAP-001",
+        "title_zh": "年度现金生成基线",
+        "depends_on": [],
+        "hops": 2
+      },
+      {
+        "id": "RAIN-V2-NTAP-002",
+        "title_zh": "对账年度分红与回购",
+        "depends_on": [
+          "RAIN-V2-NTAP-001"
+        ],
+        "hops": 3
+      },
+      {
+        "id": "RAIN-V2-NTAP-003",
+        "title_zh": "在现金自给规则下反推回购额度",
+        "depends_on": [
+          "RAIN-V2-NTAP-002"
+        ],
+        "hops": 1
+      },
+      {
+        "id": "RAIN-V2-NTAP-004",
+        "title_zh": "将年度预算与首季实际现金流对照",
+        "depends_on": [
+          "RAIN-V2-NTAP-003"
+        ],
+        "hops": 3
+      },
+      {
+        "id": "RAIN-V2-NTAP-005",
+        "title_zh": "形成双重约束下的资本回报结论",
+        "depends_on": [
+          "RAIN-V2-NTAP-004"
+        ],
+        "hops": 1
+      }
+    ]
   }
 }

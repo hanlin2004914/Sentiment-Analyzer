@@ -49,6 +49,30 @@
     "parent_source_id": "MU-8-K",
     "exhibit": "99.1"
   },
+  "NTAP-10-K": {
+    "ticker": "NTAP",
+    "cik": "0001002047",
+    "form": "10-K",
+    "filed": "2025-06-09",
+    "report_date": "2025-04-25",
+    "accession": "0000950170-25-083705",
+    "url": "https://www.sec.gov/Archives/edgar/data/1002047/000095017025083705/ntap-20250425.htm",
+    "company": "NetApp, Inc.",
+    "retrieved_on": "2026-09-22",
+    "sha256": "79d13533be4152b5a3d889c23c117bfe0fae933cb032a8180cb308ffd710cb5e"
+  },
+  "NTAP-10-Q": {
+    "ticker": "NTAP",
+    "cik": "0001002047",
+    "form": "10-Q",
+    "filed": "2025-08-27",
+    "report_date": "2025-07-25",
+    "accession": "0001193125-25-189700",
+    "url": "https://www.sec.gov/Archives/edgar/data/1002047/000119312525189700/ntap-20250725.htm",
+    "company": "NetApp, Inc.",
+    "retrieved_on": "2026-09-22",
+    "sha256": "6948e3510a39763e2ec74f67d4f62e885acc9a9c447c43017c748dc4e518f8e8"
+  },
   "SNDK-10-K": {
     "ticker": "SNDK",
     "cik": "0002023554",
