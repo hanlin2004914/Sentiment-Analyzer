@@ -1,0 +1,106 @@
+[
+  {
+    "id": "XBRL-CMP-026",
+    "question": "Using Walmart's FY2026 Q2 10-Q XBRL facts (accession 0000104169-25-000137; 2025-05-01 through 2025-07-31), derive quarterly membership and other income as total revenues minus net sales. Return USD millions. Use the listed concepts and only facts from this accession.",
+    "type": "XBRL Computation",
+    "answer": "WMT_FY2026_Q2_quarter_membership_other_income",
+    "scenario_id": "XBRL-COMPUTE-006",
+    "workflow_step": 1,
+    "total_steps": 5,
+    "hops": 2,
+    "xbrl_concepts": [
+      "us-gaap:Revenues",
+      "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax"
+    ],
+    "filing_type": "10-Q",
+    "filing_period": "FY2026 Q2; 2025-05-01 through 2025-07-31",
+    "answer_type": "calculated_value",
+    "tool_required": "edgartools (XBRL facts and period filtering) + calculation",
+    "source": "https://data.sec.gov/api/xbrl/companyfacts/CIK0000104169.json",
+    "reasoning": "Subtract RevenueFromContractWithCustomerExcludingAssessedTax from Revenues for the same quarter and divide by 1,000,000. Match accession, exact dates and unit USD; do not select by fy/fp alone. SEC API USD facts are in full dollars; convert to millions only when requested.",
+    "evidence": "https://www.sec.gov/Archives/edgar/data/104169/000010416925000137/wmt-20250731.htm; Statements of Income; Total revenues, Net sales, and Membership and other income; accession 0000104169-25-000137, filed 2025-08-29; 2025-05-01 through 2025-07-31; unit USD."
+  },
+  {
+    "id": "XBRL-CMP-027",
+    "question": "Using Walmart's FY2026 Q2 10-Q XBRL facts (accession 0000104169-25-000137; 2025-05-01 through 2025-07-31), calculate quarterly operating income divided by total revenues, including membership and other income. Return a percentage rounded to two decimals. Use the listed concepts and only facts from this accession.",
+    "type": "XBRL Computation",
+    "answer": "WMT_FY2026_Q2_quarter_operating_margin_total_revenue",
+    "scenario_id": "XBRL-COMPUTE-006",
+    "workflow_step": 2,
+    "total_steps": 5,
+    "hops": 2,
+    "xbrl_concepts": [
+      "us-gaap:OperatingIncomeLoss",
+      "us-gaap:Revenues"
+    ],
+    "filing_type": "10-Q",
+    "filing_period": "FY2026 Q2; 2025-05-01 through 2025-07-31",
+    "answer_type": "calculated_value",
+    "tool_required": "edgartools (XBRL facts and period filtering) + calculation",
+    "source": "https://data.sec.gov/api/xbrl/companyfacts/CIK0000104169.json",
+    "reasoning": "Divide OperatingIncomeLoss by Revenues and multiply by 100. The denominator is explicitly total revenues, not net sales. Match accession, exact dates and unit USD; do not select by fy/fp alone. SEC API USD facts are in full dollars; convert to millions only when requested.",
+    "evidence": "https://www.sec.gov/Archives/edgar/data/104169/000010416925000137/wmt-20250731.htm; Statements of Income; Operating income and Total revenues; accession 0000104169-25-000137, filed 2025-08-29; 2025-05-01 through 2025-07-31; unit USD."
+  },
+  {
+    "id": "XBRL-CMP-028",
+    "question": "Using Walmart's FY2026 Q2 10-Q XBRL facts (accession 0000104169-25-000137; instants 2025-01-31 and 2025-07-31), calculate inventory growth from January 31, 2025 to July 31, 2025 using the two instant facts in this filing. Return a signed percentage rounded to two decimals. Use the listed concepts and only facts from this accession.",
+    "type": "XBRL Computation",
+    "answer": "WMT_FY2026_Q2_inventory_change_from_year_end",
+    "scenario_id": "XBRL-COMPUTE-006",
+    "workflow_step": 3,
+    "total_steps": 5,
+    "hops": 3,
+    "xbrl_concepts": [
+      "us-gaap:InventoryNet"
+    ],
+    "filing_type": "10-Q",
+    "filing_period": "FY2026 Q2; instants 2025-01-31 and 2025-07-31",
+    "answer_type": "calculated_value",
+    "tool_required": "edgartools (XBRL facts and period filtering) + calculation",
+    "source": "https://data.sec.gov/api/xbrl/companyfacts/CIK0000104169.json",
+    "reasoning": "Compute (ending inventory / beginning inventory - 1) * 100 using two instant facts from the same accession. Match accession, exact dates and unit USD; do not select by fy/fp alone. SEC API USD facts are in full dollars; convert to millions only when requested.",
+    "evidence": "https://www.sec.gov/Archives/edgar/data/104169/000010416925000137/wmt-20250731.htm; Balance Sheets; Inventories, January 31 and July 31, 2025 columns; accession 0000104169-25-000137, filed 2025-08-29; instants 2025-01-31 and 2025-07-31; unit USD."
+  },
+  {
+    "id": "XBRL-CMP-029",
+    "question": "Using Walmart's FY2026 Q2 10-Q XBRL facts (accession 0000104169-25-000137; 2025-02-01 through 2025-07-31), calculate property and equipment purchases as a percentage of operating cash flow for the six-month year-to-date period. Return a percentage rounded to two decimals. Use the listed concepts and only facts from this accession.",
+    "type": "XBRL Computation",
+    "answer": "WMT_FY2026_Q2_YTD_capex_cashflow_ratio",
+    "scenario_id": "XBRL-COMPUTE-006",
+    "workflow_step": 4,
+    "total_steps": 5,
+    "hops": 2,
+    "xbrl_concepts": [
+      "us-gaap:PaymentsToAcquirePropertyPlantAndEquipment",
+      "us-gaap:NetCashProvidedByUsedInOperatingActivities"
+    ],
+    "filing_type": "10-Q",
+    "filing_period": "FY2026 Q2; 2025-02-01 through 2025-07-31",
+    "answer_type": "calculated_value",
+    "tool_required": "edgartools (XBRL facts and period filtering) + calculation",
+    "source": "https://data.sec.gov/api/xbrl/companyfacts/CIK0000104169.json",
+    "reasoning": "Divide positive capital-purchase payments by operating cash flow and multiply by 100 using the same six-month duration. Match accession, exact dates and unit USD; do not select by fy/fp alone. SEC API USD facts are in full dollars; convert to millions only when requested.",
+    "evidence": "https://www.sec.gov/Archives/edgar/data/104169/000010416925000137/wmt-20250731.htm; Statements of Cash Flows; property and equipment payments and operating cash flow; accession 0000104169-25-000137, filed 2025-08-29; 2025-02-01 through 2025-07-31; unit USD."
+  },
+  {
+    "id": "XBRL-CMP-030",
+    "question": "Using Walmart's FY2026 Q2 10-Q XBRL facts (accession 0000104169-25-000137; 2025-02-01 through 2025-07-31), calculate year-to-date simple free cash flow, defined here as operating cash flow minus property and equipment purchases. Return USD millions. Use the listed concepts and only facts from this accession.",
+    "type": "XBRL Computation",
+    "answer": "WMT_FY2026_Q2_YTD_simple_free_cash_flow",
+    "scenario_id": "XBRL-COMPUTE-006",
+    "workflow_step": 5,
+    "total_steps": 5,
+    "hops": 2,
+    "xbrl_concepts": [
+      "us-gaap:NetCashProvidedByUsedInOperatingActivities",
+      "us-gaap:PaymentsToAcquirePropertyPlantAndEquipment"
+    ],
+    "filing_type": "10-Q",
+    "filing_period": "FY2026 Q2; 2025-02-01 through 2025-07-31",
+    "answer_type": "calculated_value",
+    "tool_required": "edgartools (XBRL facts and period filtering) + calculation",
+    "source": "https://data.sec.gov/api/xbrl/companyfacts/CIK0000104169.json",
+    "reasoning": "Subtract positive capital-purchase payments from operating cash flow and divide by 1,000,000. Match accession, exact dates and unit USD; do not select by fy/fp alone. SEC API USD facts are in full dollars; convert to millions only when requested.",
+    "evidence": "https://www.sec.gov/Archives/edgar/data/104169/000010416925000137/wmt-20250731.htm; Statements of Cash Flows; operating cash flow and property and equipment payments; accession 0000104169-25-000137, filed 2025-08-29; 2025-02-01 through 2025-07-31; unit USD."
+  }
+]
