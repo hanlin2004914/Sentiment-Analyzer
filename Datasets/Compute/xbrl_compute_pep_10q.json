@@ -1,0 +1,106 @@
+[
+  {
+    "id": "XBRL-CMP-021",
+    "question": "Using PepsiCo's FY2025 Q2 10-Q XBRL facts (accession 0000077476-25-000044; 2025-03-23 through 2025-06-14), calculate cost of sales as a percentage of net revenue for the 12-week quarter. Return a percentage rounded to two decimals. Use the listed concepts and only facts from this accession.",
+    "type": "XBRL Computation",
+    "answer": "PEP_FY2025_Q2_quarter_cost_of_sales_ratio",
+    "scenario_id": "XBRL-COMPUTE-005",
+    "workflow_step": 1,
+    "total_steps": 5,
+    "hops": 2,
+    "xbrl_concepts": [
+      "us-gaap:CostOfGoodsAndServicesSold",
+      "us-gaap:Revenues"
+    ],
+    "filing_type": "10-Q",
+    "filing_period": "FY2025 Q2; 2025-03-23 through 2025-06-14",
+    "answer_type": "calculated_value",
+    "tool_required": "edgartools (XBRL facts and period filtering) + calculation",
+    "source": "https://data.sec.gov/api/xbrl/companyfacts/CIK0000077476.json",
+    "reasoning": "Divide quarterly cost of sales by quarterly revenues and multiply by 100. Match accession, exact dates and unit USD; do not select by fy/fp alone. SEC API USD facts are in full dollars; convert to millions only when requested.",
+    "evidence": "https://www.sec.gov/Archives/edgar/data/77476/000007747625000044/pep-20250614.htm; Income Statement; Cost of sales and Net Revenue; accession 0000077476-25-000044, filed 2025-07-17; 2025-03-23 through 2025-06-14; unit USD."
+  },
+  {
+    "id": "XBRL-CMP-022",
+    "question": "Using PepsiCo's FY2025 Q2 10-Q XBRL facts (accession 0000077476-25-000044; as of 2025-06-14), calculate total liabilities as a percentage of total assets at the reporting date. Return a percentage rounded to two decimals. This is a total-liabilities measure, not an interest-bearing-debt ratio. Use the listed concepts and only facts from this accession.",
+    "type": "XBRL Computation",
+    "answer": "PEP_FY2025_Q2_closing_liabilities_asset_ratio",
+    "scenario_id": "XBRL-COMPUTE-005",
+    "workflow_step": 2,
+    "total_steps": 5,
+    "hops": 2,
+    "xbrl_concepts": [
+      "us-gaap:Liabilities",
+      "us-gaap:Assets"
+    ],
+    "filing_type": "10-Q",
+    "filing_period": "FY2025 Q2; as of 2025-06-14",
+    "answer_type": "calculated_value",
+    "tool_required": "edgartools (XBRL facts and period filtering) + calculation",
+    "source": "https://data.sec.gov/api/xbrl/companyfacts/CIK0000077476.json",
+    "reasoning": "Divide Liabilities by Assets at the same instant and multiply by 100. Match accession, exact dates and unit USD; do not select by fy/fp alone. SEC API USD facts are in full dollars; convert to millions only when requested.",
+    "evidence": "https://www.sec.gov/Archives/edgar/data/77476/000007747625000044/pep-20250614.htm; Balance Sheet; Total Liabilities and Total Assets; accession 0000077476-25-000044, filed 2025-07-17; as of 2025-06-14; unit USD."
+  },
+  {
+    "id": "XBRL-CMP-023",
+    "question": "Using PepsiCo's FY2025 Q2 10-Q XBRL facts (accession 0000077476-25-000044; 2024-12-29 through 2025-06-14), calculate cash dividend payments as a percentage of operating cash flow for the 24-week year-to-date period. Return a percentage rounded to two decimals. Use the listed concepts and only facts from this accession.",
+    "type": "XBRL Computation",
+    "answer": "PEP_FY2025_Q2_YTD_dividend_cashflow_ratio",
+    "scenario_id": "XBRL-COMPUTE-005",
+    "workflow_step": 3,
+    "total_steps": 5,
+    "hops": 2,
+    "xbrl_concepts": [
+      "us-gaap:PaymentsOfDividends",
+      "us-gaap:NetCashProvidedByUsedInOperatingActivities"
+    ],
+    "filing_type": "10-Q",
+    "filing_period": "FY2025 Q2; 2024-12-29 through 2025-06-14",
+    "answer_type": "calculated_value",
+    "tool_required": "edgartools (XBRL facts and period filtering) + calculation",
+    "source": "https://data.sec.gov/api/xbrl/companyfacts/CIK0000077476.json",
+    "reasoning": "Divide the positive cash dividend payment magnitude by operating cash flow and multiply by 100. Values above 100% are permitted. Match accession, exact dates and unit USD; do not select by fy/fp alone. SEC API USD facts are in full dollars; convert to millions only when requested.",
+    "evidence": "https://www.sec.gov/Archives/edgar/data/77476/000007747625000044/pep-20250614.htm; Cash Flow Statement; cash dividends and operating cash flow; accession 0000077476-25-000044, filed 2025-07-17; 2024-12-29 through 2025-06-14; unit USD."
+  },
+  {
+    "id": "XBRL-CMP-024",
+    "question": "Using PepsiCo's FY2025 Q2 10-Q XBRL facts (accession 0000077476-25-000044; as of 2025-06-14), calculate current assets minus current liabilities at the reporting date. Return signed USD millions. Use the listed concepts and only facts from this accession.",
+    "type": "XBRL Computation",
+    "answer": "PEP_FY2025_Q2_closing_working_capital",
+    "scenario_id": "XBRL-COMPUTE-005",
+    "workflow_step": 4,
+    "total_steps": 5,
+    "hops": 2,
+    "xbrl_concepts": [
+      "us-gaap:AssetsCurrent",
+      "us-gaap:LiabilitiesCurrent"
+    ],
+    "filing_type": "10-Q",
+    "filing_period": "FY2025 Q2; as of 2025-06-14",
+    "answer_type": "calculated_value",
+    "tool_required": "edgartools (XBRL facts and period filtering) + calculation",
+    "source": "https://data.sec.gov/api/xbrl/companyfacts/CIK0000077476.json",
+    "reasoning": "Subtract current liabilities from current assets and divide by 1,000,000; preserve a deficit. Match accession, exact dates and unit USD; do not select by fy/fp alone. SEC API USD facts are in full dollars; convert to millions only when requested.",
+    "evidence": "https://www.sec.gov/Archives/edgar/data/77476/000007747625000044/pep-20250614.htm; Balance Sheet; Total Current Assets and Total Current Liabilities; accession 0000077476-25-000044, filed 2025-07-17; as of 2025-06-14; unit USD."
+  },
+  {
+    "id": "XBRL-CMP-025",
+    "question": "Using PepsiCo's FY2025 Q2 10-Q XBRL facts (accession 0000077476-25-000044; quarter 2025-03-23 through 2025-06-14; year-to-date 2024-12-29 through 2025-06-14), derive gross profit for the first 12 weeks of FY2025 by subtracting Q2 gross profit from 24-week year-to-date gross profit. Return USD millions. Use the listed concepts and only facts from this accession.",
+    "type": "XBRL Computation",
+    "answer": "PEP_FY2025_Q2_Q1_derived_gross_profit",
+    "scenario_id": "XBRL-COMPUTE-005",
+    "workflow_step": 5,
+    "total_steps": 5,
+    "hops": 3,
+    "xbrl_concepts": [
+      "us-gaap:GrossProfit"
+    ],
+    "filing_type": "10-Q",
+    "filing_period": "FY2025 Q2; quarter 2025-03-23 through 2025-06-14; year-to-date 2024-12-29 through 2025-06-14",
+    "answer_type": "calculated_value",
+    "tool_required": "edgartools (XBRL facts and period filtering) + calculation",
+    "source": "https://data.sec.gov/api/xbrl/companyfacts/CIK0000077476.json",
+    "reasoning": "Select GrossProfit for both durations and subtract the quarter from year-to-date. Match accession, exact dates and unit USD; do not select by fy/fp alone. SEC API USD facts are in full dollars; convert to millions only when requested.",
+    "evidence": "https://www.sec.gov/Archives/edgar/data/77476/000007747625000044/pep-20250614.htm; Income Statement; Gross profit, 12-week and 24-week columns; accession 0000077476-25-000044, filed 2025-07-17; quarter 2025-03-23 through 2025-06-14; year-to-date 2024-12-29 through 2025-06-14; unit USD."
+  }
+]

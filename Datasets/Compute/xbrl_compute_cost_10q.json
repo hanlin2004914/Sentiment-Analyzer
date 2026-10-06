@@ -1,0 +1,106 @@
+[
+  {
+    "id": "XBRL-CMP-031",
+    "question": "Using Costco's FY2025 Q3 10-Q XBRL facts (accession 0000909832-25-000033; 2025-02-17 through 2025-05-11), calculate operating income as a percentage of total revenue, including membership fees, for the 12-week quarter. Return a percentage rounded to two decimals. Use the listed concepts and only facts from this accession.",
+    "type": "XBRL Computation",
+    "answer": "COST_FY2025_Q3_quarter_operating_margin",
+    "scenario_id": "XBRL-COMPUTE-007",
+    "workflow_step": 1,
+    "total_steps": 5,
+    "hops": 2,
+    "xbrl_concepts": [
+      "us-gaap:OperatingIncomeLoss",
+      "us-gaap:Revenues"
+    ],
+    "filing_type": "10-Q",
+    "filing_period": "FY2025 Q3; 2025-02-17 through 2025-05-11",
+    "answer_type": "calculated_value",
+    "tool_required": "edgartools (XBRL facts and period filtering) + calculation",
+    "source": "https://data.sec.gov/api/xbrl/companyfacts/CIK0000909832.json",
+    "reasoning": "Divide quarterly operating income by quarterly total revenue and multiply by 100. Match accession, exact dates and unit USD; do not select by fy/fp alone. SEC API USD facts are in full dollars; convert to millions only when requested.",
+    "evidence": "https://www.sec.gov/Archives/edgar/data/909832/000090983225000033/cost-20250511.htm; Statements of Income; Operating income and Total revenue; accession 0000909832-25-000033, filed 2025-06-05; 2025-02-17 through 2025-05-11; unit USD."
+  },
+  {
+    "id": "XBRL-CMP-032",
+    "question": "Using Costco's FY2025 Q3 10-Q XBRL facts (accession 0000909832-25-000033; 2025-02-17 through 2025-05-11), calculate net income as a percentage of total revenue for the 12-week quarter. Return a percentage rounded to two decimals. Use the listed concepts and only facts from this accession.",
+    "type": "XBRL Computation",
+    "answer": "COST_FY2025_Q3_quarter_net_margin",
+    "scenario_id": "XBRL-COMPUTE-007",
+    "workflow_step": 2,
+    "total_steps": 5,
+    "hops": 2,
+    "xbrl_concepts": [
+      "us-gaap:NetIncomeLoss",
+      "us-gaap:Revenues"
+    ],
+    "filing_type": "10-Q",
+    "filing_period": "FY2025 Q3; 2025-02-17 through 2025-05-11",
+    "answer_type": "calculated_value",
+    "tool_required": "edgartools (XBRL facts and period filtering) + calculation",
+    "source": "https://data.sec.gov/api/xbrl/companyfacts/CIK0000909832.json",
+    "reasoning": "Divide quarterly NetIncomeLoss by quarterly Revenues and multiply by 100. Match accession, exact dates and unit USD; do not select by fy/fp alone. SEC API USD facts are in full dollars; convert to millions only when requested.",
+    "evidence": "https://www.sec.gov/Archives/edgar/data/909832/000090983225000033/cost-20250511.htm; Statements of Income; Net income and Total revenue; accession 0000909832-25-000033, filed 2025-06-05; 2025-02-17 through 2025-05-11; unit USD."
+  },
+  {
+    "id": "XBRL-CMP-033",
+    "question": "Using Costco's FY2025 Q3 10-Q XBRL facts (accession 0000909832-25-000033; 2024-09-02 through 2025-05-11), calculate combined cash dividends paid and common-stock repurchase payments for the 36-week year-to-date period. Return USD millions. Use the listed concepts and only facts from this accession.",
+    "type": "XBRL Computation",
+    "answer": "COST_FY2025_Q3_YTD_cash_distributions",
+    "scenario_id": "XBRL-COMPUTE-007",
+    "workflow_step": 3,
+    "total_steps": 5,
+    "hops": 2,
+    "xbrl_concepts": [
+      "us-gaap:PaymentsOfDividends",
+      "us-gaap:PaymentsForRepurchaseOfCommonStock"
+    ],
+    "filing_type": "10-Q",
+    "filing_period": "FY2025 Q3; 2024-09-02 through 2025-05-11",
+    "answer_type": "calculated_value",
+    "tool_required": "edgartools (XBRL facts and period filtering) + calculation",
+    "source": "https://data.sec.gov/api/xbrl/companyfacts/CIK0000909832.json",
+    "reasoning": "Add the positive payment magnitudes for dividends and share repurchases, then divide by 1,000,000. Do not use declarations or repurchase authorizations. Match accession, exact dates and unit USD; do not select by fy/fp alone. SEC API USD facts are in full dollars; convert to millions only when requested.",
+    "evidence": "https://www.sec.gov/Archives/edgar/data/909832/000090983225000033/cost-20250511.htm; Statements of Cash Flows; dividend payments and repurchases of common stock; accession 0000909832-25-000033, filed 2025-06-05; 2024-09-02 through 2025-05-11; unit USD."
+  },
+  {
+    "id": "XBRL-CMP-034",
+    "question": "Using Costco's FY2025 Q3 10-Q XBRL facts (accession 0000909832-25-000033; as of 2025-05-11), calculate cash and cash equivalents divided by current liabilities at the reporting date. Exclude short-term investments. Return a ratio rounded to four decimals. Use the listed concepts and only facts from this accession.",
+    "type": "XBRL Computation",
+    "answer": "COST_FY2025_Q3_closing_cash_only_coverage",
+    "scenario_id": "XBRL-COMPUTE-007",
+    "workflow_step": 4,
+    "total_steps": 5,
+    "hops": 2,
+    "xbrl_concepts": [
+      "us-gaap:CashAndCashEquivalentsAtCarryingValue",
+      "us-gaap:LiabilitiesCurrent"
+    ],
+    "filing_type": "10-Q",
+    "filing_period": "FY2025 Q3; as of 2025-05-11",
+    "answer_type": "calculated_value",
+    "tool_required": "edgartools (XBRL facts and period filtering) + calculation",
+    "source": "https://data.sec.gov/api/xbrl/companyfacts/CIK0000909832.json",
+    "reasoning": "Divide CashAndCashEquivalentsAtCarryingValue by LiabilitiesCurrent for the same instant. Match accession, exact dates and unit USD; do not select by fy/fp alone. SEC API USD facts are in full dollars; convert to millions only when requested.",
+    "evidence": "https://www.sec.gov/Archives/edgar/data/909832/000090983225000033/cost-20250511.htm; Balance Sheets; Cash and cash equivalents and Total current liabilities; accession 0000909832-25-000033, filed 2025-06-05; as of 2025-05-11; unit USD."
+  },
+  {
+    "id": "XBRL-CMP-035",
+    "question": "Using Costco's FY2025 Q3 10-Q XBRL facts (accession 0000909832-25-000033; quarter 2025-02-17 through 2025-05-11; year-to-date 2024-09-02 through 2025-05-11), derive combined revenue for the first 24 weeks of FY2025 by subtracting Q3's 12-week total revenue from 36-week year-to-date total revenue. Return USD millions. Do not describe the result as Q1 alone. Use the listed concepts and only facts from this accession.",
+    "type": "XBRL Computation",
+    "answer": "COST_FY2025_Q3_first_24_weeks_derived_revenue",
+    "scenario_id": "XBRL-COMPUTE-007",
+    "workflow_step": 5,
+    "total_steps": 5,
+    "hops": 3,
+    "xbrl_concepts": [
+      "us-gaap:Revenues"
+    ],
+    "filing_type": "10-Q",
+    "filing_period": "FY2025 Q3; quarter 2025-02-17 through 2025-05-11; year-to-date 2024-09-02 through 2025-05-11",
+    "answer_type": "calculated_value",
+    "tool_required": "edgartools (XBRL facts and period filtering) + calculation",
+    "source": "https://data.sec.gov/api/xbrl/companyfacts/CIK0000909832.json",
+    "reasoning": "Subtract quarterly Revenues from 36-week Revenues. The remainder covers the first two quarters together. Match accession, exact dates and unit USD; do not select by fy/fp alone. SEC API USD facts are in full dollars; convert to millions only when requested.",
+    "evidence": "https://www.sec.gov/Archives/edgar/data/909832/000090983225000033/cost-20250511.htm; Statements of Income; Total revenue, 12-week and 36-week columns; accession 0000909832-25-000033, filed 2025-06-05; quarter 2025-02-17 through 2025-05-11; year-to-date 2024-09-02 through 2025-05-11; unit USD."
+  }
+]
