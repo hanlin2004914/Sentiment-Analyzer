@@ -1,0 +1,101 @@
+[
+  {
+    "id": "RAIN-V2-MU-001",
+    "question": "Scenario: I am preparing a Micron earnings briefing. Reconstruct Q4 from the annual and nine-month filings, reconcile it to the earnings release, then test whether the next-quarter guidance meets my stated revenue and gross-margin hurdles. First, use the FY2025 10-K filed October 3, 2025 to retrieve FY2025 and FY2024 revenue and gross profit in USD millions. Calculate FY2025 gross margin and its change from FY2024 in percentage points. Keep the dollar inputs for the next step. Return rev25: number (USD million); gp25: number (USD million); rev24: number (USD million); gp24: number (USD million); gm25: number (percent); gm_change: number (percentage points). Cite the SEC document and precise table/note/exhibit. Reuse prior-stage amounts without intermediate rounding; report percentages/ratios to two decimals and monetary derived amounts to three decimals unless specified.",
+    "type": "XBRL Computation",
+    "answer": "{\"rev25\": \"37378\", \"gp25\": \"14873\", \"rev24\": \"25111\", \"gp24\": \"5613\", \"gm25\": \"39.79\", \"gm_change\": \"17.44\"}",
+    "scenario_id": "RAIN-V2-MU-001",
+    "workflow_step": 1,
+    "total_steps": 5,
+    "hops": 3,
+    "xbrl_concepts": [
+      "us-gaap:GrossProfit",
+      "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax"
+    ],
+    "filing_type": "10-K",
+    "filing_period": "FY2025 annual/Q3/Q4 and FY2026 Q1 guidance as announced 2025-09-23",
+    "answer_type": "calculated_value",
+    "tool_required": "SEC EDGAR filing/iXBRL retrieval; arithmetic/comparison",
+    "source": "https://www.sec.gov/Archives/edgar/data/723125/000072312525000028/mu-20250828.htm#f-53",
+    "reasoning": "Prior-stage dependencies: none. Hop depth 3: depth 1: read_1 -> depth 2: derive_gm25, derive_gm24 -> depth 3: derive_gm_change. gm25 = gp25 / rev25 * 100; gm24 = gp24 / rev24 * 100; gm_change = gm25 - gm24",
+    "evidence": "Inline XBRL fact #f-53; context c-1 — https://www.sec.gov/Archives/edgar/data/723125/000072312525000028/mu-20250828.htm#f-53; Inline XBRL fact #f-59; context c-1 — https://www.sec.gov/Archives/edgar/data/723125/000072312525000028/mu-20250828.htm#f-59; Inline XBRL fact #f-54; context c-4 — https://www.sec.gov/Archives/edgar/data/723125/000072312525000028/mu-20250828.htm#f-54; Inline XBRL fact #f-60; context c-4 — https://www.sec.gov/Archives/edgar/data/723125/000072312525000028/mu-20250828.htm#f-60"
+  },
+  {
+    "id": "RAIN-V2-MU-002",
+    "question": "Continue from Step 1. In the 10-Q filed June 26, 2025, retrieve revenue and gross profit for the nine months ended May 29. Subtract these from the annual amounts you retained to reconstruct Q4 revenue and gross profit; calculate the reconstructed Q4 gross margin. Return q4_rev: number (USD million); q4_gp: number (USD million); q4_gm: number (percent). Cite the SEC document and precise table/note/exhibit. Reuse prior-stage amounts without intermediate rounding; report percentages/ratios to two decimals and monetary derived amounts to three decimals unless specified.",
+    "type": "XBRL Computation",
+    "answer": "{\"q4_rev\": \"11315.000\", \"q4_gp\": \"5054.000\", \"q4_gm\": \"44.67\"}",
+    "scenario_id": "RAIN-V2-MU-001",
+    "workflow_step": 2,
+    "total_steps": 5,
+    "hops": 3,
+    "xbrl_concepts": [
+      "us-gaap:GrossProfit",
+      "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax"
+    ],
+    "filing_type": "10-Q",
+    "filing_period": "FY2025 annual/Q3/Q4 and FY2026 Q1 guidance as announced 2025-09-23",
+    "answer_type": "calculated_value",
+    "tool_required": "SEC EDGAR filing/iXBRL retrieval; retained prior scenario outputs; arithmetic/comparison",
+    "source": "https://www.sec.gov/Archives/edgar/data/723125/000072312525000021/mu-20250529.htm#f-32",
+    "reasoning": "Prior-stage dependencies: RAIN-V2-MU-001. Hop depth 3: depth 1: read_1 -> depth 2: derive_q4_rev, derive_q4_gp -> depth 3: derive_q4_gm. q4_rev = annual_rev - ytd_rev; q4_gp = annual_gp - ytd_gp; q4_gm = q4_gp / q4_rev * 100",
+    "evidence": "income_statement; inline XBRL #f-32, context c-1 — https://www.sec.gov/Archives/edgar/data/723125/000072312525000021/mu-20250529.htm#f-32; income_statement; inline XBRL #f-40, context c-1 — https://www.sec.gov/Archives/edgar/data/723125/000072312525000021/mu-20250529.htm#f-40; Inline XBRL fact #f-53; context c-1 — https://www.sec.gov/Archives/edgar/data/723125/000072312525000028/mu-20250828.htm#f-53; Inline XBRL fact #f-59; context c-1 — https://www.sec.gov/Archives/edgar/data/723125/000072312525000028/mu-20250828.htm#f-59"
+  },
+  {
+    "id": "RAIN-V2-MU-003",
+    "question": "Continue with the Q4 amounts reconstructed in Step 2. Locate Exhibit 99.1 of the September 23, 2025 8-K and retrieve the detailed-table GAAP Q4 revenue and gross profit. Report both dollar discrepancies as reported minus reconstructed and whether both reconcile exactly at the filing's USD-million precision. Carry the reconciled actual amounts forward. Return actual_rev: number (USD million); actual_gp: number (USD million); actual_gm: number (percent); revenue_difference: number (USD million); gross_profit_difference: number (USD million); reconciles: boolean (boolean). Cite the SEC document and precise table/note/exhibit. Reuse prior-stage amounts without intermediate rounding; report percentages/ratios to two decimals and monetary derived amounts to three decimals unless specified.",
+    "type": "SEC Computation",
+    "answer": "{\"actual_rev\": \"11315\", \"actual_gp\": \"5054\", \"actual_gm\": \"44.67\", \"revenue_difference\": \"0.000\", \"gross_profit_difference\": \"0.000\", \"reconciles\": true}",
+    "scenario_id": "RAIN-V2-MU-001",
+    "workflow_step": 3,
+    "total_steps": 5,
+    "hops": 3,
+    "xbrl_concepts": [
+      "us-gaap:GrossProfit",
+      "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax"
+    ],
+    "filing_type": "8-K",
+    "filing_period": "FY2025 annual/Q3/Q4 and FY2026 Q1 guidance as announced 2025-09-23",
+    "answer_type": "calculated_value",
+    "tool_required": "SEC EDGAR filing/iXBRL retrieval; retained prior scenario outputs; arithmetic/comparison",
+    "source": "https://www.sec.gov/Archives/edgar/data/723125/000072312525000024/a2025q4ex991-pressrelease.htm#:~:text=Quarterly%20Financial%20Results",
+    "reasoning": "Prior-stage dependencies: RAIN-V2-MU-002. Hop depth 3: depth 1: read_1 -> depth 2: derive_revenue_difference, derive_gross_profit_difference, derive_actual_gm -> depth 3: derive_reconciles. revenue_difference = actual_rev - derived_rev; gross_profit_difference = actual_gp - derived_gp; actual_gm = actual_gp / actual_rev * 100; reconciles = revenue_difference == 0 and gross_profit_difference == 0",
+    "evidence": "Quarterly Financial Results; GAAP FQ4-25 Revenue — https://www.sec.gov/Archives/edgar/data/723125/000072312525000024/a2025q4ex991-pressrelease.htm#:~:text=Quarterly%20Financial%20Results; Quarterly Financial Results; GAAP FQ4-25 Gross margin — https://www.sec.gov/Archives/edgar/data/723125/000072312525000024/a2025q4ex991-pressrelease.htm#:~:text=Quarterly%20Financial%20Results; Inline XBRL fact #f-53; context c-1 — https://www.sec.gov/Archives/edgar/data/723125/000072312525000028/mu-20250828.htm#f-53; income_statement; inline XBRL #f-32, context c-1 — https://www.sec.gov/Archives/edgar/data/723125/000072312525000021/mu-20250529.htm#f-32; Inline XBRL fact #f-59; context c-1 — https://www.sec.gov/Archives/edgar/data/723125/000072312525000028/mu-20250828.htm#f-59; income_statement; inline XBRL #f-40, context c-1 — https://www.sec.gov/Archives/edgar/data/723125/000072312525000021/mu-20250529.htm#f-40"
+  },
+  {
+    "id": "RAIN-V2-MU-004",
+    "question": "Use the reconciled Q4 revenue from Step 3. From the same 8-K exhibit's FY2026 Q1 outlook, retrieve the revenue midpoint and plus/minus amount, convert to USD millions, and calculate both guidance bounds and each bound's sequential growth over Q4. These are implied guidance outcomes, not realized results. Return low: number (USD million); high: number (USD million); low_growth: number (percent); high_growth: number (percent). Cite the SEC document and precise table/note/exhibit. Reuse prior-stage amounts without intermediate rounding; report percentages/ratios to two decimals and monetary derived amounts to three decimals unless specified.",
+    "type": "SEC Computation",
+    "answer": "{\"low\": \"12200.000\", \"high\": \"12800.000\", \"low_growth\": \"7.82\", \"high_growth\": \"13.12\"}",
+    "scenario_id": "RAIN-V2-MU-001",
+    "workflow_step": 4,
+    "total_steps": 5,
+    "hops": 3,
+    "xbrl_concepts": [],
+    "filing_type": "8-K",
+    "filing_period": "FY2025 annual/Q3/Q4 and FY2026 Q1 guidance as announced 2025-09-23",
+    "answer_type": "calculated_value",
+    "tool_required": "SEC EDGAR filing/iXBRL retrieval; retained prior scenario outputs; arithmetic/comparison",
+    "source": "https://www.sec.gov/Archives/edgar/data/723125/000072312525000024/a2025q4ex991-pressrelease.htm#:~:text=Business%20Outlook",
+    "reasoning": "Prior-stage dependencies: RAIN-V2-MU-003. Hop depth 3: depth 1: read_1, read_2 -> depth 2: derive_low, derive_high -> depth 3: derive_low_growth, derive_high_growth. low = midpoint - half_range; high = midpoint + half_range; low_growth = (low / q4_rev - 1) * 100; high_growth = (high / q4_rev - 1) * 100",
+    "evidence": "Business Outlook, FQ1-26 revenue guidance — https://www.sec.gov/Archives/edgar/data/723125/000072312525000024/a2025q4ex991-pressrelease.htm#:~:text=Business%20Outlook; Same guidance row — https://www.sec.gov/Archives/edgar/data/723125/000072312525000024/a2025q4ex991-pressrelease.htm#:~:text=Business%20Outlook; Quarterly Financial Results; GAAP FQ4-25 Revenue — https://www.sec.gov/Archives/edgar/data/723125/000072312525000024/a2025q4ex991-pressrelease.htm#:~:text=Quarterly%20Financial%20Results"
+  },
+  {
+    "id": "RAIN-V2-MU-005",
+    "question": "Finish the briefing using Step 4's lower-bound revenue growth and Step 3's reconciled Q4 gross margin. My briefing rule requires at least 5% sequential revenue growth at the guidance low end AND at least a 3-percentage-point increase in GAAP gross margin at its guidance low end. Retrieve FY2026 Q1 GAAP gross-margin guidance from the same exhibit, compute its lower bound and uplift versus Q4, and return whether both hurdles pass. Do not substitute non-GAAP guidance. Return gm_low: number (percent); uplift: number (percentage points); both_pass: boolean (boolean). Cite the SEC document and precise table/note/exhibit. Reuse prior-stage amounts without intermediate rounding; report percentages/ratios to two decimals and monetary derived amounts to three decimals unless specified.",
+    "type": "SEC Computation",
+    "answer": "{\"gm_low\": \"49.50\", \"uplift\": \"4.83\", \"both_pass\": true}",
+    "scenario_id": "RAIN-V2-MU-001",
+    "workflow_step": 5,
+    "total_steps": 5,
+    "hops": 4,
+    "xbrl_concepts": [],
+    "filing_type": "8-K",
+    "filing_period": "FY2025 annual/Q3/Q4 and FY2026 Q1 guidance as announced 2025-09-23",
+    "answer_type": "calculated_value",
+    "tool_required": "SEC EDGAR filing/iXBRL retrieval; retained prior scenario outputs; arithmetic/comparison",
+    "source": "https://www.sec.gov/Archives/edgar/data/723125/000072312525000024/a2025q4ex991-pressrelease.htm#:~:text=Business%20Outlook",
+    "reasoning": "Prior-stage dependencies: RAIN-V2-MU-003, RAIN-V2-MU-004. Hop depth 4: depth 1: read_1 -> depth 2: derive_gm_low -> depth 3: derive_uplift -> depth 4: derive_both_pass. gm_low = gm_mid - gm_half; uplift = gm_low - q4_margin; both_pass = low_growth >= growth_hurdle and uplift >= gm_hurdle",
+    "evidence": "Business Outlook; GAAP gross margin midpoint — https://www.sec.gov/Archives/edgar/data/723125/000072312525000024/a2025q4ex991-pressrelease.htm#:~:text=Business%20Outlook; Business Outlook; GAAP gross margin range — https://www.sec.gov/Archives/edgar/data/723125/000072312525000024/a2025q4ex991-pressrelease.htm#:~:text=Business%20Outlook; Quarterly Financial Results; GAAP FQ4-25 Gross margin — https://www.sec.gov/Archives/edgar/data/723125/000072312525000024/a2025q4ex991-pressrelease.htm#:~:text=Quarterly%20Financial%20Results; Quarterly Financial Results; GAAP FQ4-25 Revenue — https://www.sec.gov/Archives/edgar/data/723125/000072312525000024/a2025q4ex991-pressrelease.htm#:~:text=Quarterly%20Financial%20Results; Same guidance row — https://www.sec.gov/Archives/edgar/data/723125/000072312525000024/a2025q4ex991-pressrelease.htm#:~:text=Business%20Outlook; Business Outlook, FQ1-26 revenue guidance — https://www.sec.gov/Archives/edgar/data/723125/000072312525000024/a2025q4ex991-pressrelease.htm#:~:text=Business%20Outlook"
+  }
+]

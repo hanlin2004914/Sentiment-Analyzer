@@ -1,0 +1,52 @@
+{
+  "MU-10-K": {
+    "ticker": "MU",
+    "cik": "0000723125",
+    "form": "10-K",
+    "filed": "2025-10-03",
+    "report_date": "2025-08-28",
+    "accession": "0000723125-25-000028",
+    "url": "https://www.sec.gov/Archives/edgar/data/723125/000072312525000028/mu-20250828.htm",
+    "company": "Micron Technology, Inc.",
+    "retrieved_on": "2026-09-22",
+    "sha256": "cedaf64429ef025dd73965300a8839bb1202ce77684de61f6936cf725e073a6a"
+  },
+  "MU-10-Q": {
+    "ticker": "MU",
+    "cik": "0000723125",
+    "form": "10-Q",
+    "filed": "2025-06-26",
+    "report_date": "2025-05-29",
+    "accession": "0000723125-25-000021",
+    "url": "https://www.sec.gov/Archives/edgar/data/723125/000072312525000021/mu-20250529.htm",
+    "company": "Micron Technology, Inc.",
+    "retrieved_on": "2026-09-22",
+    "sha256": "89a348e94034cacd8eddcef36555546965b5ef9c04db2adc919c1f1bffa330c5"
+  },
+  "MU-8-K": {
+    "ticker": "MU",
+    "cik": "0000723125",
+    "form": "8-K",
+    "filed": "2025-09-23",
+    "report_date": "2025-09-23",
+    "accession": "0000723125-25-000024",
+    "url": "https://www.sec.gov/Archives/edgar/data/723125/000072312525000024/mu-20250923.htm",
+    "company": "Micron Technology, Inc.",
+    "retrieved_on": "2026-09-22",
+    "sha256": "16c1f2bea70296365b64a50f3745e828c11dcf368642ec661ad142c12bb804d2"
+  },
+  "MU-8-K-ex0": {
+    "ticker": "MU",
+    "cik": "0000723125",
+    "form": "8-K",
+    "filed": "2025-09-23",
+    "report_date": "2025-09-23",
+    "accession": "0000723125-25-000024",
+    "url": "https://www.sec.gov/Archives/edgar/data/723125/000072312525000024/a2025q4ex991-pressrelease.htm",
+    "company": "Micron Technology, Inc.",
+    "retrieved_on": "2026-09-22",
+    "sha256": "fb9348bb106003980e2c0bb07fcb52785d458c0344afc31918521dfdf803c80a",
+    "parent_source_id": "MU-8-K",
+    "exhibit": "99.1"
+  }
+}

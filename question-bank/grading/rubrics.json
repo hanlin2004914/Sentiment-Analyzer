@@ -1,0 +1,1307 @@
+{
+  "RAIN-V2-MU-001": {
+    "title_zh": "建立年度毛利基线",
+    "ticker": "MU",
+    "company": "Micron Technology, Inc.",
+    "depends_on": [],
+    "input_bindings": {
+      "rev25": {
+        "kind": "source",
+        "value": "37378",
+        "unit": "USD million",
+        "evidence_label": "rev25",
+        "source_id": "MU-10-K",
+        "reused_from": "RAIN-MU-003"
+      },
+      "gp25": {
+        "kind": "source",
+        "value": "14873",
+        "unit": "USD million",
+        "evidence_label": "gp25",
+        "source_id": "MU-10-K",
+        "reused_from": "RAIN-MU-003"
+      },
+      "rev24": {
+        "kind": "source",
+        "value": "25111",
+        "unit": "USD million",
+        "evidence_label": "rev24",
+        "source_id": "MU-10-K",
+        "reused_from": "RAIN-MU-003"
+      },
+      "gp24": {
+        "kind": "source",
+        "value": "5613",
+        "unit": "USD million",
+        "evidence_label": "gp24",
+        "source_id": "MU-10-K",
+        "reused_from": "RAIN-MU-003"
+      }
+    },
+    "derivations": [
+      {
+        "field": "gm25",
+        "expression": "gp25 / rev25 * 100",
+        "unit": "percent",
+        "decimal_places": 2
+      },
+      {
+        "field": "gm24",
+        "expression": "gp24 / rev24 * 100",
+        "unit": "percent",
+        "decimal_places": 2
+      },
+      {
+        "field": "gm_change",
+        "expression": "gm25 - gm24",
+        "unit": "percentage points",
+        "decimal_places": 2
+      }
+    ],
+    "output_nodes": {
+      "rev25": "read_1",
+      "gp25": "read_1",
+      "rev24": "read_1",
+      "gp24": "read_1",
+      "gm25": "derive_gm25",
+      "gm_change": "derive_gm_change"
+    },
+    "hop_definition": "conditional_evidence_depth_v2",
+    "hop_plan": [
+      {
+        "id": "read_1",
+        "kind": "retrieve",
+        "depends_on": [],
+        "evidence_block": "MU-10-K:income_statement",
+        "source_ids": [
+          "MU-10-K"
+        ],
+        "outputs": [
+          "rev25",
+          "gp25",
+          "rev24",
+          "gp24"
+        ],
+        "depth": 1
+      },
+      {
+        "id": "derive_gm25",
+        "kind": "calculate",
+        "depends_on": [
+          "read_1"
+        ],
+        "outputs": [
+          "gm25"
+        ],
+        "expression": "gp25 / rev25 * 100",
+        "depth": 2
+      },
+      {
+        "id": "derive_gm24",
+        "kind": "calculate",
+        "depends_on": [
+          "read_1"
+        ],
+        "outputs": [
+          "gm24"
+        ],
+        "expression": "gp24 / rev24 * 100",
+        "depth": 2
+      },
+      {
+        "id": "derive_gm_change",
+        "kind": "calculate",
+        "depends_on": [
+          "derive_gm24",
+          "derive_gm25"
+        ],
+        "outputs": [
+          "gm_change"
+        ],
+        "expression": "gm25 - gm24",
+        "depth": 3
+      }
+    ],
+    "hops": 3,
+    "evidence_records": [
+      {
+        "label": "rev25",
+        "value": "37378",
+        "unit": "USD million",
+        "source_id": "MU-10-K",
+        "locator": "Inline XBRL fact #f-53; context c-1",
+        "fact_id": "f-53",
+        "concept": "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax",
+        "context_id": "c-1",
+        "context": "context: entity: identifier:0000723125 period: startdate:2024-08-30 enddate:2025-08-28",
+        "scale": 6,
+        "decimals": "-6",
+        "original_text": "37,378",
+        "sign": "+",
+        "url": "https://www.sec.gov/Archives/edgar/data/723125/000072312525000028/mu-20250828.htm#f-53",
+        "evidence_block": "MU-10-K:income_statement"
+      },
+      {
+        "label": "gp25",
+        "value": "14873",
+        "unit": "USD million",
+        "source_id": "MU-10-K",
+        "locator": "Inline XBRL fact #f-59; context c-1",
+        "fact_id": "f-59",
+        "concept": "us-gaap:GrossProfit",
+        "context_id": "c-1",
+        "context": "context: entity: identifier:0000723125 period: startdate:2024-08-30 enddate:2025-08-28",
+        "scale": 6,
+        "decimals": "-6",
+        "original_text": "14,873",
+        "sign": "+",
+        "url": "https://www.sec.gov/Archives/edgar/data/723125/000072312525000028/mu-20250828.htm#f-59",
+        "evidence_block": "MU-10-K:income_statement"
+      },
+      {
+        "label": "rev24",
+        "value": "25111",
+        "unit": "USD million",
+        "source_id": "MU-10-K",
+        "locator": "Inline XBRL fact #f-54; context c-4",
+        "fact_id": "f-54",
+        "concept": "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax",
+        "context_id": "c-4",
+        "context": "context: entity: identifier:0000723125 period: startdate:2023-09-01 enddate:2024-08-29",
+        "scale": 6,
+        "decimals": "-6",
+        "original_text": "25,111",
+        "sign": "+",
+        "url": "https://www.sec.gov/Archives/edgar/data/723125/000072312525000028/mu-20250828.htm#f-54",
+        "evidence_block": "MU-10-K:income_statement"
+      },
+      {
+        "label": "gp24",
+        "value": "5613",
+        "unit": "USD million",
+        "source_id": "MU-10-K",
+        "locator": "Inline XBRL fact #f-60; context c-4",
+        "fact_id": "f-60",
+        "concept": "us-gaap:GrossProfit",
+        "context_id": "c-4",
+        "context": "context: entity: identifier:0000723125 period: startdate:2023-09-01 enddate:2024-08-29",
+        "scale": 6,
+        "decimals": "-6",
+        "original_text": "5,613",
+        "sign": "+",
+        "url": "https://www.sec.gov/Archives/edgar/data/723125/000072312525000028/mu-20250828.htm#f-60",
+        "evidence_block": "MU-10-K:income_statement"
+      }
+    ],
+    "reused_from_v1": [
+      "RAIN-MU-003"
+    ],
+    "grading": {
+      "expected_answer": {
+        "rev25": {
+          "value": "37378",
+          "kind": "number",
+          "unit": "USD million",
+          "absolute_tolerance": "0"
+        },
+        "gp25": {
+          "value": "14873",
+          "kind": "number",
+          "unit": "USD million",
+          "absolute_tolerance": "0"
+        },
+        "rev24": {
+          "value": "25111",
+          "kind": "number",
+          "unit": "USD million",
+          "absolute_tolerance": "0"
+        },
+        "gp24": {
+          "value": "5613",
+          "kind": "number",
+          "unit": "USD million",
+          "absolute_tolerance": "0"
+        },
+        "gm25": {
+          "value": "39.79",
+          "kind": "number",
+          "unit": "percent",
+          "absolute_tolerance": "0.01"
+        },
+        "gm_change": {
+          "value": "17.44",
+          "kind": "number",
+          "unit": "percentage points",
+          "absolute_tolerance": "0.01"
+        }
+      },
+      "max_points": 5,
+      "rubric": {
+        "answer": 2,
+        "evidence": 1,
+        "scope_units": 1,
+        "dependency_and_method": 1
+      }
+    },
+    "verification": {
+      "checked_on": "2026-09-22",
+      "source_verified": true,
+      "agent_run_performed": false
+    }
+  },
+  "RAIN-V2-MU-002": {
+    "title_zh": "年度减累计反推 Q4",
+    "ticker": "MU",
+    "company": "Micron Technology, Inc.",
+    "depends_on": [
+      "RAIN-V2-MU-001"
+    ],
+    "input_bindings": {
+      "annual_rev": {
+        "kind": "prior",
+        "question_id": "RAIN-V2-MU-001",
+        "field": "rev25",
+        "value": "37378",
+        "unit": "USD million"
+      },
+      "annual_gp": {
+        "kind": "prior",
+        "question_id": "RAIN-V2-MU-001",
+        "field": "gp25",
+        "value": "14873",
+        "unit": "USD million"
+      },
+      "ytd_rev": {
+        "kind": "source",
+        "value": "26063",
+        "unit": "USD million",
+        "evidence_label": "ytd_rev",
+        "source_id": "MU-10-Q"
+      },
+      "ytd_gp": {
+        "kind": "source",
+        "value": "9819",
+        "unit": "USD million",
+        "evidence_label": "ytd_gp",
+        "source_id": "MU-10-Q"
+      }
+    },
+    "derivations": [
+      {
+        "field": "q4_rev",
+        "expression": "annual_rev - ytd_rev",
+        "unit": "USD million",
+        "decimal_places": 3
+      },
+      {
+        "field": "q4_gp",
+        "expression": "annual_gp - ytd_gp",
+        "unit": "USD million",
+        "decimal_places": 3
+      },
+      {
+        "field": "q4_gm",
+        "expression": "q4_gp / q4_rev * 100",
+        "unit": "percent",
+        "decimal_places": 2
+      }
+    ],
+    "output_nodes": {
+      "q4_rev": "derive_q4_rev",
+      "q4_gp": "derive_q4_gp",
+      "q4_gm": "derive_q4_gm"
+    },
+    "hop_definition": "conditional_evidence_depth_v2",
+    "hop_plan": [
+      {
+        "id": "input_annual_rev",
+        "kind": "prior",
+        "depends_on": [],
+        "outputs": [
+          "annual_rev"
+        ],
+        "question_id": "RAIN-V2-MU-001",
+        "field": "rev25",
+        "depth": 0
+      },
+      {
+        "id": "input_annual_gp",
+        "kind": "prior",
+        "depends_on": [],
+        "outputs": [
+          "annual_gp"
+        ],
+        "question_id": "RAIN-V2-MU-001",
+        "field": "gp25",
+        "depth": 0
+      },
+      {
+        "id": "read_1",
+        "kind": "retrieve",
+        "depends_on": [],
+        "evidence_block": "MU-10-Q:income_statement",
+        "source_ids": [
+          "MU-10-Q"
+        ],
+        "outputs": [
+          "ytd_rev",
+          "ytd_gp"
+        ],
+        "depth": 1
+      },
+      {
+        "id": "derive_q4_rev",
+        "kind": "calculate",
+        "depends_on": [
+          "input_annual_rev",
+          "read_1"
+        ],
+        "outputs": [
+          "q4_rev"
+        ],
+        "expression": "annual_rev - ytd_rev",
+        "depth": 2
+      },
+      {
+        "id": "derive_q4_gp",
+        "kind": "calculate",
+        "depends_on": [
+          "input_annual_gp",
+          "read_1"
+        ],
+        "outputs": [
+          "q4_gp"
+        ],
+        "expression": "annual_gp - ytd_gp",
+        "depth": 2
+      },
+      {
+        "id": "derive_q4_gm",
+        "kind": "calculate",
+        "depends_on": [
+          "derive_q4_gp",
+          "derive_q4_rev"
+        ],
+        "outputs": [
+          "q4_gm"
+        ],
+        "expression": "q4_gp / q4_rev * 100",
+        "depth": 3
+      }
+    ],
+    "hops": 3,
+    "evidence_records": [
+      {
+        "label": "ytd_rev",
+        "source_id": "MU-10-Q",
+        "value": "26063",
+        "unit": "USD million",
+        "concept": "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax",
+        "context_id": "c-1",
+        "context": "context: entity: identifier:0000723125 period: startdate:2024-08-30 enddate:2025-05-29",
+        "fact_id": "f-32",
+        "original_text": "26,063",
+        "scale": 6,
+        "sign": "+",
+        "url": "https://www.sec.gov/Archives/edgar/data/723125/000072312525000021/mu-20250529.htm#f-32",
+        "locator": "income_statement; inline XBRL #f-32, context c-1",
+        "evidence_block": "MU-10-Q:income_statement"
+      },
+      {
+        "label": "ytd_gp",
+        "source_id": "MU-10-Q",
+        "value": "9819",
+        "unit": "USD million",
+        "concept": "us-gaap:GrossProfit",
+        "context_id": "c-1",
+        "context": "context: entity: identifier:0000723125 period: startdate:2024-08-30 enddate:2025-05-29",
+        "fact_id": "f-40",
+        "original_text": "9,819",
+        "scale": 6,
+        "sign": "+",
+        "url": "https://www.sec.gov/Archives/edgar/data/723125/000072312525000021/mu-20250529.htm#f-40",
+        "locator": "income_statement; inline XBRL #f-40, context c-1",
+        "evidence_block": "MU-10-Q:income_statement"
+      },
+      {
+        "label": "rev25",
+        "value": "37378",
+        "unit": "USD million",
+        "source_id": "MU-10-K",
+        "locator": "Inline XBRL fact #f-53; context c-1",
+        "fact_id": "f-53",
+        "concept": "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax",
+        "context_id": "c-1",
+        "context": "context: entity: identifier:0000723125 period: startdate:2024-08-30 enddate:2025-08-28",
+        "scale": 6,
+        "decimals": "-6",
+        "original_text": "37,378",
+        "sign": "+",
+        "url": "https://www.sec.gov/Archives/edgar/data/723125/000072312525000028/mu-20250828.htm#f-53",
+        "evidence_block": "MU-10-K:income_statement"
+      },
+      {
+        "label": "gp25",
+        "value": "14873",
+        "unit": "USD million",
+        "source_id": "MU-10-K",
+        "locator": "Inline XBRL fact #f-59; context c-1",
+        "fact_id": "f-59",
+        "concept": "us-gaap:GrossProfit",
+        "context_id": "c-1",
+        "context": "context: entity: identifier:0000723125 period: startdate:2024-08-30 enddate:2025-08-28",
+        "scale": 6,
+        "decimals": "-6",
+        "original_text": "14,873",
+        "sign": "+",
+        "url": "https://www.sec.gov/Archives/edgar/data/723125/000072312525000028/mu-20250828.htm#f-59",
+        "evidence_block": "MU-10-K:income_statement"
+      }
+    ],
+    "reused_from_v1": [],
+    "grading": {
+      "expected_answer": {
+        "q4_rev": {
+          "value": "11315.000",
+          "kind": "number",
+          "unit": "USD million",
+          "absolute_tolerance": "0.001"
+        },
+        "q4_gp": {
+          "value": "5054.000",
+          "kind": "number",
+          "unit": "USD million",
+          "absolute_tolerance": "0.001"
+        },
+        "q4_gm": {
+          "value": "44.67",
+          "kind": "number",
+          "unit": "percent",
+          "absolute_tolerance": "0.01"
+        }
+      },
+      "max_points": 5,
+      "rubric": {
+        "answer": 2,
+        "evidence": 1,
+        "scope_units": 1,
+        "dependency_and_method": 1
+      }
+    },
+    "verification": {
+      "checked_on": "2026-09-22",
+      "source_verified": true,
+      "agent_run_performed": false
+    }
+  },
+  "RAIN-V2-MU-003": {
+    "title_zh": "与业绩附件对账",
+    "ticker": "MU",
+    "company": "Micron Technology, Inc.",
+    "depends_on": [
+      "RAIN-V2-MU-002"
+    ],
+    "input_bindings": {
+      "derived_rev": {
+        "kind": "prior",
+        "question_id": "RAIN-V2-MU-002",
+        "field": "q4_rev",
+        "value": "11315",
+        "unit": "USD million"
+      },
+      "derived_gp": {
+        "kind": "prior",
+        "question_id": "RAIN-V2-MU-002",
+        "field": "q4_gp",
+        "value": "5054",
+        "unit": "USD million"
+      },
+      "actual_rev": {
+        "kind": "source",
+        "value": "11315",
+        "unit": "USD million",
+        "evidence_label": "actual_rev",
+        "source_id": "MU-8-K-ex0"
+      },
+      "actual_gp": {
+        "kind": "source",
+        "value": "5054",
+        "unit": "USD million",
+        "evidence_label": "actual_gp",
+        "source_id": "MU-8-K-ex0"
+      }
+    },
+    "derivations": [
+      {
+        "field": "revenue_difference",
+        "expression": "actual_rev - derived_rev",
+        "unit": "USD million",
+        "decimal_places": 3
+      },
+      {
+        "field": "gross_profit_difference",
+        "expression": "actual_gp - derived_gp",
+        "unit": "USD million",
+        "decimal_places": 3
+      },
+      {
+        "field": "actual_gm",
+        "expression": "actual_gp / actual_rev * 100",
+        "unit": "percent",
+        "decimal_places": 2
+      },
+      {
+        "field": "reconciles",
+        "expression": "revenue_difference == 0 and gross_profit_difference == 0",
+        "unit": "boolean",
+        "decimal_places": null
+      }
+    ],
+    "output_nodes": {
+      "actual_rev": "read_1",
+      "actual_gp": "read_1",
+      "actual_gm": "derive_actual_gm",
+      "revenue_difference": "derive_revenue_difference",
+      "gross_profit_difference": "derive_gross_profit_difference",
+      "reconciles": "derive_reconciles"
+    },
+    "hop_definition": "conditional_evidence_depth_v2",
+    "hop_plan": [
+      {
+        "id": "input_derived_rev",
+        "kind": "prior",
+        "depends_on": [],
+        "outputs": [
+          "derived_rev"
+        ],
+        "question_id": "RAIN-V2-MU-002",
+        "field": "q4_rev",
+        "depth": 0
+      },
+      {
+        "id": "input_derived_gp",
+        "kind": "prior",
+        "depends_on": [],
+        "outputs": [
+          "derived_gp"
+        ],
+        "question_id": "RAIN-V2-MU-002",
+        "field": "q4_gp",
+        "depth": 0
+      },
+      {
+        "id": "read_1",
+        "kind": "retrieve",
+        "depends_on": [],
+        "evidence_block": "MU-8-K-ex0:Quarterly Financial Results",
+        "source_ids": [
+          "MU-8-K-ex0"
+        ],
+        "outputs": [
+          "actual_rev",
+          "actual_gp"
+        ],
+        "depth": 1
+      },
+      {
+        "id": "derive_revenue_difference",
+        "kind": "calculate",
+        "depends_on": [
+          "read_1",
+          "input_derived_rev"
+        ],
+        "outputs": [
+          "revenue_difference"
+        ],
+        "expression": "actual_rev - derived_rev",
+        "depth": 2
+      },
+      {
+        "id": "derive_gross_profit_difference",
+        "kind": "calculate",
+        "depends_on": [
+          "read_1",
+          "input_derived_gp"
+        ],
+        "outputs": [
+          "gross_profit_difference"
+        ],
+        "expression": "actual_gp - derived_gp",
+        "depth": 2
+      },
+      {
+        "id": "derive_actual_gm",
+        "kind": "calculate",
+        "depends_on": [
+          "read_1"
+        ],
+        "outputs": [
+          "actual_gm"
+        ],
+        "expression": "actual_gp / actual_rev * 100",
+        "depth": 2
+      },
+      {
+        "id": "derive_reconciles",
+        "kind": "judge",
+        "depends_on": [
+          "derive_gross_profit_difference",
+          "derive_revenue_difference"
+        ],
+        "outputs": [
+          "reconciles"
+        ],
+        "expression": "revenue_difference == 0 and gross_profit_difference == 0",
+        "depth": 3
+      }
+    ],
+    "hops": 3,
+    "evidence_records": [
+      {
+        "label": "actual_rev",
+        "source_id": "MU-8-K-ex0",
+        "value": "11315",
+        "unit": "USD million",
+        "url": "https://www.sec.gov/Archives/edgar/data/723125/000072312525000024/a2025q4ex991-pressrelease.htm#:~:text=Quarterly%20Financial%20Results",
+        "locator": "Quarterly Financial Results; GAAP FQ4-25 Revenue",
+        "text_fragment": "Quarterly Financial Results",
+        "evidence_block": "MU-8-K-ex0:Quarterly Financial Results"
+      },
+      {
+        "label": "actual_gp",
+        "source_id": "MU-8-K-ex0",
+        "value": "5054",
+        "unit": "USD million",
+        "url": "https://www.sec.gov/Archives/edgar/data/723125/000072312525000024/a2025q4ex991-pressrelease.htm#:~:text=Quarterly%20Financial%20Results",
+        "locator": "Quarterly Financial Results; GAAP FQ4-25 Gross margin",
+        "text_fragment": "Quarterly Financial Results",
+        "evidence_block": "MU-8-K-ex0:Quarterly Financial Results"
+      },
+      {
+        "label": "rev25",
+        "value": "37378",
+        "unit": "USD million",
+        "source_id": "MU-10-K",
+        "locator": "Inline XBRL fact #f-53; context c-1",
+        "fact_id": "f-53",
+        "concept": "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax",
+        "context_id": "c-1",
+        "context": "context: entity: identifier:0000723125 period: startdate:2024-08-30 enddate:2025-08-28",
+        "scale": 6,
+        "decimals": "-6",
+        "original_text": "37,378",
+        "sign": "+",
+        "url": "https://www.sec.gov/Archives/edgar/data/723125/000072312525000028/mu-20250828.htm#f-53",
+        "evidence_block": "MU-10-K:income_statement"
+      },
+      {
+        "label": "ytd_rev",
+        "source_id": "MU-10-Q",
+        "value": "26063",
+        "unit": "USD million",
+        "concept": "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax",
+        "context_id": "c-1",
+        "context": "context: entity: identifier:0000723125 period: startdate:2024-08-30 enddate:2025-05-29",
+        "fact_id": "f-32",
+        "original_text": "26,063",
+        "scale": 6,
+        "sign": "+",
+        "url": "https://www.sec.gov/Archives/edgar/data/723125/000072312525000021/mu-20250529.htm#f-32",
+        "locator": "income_statement; inline XBRL #f-32, context c-1",
+        "evidence_block": "MU-10-Q:income_statement"
+      },
+      {
+        "label": "gp25",
+        "value": "14873",
+        "unit": "USD million",
+        "source_id": "MU-10-K",
+        "locator": "Inline XBRL fact #f-59; context c-1",
+        "fact_id": "f-59",
+        "concept": "us-gaap:GrossProfit",
+        "context_id": "c-1",
+        "context": "context: entity: identifier:0000723125 period: startdate:2024-08-30 enddate:2025-08-28",
+        "scale": 6,
+        "decimals": "-6",
+        "original_text": "14,873",
+        "sign": "+",
+        "url": "https://www.sec.gov/Archives/edgar/data/723125/000072312525000028/mu-20250828.htm#f-59",
+        "evidence_block": "MU-10-K:income_statement"
+      },
+      {
+        "label": "ytd_gp",
+        "source_id": "MU-10-Q",
+        "value": "9819",
+        "unit": "USD million",
+        "concept": "us-gaap:GrossProfit",
+        "context_id": "c-1",
+        "context": "context: entity: identifier:0000723125 period: startdate:2024-08-30 enddate:2025-05-29",
+        "fact_id": "f-40",
+        "original_text": "9,819",
+        "scale": 6,
+        "sign": "+",
+        "url": "https://www.sec.gov/Archives/edgar/data/723125/000072312525000021/mu-20250529.htm#f-40",
+        "locator": "income_statement; inline XBRL #f-40, context c-1",
+        "evidence_block": "MU-10-Q:income_statement"
+      }
+    ],
+    "reused_from_v1": [
+      "RAIN-MU-008"
+    ],
+    "grading": {
+      "expected_answer": {
+        "actual_rev": {
+          "value": "11315",
+          "kind": "number",
+          "unit": "USD million",
+          "absolute_tolerance": "0"
+        },
+        "actual_gp": {
+          "value": "5054",
+          "kind": "number",
+          "unit": "USD million",
+          "absolute_tolerance": "0"
+        },
+        "actual_gm": {
+          "value": "44.67",
+          "kind": "number",
+          "unit": "percent",
+          "absolute_tolerance": "0.01"
+        },
+        "revenue_difference": {
+          "value": "0.000",
+          "kind": "number",
+          "unit": "USD million",
+          "absolute_tolerance": "0.001"
+        },
+        "gross_profit_difference": {
+          "value": "0.000",
+          "kind": "number",
+          "unit": "USD million",
+          "absolute_tolerance": "0.001"
+        },
+        "reconciles": {
+          "value": true,
+          "kind": "boolean",
+          "unit": "boolean"
+        }
+      },
+      "max_points": 5,
+      "rubric": {
+        "answer": 2,
+        "evidence": 1,
+        "scope_units": 1,
+        "dependency_and_method": 1
+      }
+    },
+    "verification": {
+      "checked_on": "2026-09-22",
+      "source_verified": true,
+      "agent_run_performed": false
+    }
+  },
+  "RAIN-V2-MU-004": {
+    "title_zh": "指引区间相对实际季度的增长",
+    "ticker": "MU",
+    "company": "Micron Technology, Inc.",
+    "depends_on": [
+      "RAIN-V2-MU-003"
+    ],
+    "input_bindings": {
+      "q4_rev": {
+        "kind": "prior",
+        "question_id": "RAIN-V2-MU-003",
+        "field": "actual_rev",
+        "value": "11315",
+        "unit": "USD million"
+      },
+      "midpoint": {
+        "kind": "source",
+        "value": "12500",
+        "unit": "USD million",
+        "evidence_label": "midpoint",
+        "source_id": "MU-8-K-ex0",
+        "reused_from": "RAIN-MU-010"
+      },
+      "half_range": {
+        "kind": "source",
+        "value": "300",
+        "unit": "USD million",
+        "evidence_label": "half_range",
+        "source_id": "MU-8-K-ex0",
+        "reused_from": "RAIN-MU-010"
+      }
+    },
+    "derivations": [
+      {
+        "field": "low",
+        "expression": "midpoint - half_range",
+        "unit": "USD million",
+        "decimal_places": 3
+      },
+      {
+        "field": "high",
+        "expression": "midpoint + half_range",
+        "unit": "USD million",
+        "decimal_places": 3
+      },
+      {
+        "field": "low_growth",
+        "expression": "(low / q4_rev - 1) * 100",
+        "unit": "percent",
+        "decimal_places": 2
+      },
+      {
+        "field": "high_growth",
+        "expression": "(high / q4_rev - 1) * 100",
+        "unit": "percent",
+        "decimal_places": 2
+      }
+    ],
+    "output_nodes": {
+      "low": "derive_low",
+      "high": "derive_high",
+      "low_growth": "derive_low_growth",
+      "high_growth": "derive_high_growth"
+    },
+    "hop_definition": "conditional_evidence_depth_v2",
+    "hop_plan": [
+      {
+        "id": "input_q4_rev",
+        "kind": "prior",
+        "depends_on": [],
+        "outputs": [
+          "q4_rev"
+        ],
+        "question_id": "RAIN-V2-MU-003",
+        "field": "actual_rev",
+        "depth": 0
+      },
+      {
+        "id": "read_1",
+        "kind": "retrieve",
+        "depends_on": [],
+        "evidence_block": "MU-8-K-ex0:Business Outlook",
+        "source_ids": [
+          "MU-8-K-ex0"
+        ],
+        "outputs": [
+          "midpoint"
+        ],
+        "depth": 1
+      },
+      {
+        "id": "read_2",
+        "kind": "retrieve",
+        "depends_on": [],
+        "evidence_block": "MU-8-K-ex0:Same guidance row",
+        "source_ids": [
+          "MU-8-K-ex0"
+        ],
+        "outputs": [
+          "half_range"
+        ],
+        "depth": 1
+      },
+      {
+        "id": "derive_low",
+        "kind": "calculate",
+        "depends_on": [
+          "read_2",
+          "read_1"
+        ],
+        "outputs": [
+          "low"
+        ],
+        "expression": "midpoint - half_range",
+        "depth": 2
+      },
+      {
+        "id": "derive_high",
+        "kind": "calculate",
+        "depends_on": [
+          "read_2",
+          "read_1"
+        ],
+        "outputs": [
+          "high"
+        ],
+        "expression": "midpoint + half_range",
+        "depth": 2
+      },
+      {
+        "id": "derive_low_growth",
+        "kind": "calculate",
+        "depends_on": [
+          "derive_low",
+          "input_q4_rev"
+        ],
+        "outputs": [
+          "low_growth"
+        ],
+        "expression": "(low / q4_rev - 1) * 100",
+        "depth": 3
+      },
+      {
+        "id": "derive_high_growth",
+        "kind": "calculate",
+        "depends_on": [
+          "derive_high",
+          "input_q4_rev"
+        ],
+        "outputs": [
+          "high_growth"
+        ],
+        "expression": "(high / q4_rev - 1) * 100",
+        "depth": 3
+      }
+    ],
+    "hops": 3,
+    "evidence_records": [
+      {
+        "label": "midpoint",
+        "value": "12500",
+        "unit": "USD million",
+        "source_id": "MU-8-K-ex0",
+        "locator": "Business Outlook, FQ1-26 revenue guidance",
+        "url": "https://www.sec.gov/Archives/edgar/data/723125/000072312525000024/a2025q4ex991-pressrelease.htm#:~:text=Business%20Outlook",
+        "text_fragment": "Business Outlook",
+        "evidence_block": "MU-8-K-ex0:Business Outlook"
+      },
+      {
+        "label": "half_range",
+        "value": "300",
+        "unit": "USD million",
+        "source_id": "MU-8-K-ex0",
+        "locator": "Same guidance row",
+        "url": "https://www.sec.gov/Archives/edgar/data/723125/000072312525000024/a2025q4ex991-pressrelease.htm#:~:text=Business%20Outlook",
+        "text_fragment": "Business Outlook",
+        "evidence_block": "MU-8-K-ex0:Same guidance row"
+      },
+      {
+        "label": "actual_rev",
+        "source_id": "MU-8-K-ex0",
+        "value": "11315",
+        "unit": "USD million",
+        "url": "https://www.sec.gov/Archives/edgar/data/723125/000072312525000024/a2025q4ex991-pressrelease.htm#:~:text=Quarterly%20Financial%20Results",
+        "locator": "Quarterly Financial Results; GAAP FQ4-25 Revenue",
+        "text_fragment": "Quarterly Financial Results",
+        "evidence_block": "MU-8-K-ex0:Quarterly Financial Results"
+      }
+    ],
+    "reused_from_v1": [
+      "RAIN-MU-010"
+    ],
+    "grading": {
+      "expected_answer": {
+        "low": {
+          "value": "12200.000",
+          "kind": "number",
+          "unit": "USD million",
+          "absolute_tolerance": "0.001"
+        },
+        "high": {
+          "value": "12800.000",
+          "kind": "number",
+          "unit": "USD million",
+          "absolute_tolerance": "0.001"
+        },
+        "low_growth": {
+          "value": "7.82",
+          "kind": "number",
+          "unit": "percent",
+          "absolute_tolerance": "0.01"
+        },
+        "high_growth": {
+          "value": "13.12",
+          "kind": "number",
+          "unit": "percent",
+          "absolute_tolerance": "0.01"
+        }
+      },
+      "max_points": 5,
+      "rubric": {
+        "answer": 2,
+        "evidence": 1,
+        "scope_units": 1,
+        "dependency_and_method": 1
+      }
+    },
+    "verification": {
+      "checked_on": "2026-09-22",
+      "source_verified": true,
+      "agent_run_performed": false
+    }
+  },
+  "RAIN-V2-MU-005": {
+    "title_zh": "按用户双门槛形成简报结论",
+    "ticker": "MU",
+    "company": "Micron Technology, Inc.",
+    "depends_on": [
+      "RAIN-V2-MU-003",
+      "RAIN-V2-MU-004"
+    ],
+    "input_bindings": {
+      "low_growth": {
+        "kind": "prior",
+        "question_id": "RAIN-V2-MU-004",
+        "field": "low_growth",
+        "value": "7.821475916924436588599204600",
+        "unit": "percent"
+      },
+      "q4_margin": {
+        "kind": "prior",
+        "question_id": "RAIN-V2-MU-003",
+        "field": "actual_gm",
+        "value": "44.66637207247017233760494918",
+        "unit": "percent"
+      },
+      "gm_mid": {
+        "kind": "source",
+        "value": "50.5",
+        "unit": "percent",
+        "evidence_label": "gaap_gm_mid",
+        "source_id": "MU-8-K-ex0"
+      },
+      "gm_half": {
+        "kind": "source",
+        "value": "1",
+        "unit": "percentage points",
+        "evidence_label": "gaap_gm_half",
+        "source_id": "MU-8-K-ex0"
+      },
+      "growth_hurdle": {
+        "kind": "assumption",
+        "value": "5",
+        "unit": "percent",
+        "description": "Scenario assumption stated in the question"
+      },
+      "gm_hurdle": {
+        "kind": "assumption",
+        "value": "3",
+        "unit": "percentage points",
+        "description": "Scenario assumption stated in the question"
+      }
+    },
+    "derivations": [
+      {
+        "field": "gm_low",
+        "expression": "gm_mid - gm_half",
+        "unit": "percent",
+        "decimal_places": 2
+      },
+      {
+        "field": "uplift",
+        "expression": "gm_low - q4_margin",
+        "unit": "percentage points",
+        "decimal_places": 2
+      },
+      {
+        "field": "both_pass",
+        "expression": "low_growth >= growth_hurdle and uplift >= gm_hurdle",
+        "unit": "boolean",
+        "decimal_places": null
+      }
+    ],
+    "output_nodes": {
+      "gm_low": "derive_gm_low",
+      "uplift": "derive_uplift",
+      "both_pass": "derive_both_pass"
+    },
+    "hop_definition": "conditional_evidence_depth_v2",
+    "hop_plan": [
+      {
+        "id": "input_low_growth",
+        "kind": "prior",
+        "depends_on": [],
+        "outputs": [
+          "low_growth"
+        ],
+        "question_id": "RAIN-V2-MU-004",
+        "field": "low_growth",
+        "depth": 0
+      },
+      {
+        "id": "input_q4_margin",
+        "kind": "prior",
+        "depends_on": [],
+        "outputs": [
+          "q4_margin"
+        ],
+        "question_id": "RAIN-V2-MU-003",
+        "field": "actual_gm",
+        "depth": 0
+      },
+      {
+        "id": "read_1",
+        "kind": "retrieve",
+        "depends_on": [],
+        "evidence_block": "MU-8-K-ex0:Business Outlook",
+        "source_ids": [
+          "MU-8-K-ex0"
+        ],
+        "outputs": [
+          "gm_mid",
+          "gm_half"
+        ],
+        "depth": 1
+      },
+      {
+        "id": "input_growth_hurdle",
+        "kind": "assumption",
+        "depends_on": [],
+        "outputs": [
+          "growth_hurdle"
+        ],
+        "description": "Scenario assumption stated in the question",
+        "depth": 0
+      },
+      {
+        "id": "input_gm_hurdle",
+        "kind": "assumption",
+        "depends_on": [],
+        "outputs": [
+          "gm_hurdle"
+        ],
+        "description": "Scenario assumption stated in the question",
+        "depth": 0
+      },
+      {
+        "id": "derive_gm_low",
+        "kind": "calculate",
+        "depends_on": [
+          "read_1"
+        ],
+        "outputs": [
+          "gm_low"
+        ],
+        "expression": "gm_mid - gm_half",
+        "depth": 2
+      },
+      {
+        "id": "derive_uplift",
+        "kind": "calculate",
+        "depends_on": [
+          "derive_gm_low",
+          "input_q4_margin"
+        ],
+        "outputs": [
+          "uplift"
+        ],
+        "expression": "gm_low - q4_margin",
+        "depth": 3
+      },
+      {
+        "id": "derive_both_pass",
+        "kind": "judge",
+        "depends_on": [
+          "input_gm_hurdle",
+          "input_growth_hurdle",
+          "input_low_growth",
+          "derive_uplift"
+        ],
+        "outputs": [
+          "both_pass"
+        ],
+        "expression": "low_growth >= growth_hurdle and uplift >= gm_hurdle",
+        "depth": 4
+      }
+    ],
+    "hops": 4,
+    "evidence_records": [
+      {
+        "label": "gaap_gm_mid",
+        "source_id": "MU-8-K-ex0",
+        "value": "50.5",
+        "unit": "percent",
+        "url": "https://www.sec.gov/Archives/edgar/data/723125/000072312525000024/a2025q4ex991-pressrelease.htm#:~:text=Business%20Outlook",
+        "locator": "Business Outlook; GAAP gross margin midpoint",
+        "text_fragment": "Business Outlook",
+        "evidence_block": "MU-8-K-ex0:Business Outlook"
+      },
+      {
+        "label": "gaap_gm_half",
+        "source_id": "MU-8-K-ex0",
+        "value": "1",
+        "unit": "percentage points",
+        "url": "https://www.sec.gov/Archives/edgar/data/723125/000072312525000024/a2025q4ex991-pressrelease.htm#:~:text=Business%20Outlook",
+        "locator": "Business Outlook; GAAP gross margin range",
+        "text_fragment": "Business Outlook",
+        "evidence_block": "MU-8-K-ex0:Business Outlook"
+      },
+      {
+        "label": "actual_gp",
+        "source_id": "MU-8-K-ex0",
+        "value": "5054",
+        "unit": "USD million",
+        "url": "https://www.sec.gov/Archives/edgar/data/723125/000072312525000024/a2025q4ex991-pressrelease.htm#:~:text=Quarterly%20Financial%20Results",
+        "locator": "Quarterly Financial Results; GAAP FQ4-25 Gross margin",
+        "text_fragment": "Quarterly Financial Results",
+        "evidence_block": "MU-8-K-ex0:Quarterly Financial Results"
+      },
+      {
+        "label": "actual_rev",
+        "source_id": "MU-8-K-ex0",
+        "value": "11315",
+        "unit": "USD million",
+        "url": "https://www.sec.gov/Archives/edgar/data/723125/000072312525000024/a2025q4ex991-pressrelease.htm#:~:text=Quarterly%20Financial%20Results",
+        "locator": "Quarterly Financial Results; GAAP FQ4-25 Revenue",
+        "text_fragment": "Quarterly Financial Results",
+        "evidence_block": "MU-8-K-ex0:Quarterly Financial Results"
+      },
+      {
+        "label": "half_range",
+        "value": "300",
+        "unit": "USD million",
+        "source_id": "MU-8-K-ex0",
+        "locator": "Same guidance row",
+        "url": "https://www.sec.gov/Archives/edgar/data/723125/000072312525000024/a2025q4ex991-pressrelease.htm#:~:text=Business%20Outlook",
+        "text_fragment": "Business Outlook",
+        "evidence_block": "MU-8-K-ex0:Same guidance row"
+      },
+      {
+        "label": "midpoint",
+        "value": "12500",
+        "unit": "USD million",
+        "source_id": "MU-8-K-ex0",
+        "locator": "Business Outlook, FQ1-26 revenue guidance",
+        "url": "https://www.sec.gov/Archives/edgar/data/723125/000072312525000024/a2025q4ex991-pressrelease.htm#:~:text=Business%20Outlook",
+        "text_fragment": "Business Outlook",
+        "evidence_block": "MU-8-K-ex0:Business Outlook"
+      }
+    ],
+    "reused_from_v1": [],
+    "grading": {
+      "expected_answer": {
+        "gm_low": {
+          "value": "49.50",
+          "kind": "number",
+          "unit": "percent",
+          "absolute_tolerance": "0.01"
+        },
+        "uplift": {
+          "value": "4.83",
+          "kind": "number",
+          "unit": "percentage points",
+          "absolute_tolerance": "0.01"
+        },
+        "both_pass": {
+          "value": true,
+          "kind": "boolean",
+          "unit": "boolean"
+        }
+      },
+      "max_points": 5,
+      "rubric": {
+        "answer": 2,
+        "evidence": 1,
+        "scope_units": 1,
+        "dependency_and_method": 1
+      }
+    },
+    "verification": {
+      "checked_on": "2026-09-22",
+      "source_verified": true,
+      "agent_run_performed": false
+    }
+  }
+}

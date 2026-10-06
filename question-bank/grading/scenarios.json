@@ -1,0 +1,52 @@
+{
+  "MU": {
+    "company": "Micron Technology, Inc.",
+    "ticker_at_filing": "MU",
+    "title_zh": "财报会前核对：Q4 毛利加速与下一季指引",
+    "user_request": "I am preparing a Micron earnings briefing. Reconstruct Q4 from the annual and nine-month filings, reconcile it to the earnings release, then test whether the next-quarter guidance meets my stated revenue and gross-margin hurdles.",
+    "scope": "FY2025 annual/Q3/Q4 and FY2026 Q1 guidance as announced 2025-09-23",
+    "scenario_id": "RAIN-V2-MU-001",
+    "file": "mu_scenario.json",
+    "steps": [
+      {
+        "id": "RAIN-V2-MU-001",
+        "title_zh": "建立年度毛利基线",
+        "depends_on": [],
+        "hops": 3
+      },
+      {
+        "id": "RAIN-V2-MU-002",
+        "title_zh": "年度减累计反推 Q4",
+        "depends_on": [
+          "RAIN-V2-MU-001"
+        ],
+        "hops": 3
+      },
+      {
+        "id": "RAIN-V2-MU-003",
+        "title_zh": "与业绩附件对账",
+        "depends_on": [
+          "RAIN-V2-MU-002"
+        ],
+        "hops": 3
+      },
+      {
+        "id": "RAIN-V2-MU-004",
+        "title_zh": "指引区间相对实际季度的增长",
+        "depends_on": [
+          "RAIN-V2-MU-003"
+        ],
+        "hops": 3
+      },
+      {
+        "id": "RAIN-V2-MU-005",
+        "title_zh": "按用户双门槛形成简报结论",
+        "depends_on": [
+          "RAIN-V2-MU-003",
+          "RAIN-V2-MU-004"
+        ],
+        "hops": 4
+      }
+    ]
+  }
+}
