@@ -48,5 +48,43 @@
     "sha256": "fb9348bb106003980e2c0bb07fcb52785d458c0344afc31918521dfdf803c80a",
     "parent_source_id": "MU-8-K",
     "exhibit": "99.1"
+  },
+  "STX-10-K": {
+    "ticker": "STX",
+    "cik": "0001137789",
+    "form": "10-K",
+    "filed": "2025-08-01",
+    "report_date": "2025-06-27",
+    "accession": "0001137789-25-000157",
+    "url": "https://www.sec.gov/Archives/edgar/data/1137789/000113778925000157/stx-20250627.htm",
+    "company": "Seagate Technology Holdings plc",
+    "retrieved_on": "2026-09-22",
+    "sha256": "78df1afe91b56faf4be3c11da523c30bd0343971df2ab49d11b94b7c0015e1f8"
+  },
+  "STX-8-K": {
+    "ticker": "STX",
+    "cik": "0001137789",
+    "form": "8-K",
+    "filed": "2025-07-29",
+    "report_date": "2025-07-29",
+    "accession": "0001137789-25-000148",
+    "url": "https://www.sec.gov/Archives/edgar/data/1137789/000113778925000148/stx-20250729.htm",
+    "company": "Seagate Technology Holdings plc",
+    "retrieved_on": "2026-09-22",
+    "sha256": "ab7b851f14ffd4e92853ccccc8280c3eba4c94f445675788432e557312181844"
+  },
+  "STX-8-K-ex0": {
+    "ticker": "STX",
+    "cik": "0001137789",
+    "form": "8-K",
+    "filed": "2025-07-29",
+    "report_date": "2025-07-29",
+    "accession": "0001137789-25-000148",
+    "url": "https://www.sec.gov/Archives/edgar/data/1137789/000113778925000148/stxq42025pressreleasefinan.htm",
+    "company": "Seagate Technology Holdings plc",
+    "retrieved_on": "2026-09-22",
+    "sha256": "482a9100cb66a82366dacf860fc2b0e245c960991836275310c37a9cf25a2e6b",
+    "parent_source_id": "STX-8-K",
+    "exhibit": "99.1"
   }
 }

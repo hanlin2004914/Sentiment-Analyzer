@@ -1303,5 +1303,1065 @@
       "source_verified": true,
       "agent_run_performed": false
     }
+  },
+  "RAIN-V2-STX-001": {
+    "title_zh": "取得现金流输入并计算 FCF",
+    "ticker": "STX",
+    "company": "Seagate Technology Holdings plc",
+    "depends_on": [],
+    "input_bindings": {
+      "ocf": {
+        "kind": "source",
+        "value": "1083",
+        "unit": "USD million",
+        "evidence_label": "ocf",
+        "source_id": "STX-10-K",
+        "reused_from": "RAIN-STX-002"
+      },
+      "capex": {
+        "kind": "source",
+        "value": "265",
+        "unit": "USD million",
+        "evidence_label": "capex",
+        "source_id": "STX-10-K",
+        "reused_from": "RAIN-STX-002"
+      }
+    },
+    "derivations": [
+      {
+        "field": "fcf",
+        "expression": "ocf - capex",
+        "unit": "USD million",
+        "decimal_places": 3
+      }
+    ],
+    "output_nodes": {
+      "ocf": "read_1",
+      "capex": "read_1",
+      "fcf": "derive_fcf"
+    },
+    "hop_definition": "conditional_evidence_depth_v2",
+    "hop_plan": [
+      {
+        "id": "read_1",
+        "kind": "retrieve",
+        "depends_on": [],
+        "evidence_block": "STX-10-K:income_statement",
+        "source_ids": [
+          "STX-10-K"
+        ],
+        "outputs": [
+          "ocf",
+          "capex"
+        ],
+        "depth": 1
+      },
+      {
+        "id": "derive_fcf",
+        "kind": "calculate",
+        "depends_on": [
+          "read_1"
+        ],
+        "outputs": [
+          "fcf"
+        ],
+        "expression": "ocf - capex",
+        "depth": 2
+      }
+    ],
+    "hops": 2,
+    "evidence_records": [
+      {
+        "label": "ocf",
+        "value": "1083",
+        "unit": "USD million",
+        "source_id": "STX-10-K",
+        "locator": "Inline XBRL fact #f-243; context c-1",
+        "fact_id": "f-243",
+        "concept": "us-gaap:NetCashProvidedByUsedInOperatingActivities",
+        "context_id": "c-1",
+        "context": "context: entity: identifier:0001137789 period: startdate:2024-06-29 enddate:2025-06-27",
+        "scale": 6,
+        "decimals": "-6",
+        "original_text": "1,083",
+        "sign": "+",
+        "url": "https://www.sec.gov/Archives/edgar/data/1137789/000113778925000157/stx-20250627.htm#f-243",
+        "evidence_block": "STX-10-K:income_statement"
+      },
+      {
+        "label": "capex",
+        "value": "265",
+        "unit": "USD million",
+        "source_id": "STX-10-K",
+        "locator": "Inline XBRL fact #f-246; context c-1",
+        "fact_id": "f-246",
+        "concept": "us-gaap:PaymentsToAcquirePropertyPlantAndEquipment",
+        "context_id": "c-1",
+        "context": "context: entity: identifier:0001137789 period: startdate:2024-06-29 enddate:2025-06-27",
+        "scale": 6,
+        "decimals": "-6",
+        "original_text": "265",
+        "sign": "+",
+        "url": "https://www.sec.gov/Archives/edgar/data/1137789/000113778925000157/stx-20250627.htm#f-246",
+        "evidence_block": "STX-10-K:income_statement"
+      }
+    ],
+    "reused_from_v1": [
+      "RAIN-STX-002"
+    ],
+    "grading": {
+      "expected_answer": {
+        "ocf": {
+          "value": "1083",
+          "kind": "number",
+          "unit": "USD million",
+          "absolute_tolerance": "0"
+        },
+        "capex": {
+          "value": "265",
+          "kind": "number",
+          "unit": "USD million",
+          "absolute_tolerance": "0"
+        },
+        "fcf": {
+          "value": "818.000",
+          "kind": "number",
+          "unit": "USD million",
+          "absolute_tolerance": "0.001"
+        }
+      },
+      "max_points": 5,
+      "rubric": {
+        "answer": 2,
+        "evidence": 1,
+        "scope_units": 1,
+        "dependency_and_method": 1
+      }
+    },
+    "verification": {
+      "checked_on": "2026-09-22",
+      "source_verified": true,
+      "agent_run_performed": false
+    }
+  },
+  "RAIN-V2-STX-002": {
+    "title_zh": "检验已支付股息覆盖",
+    "ticker": "STX",
+    "company": "Seagate Technology Holdings plc",
+    "depends_on": [
+      "RAIN-V2-STX-001"
+    ],
+    "input_bindings": {
+      "fcf": {
+        "kind": "prior",
+        "question_id": "RAIN-V2-STX-001",
+        "field": "fcf",
+        "value": "818",
+        "unit": "USD million"
+      },
+      "dividends": {
+        "kind": "source",
+        "value": "600",
+        "unit": "USD million",
+        "evidence_label": "dividends",
+        "source_id": "STX-10-K"
+      }
+    },
+    "derivations": [
+      {
+        "field": "coverage",
+        "expression": "fcf / dividends",
+        "unit": "times",
+        "decimal_places": 2
+      },
+      {
+        "field": "residual",
+        "expression": "fcf - dividends",
+        "unit": "USD million",
+        "decimal_places": 3
+      }
+    ],
+    "output_nodes": {
+      "dividends": "read_1",
+      "coverage": "derive_coverage",
+      "residual": "derive_residual"
+    },
+    "hop_definition": "conditional_evidence_depth_v2",
+    "hop_plan": [
+      {
+        "id": "input_fcf",
+        "kind": "prior",
+        "depends_on": [],
+        "outputs": [
+          "fcf"
+        ],
+        "question_id": "RAIN-V2-STX-001",
+        "field": "fcf",
+        "depth": 0
+      },
+      {
+        "id": "read_1",
+        "kind": "retrieve",
+        "depends_on": [],
+        "evidence_block": "STX-10-K:cash_flow_statement",
+        "source_ids": [
+          "STX-10-K"
+        ],
+        "outputs": [
+          "dividends"
+        ],
+        "depth": 1
+      },
+      {
+        "id": "derive_coverage",
+        "kind": "calculate",
+        "depends_on": [
+          "read_1",
+          "input_fcf"
+        ],
+        "outputs": [
+          "coverage"
+        ],
+        "expression": "fcf / dividends",
+        "depth": 2
+      },
+      {
+        "id": "derive_residual",
+        "kind": "calculate",
+        "depends_on": [
+          "read_1",
+          "input_fcf"
+        ],
+        "outputs": [
+          "residual"
+        ],
+        "expression": "fcf - dividends",
+        "depth": 2
+      }
+    ],
+    "hops": 2,
+    "evidence_records": [
+      {
+        "label": "dividends",
+        "source_id": "STX-10-K",
+        "value": "600",
+        "unit": "USD million",
+        "concept": "us-gaap:PaymentsOfDividendsCommonStock",
+        "context_id": "c-1",
+        "context": "context: entity: identifier:0001137789 period: startdate:2024-06-29 enddate:2025-06-27",
+        "fact_id": "f-273",
+        "original_text": "600",
+        "scale": 6,
+        "sign": "+",
+        "url": "https://www.sec.gov/Archives/edgar/data/1137789/000113778925000157/stx-20250627.htm#f-273",
+        "locator": "cash_flow_statement; inline XBRL #f-273, context c-1",
+        "evidence_block": "STX-10-K:cash_flow_statement"
+      },
+      {
+        "label": "capex",
+        "value": "265",
+        "unit": "USD million",
+        "source_id": "STX-10-K",
+        "locator": "Inline XBRL fact #f-246; context c-1",
+        "fact_id": "f-246",
+        "concept": "us-gaap:PaymentsToAcquirePropertyPlantAndEquipment",
+        "context_id": "c-1",
+        "context": "context: entity: identifier:0001137789 period: startdate:2024-06-29 enddate:2025-06-27",
+        "scale": 6,
+        "decimals": "-6",
+        "original_text": "265",
+        "sign": "+",
+        "url": "https://www.sec.gov/Archives/edgar/data/1137789/000113778925000157/stx-20250627.htm#f-246",
+        "evidence_block": "STX-10-K:income_statement"
+      },
+      {
+        "label": "ocf",
+        "value": "1083",
+        "unit": "USD million",
+        "source_id": "STX-10-K",
+        "locator": "Inline XBRL fact #f-243; context c-1",
+        "fact_id": "f-243",
+        "concept": "us-gaap:NetCashProvidedByUsedInOperatingActivities",
+        "context_id": "c-1",
+        "context": "context: entity: identifier:0001137789 period: startdate:2024-06-29 enddate:2025-06-27",
+        "scale": 6,
+        "decimals": "-6",
+        "original_text": "1,083",
+        "sign": "+",
+        "url": "https://www.sec.gov/Archives/edgar/data/1137789/000113778925000157/stx-20250627.htm#f-243",
+        "evidence_block": "STX-10-K:income_statement"
+      }
+    ],
+    "reused_from_v1": [],
+    "grading": {
+      "expected_answer": {
+        "dividends": {
+          "value": "600",
+          "kind": "number",
+          "unit": "USD million",
+          "absolute_tolerance": "0"
+        },
+        "coverage": {
+          "value": "1.36",
+          "kind": "number",
+          "unit": "times",
+          "absolute_tolerance": "0.01"
+        },
+        "residual": {
+          "value": "218.000",
+          "kind": "number",
+          "unit": "USD million",
+          "absolute_tolerance": "0.001"
+        }
+      },
+      "max_points": 5,
+      "rubric": {
+        "answer": 2,
+        "evidence": 1,
+        "scope_units": 1,
+        "dependency_and_method": 1
+      }
+    },
+    "verification": {
+      "checked_on": "2026-09-22",
+      "source_verified": true,
+      "agent_run_performed": false
+    }
+  },
+  "RAIN-V2-STX-003": {
+    "title_zh": "估算新股息的全年现金负担",
+    "ticker": "STX",
+    "company": "Seagate Technology Holdings plc",
+    "depends_on": [
+      "RAIN-V2-STX-002"
+    ],
+    "input_bindings": {
+      "old_dividends": {
+        "kind": "prior",
+        "question_id": "RAIN-V2-STX-002",
+        "field": "dividends",
+        "value": "600",
+        "unit": "USD million"
+      },
+      "rate": {
+        "kind": "source",
+        "value": "0.72",
+        "unit": "USD per share",
+        "evidence_label": "dividend",
+        "source_id": "STX-8-K",
+        "reused_from": "RAIN-STX-008"
+      },
+      "shares": {
+        "kind": "source",
+        "value": "213",
+        "unit": "million shares",
+        "evidence_label": "shares",
+        "source_id": "STX-8-K-ex0"
+      },
+      "quarters": {
+        "kind": "assumption",
+        "value": "4",
+        "unit": "quarters",
+        "description": "Scenario assumption stated in the question"
+      }
+    },
+    "derivations": [
+      {
+        "field": "annual_dividend_budget",
+        "expression": "rate * shares * quarters",
+        "unit": "USD million",
+        "decimal_places": 3
+      },
+      {
+        "field": "increase",
+        "expression": "annual_dividend_budget - old_dividends",
+        "unit": "USD million",
+        "decimal_places": 3
+      }
+    ],
+    "output_nodes": {
+      "rate": "read_1",
+      "shares": "read_2",
+      "annual_dividend_budget": "derive_annual_dividend_budget",
+      "increase": "derive_increase"
+    },
+    "hop_definition": "conditional_evidence_depth_v2",
+    "hop_plan": [
+      {
+        "id": "input_old_dividends",
+        "kind": "prior",
+        "depends_on": [],
+        "outputs": [
+          "old_dividends"
+        ],
+        "question_id": "RAIN-V2-STX-002",
+        "field": "dividends",
+        "depth": 0
+      },
+      {
+        "id": "read_1",
+        "kind": "retrieve",
+        "depends_on": [],
+        "evidence_block": "STX-8-K:Item 7.01",
+        "source_ids": [
+          "STX-8-K"
+        ],
+        "outputs": [
+          "rate"
+        ],
+        "depth": 1
+      },
+      {
+        "id": "read_2",
+        "kind": "retrieve",
+        "depends_on": [],
+        "evidence_block": "STX-8-K-ex0:Cash flow and capital allocation discussion",
+        "source_ids": [
+          "STX-8-K-ex0"
+        ],
+        "outputs": [
+          "shares"
+        ],
+        "depth": 1
+      },
+      {
+        "id": "input_quarters",
+        "kind": "assumption",
+        "depends_on": [],
+        "outputs": [
+          "quarters"
+        ],
+        "description": "Scenario assumption stated in the question",
+        "depth": 0
+      },
+      {
+        "id": "derive_annual_dividend_budget",
+        "kind": "calculate",
+        "depends_on": [
+          "input_quarters",
+          "read_1",
+          "read_2"
+        ],
+        "outputs": [
+          "annual_dividend_budget"
+        ],
+        "expression": "rate * shares * quarters",
+        "depth": 2
+      },
+      {
+        "id": "derive_increase",
+        "kind": "calculate",
+        "depends_on": [
+          "derive_annual_dividend_budget",
+          "input_old_dividends"
+        ],
+        "outputs": [
+          "increase"
+        ],
+        "expression": "annual_dividend_budget - old_dividends",
+        "depth": 3
+      }
+    ],
+    "hops": 3,
+    "evidence_records": [
+      {
+        "label": "dividend",
+        "value": "0.72",
+        "unit": "USD per share",
+        "source_id": "STX-8-K",
+        "locator": "Item 7.01",
+        "url": "https://www.sec.gov/Archives/edgar/data/1137789/000113778925000148/stx-20250729.htm#:~:text=quarterly%20cash%20dividend%20of%20%240.72%20per%20share",
+        "text_fragment": "quarterly cash dividend of $0.72 per share",
+        "evidence_block": "STX-8-K:Item 7.01"
+      },
+      {
+        "label": "shares",
+        "source_id": "STX-8-K-ex0",
+        "value": "213",
+        "unit": "million shares",
+        "url": "https://www.sec.gov/Archives/edgar/data/1137789/000113778925000148/stxq42025pressreleasefinan.htm#:~:text=213%20million%20ordinary%20shares%20issued%20and%20outstanding",
+        "locator": "Cash flow and capital allocation discussion",
+        "text_fragment": "213 million ordinary shares issued and outstanding",
+        "evidence_block": "STX-8-K-ex0:Cash flow and capital allocation discussion"
+      },
+      {
+        "label": "dividends",
+        "source_id": "STX-10-K",
+        "value": "600",
+        "unit": "USD million",
+        "concept": "us-gaap:PaymentsOfDividendsCommonStock",
+        "context_id": "c-1",
+        "context": "context: entity: identifier:0001137789 period: startdate:2024-06-29 enddate:2025-06-27",
+        "fact_id": "f-273",
+        "original_text": "600",
+        "scale": 6,
+        "sign": "+",
+        "url": "https://www.sec.gov/Archives/edgar/data/1137789/000113778925000157/stx-20250627.htm#f-273",
+        "locator": "cash_flow_statement; inline XBRL #f-273, context c-1",
+        "evidence_block": "STX-10-K:cash_flow_statement"
+      }
+    ],
+    "reused_from_v1": [
+      "RAIN-STX-008"
+    ],
+    "grading": {
+      "expected_answer": {
+        "rate": {
+          "value": "0.72",
+          "kind": "number",
+          "unit": "USD per share",
+          "absolute_tolerance": "0"
+        },
+        "shares": {
+          "value": "213",
+          "kind": "number",
+          "unit": "million shares",
+          "absolute_tolerance": "0"
+        },
+        "annual_dividend_budget": {
+          "value": "613.440",
+          "kind": "number",
+          "unit": "USD million",
+          "absolute_tolerance": "0.001"
+        },
+        "increase": {
+          "value": "13.440",
+          "kind": "number",
+          "unit": "USD million",
+          "absolute_tolerance": "0.001"
+        }
+      },
+      "max_points": 5,
+      "rubric": {
+        "answer": 2,
+        "evidence": 1,
+        "scope_units": 1,
+        "dependency_and_method": 1
+      }
+    },
+    "verification": {
+      "checked_on": "2026-09-22",
+      "source_verified": true,
+      "agent_run_performed": false
+    }
+  },
+  "RAIN-V2-STX-004": {
+    "title_zh": "现金流下降 15% 的覆盖压力",
+    "ticker": "STX",
+    "company": "Seagate Technology Holdings plc",
+    "depends_on": [
+      "RAIN-V2-STX-001",
+      "RAIN-V2-STX-003"
+    ],
+    "input_bindings": {
+      "dividend_budget": {
+        "kind": "prior",
+        "question_id": "RAIN-V2-STX-003",
+        "field": "annual_dividend_budget",
+        "value": "613.44",
+        "unit": "USD million"
+      },
+      "fcf": {
+        "kind": "prior",
+        "question_id": "RAIN-V2-STX-001",
+        "field": "fcf",
+        "value": "818",
+        "unit": "USD million"
+      },
+      "decline": {
+        "kind": "assumption",
+        "value": "0.15",
+        "unit": "fraction",
+        "description": "Scenario assumption stated in the question"
+      },
+      "minimum_coverage": {
+        "kind": "assumption",
+        "value": "1.2",
+        "unit": "times",
+        "description": "Scenario assumption stated in the question"
+      }
+    },
+    "derivations": [
+      {
+        "field": "stressed_fcf",
+        "expression": "fcf * (1 - decline)",
+        "unit": "USD million",
+        "decimal_places": 3
+      },
+      {
+        "field": "stressed_coverage",
+        "expression": "stressed_fcf / dividend_budget",
+        "unit": "times",
+        "decimal_places": 2
+      },
+      {
+        "field": "residual",
+        "expression": "stressed_fcf - dividend_budget",
+        "unit": "USD million",
+        "decimal_places": 3
+      },
+      {
+        "field": "passes",
+        "expression": "stressed_coverage >= minimum_coverage",
+        "unit": "boolean",
+        "decimal_places": null
+      }
+    ],
+    "output_nodes": {
+      "stressed_fcf": "derive_stressed_fcf",
+      "stressed_coverage": "derive_stressed_coverage",
+      "residual": "derive_residual",
+      "passes": "derive_passes"
+    },
+    "hop_definition": "conditional_evidence_depth_v2",
+    "hop_plan": [
+      {
+        "id": "input_dividend_budget",
+        "kind": "prior",
+        "depends_on": [],
+        "outputs": [
+          "dividend_budget"
+        ],
+        "question_id": "RAIN-V2-STX-003",
+        "field": "annual_dividend_budget",
+        "depth": 0
+      },
+      {
+        "id": "input_fcf",
+        "kind": "prior",
+        "depends_on": [],
+        "outputs": [
+          "fcf"
+        ],
+        "question_id": "RAIN-V2-STX-001",
+        "field": "fcf",
+        "depth": 0
+      },
+      {
+        "id": "input_decline",
+        "kind": "assumption",
+        "depends_on": [],
+        "outputs": [
+          "decline"
+        ],
+        "description": "Scenario assumption stated in the question",
+        "depth": 0
+      },
+      {
+        "id": "input_minimum_coverage",
+        "kind": "assumption",
+        "depends_on": [],
+        "outputs": [
+          "minimum_coverage"
+        ],
+        "description": "Scenario assumption stated in the question",
+        "depth": 0
+      },
+      {
+        "id": "derive_stressed_fcf",
+        "kind": "calculate",
+        "depends_on": [
+          "input_decline",
+          "input_fcf"
+        ],
+        "outputs": [
+          "stressed_fcf"
+        ],
+        "expression": "fcf * (1 - decline)",
+        "depth": 1
+      },
+      {
+        "id": "derive_stressed_coverage",
+        "kind": "calculate",
+        "depends_on": [
+          "input_dividend_budget",
+          "derive_stressed_fcf"
+        ],
+        "outputs": [
+          "stressed_coverage"
+        ],
+        "expression": "stressed_fcf / dividend_budget",
+        "depth": 2
+      },
+      {
+        "id": "derive_residual",
+        "kind": "calculate",
+        "depends_on": [
+          "input_dividend_budget",
+          "derive_stressed_fcf"
+        ],
+        "outputs": [
+          "residual"
+        ],
+        "expression": "stressed_fcf - dividend_budget",
+        "depth": 2
+      },
+      {
+        "id": "derive_passes",
+        "kind": "judge",
+        "depends_on": [
+          "input_minimum_coverage",
+          "derive_stressed_coverage"
+        ],
+        "outputs": [
+          "passes"
+        ],
+        "expression": "stressed_coverage >= minimum_coverage",
+        "depth": 3
+      }
+    ],
+    "hops": 3,
+    "evidence_records": [
+      {
+        "label": "capex",
+        "value": "265",
+        "unit": "USD million",
+        "source_id": "STX-10-K",
+        "locator": "Inline XBRL fact #f-246; context c-1",
+        "fact_id": "f-246",
+        "concept": "us-gaap:PaymentsToAcquirePropertyPlantAndEquipment",
+        "context_id": "c-1",
+        "context": "context: entity: identifier:0001137789 period: startdate:2024-06-29 enddate:2025-06-27",
+        "scale": 6,
+        "decimals": "-6",
+        "original_text": "265",
+        "sign": "+",
+        "url": "https://www.sec.gov/Archives/edgar/data/1137789/000113778925000157/stx-20250627.htm#f-246",
+        "evidence_block": "STX-10-K:income_statement"
+      },
+      {
+        "label": "ocf",
+        "value": "1083",
+        "unit": "USD million",
+        "source_id": "STX-10-K",
+        "locator": "Inline XBRL fact #f-243; context c-1",
+        "fact_id": "f-243",
+        "concept": "us-gaap:NetCashProvidedByUsedInOperatingActivities",
+        "context_id": "c-1",
+        "context": "context: entity: identifier:0001137789 period: startdate:2024-06-29 enddate:2025-06-27",
+        "scale": 6,
+        "decimals": "-6",
+        "original_text": "1,083",
+        "sign": "+",
+        "url": "https://www.sec.gov/Archives/edgar/data/1137789/000113778925000157/stx-20250627.htm#f-243",
+        "evidence_block": "STX-10-K:income_statement"
+      },
+      {
+        "label": "dividend",
+        "value": "0.72",
+        "unit": "USD per share",
+        "source_id": "STX-8-K",
+        "locator": "Item 7.01",
+        "url": "https://www.sec.gov/Archives/edgar/data/1137789/000113778925000148/stx-20250729.htm#:~:text=quarterly%20cash%20dividend%20of%20%240.72%20per%20share",
+        "text_fragment": "quarterly cash dividend of $0.72 per share",
+        "evidence_block": "STX-8-K:Item 7.01"
+      },
+      {
+        "label": "shares",
+        "source_id": "STX-8-K-ex0",
+        "value": "213",
+        "unit": "million shares",
+        "url": "https://www.sec.gov/Archives/edgar/data/1137789/000113778925000148/stxq42025pressreleasefinan.htm#:~:text=213%20million%20ordinary%20shares%20issued%20and%20outstanding",
+        "locator": "Cash flow and capital allocation discussion",
+        "text_fragment": "213 million ordinary shares issued and outstanding",
+        "evidence_block": "STX-8-K-ex0:Cash flow and capital allocation discussion"
+      }
+    ],
+    "reused_from_v1": [],
+    "grading": {
+      "expected_answer": {
+        "stressed_fcf": {
+          "value": "695.300",
+          "kind": "number",
+          "unit": "USD million",
+          "absolute_tolerance": "0.001"
+        },
+        "stressed_coverage": {
+          "value": "1.13",
+          "kind": "number",
+          "unit": "times",
+          "absolute_tolerance": "0.01"
+        },
+        "residual": {
+          "value": "81.860",
+          "kind": "number",
+          "unit": "USD million",
+          "absolute_tolerance": "0.001"
+        },
+        "passes": {
+          "value": false,
+          "kind": "boolean",
+          "unit": "boolean"
+        }
+      },
+      "max_points": 5,
+      "rubric": {
+        "answer": 2,
+        "evidence": 1,
+        "scope_units": 1,
+        "dependency_and_method": 1
+      }
+    },
+    "verification": {
+      "checked_on": "2026-09-22",
+      "source_verified": true,
+      "agent_run_performed": false
+    }
+  },
+  "RAIN-V2-STX-005": {
+    "title_zh": "求最大可承受回撤并核对压力结果",
+    "ticker": "STX",
+    "company": "Seagate Technology Holdings plc",
+    "depends_on": [
+      "RAIN-V2-STX-003",
+      "RAIN-V2-STX-004"
+    ],
+    "input_bindings": {
+      "stressed_fcf": {
+        "kind": "prior",
+        "question_id": "RAIN-V2-STX-004",
+        "field": "stressed_fcf",
+        "value": "695.30",
+        "unit": "USD million"
+      },
+      "dividend_budget": {
+        "kind": "prior",
+        "question_id": "RAIN-V2-STX-003",
+        "field": "annual_dividend_budget",
+        "value": "613.44",
+        "unit": "USD million"
+      },
+      "tested_decline": {
+        "kind": "assumption",
+        "value": "0.15",
+        "unit": "fraction",
+        "description": "Scenario assumption stated in the question"
+      },
+      "minimum_coverage": {
+        "kind": "assumption",
+        "value": "1.2",
+        "unit": "times",
+        "description": "Scenario assumption stated in the question"
+      }
+    },
+    "derivations": [
+      {
+        "field": "baseline",
+        "expression": "stressed_fcf / (1 - tested_decline)",
+        "unit": "USD million",
+        "decimal_places": 3
+      },
+      {
+        "field": "required_fcf",
+        "expression": "dividend_budget * minimum_coverage",
+        "unit": "USD million",
+        "decimal_places": 3
+      },
+      {
+        "field": "max_decline_pct",
+        "expression": "(1 - required_fcf / baseline) * 100",
+        "unit": "percent",
+        "decimal_places": 2
+      },
+      {
+        "field": "tested_decline_exceeds_limit",
+        "expression": "tested_decline * 100 > max_decline_pct",
+        "unit": "boolean",
+        "decimal_places": null
+      }
+    ],
+    "output_nodes": {
+      "required_fcf": "derive_required_fcf",
+      "max_decline_pct": "derive_max_decline_pct",
+      "tested_decline_exceeds_limit": "derive_tested_decline_exceeds_limit"
+    },
+    "hop_definition": "conditional_evidence_depth_v2",
+    "hop_plan": [
+      {
+        "id": "input_stressed_fcf",
+        "kind": "prior",
+        "depends_on": [],
+        "outputs": [
+          "stressed_fcf"
+        ],
+        "question_id": "RAIN-V2-STX-004",
+        "field": "stressed_fcf",
+        "depth": 0
+      },
+      {
+        "id": "input_dividend_budget",
+        "kind": "prior",
+        "depends_on": [],
+        "outputs": [
+          "dividend_budget"
+        ],
+        "question_id": "RAIN-V2-STX-003",
+        "field": "annual_dividend_budget",
+        "depth": 0
+      },
+      {
+        "id": "input_tested_decline",
+        "kind": "assumption",
+        "depends_on": [],
+        "outputs": [
+          "tested_decline"
+        ],
+        "description": "Scenario assumption stated in the question",
+        "depth": 0
+      },
+      {
+        "id": "input_minimum_coverage",
+        "kind": "assumption",
+        "depends_on": [],
+        "outputs": [
+          "minimum_coverage"
+        ],
+        "description": "Scenario assumption stated in the question",
+        "depth": 0
+      },
+      {
+        "id": "derive_baseline",
+        "kind": "calculate",
+        "depends_on": [
+          "input_stressed_fcf",
+          "input_tested_decline"
+        ],
+        "outputs": [
+          "baseline"
+        ],
+        "expression": "stressed_fcf / (1 - tested_decline)",
+        "depth": 1
+      },
+      {
+        "id": "derive_required_fcf",
+        "kind": "calculate",
+        "depends_on": [
+          "input_dividend_budget",
+          "input_minimum_coverage"
+        ],
+        "outputs": [
+          "required_fcf"
+        ],
+        "expression": "dividend_budget * minimum_coverage",
+        "depth": 1
+      },
+      {
+        "id": "derive_max_decline_pct",
+        "kind": "calculate",
+        "depends_on": [
+          "derive_baseline",
+          "derive_required_fcf"
+        ],
+        "outputs": [
+          "max_decline_pct"
+        ],
+        "expression": "(1 - required_fcf / baseline) * 100",
+        "depth": 2
+      },
+      {
+        "id": "derive_tested_decline_exceeds_limit",
+        "kind": "judge",
+        "depends_on": [
+          "derive_max_decline_pct",
+          "input_tested_decline"
+        ],
+        "outputs": [
+          "tested_decline_exceeds_limit"
+        ],
+        "expression": "tested_decline * 100 > max_decline_pct",
+        "depth": 3
+      }
+    ],
+    "hops": 3,
+    "evidence_records": [
+      {
+        "label": "dividend",
+        "value": "0.72",
+        "unit": "USD per share",
+        "source_id": "STX-8-K",
+        "locator": "Item 7.01",
+        "url": "https://www.sec.gov/Archives/edgar/data/1137789/000113778925000148/stx-20250729.htm#:~:text=quarterly%20cash%20dividend%20of%20%240.72%20per%20share",
+        "text_fragment": "quarterly cash dividend of $0.72 per share",
+        "evidence_block": "STX-8-K:Item 7.01"
+      },
+      {
+        "label": "shares",
+        "source_id": "STX-8-K-ex0",
+        "value": "213",
+        "unit": "million shares",
+        "url": "https://www.sec.gov/Archives/edgar/data/1137789/000113778925000148/stxq42025pressreleasefinan.htm#:~:text=213%20million%20ordinary%20shares%20issued%20and%20outstanding",
+        "locator": "Cash flow and capital allocation discussion",
+        "text_fragment": "213 million ordinary shares issued and outstanding",
+        "evidence_block": "STX-8-K-ex0:Cash flow and capital allocation discussion"
+      },
+      {
+        "label": "capex",
+        "value": "265",
+        "unit": "USD million",
+        "source_id": "STX-10-K",
+        "locator": "Inline XBRL fact #f-246; context c-1",
+        "fact_id": "f-246",
+        "concept": "us-gaap:PaymentsToAcquirePropertyPlantAndEquipment",
+        "context_id": "c-1",
+        "context": "context: entity: identifier:0001137789 period: startdate:2024-06-29 enddate:2025-06-27",
+        "scale": 6,
+        "decimals": "-6",
+        "original_text": "265",
+        "sign": "+",
+        "url": "https://www.sec.gov/Archives/edgar/data/1137789/000113778925000157/stx-20250627.htm#f-246",
+        "evidence_block": "STX-10-K:income_statement"
+      },
+      {
+        "label": "ocf",
+        "value": "1083",
+        "unit": "USD million",
+        "source_id": "STX-10-K",
+        "locator": "Inline XBRL fact #f-243; context c-1",
+        "fact_id": "f-243",
+        "concept": "us-gaap:NetCashProvidedByUsedInOperatingActivities",
+        "context_id": "c-1",
+        "context": "context: entity: identifier:0001137789 period: startdate:2024-06-29 enddate:2025-06-27",
+        "scale": 6,
+        "decimals": "-6",
+        "original_text": "1,083",
+        "sign": "+",
+        "url": "https://www.sec.gov/Archives/edgar/data/1137789/000113778925000157/stx-20250627.htm#f-243",
+        "evidence_block": "STX-10-K:income_statement"
+      }
+    ],
+    "reused_from_v1": [],
+    "grading": {
+      "expected_answer": {
+        "required_fcf": {
+          "value": "736.128",
+          "kind": "number",
+          "unit": "USD million",
+          "absolute_tolerance": "0.001"
+        },
+        "max_decline_pct": {
+          "value": "10.01",
+          "kind": "number",
+          "unit": "percent",
+          "absolute_tolerance": "0.01"
+        },
+        "tested_decline_exceeds_limit": {
+          "value": true,
+          "kind": "boolean",
+          "unit": "boolean"
+        }
+      },
+      "max_points": 5,
+      "rubric": {
+        "answer": 2,
+        "evidence": 1,
+        "scope_units": 1,
+        "dependency_and_method": 1
+      }
+    },
+    "verification": {
+      "checked_on": "2026-09-22",
+      "source_verified": true,
+      "agent_run_performed": false
+    }
   }
 }

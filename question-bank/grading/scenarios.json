@@ -48,5 +48,56 @@
         "hops": 4
       }
     ]
+  },
+  "STX": {
+    "company": "Seagate Technology Holdings plc",
+    "ticker_at_filing": "STX",
+    "title_zh": "现金股息承受力：从已实现现金流到压力测试",
+    "user_request": "I want a Seagate dividend-coverage workpaper. Establish annual cash generation, compare actual dividends, estimate the newly declared dividend run rate, and stress-test it without treating my assumptions as company guidance.",
+    "scope": "FY2025 ended 2025-06-27; dividend announced 2025-07-29; explicit hypothetical stress",
+    "scenario_id": "RAIN-V2-STX-001",
+    "file": "stx_scenario.json",
+    "steps": [
+      {
+        "id": "RAIN-V2-STX-001",
+        "title_zh": "取得现金流输入并计算 FCF",
+        "depends_on": [],
+        "hops": 2
+      },
+      {
+        "id": "RAIN-V2-STX-002",
+        "title_zh": "检验已支付股息覆盖",
+        "depends_on": [
+          "RAIN-V2-STX-001"
+        ],
+        "hops": 2
+      },
+      {
+        "id": "RAIN-V2-STX-003",
+        "title_zh": "估算新股息的全年现金负担",
+        "depends_on": [
+          "RAIN-V2-STX-002"
+        ],
+        "hops": 3
+      },
+      {
+        "id": "RAIN-V2-STX-004",
+        "title_zh": "现金流下降 15% 的覆盖压力",
+        "depends_on": [
+          "RAIN-V2-STX-001",
+          "RAIN-V2-STX-003"
+        ],
+        "hops": 3
+      },
+      {
+        "id": "RAIN-V2-STX-005",
+        "title_zh": "求最大可承受回撤并核对压力结果",
+        "depends_on": [
+          "RAIN-V2-STX-003",
+          "RAIN-V2-STX-004"
+        ],
+        "hops": 3
+      }
+    ]
   }
 }
