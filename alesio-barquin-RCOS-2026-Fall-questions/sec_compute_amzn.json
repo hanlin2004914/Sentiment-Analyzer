@@ -1,0 +1,103 @@
+[
+  {
+    "id": "SEC-CMP-001",
+    "question": "Extract Amazon's current assets and current liabilities from its 2025 10-K balance sheet, then calculate the current ratio (Current Assets / Current Liabilities).",
+    "type": "SEC Computation",
+    "answer": "AMZN_2025_current_ratio",
+    "scenario_id": "SEC-COMPUTE-002",
+    "workflow_step": 1,
+    "total_steps": 5,
+    "hops": 2,
+    "xbrl_concepts": [
+      "us-gaap:AssetsCurrent",
+      "us-gaap:LiabilitiesCurrent"
+    ],
+    "filing_type": "10-K",
+    "filing_period": "FY2025",
+    "answer_type": "calculated_value",
+    "tool_required": "sec-edgar-toolkit + calculation",
+    "source": "https://www.sec.gov/edgar/",
+    "reasoning": "Extract current assets and current liabilities from the FY2025 balance sheet, then compute the current ratio. This measures the company's ability to meet short-term obligations using its short-term assets.",
+    "evidence": "Amazon.com Inc. Form 10-K for Fiscal Year 2025, Consolidated Balance Sheets"
+  },
+  {
+    "id": "SEC-CMP-002",
+    "question": "Extract Amazon's total debt and shareholders' equity, then calculate the debt-to-equity ratio for fiscal year 2025.",
+    "type": "SEC Computation",
+    "answer": "AMZN_2025_debt_to_equity",
+    "scenario_id": "SEC-COMPUTE-002",
+    "workflow_step": 2,
+    "total_steps": 5,
+    "hops": 2,
+    "xbrl_concepts": [
+      "us-gaap:LongTermDebt",
+      "us-gaap:StockholdersEquityIncludingPortionAttributableToNoncontrollingInterest"
+    ],
+    "filing_type": "10-K",
+    "filing_period": "FY2025",
+    "answer_type": "calculated_value",
+    "tool_required": "sec-edgar-toolkit + calculation",
+    "source": "https://www.sec.gov/edgar/",
+    "reasoning": "Extract total debt and shareholders' equity from the FY2025 balance sheet, then compute the debt-to-equity ratio. This measures the company's financial leverage relative to shareholder capital.",
+    "evidence": "Amazon.com Inc. Form 10-K for Fiscal Year 2025, Consolidated Balance Sheets"
+  },
+  {
+    "id": "SEC-CMP-003",
+    "question": "Extract Amazon's revenue for fiscal years 2021 through 2025, then calculate the 5-year compound annual growth rate (CAGR).",
+    "type": "SEC Computation",
+    "answer": "AMZN_2021_2025_revenue_CAGR",
+    "scenario_id": "SEC-COMPUTE-002",
+    "workflow_step": 3,
+    "total_steps": 5,
+    "hops": 3,
+    "xbrl_concepts": [
+      "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax"
+    ],
+    "filing_type": "10-K",
+    "filing_period": "FY2021 to FY2025",
+    "answer_type": "calculated_value",
+    "tool_required": "sec-edgar-toolkit + calculation",
+    "source": "https://www.sec.gov/edgar/",
+    "reasoning": "Extract annual revenue from FY2021 through FY2025 from each year's 10-K, then compute the 5-year CAGR using: (Revenue_2025 / Revenue_2021)^(1/4) - 1. This measures the company's average annual revenue growth rate over the 5-year period.",
+    "evidence": "Amazon.com Inc. Form 10-K for Fiscal Years 2021-2025"
+  },
+  {
+    "id": "SEC-CMP-004",
+    "question": "Extract Amazon's operating income and revenue for 2025, then calculate the operating margin and compare it to the prior year (2024).",
+    "type": "SEC Computation",
+    "answer": "AMZN_2025_operating_margin, AMZN_2024_operating_margin, AMZN_margin_change",
+    "scenario_id": "SEC-COMPUTE-002",
+    "workflow_step": 4,
+    "total_steps": 5,
+    "hops": 3,
+    "xbrl_concepts": [
+      "us-gaap:OperatingIncomeLoss",
+      "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax"
+    ],
+    "filing_type": "10-K",
+    "filing_period": "FY2024 and FY2025",
+    "answer_type": "calculated_value",
+    "tool_required": "sec-edgar-toolkit + calculation",
+    "source": "https://www.sec.gov/edgar/",
+    "reasoning": "Extract operating income and revenue from FY2024 and FY2025, compute operating margins for both years, and calculate the year-over-year change. This shows the trend in operational efficiency.",
+    "evidence": "Amazon.com Inc. Form 10-K for Fiscal Years 2024 and 2025"
+  },
+  {
+    "id": "SEC-CMP-005",
+    "question": "Extract Amazon's 'Item 1. Business' section to identify key business segments and their revenue contributions, then summarize the segment breakdown.",
+    "type": "SEC Computation",
+    "answer": "AMZN_business_segments_summary",
+    "scenario_id": "SEC-COMPUTE-002",
+    "workflow_step": 5,
+    "total_steps": 5,
+    "hops": 2,
+    "xbrl_concepts": [],
+    "filing_type": "10-K",
+    "filing_period": "FY2025",
+    "answer_type": "text_summary",
+    "tool_required": "sec-edgar-toolkit (section extraction) + summarization",
+    "source": "https://www.sec.gov/edgar/",
+    "reasoning": "Extract Item 1 (Business) from Amazon's 10-K to identify the company's key business segments (North America, International, AWS) and their revenue contributions. This requires reading the narrative section and extracting structured segment data.",
+    "evidence": "Amazon.com Inc. Form 10-K for Fiscal Year 2025, Part I, Item 1 (Business)"
+  }
+]

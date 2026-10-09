@@ -1,0 +1,106 @@
+[
+  {
+    "id": "XBRL-COMP-019",
+    "question": "Using Microsoft Corporation's fiscal 2025 and fiscal 2024 revenue from its 10-K, calculate fiscal 2025 year-over-year revenue growth as `((Revenue_2025 - Revenue_2024) / Revenue_2024) * 100`.",
+    "type": "XBRL Computation",
+    "answer": "MSFT_2025_revenue_growth_pct",
+    "scenario_id": "XBRL-COMPUTE-MSFT-001",
+    "workflow_step": 1,
+    "total_steps": 5,
+    "hops": 2,
+    "xbrl_concepts": [
+      "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax"
+    ],
+    "filing_type": "10-K",
+    "filing_period": "FY2025",
+    "answer_type": "calculated_value",
+    "tool_required": "edgartools + calculation",
+    "source": "https://www.sec.gov/Archives/edgar/data/789019/000095017025100235/msft-20250630.htm",
+    "reasoning": "Retrieve Microsoft revenue for fiscal 2025 and 2024, then compute the year-over-year percentage increase using the stated formula.",
+    "evidence": "Microsoft Corporation FY2025 Form 10-K, accession 0000950170-25-100235. Summary Results of Operations and Consolidated Statements of Income report revenue for fiscal 2025 and fiscal 2024."
+  },
+  {
+    "id": "XBRL-COMP-020",
+    "question": "Using Microsoft Corporation's fiscal 2025 operating income and revenue from its 10-K, calculate operating margin as `(OperatingIncome_2025 / Revenue_2025) * 100`.",
+    "type": "XBRL Computation",
+    "answer": "MSFT_2025_operating_margin_pct",
+    "scenario_id": "XBRL-COMPUTE-MSFT-001",
+    "workflow_step": 2,
+    "total_steps": 5,
+    "hops": 2,
+    "xbrl_concepts": [
+      "us-gaap:OperatingIncomeLoss",
+      "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax"
+    ],
+    "filing_type": "10-K",
+    "filing_period": "FY2025",
+    "answer_type": "calculated_value",
+    "tool_required": "edgartools + calculation",
+    "source": "https://www.sec.gov/Archives/edgar/data/789019/000095017025100235/msft-20250630.htm",
+    "reasoning": "Retrieve fiscal 2025 operating income and revenue and divide operating income by revenue to calculate operating margin.",
+    "evidence": "Microsoft Corporation FY2025 Form 10-K, accession 0000950170-25-100235. Summary Results of Operations and Consolidated Statements of Income report fiscal 2025 revenue and operating income."
+  },
+  {
+    "id": "XBRL-COMP-021",
+    "question": "Using Microsoft Corporation's fiscal 2025 net income and revenue from its 10-K, calculate net profit margin as `(NetIncome_2025 / Revenue_2025) * 100`.",
+    "type": "XBRL Computation",
+    "answer": "MSFT_2025_net_profit_margin_pct",
+    "scenario_id": "XBRL-COMPUTE-MSFT-001",
+    "workflow_step": 3,
+    "total_steps": 5,
+    "hops": 2,
+    "xbrl_concepts": [
+      "us-gaap:NetIncomeLoss",
+      "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax"
+    ],
+    "filing_type": "10-K",
+    "filing_period": "FY2025",
+    "answer_type": "calculated_value",
+    "tool_required": "edgartools + calculation",
+    "source": "https://www.sec.gov/Archives/edgar/data/789019/000095017025100235/msft-20250630.htm",
+    "reasoning": "Retrieve Microsoft's fiscal 2025 net income and revenue and compute net profit margin using the stated formula.",
+    "evidence": "Microsoft Corporation FY2025 Form 10-K, accession 0000950170-25-100235. Consolidated Statements of Income reports fiscal 2025 revenue and net income."
+  },
+  {
+    "id": "XBRL-COMP-022",
+    "question": "Using Microsoft Corporation's fiscal 2025 gross margin and revenue from its 10-K, calculate gross margin percentage as `(GrossProfit_2025 / Revenue_2025) * 100`.",
+    "type": "XBRL Computation",
+    "answer": "MSFT_2025_gross_margin_pct",
+    "scenario_id": "XBRL-COMPUTE-MSFT-001",
+    "workflow_step": 4,
+    "total_steps": 5,
+    "hops": 2,
+    "xbrl_concepts": [
+      "us-gaap:GrossProfit",
+      "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax"
+    ],
+    "filing_type": "10-K",
+    "filing_period": "FY2025",
+    "answer_type": "calculated_value",
+    "tool_required": "edgartools + calculation",
+    "source": "https://www.sec.gov/Archives/edgar/data/789019/000095017025100235/msft-20250630.htm",
+    "reasoning": "Retrieve fiscal 2025 gross profit and revenue and compute gross margin percentage.",
+    "evidence": "Microsoft Corporation FY2025 Form 10-K, accession 0000950170-25-100235. Summary Results of Operations and Consolidated Statements of Income report fiscal 2025 revenue and gross margin."
+  },
+  {
+    "id": "XBRL-COMP-023",
+    "question": "Using Microsoft Corporation's fiscal 2025 research and development expense and revenue from its 10-K, calculate R&D intensity as `(ResearchAndDevelopmentExpense_2025 / Revenue_2025) * 100`.",
+    "type": "XBRL Computation",
+    "answer": "MSFT_2025_research_and_development_intensity_pct",
+    "scenario_id": "XBRL-COMPUTE-MSFT-001",
+    "workflow_step": 5,
+    "total_steps": 5,
+    "hops": 2,
+    "xbrl_concepts": [
+      "us-gaap:ResearchAndDevelopmentExpense",
+      "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax"
+    ],
+    "filing_type": "10-K",
+    "filing_period": "FY2025",
+    "answer_type": "calculated_value",
+    "tool_required": "edgartools + calculation",
+    "source": "https://www.sec.gov/Archives/edgar/data/789019/000095017025100235/msft-20250630.htm",
+    "reasoning": "Retrieve fiscal 2025 research and development expense and revenue and compute R&D expense as a percentage of revenue.",
+    "evidence": "Microsoft Corporation FY2025 Form 10-K, accession 0000950170-25-100235. Consolidated Statements of Income reports fiscal 2025 research and development expense and revenue."
+  }
+]

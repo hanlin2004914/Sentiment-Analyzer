@@ -1,0 +1,105 @@
+[
+  {
+    "id": "XBRL-CMP-014",
+    "question": "Extract Coca-Cola's operating income and net operating revenues for fiscal year 2025, then calculate operating margin as Operating Income / Net Operating Revenues.",
+    "type": "XBRL Computation",
+    "answer": "KO_2025_operating_margin",
+    "scenario_id": "XBRL-COMPUTE-004",
+    "workflow_step": 1,
+    "total_steps": 5,
+    "hops": 2,
+    "xbrl_concepts": [
+      "us-gaap:OperatingIncomeLoss",
+      "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax"
+    ],
+    "filing_type": "10-K",
+    "filing_period": "FY2025",
+    "answer_type": "calculated_value",
+    "tool_required": "edgartools + calculation",
+    "source": "https://www.sec.gov/Archives/edgar/data/21344/000162828026010047/ko-20251231.htm",
+    "reasoning": "Extract Coca-Cola's fiscal year 2025 operating income and net operating revenues from the annual filing, then divide operating income by revenue. This tests retrieval of two annual XBRL facts followed by a profitability calculation.",
+    "evidence": "The Coca-Cola Company Form 10-K for Fiscal Year 2025, filed February 20, 2026 (Accession No. 0001628280-26-010047), Consolidated Statements of Income and MD&A Results of Operations"
+  },
+  {
+    "id": "XBRL-CMP-015",
+    "question": "Extract Coca-Cola's net operating revenues for fiscal years 2024 and 2025, then calculate the year-over-year revenue growth rate using (Revenue_2025 - Revenue_2024) / Revenue_2024.",
+    "type": "XBRL Computation",
+    "answer": "KO_2025_revenue_growth",
+    "scenario_id": "XBRL-COMPUTE-004",
+    "workflow_step": 2,
+    "total_steps": 5,
+    "hops": 3,
+    "xbrl_concepts": [
+      "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax"
+    ],
+    "filing_type": "10-K",
+    "filing_period": "FY2024 and FY2025",
+    "answer_type": "calculated_value",
+    "tool_required": "edgartools + calculation",
+    "source": "https://www.sec.gov/Archives/edgar/data/21344/000162828026010047/ko-20251231.htm",
+    "reasoning": "Extract Coca-Cola's annual net operating revenues for fiscal years 2024 and 2025, then compute the year-over-year growth rate. This tests selection of the same duration concept across two annual contexts before calculation.",
+    "evidence": "The Coca-Cola Company Form 10-K for Fiscal Year 2025, filed February 20, 2026 (Accession No. 0001628280-26-010047), Consolidated Statements of Income, years ended December 31, 2025 and 2024"
+  },
+  {
+    "id": "XBRL-CMP-016",
+    "question": "Extract Coca-Cola's net cash provided by operating activities for fiscal years 2024 and 2025, then calculate the year-over-year operating cash flow growth rate using (OCF_2025 - OCF_2024) / OCF_2024.",
+    "type": "XBRL Computation",
+    "answer": "KO_2025_operating_cash_flow_growth",
+    "scenario_id": "XBRL-COMPUTE-004",
+    "workflow_step": 3,
+    "total_steps": 5,
+    "hops": 3,
+    "xbrl_concepts": [
+      "us-gaap:NetCashProvidedByUsedInOperatingActivities"
+    ],
+    "filing_type": "10-K",
+    "filing_period": "FY2024 and FY2025",
+    "answer_type": "calculated_value",
+    "tool_required": "edgartools + calculation",
+    "source": "https://www.sec.gov/Archives/edgar/data/21344/000162828026010047/ko-20251231.htm",
+    "reasoning": "Extract Coca-Cola's operating cash flow for fiscal years 2024 and 2025, then compute the year-over-year growth rate. This tests retrieval of comparable annual cash-flow facts and a multi-period calculation.",
+    "evidence": "The Coca-Cola Company Form 10-K for Fiscal Year 2025, filed February 20, 2026 (Accession No. 0001628280-26-010047), Consolidated Statements of Cash Flows, years ended December 31, 2025 and 2024"
+  },
+  {
+    "id": "XBRL-CMP-017",
+    "question": "Extract Coca-Cola's purchases of property, plant and equipment and net cash provided by operating activities for fiscal year 2025, then calculate capital expenditures as a percentage of operating cash flow.",
+    "type": "XBRL Computation",
+    "answer": "KO_2025_capex_percent_of_operating_cash_flow",
+    "scenario_id": "XBRL-COMPUTE-004",
+    "workflow_step": 4,
+    "total_steps": 5,
+    "hops": 2,
+    "xbrl_concepts": [
+      "us-gaap:PaymentsToAcquirePropertyPlantAndEquipment",
+      "us-gaap:NetCashProvidedByUsedInOperatingActivities"
+    ],
+    "filing_type": "10-K",
+    "filing_period": "FY2025",
+    "answer_type": "calculated_value",
+    "tool_required": "edgartools + calculation",
+    "source": "https://www.sec.gov/Archives/edgar/data/21344/000162828026010047/ko-20251231.htm",
+    "reasoning": "Extract Coca-Cola's fiscal year 2025 purchases of property, plant and equipment and operating cash flow, then divide capital expenditures by operating cash flow. This measures the share of operating cash generation used for capital investment.",
+    "evidence": "The Coca-Cola Company Form 10-K for Fiscal Year 2025, filed February 20, 2026 (Accession No. 0001628280-26-010047), Consolidated Statements of Cash Flows"
+  },
+  {
+    "id": "XBRL-CMP-018",
+    "question": "Extract Coca-Cola's net income for fiscal year 2025 and total assets as of fiscal year-end 2024 and 2025, then calculate return on average assets using Net Income / ((Assets_2024 + Assets_2025) / 2).",
+    "type": "XBRL Computation",
+    "answer": "KO_2025_return_on_average_assets",
+    "scenario_id": "XBRL-COMPUTE-004",
+    "workflow_step": 5,
+    "total_steps": 5,
+    "hops": 3,
+    "xbrl_concepts": [
+      "us-gaap:NetIncomeLoss",
+      "us-gaap:Assets"
+    ],
+    "filing_type": "10-K",
+    "filing_period": "FY2024 and FY2025",
+    "answer_type": "calculated_value",
+    "tool_required": "edgartools + calculation",
+    "source": "https://www.sec.gov/Archives/edgar/data/21344/000162828026010047/ko-20251231.htm",
+    "reasoning": "Extract Coca-Cola's fiscal year 2025 net income and total assets at fiscal year-end 2024 and 2025. Compute average total assets and divide net income by that average to calculate return on average assets.",
+    "evidence": "The Coca-Cola Company Form 10-K for Fiscal Year 2025, filed February 20, 2026 (Accession No. 0001628280-26-010047), Consolidated Statements of Income and Consolidated Balance Sheets"
+  }
+]

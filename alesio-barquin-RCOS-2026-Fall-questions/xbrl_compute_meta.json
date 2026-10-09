@@ -1,0 +1,107 @@
+[
+  {
+    "id": "XBRL-CMP-001",
+    "question": "Extract Meta's revenue and net income for fiscal years 2024 and 2025 from its 10-K filings, then calculate the YoY revenue growth rate and net income growth rate.",
+    "type": "XBRL Computation",
+    "answer": "META_YoY_revenue_growth, META_YoY_net_income_growth",
+    "scenario_id": "XBRL-COMPUTE-001",
+    "workflow_step": 1,
+    "total_steps": 5,
+    "hops": 3,
+    "xbrl_concepts": [
+      "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax",
+      "us-gaap:NetIncomeLoss"
+    ],
+    "filing_type": "10-K",
+    "filing_period": "FY2024 and FY2025",
+    "answer_type": "calculated_value",
+    "tool_required": "edgartools + calculation",
+    "source": "https://www.sec.gov/edgar/",
+    "reasoning": "Extract revenue and net income for both FY2024 and FY2025, then compute YoY growth rates using the formula: (Value_2025 - Value_2024) / Value_2024. These metrics measure the company's year-over-year top-line and bottom-line performance.",
+    "evidence": "Meta Platforms Inc. Form 10-K for Fiscal Years 2024 and 2025"
+  },
+  {
+    "id": "XBRL-CMP-002",
+    "question": "Extract Meta's operating income and revenue for fiscal year 2025, then calculate the operating margin (Operating Income / Revenue).",
+    "type": "XBRL Computation",
+    "answer": "META_2025_operating_margin",
+    "scenario_id": "XBRL-COMPUTE-001",
+    "workflow_step": 2,
+    "total_steps": 5,
+    "hops": 2,
+    "xbrl_concepts": [
+      "us-gaap:OperatingIncomeLoss",
+      "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax"
+    ],
+    "filing_type": "10-K",
+    "filing_period": "FY2025",
+    "answer_type": "calculated_value",
+    "tool_required": "edgartools + calculation",
+    "source": "https://www.sec.gov/edgar/",
+    "reasoning": "Extract operating income and revenue from FY2025, then compute operating margin using: Operating Income / Revenue. This measures the efficiency of the company's core operations.",
+    "evidence": "Meta Platforms Inc. Form 10-K for Fiscal Year 2025, Consolidated Statements of Income"
+  },
+  {
+    "id": "XBRL-CMP-003",
+    "question": "Extract Meta's gross profit and revenue for fiscal year 2025, then calculate the gross margin (Gross Profit / Revenue).",
+    "type": "XBRL Computation",
+    "answer": "META_2025_gross_margin",
+    "scenario_id": "XBRL-COMPUTE-001",
+    "workflow_step": 3,
+    "total_steps": 5,
+    "hops": 2,
+    "xbrl_concepts": [
+      "us-gaap:GrossProfit",
+      "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax"
+    ],
+    "filing_type": "10-K",
+    "filing_period": "FY2025",
+    "answer_type": "calculated_value",
+    "tool_required": "edgartools + calculation",
+    "source": "https://www.sec.gov/edgar/",
+    "reasoning": "Extract gross profit and revenue from FY2025, then compute gross margin using: Gross Profit / Revenue. This measures the percentage of revenue remaining after direct cost of goods sold.",
+    "evidence": "Meta Platforms Inc. Form 10-K for Fiscal Year 2025, Consolidated Statements of Income"
+  },
+  {
+    "id": "XBRL-CMP-004",
+    "question": "Extract Meta's research and development expenses and revenue for fiscal year 2025, then calculate R&D as a percentage of revenue.",
+    "type": "XBRL Computation",
+    "answer": "META_2025_RD_percent_of_revenue",
+    "scenario_id": "XBRL-COMPUTE-001",
+    "workflow_step": 4,
+    "total_steps": 5,
+    "hops": 2,
+    "xbrl_concepts": [
+      "us-gaap:ResearchAndDevelopmentExpense",
+      "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax"
+    ],
+    "filing_type": "10-K",
+    "filing_period": "FY2025",
+    "answer_type": "calculated_value",
+    "tool_required": "edgartools + calculation",
+    "source": "https://www.sec.gov/edgar/",
+    "reasoning": "Extract R&D expense and revenue from FY2025, then compute R&D as a percentage of revenue. This indicates the company's investment intensity in innovation relative to its revenue scale.",
+    "evidence": "Meta Platforms Inc. Form 10-K for Fiscal Year 2025, Consolidated Statements of Income"
+  },
+  {
+    "id": "XBRL-CMP-005",
+    "question": "Extract Meta's free cash flow and net income for fiscal year 2025, then calculate the free cash flow conversion rate (FCF / Net Income).",
+    "type": "XBRL Computation",
+    "answer": "META_2025_FCF_conversion_rate",
+    "scenario_id": "XBRL-COMPUTE-001",
+    "workflow_step": 5,
+    "total_steps": 5,
+    "hops": 2,
+    "xbrl_concepts": [
+      "us-gaap:FreeCashFlow",
+      "us-gaap:NetIncomeLoss"
+    ],
+    "filing_type": "10-K",
+    "filing_period": "FY2025",
+    "answer_type": "calculated_value",
+    "tool_required": "edgartools + calculation",
+    "source": "https://www.sec.gov/edgar/",
+    "reasoning": "Extract free cash flow and net income from FY2025, then compute the FCF conversion rate using: FCF / Net Income. This measures how much of the reported earnings are converted into actual cash flow.",
+    "evidence": "Meta Platforms Inc. Form 10-K for Fiscal Year 2025, Cash Flow Statement"
+  }
+]

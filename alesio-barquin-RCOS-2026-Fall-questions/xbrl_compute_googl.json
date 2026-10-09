@@ -1,0 +1,106 @@
+[
+  {
+    "id": "XBRL-CMP-006",
+    "question": "Extract Alphabet's operating income and revenue for fiscal year 2025, then calculate the operating margin (Operating Income / Revenue).",
+    "type": "XBRL Computation",
+    "answer": "GOOGL_2025_operating_margin",
+    "scenario_id": "XBRL-COMPUTE-002",
+    "workflow_step": 1,
+    "total_steps": 5,
+    "hops": 2,
+    "xbrl_concepts": [
+      "us-gaap:OperatingIncomeLoss",
+      "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax"
+    ],
+    "filing_type": "10-K",
+    "filing_period": "FY2025",
+    "answer_type": "calculated_value",
+    "tool_required": "edgartools + calculation",
+    "source": "https://www.sec.gov/Archives/edgar/data/1652044/000165204426000018/goog-20251231.htm",
+    "reasoning": "Extract Alphabet's fiscal year 2025 operating income and revenue, then compute operating margin using Operating Income / Revenue. This measures operating profitability relative to the company's revenue base.",
+    "evidence": "Alphabet Inc. Form 10-K for Fiscal Year 2025, filed February 5, 2026 (Accession No. 0001652044-26-000018), Consolidated Statements of Income"
+  },
+  {
+    "id": "XBRL-CMP-007",
+    "question": "Extract Alphabet's research and development expense and revenue for fiscal year 2025, then calculate R&D expense as a percentage of revenue.",
+    "type": "XBRL Computation",
+    "answer": "GOOGL_2025_RD_percent_of_revenue",
+    "scenario_id": "XBRL-COMPUTE-002",
+    "workflow_step": 2,
+    "total_steps": 5,
+    "hops": 2,
+    "xbrl_concepts": [
+      "us-gaap:ResearchAndDevelopmentExpense",
+      "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax"
+    ],
+    "filing_type": "10-K",
+    "filing_period": "FY2025",
+    "answer_type": "calculated_value",
+    "tool_required": "edgartools + calculation",
+    "source": "https://www.sec.gov/Archives/edgar/data/1652044/000165204426000018/goog-20251231.htm",
+    "reasoning": "Extract Alphabet's fiscal year 2025 R&D expense and revenue, then compute R&D expense divided by revenue. This measures the company's research and development investment intensity.",
+    "evidence": "Alphabet Inc. Form 10-K for Fiscal Year 2025, filed February 5, 2026 (Accession No. 0001652044-26-000018), Consolidated Statements of Income and MD&A Research and Development table"
+  },
+  {
+    "id": "XBRL-CMP-008",
+    "question": "Extract Alphabet's net cash provided by operating activities for fiscal years 2024 and 2025, then calculate the year-over-year operating cash flow growth rate.",
+    "type": "XBRL Computation",
+    "answer": "GOOGL_2025_operating_cash_flow_growth",
+    "scenario_id": "XBRL-COMPUTE-002",
+    "workflow_step": 3,
+    "total_steps": 5,
+    "hops": 3,
+    "xbrl_concepts": [
+      "us-gaap:NetCashProvidedByUsedInOperatingActivities"
+    ],
+    "filing_type": "10-K",
+    "filing_period": "FY2024 and FY2025",
+    "answer_type": "calculated_value",
+    "tool_required": "edgartools + calculation",
+    "source": "https://www.sec.gov/Archives/edgar/data/1652044/000165204426000018/goog-20251231.htm",
+    "reasoning": "Extract operating cash flow for fiscal years 2024 and 2025, then compute the growth rate using (OCF_2025 - OCF_2024) / OCF_2024.",
+    "evidence": "Alphabet Inc. Form 10-K for Fiscal Year 2025, filed February 5, 2026 (Accession No. 0001652044-26-000018), Consolidated Statements of Cash Flows"
+  },
+  {
+    "id": "XBRL-CMP-009",
+    "question": "Extract Alphabet's purchases of property and equipment and net cash provided by operating activities for fiscal year 2025, then calculate capital expenditures as a percentage of operating cash flow.",
+    "type": "XBRL Computation",
+    "answer": "GOOGL_2025_capex_percent_of_operating_cash_flow",
+    "scenario_id": "XBRL-COMPUTE-002",
+    "workflow_step": 4,
+    "total_steps": 5,
+    "hops": 2,
+    "xbrl_concepts": [
+      "us-gaap:PaymentsToAcquirePropertyPlantAndEquipment",
+      "us-gaap:NetCashProvidedByUsedInOperatingActivities"
+    ],
+    "filing_type": "10-K",
+    "filing_period": "FY2025",
+    "answer_type": "calculated_value",
+    "tool_required": "edgartools + calculation",
+    "source": "https://www.sec.gov/Archives/edgar/data/1652044/000165204426000018/goog-20251231.htm",
+    "reasoning": "Extract Alphabet's fiscal year 2025 purchases of property and equipment and operating cash flow, then calculate Capex / Operating Cash Flow. This measures the share of operating cash generation reinvested in property and equipment.",
+    "evidence": "Alphabet Inc. Form 10-K for Fiscal Year 2025, filed February 5, 2026 (Accession No. 0001652044-26-000018), Consolidated Statements of Cash Flows and Capital Expenditures disclosure"
+  },
+  {
+    "id": "XBRL-CMP-010",
+    "question": "Extract Alphabet's net income for fiscal year 2025 and total assets as of fiscal year-end 2024 and 2025, then calculate return on average assets using Net Income / ((Assets_2024 + Assets_2025) / 2).",
+    "type": "XBRL Computation",
+    "answer": "GOOGL_2025_return_on_average_assets",
+    "scenario_id": "XBRL-COMPUTE-002",
+    "workflow_step": 5,
+    "total_steps": 5,
+    "hops": 3,
+    "xbrl_concepts": [
+      "us-gaap:NetIncomeLoss",
+      "us-gaap:Assets"
+    ],
+    "filing_type": "10-K",
+    "filing_period": "FY2024 and FY2025",
+    "answer_type": "calculated_value",
+    "tool_required": "edgartools + calculation",
+    "source": "https://www.sec.gov/Archives/edgar/data/1652044/000165204426000018/goog-20251231.htm",
+    "reasoning": "Extract fiscal year 2025 net income and total assets at fiscal year-end 2024 and 2025. Compute average total assets and divide net income by that average to calculate return on average assets.",
+    "evidence": "Alphabet Inc. Form 10-K for Fiscal Year 2025, filed February 5, 2026 (Accession No. 0001652044-26-000018), Consolidated Statements of Income and Consolidated Balance Sheets"
+  }
+]
