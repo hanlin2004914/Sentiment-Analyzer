@@ -1,0 +1,102 @@
+[
+  {
+    "id": "XBRL-RET-021",
+    "question": "Using PepsiCo's FY2025 Q2 10-Q XBRL facts (accession 0000077476-25-000044; 2025-03-23 through 2025-06-14), retrieve net revenue for the 12-week quarter. Return USD millions. Use the listed concepts and only facts from this accession.",
+    "type": "XBRL Retrieval",
+    "answer": "PEP_FY2025_Q2_quarter_revenue",
+    "scenario_id": "XBRL-RETRIEVAL-005",
+    "workflow_step": 1,
+    "total_steps": 5,
+    "hops": 1,
+    "xbrl_concepts": [
+      "us-gaap:Revenues"
+    ],
+    "filing_type": "10-Q",
+    "filing_period": "FY2025 Q2; 2025-03-23 through 2025-06-14",
+    "answer_type": "numeric_value",
+    "tool_required": "edgartools (XBRL facts and period filtering)",
+    "source": "https://data.sec.gov/api/xbrl/companyfacts/CIK0000077476.json",
+    "reasoning": "Use the 12-week duration, not the 24-week year-to-date duration. Match accession, exact dates and unit USD; do not select by fy/fp alone. SEC API USD facts are in full dollars; convert to millions only when requested.",
+    "evidence": "https://www.sec.gov/Archives/edgar/data/77476/000007747625000044/pep-20250614.htm; Income Statement; Net Revenue; accession 0000077476-25-000044, filed 2025-07-17; 2025-03-23 through 2025-06-14; unit USD."
+  },
+  {
+    "id": "XBRL-RET-022",
+    "question": "Using PepsiCo's FY2025 Q2 10-Q XBRL facts (accession 0000077476-25-000044; 2025-03-23 through 2025-06-14), retrieve cost of sales for the 12-week quarter. Return USD millions. Use the listed concepts and only facts from this accession.",
+    "type": "XBRL Retrieval",
+    "answer": "PEP_FY2025_Q2_quarter_cost_of_sales",
+    "scenario_id": "XBRL-RETRIEVAL-005",
+    "workflow_step": 2,
+    "total_steps": 5,
+    "hops": 1,
+    "xbrl_concepts": [
+      "us-gaap:CostOfGoodsAndServicesSold"
+    ],
+    "filing_type": "10-Q",
+    "filing_period": "FY2025 Q2; 2025-03-23 through 2025-06-14",
+    "answer_type": "numeric_value",
+    "tool_required": "edgartools (XBRL facts and period filtering)",
+    "source": "https://data.sec.gov/api/xbrl/companyfacts/CIK0000077476.json",
+    "reasoning": "Use the reported cost of sales concept for the quarter. Match accession, exact dates and unit USD; do not select by fy/fp alone. SEC API USD facts are in full dollars; convert to millions only when requested.",
+    "evidence": "https://www.sec.gov/Archives/edgar/data/77476/000007747625000044/pep-20250614.htm; Income Statement; Cost of sales; accession 0000077476-25-000044, filed 2025-07-17; 2025-03-23 through 2025-06-14; unit USD."
+  },
+  {
+    "id": "XBRL-RET-023",
+    "question": "Using PepsiCo's FY2025 Q2 10-Q XBRL facts (accession 0000077476-25-000044; as of 2025-06-14), retrieve inventory at the reporting date. Return USD millions. Use the listed concepts and only facts from this accession.",
+    "type": "XBRL Retrieval",
+    "answer": "PEP_FY2025_Q2_closing_inventory",
+    "scenario_id": "XBRL-RETRIEVAL-005",
+    "workflow_step": 3,
+    "total_steps": 5,
+    "hops": 1,
+    "xbrl_concepts": [
+      "us-gaap:InventoryNet"
+    ],
+    "filing_type": "10-Q",
+    "filing_period": "FY2025 Q2; as of 2025-06-14",
+    "answer_type": "numeric_value",
+    "tool_required": "edgartools (XBRL facts and period filtering)",
+    "source": "https://data.sec.gov/api/xbrl/companyfacts/CIK0000077476.json",
+    "reasoning": "Select InventoryNet at quarter-end, not the comparative prior-year-end amount. Match accession, exact dates and unit USD; do not select by fy/fp alone. SEC API USD facts are in full dollars; convert to millions only when requested.",
+    "evidence": "https://www.sec.gov/Archives/edgar/data/77476/000007747625000044/pep-20250614.htm; Balance Sheet; Inventories; accession 0000077476-25-000044, filed 2025-07-17; as of 2025-06-14; unit USD."
+  },
+  {
+    "id": "XBRL-RET-024",
+    "question": "Using PepsiCo's FY2025 Q2 10-Q XBRL facts (accession 0000077476-25-000044; 2024-12-29 through 2025-06-14), retrieve operating cash flow for the 24-week year-to-date period. Return signed USD millions. Use the listed concepts and only facts from this accession.",
+    "type": "XBRL Retrieval",
+    "answer": "PEP_FY2025_Q2_YTD_operating_cash_flow",
+    "scenario_id": "XBRL-RETRIEVAL-005",
+    "workflow_step": 4,
+    "total_steps": 5,
+    "hops": 1,
+    "xbrl_concepts": [
+      "us-gaap:NetCashProvidedByUsedInOperatingActivities"
+    ],
+    "filing_type": "10-Q",
+    "filing_period": "FY2025 Q2; 2024-12-29 through 2025-06-14",
+    "answer_type": "numeric_value",
+    "tool_required": "edgartools (XBRL facts and period filtering)",
+    "source": "https://data.sec.gov/api/xbrl/companyfacts/CIK0000077476.json",
+    "reasoning": "Use the fiscal period beginning in December 2024; do not replace its start with January 1. Match accession, exact dates and unit USD; do not select by fy/fp alone. SEC API USD facts are in full dollars; convert to millions only when requested.",
+    "evidence": "https://www.sec.gov/Archives/edgar/data/77476/000007747625000044/pep-20250614.htm; Cash Flow Statement; net cash provided by operating activities; accession 0000077476-25-000044, filed 2025-07-17; 2024-12-29 through 2025-06-14; unit USD."
+  },
+  {
+    "id": "XBRL-RET-025",
+    "question": "Using PepsiCo's FY2025 Q2 10-Q XBRL facts (accession 0000077476-25-000044; 2024-12-29 through 2025-06-14), retrieve cash payments for repurchases of common stock during the 24-week year-to-date period. Return the positive payment magnitude in USD millions. Use the listed concepts and only facts from this accession.",
+    "type": "XBRL Retrieval",
+    "answer": "PEP_FY2025_Q2_YTD_repurchases",
+    "scenario_id": "XBRL-RETRIEVAL-005",
+    "workflow_step": 5,
+    "total_steps": 5,
+    "hops": 1,
+    "xbrl_concepts": [
+      "us-gaap:PaymentsForRepurchaseOfCommonStock"
+    ],
+    "filing_type": "10-Q",
+    "filing_period": "FY2025 Q2; 2024-12-29 through 2025-06-14",
+    "answer_type": "numeric_value",
+    "tool_required": "edgartools (XBRL facts and period filtering)",
+    "source": "https://data.sec.gov/api/xbrl/companyfacts/CIK0000077476.json",
+    "reasoning": "Retrieve actual cash payments rather than remaining authorization or shares repurchased. Match accession, exact dates and unit USD; do not select by fy/fp alone. SEC API USD facts are in full dollars; convert to millions only when requested.",
+    "evidence": "https://www.sec.gov/Archives/edgar/data/77476/000007747625000044/pep-20250614.htm; Cash Flow Statement; share repurchases; accession 0000077476-25-000044, filed 2025-07-17; 2024-12-29 through 2025-06-14; unit USD."
+  }
+]

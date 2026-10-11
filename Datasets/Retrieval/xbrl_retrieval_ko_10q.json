@@ -1,0 +1,102 @@
+[
+  {
+    "id": "XBRL-RET-016",
+    "question": "Using Coca-Cola's FY2025 Q2 10-Q XBRL facts (accession 0000021344-25-000061; 2025-03-29 through 2025-06-27), retrieve net operating revenues for the quarter. Return USD millions. Use the listed concepts and only facts from this accession.",
+    "type": "XBRL Retrieval",
+    "answer": "KO_FY2025_Q2_quarter_revenue",
+    "scenario_id": "XBRL-RETRIEVAL-004",
+    "workflow_step": 1,
+    "total_steps": 5,
+    "hops": 1,
+    "xbrl_concepts": [
+      "us-gaap:Revenues"
+    ],
+    "filing_type": "10-Q",
+    "filing_period": "FY2025 Q2; 2025-03-29 through 2025-06-27",
+    "answer_type": "numeric_value",
+    "tool_required": "edgartools (XBRL facts and period filtering)",
+    "source": "https://data.sec.gov/api/xbrl/companyfacts/CIK0000021344.json",
+    "reasoning": "Select us-gaap:Revenues for the quarterly duration, not a presumed alternative revenue concept. Match accession, exact dates and unit USD; do not select by fy/fp alone. SEC API USD facts are in full dollars; convert to millions only when requested.",
+    "evidence": "https://www.sec.gov/Archives/edgar/data/21344/000002134425000061/ko-20250627.htm; Statements of Income; Net Operating Revenues; accession 0000021344-25-000061, filed 2025-07-24; 2025-03-29 through 2025-06-27; unit USD."
+  },
+  {
+    "id": "XBRL-RET-017",
+    "question": "Using Coca-Cola's FY2025 Q2 10-Q XBRL facts (accession 0000021344-25-000061; 2025-03-29 through 2025-06-27), retrieve income tax expense for the quarter. Return USD millions. Use the listed concepts and only facts from this accession.",
+    "type": "XBRL Retrieval",
+    "answer": "KO_FY2025_Q2_quarter_tax_expense",
+    "scenario_id": "XBRL-RETRIEVAL-004",
+    "workflow_step": 2,
+    "total_steps": 5,
+    "hops": 1,
+    "xbrl_concepts": [
+      "us-gaap:IncomeTaxExpenseBenefit"
+    ],
+    "filing_type": "10-Q",
+    "filing_period": "FY2025 Q2; 2025-03-29 through 2025-06-27",
+    "answer_type": "numeric_value",
+    "tool_required": "edgartools (XBRL facts and period filtering)",
+    "source": "https://data.sec.gov/api/xbrl/companyfacts/CIK0000021344.json",
+    "reasoning": "Select the quarterly tax expense rather than a tax-rate percentage. Match accession, exact dates and unit USD; do not select by fy/fp alone. SEC API USD facts are in full dollars; convert to millions only when requested.",
+    "evidence": "https://www.sec.gov/Archives/edgar/data/21344/000002134425000061/ko-20250627.htm; Statements of Income; Income Taxes; accession 0000021344-25-000061, filed 2025-07-24; 2025-03-29 through 2025-06-27; unit USD."
+  },
+  {
+    "id": "XBRL-RET-018",
+    "question": "Using Coca-Cola's FY2025 Q2 10-Q XBRL facts (accession 0000021344-25-000061; 2025-01-01 through 2025-06-27), retrieve year-to-date net cash provided by or used in operating activities. Return signed USD millions. Use the listed concepts and only facts from this accession.",
+    "type": "XBRL Retrieval",
+    "answer": "KO_FY2025_Q2_YTD_operating_cash_flow",
+    "scenario_id": "XBRL-RETRIEVAL-004",
+    "workflow_step": 3,
+    "total_steps": 5,
+    "hops": 1,
+    "xbrl_concepts": [
+      "us-gaap:NetCashProvidedByUsedInOperatingActivities"
+    ],
+    "filing_type": "10-Q",
+    "filing_period": "FY2025 Q2; 2025-01-01 through 2025-06-27",
+    "answer_type": "numeric_value",
+    "tool_required": "edgartools (XBRL facts and period filtering)",
+    "source": "https://data.sec.gov/api/xbrl/companyfacts/CIK0000021344.json",
+    "reasoning": "Preserve the negative sign when cash is used; do not report its absolute magnitude. Match accession, exact dates and unit USD; do not select by fy/fp alone. SEC API USD facts are in full dollars; convert to millions only when requested.",
+    "evidence": "https://www.sec.gov/Archives/edgar/data/21344/000002134425000061/ko-20250627.htm; Statements of Cash Flows; Net Cash Provided by (Used in) Operating Activities; accession 0000021344-25-000061, filed 2025-07-24; 2025-01-01 through 2025-06-27; unit USD."
+  },
+  {
+    "id": "XBRL-RET-019",
+    "question": "Using Coca-Cola's FY2025 Q2 10-Q XBRL facts (accession 0000021344-25-000061; as of 2025-06-27), retrieve net current accounts receivable at the reporting date. Return USD millions. Use the listed concepts and only facts from this accession.",
+    "type": "XBRL Retrieval",
+    "answer": "KO_FY2025_Q2_closing_receivables",
+    "scenario_id": "XBRL-RETRIEVAL-004",
+    "workflow_step": 4,
+    "total_steps": 5,
+    "hops": 1,
+    "xbrl_concepts": [
+      "us-gaap:AccountsReceivableNetCurrent"
+    ],
+    "filing_type": "10-Q",
+    "filing_period": "FY2025 Q2; as of 2025-06-27",
+    "answer_type": "numeric_value",
+    "tool_required": "edgartools (XBRL facts and period filtering)",
+    "source": "https://data.sec.gov/api/xbrl/companyfacts/CIK0000021344.json",
+    "reasoning": "Select net current receivables, not gross receivables or an allowance alone. Match accession, exact dates and unit USD; do not select by fy/fp alone. SEC API USD facts are in full dollars; convert to millions only when requested.",
+    "evidence": "https://www.sec.gov/Archives/edgar/data/21344/000002134425000061/ko-20250627.htm; Balance Sheets; trade accounts receivable, less allowances; accession 0000021344-25-000061, filed 2025-07-24; as of 2025-06-27; unit USD."
+  },
+  {
+    "id": "XBRL-RET-020",
+    "question": "Using Coca-Cola's FY2025 Q2 10-Q XBRL facts (accession 0000021344-25-000061; 2025-01-01 through 2025-06-27), retrieve year-to-date cash dividend payments. Return the positive payment magnitude in USD millions. Use the listed concepts and only facts from this accession.",
+    "type": "XBRL Retrieval",
+    "answer": "KO_FY2025_Q2_YTD_dividend_payments",
+    "scenario_id": "XBRL-RETRIEVAL-004",
+    "workflow_step": 5,
+    "total_steps": 5,
+    "hops": 1,
+    "xbrl_concepts": [
+      "us-gaap:PaymentsOfDividends"
+    ],
+    "filing_type": "10-Q",
+    "filing_period": "FY2025 Q2; 2025-01-01 through 2025-06-27",
+    "answer_type": "numeric_value",
+    "tool_required": "edgartools (XBRL facts and period filtering)",
+    "source": "https://data.sec.gov/api/xbrl/companyfacts/CIK0000021344.json",
+    "reasoning": "Use paid cash dividends, not dividends declared or dividends per share. Match accession, exact dates and unit USD; do not select by fy/fp alone. SEC API USD facts are in full dollars; convert to millions only when requested.",
+    "evidence": "https://www.sec.gov/Archives/edgar/data/21344/000002134425000061/ko-20250627.htm; Statements of Cash Flows; Dividends; accession 0000021344-25-000061, filed 2025-07-24; 2025-01-01 through 2025-06-27; unit USD."
+  }
+]

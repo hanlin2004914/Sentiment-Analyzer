@@ -1,0 +1,102 @@
+[
+  {
+    "id": "XBRL-RET-006",
+    "question": "Using Tesla's FY2025 Q2 10-Q XBRL facts (SEC accession 0001628280-25-035806), retrieve consolidated revenue for Q2 2025 (April 1 through June 30). Return USD millions. Use the listed us-gaap concepts and only facts from this accession.",
+    "type": "XBRL Retrieval",
+    "answer": "TSLA_FY2025Q2_quarterly_revenue",
+    "scenario_id": "XBRL-RETRIEVAL-002",
+    "workflow_step": 1,
+    "total_steps": 5,
+    "hops": 1,
+    "xbrl_concepts": [
+      "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax"
+    ],
+    "filing_type": "10-Q",
+    "filing_period": "FY2025 Q2 report ended 2025-06-30; duration start=2025-04-01, end=2025-06-30",
+    "answer_type": "numeric_value",
+    "tool_required": "edgartools (XBRL facts and period filtering)",
+    "source": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001318605.json",
+    "reasoning": "Select the three-month duration, not the six-month duration, and divide the USD fact by 1,000,000. Match accession, dates and units rather than relying on fy/fp alone; API USD values are already in full dollars.",
+    "evidence": "https://www.sec.gov/Archives/edgar/data/1318605/000162828025035806/tsla-20250630.htm; Statements of Operations; total revenues; accession 0001628280-25-035806, filed 2025-07-24; duration start=2025-04-01, end=2025-06-30; unit=USD."
+  },
+  {
+    "id": "XBRL-RET-007",
+    "question": "Using Tesla's FY2025 Q2 10-Q XBRL facts (SEC accession 0001628280-25-035806), retrieve diluted earnings per share for Q2 2025 (April 1 through June 30). Return USD per share. Use the listed us-gaap concepts and only facts from this accession.",
+    "type": "XBRL Retrieval",
+    "answer": "TSLA_FY2025Q2_quarterly_diluted_EPS",
+    "scenario_id": "XBRL-RETRIEVAL-002",
+    "workflow_step": 2,
+    "total_steps": 5,
+    "hops": 1,
+    "xbrl_concepts": [
+      "us-gaap:EarningsPerShareDiluted"
+    ],
+    "filing_type": "10-Q",
+    "filing_period": "FY2025 Q2 report ended 2025-06-30; duration start=2025-04-01, end=2025-06-30",
+    "answer_type": "numeric_value",
+    "tool_required": "edgartools (XBRL facts and period filtering)",
+    "source": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001318605.json",
+    "reasoning": "Select USD/shares and the quarterly duration. Do not apply million-dollar scaling to EPS. Match accession, dates and units rather than relying on fy/fp alone; API USD values are already in full dollars.",
+    "evidence": "https://www.sec.gov/Archives/edgar/data/1318605/000162828025035806/tsla-20250630.htm; Statements of Operations; diluted earnings per share; accession 0001628280-25-035806, filed 2025-07-24; duration start=2025-04-01, end=2025-06-30; unit=USD/shares."
+  },
+  {
+    "id": "XBRL-RET-008",
+    "question": "Using Tesla's FY2025 Q2 10-Q XBRL facts (SEC accession 0001628280-25-035806), retrieve net inventory as of June 30, 2025. Return USD millions. Use the listed us-gaap concepts and only facts from this accession.",
+    "type": "XBRL Retrieval",
+    "answer": "TSLA_FY2025Q2_closing_inventory",
+    "scenario_id": "XBRL-RETRIEVAL-002",
+    "workflow_step": 3,
+    "total_steps": 5,
+    "hops": 1,
+    "xbrl_concepts": [
+      "us-gaap:InventoryNet"
+    ],
+    "filing_type": "10-Q",
+    "filing_period": "FY2025 Q2 report ended 2025-06-30; instant end=2025-06-30",
+    "answer_type": "numeric_value",
+    "tool_required": "edgartools (XBRL facts and period filtering)",
+    "source": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001318605.json",
+    "reasoning": "Use an instant fact at quarter-end, not the prior fiscal-year-end balance; divide USD by 1,000,000. Match accession, dates and units rather than relying on fy/fp alone; API USD values are already in full dollars.",
+    "evidence": "https://www.sec.gov/Archives/edgar/data/1318605/000162828025035806/tsla-20250630.htm; Balance Sheets; inventories; accession 0001628280-25-035806, filed 2025-07-24; instant end=2025-06-30; unit=USD."
+  },
+  {
+    "id": "XBRL-RET-009",
+    "question": "Using Tesla's FY2025 Q2 10-Q XBRL facts (SEC accession 0001628280-25-035806), retrieve operating cash flow for the six months January 1 through June 30, 2025. Return USD millions. Use the listed us-gaap concepts and only facts from this accession.",
+    "type": "XBRL Retrieval",
+    "answer": "TSLA_FY2025Q2_YTD_operating_cash_flow",
+    "scenario_id": "XBRL-RETRIEVAL-002",
+    "workflow_step": 4,
+    "total_steps": 5,
+    "hops": 1,
+    "xbrl_concepts": [
+      "us-gaap:NetCashProvidedByUsedInOperatingActivities"
+    ],
+    "filing_type": "10-Q",
+    "filing_period": "FY2025 Q2 report ended 2025-06-30; duration start=2025-01-01, end=2025-06-30",
+    "answer_type": "numeric_value",
+    "tool_required": "edgartools (XBRL facts and period filtering)",
+    "source": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001318605.json",
+    "reasoning": "Select the six-month duration. The cash flow statement is year-to-date; do not label its amount as Q2-only. Match accession, dates and units rather than relying on fy/fp alone; API USD values are already in full dollars.",
+    "evidence": "https://www.sec.gov/Archives/edgar/data/1318605/000162828025035806/tsla-20250630.htm; Statements of Cash Flows; net cash provided by operating activities; accession 0001628280-25-035806, filed 2025-07-24; duration start=2025-01-01, end=2025-06-30; unit=USD."
+  },
+  {
+    "id": "XBRL-RET-010",
+    "question": "Using Tesla's FY2025 Q2 10-Q XBRL facts (SEC accession 0001628280-25-035806), retrieve research and development expense for Q2 2025 (April 1 through June 30). Return USD millions. Use the listed us-gaap concepts and only facts from this accession.",
+    "type": "XBRL Retrieval",
+    "answer": "TSLA_FY2025Q2_quarterly_RD_expense",
+    "scenario_id": "XBRL-RETRIEVAL-002",
+    "workflow_step": 5,
+    "total_steps": 5,
+    "hops": 1,
+    "xbrl_concepts": [
+      "us-gaap:ResearchAndDevelopmentExpense"
+    ],
+    "filing_type": "10-Q",
+    "filing_period": "FY2025 Q2 report ended 2025-06-30; duration start=2025-04-01, end=2025-06-30",
+    "answer_type": "numeric_value",
+    "tool_required": "edgartools (XBRL facts and period filtering)",
+    "source": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001318605.json",
+    "reasoning": "Select the consolidated quarterly expense and divide USD by 1,000,000. Match accession, dates and units rather than relying on fy/fp alone; API USD values are already in full dollars.",
+    "evidence": "https://www.sec.gov/Archives/edgar/data/1318605/000162828025035806/tsla-20250630.htm; Statements of Operations; research and development; accession 0001628280-25-035806, filed 2025-07-24; duration start=2025-04-01, end=2025-06-30; unit=USD."
+  }
+]

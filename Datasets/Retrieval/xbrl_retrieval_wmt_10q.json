@@ -1,0 +1,102 @@
+[
+  {
+    "id": "XBRL-RET-026",
+    "question": "Using Walmart's FY2026 Q2 10-Q XBRL facts (accession 0000104169-25-000137; 2025-05-01 through 2025-07-31), retrieve quarterly net sales, excluding membership and other income. Return USD millions. Use the listed concepts and only facts from this accession.",
+    "type": "XBRL Retrieval",
+    "answer": "WMT_FY2026_Q2_quarter_net_sales",
+    "scenario_id": "XBRL-RETRIEVAL-006",
+    "workflow_step": 1,
+    "total_steps": 5,
+    "hops": 1,
+    "xbrl_concepts": [
+      "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax"
+    ],
+    "filing_type": "10-Q",
+    "filing_period": "FY2026 Q2; 2025-05-01 through 2025-07-31",
+    "answer_type": "numeric_value",
+    "tool_required": "edgartools (XBRL facts and period filtering)",
+    "source": "https://data.sec.gov/api/xbrl/companyfacts/CIK0000104169.json",
+    "reasoning": "Use RevenueFromContractWithCustomerExcludingAssessedTax, which maps to net sales in this filing. Match accession, exact dates and unit USD; do not select by fy/fp alone. SEC API USD facts are in full dollars; convert to millions only when requested.",
+    "evidence": "https://www.sec.gov/Archives/edgar/data/104169/000010416925000137/wmt-20250731.htm; Statements of Income; Net sales; accession 0000104169-25-000137, filed 2025-08-29; 2025-05-01 through 2025-07-31; unit USD."
+  },
+  {
+    "id": "XBRL-RET-027",
+    "question": "Using Walmart's FY2026 Q2 10-Q XBRL facts (accession 0000104169-25-000137; 2025-05-01 through 2025-07-31), retrieve quarterly total revenues, including membership and other income. Return USD millions. Use the listed concepts and only facts from this accession.",
+    "type": "XBRL Retrieval",
+    "answer": "WMT_FY2026_Q2_quarter_total_revenue",
+    "scenario_id": "XBRL-RETRIEVAL-006",
+    "workflow_step": 2,
+    "total_steps": 5,
+    "hops": 1,
+    "xbrl_concepts": [
+      "us-gaap:Revenues"
+    ],
+    "filing_type": "10-Q",
+    "filing_period": "FY2026 Q2; 2025-05-01 through 2025-07-31",
+    "answer_type": "numeric_value",
+    "tool_required": "edgartools (XBRL facts and period filtering)",
+    "source": "https://data.sec.gov/api/xbrl/companyfacts/CIK0000104169.json",
+    "reasoning": "Use Revenues rather than the distinct net-sales concept. Match accession, exact dates and unit USD; do not select by fy/fp alone. SEC API USD facts are in full dollars; convert to millions only when requested.",
+    "evidence": "https://www.sec.gov/Archives/edgar/data/104169/000010416925000137/wmt-20250731.htm; Statements of Income; Total revenues; accession 0000104169-25-000137, filed 2025-08-29; 2025-05-01 through 2025-07-31; unit USD."
+  },
+  {
+    "id": "XBRL-RET-028",
+    "question": "Using Walmart's FY2026 Q2 10-Q XBRL facts (accession 0000104169-25-000137; as of 2025-07-31), retrieve inventory at the reporting date. Return USD millions. Use the listed concepts and only facts from this accession.",
+    "type": "XBRL Retrieval",
+    "answer": "WMT_FY2026_Q2_closing_inventory",
+    "scenario_id": "XBRL-RETRIEVAL-006",
+    "workflow_step": 3,
+    "total_steps": 5,
+    "hops": 1,
+    "xbrl_concepts": [
+      "us-gaap:InventoryNet"
+    ],
+    "filing_type": "10-Q",
+    "filing_period": "FY2026 Q2; as of 2025-07-31",
+    "answer_type": "numeric_value",
+    "tool_required": "edgartools (XBRL facts and period filtering)",
+    "source": "https://data.sec.gov/api/xbrl/companyfacts/CIK0000104169.json",
+    "reasoning": "Select the July 31, 2025 instant rather than January 31, 2025 or July 31, 2024. Match accession, exact dates and unit USD; do not select by fy/fp alone. SEC API USD facts are in full dollars; convert to millions only when requested.",
+    "evidence": "https://www.sec.gov/Archives/edgar/data/104169/000010416925000137/wmt-20250731.htm; Balance Sheets; Inventories; accession 0000104169-25-000137, filed 2025-08-29; as of 2025-07-31; unit USD."
+  },
+  {
+    "id": "XBRL-RET-029",
+    "question": "Using Walmart's FY2026 Q2 10-Q XBRL facts (accession 0000104169-25-000137; 2025-02-01 through 2025-07-31), retrieve purchases of property and equipment for the six-month year-to-date period. Return the positive cash-outflow magnitude in USD millions. Use the listed concepts and only facts from this accession.",
+    "type": "XBRL Retrieval",
+    "answer": "WMT_FY2026_Q2_YTD_capital_purchases",
+    "scenario_id": "XBRL-RETRIEVAL-006",
+    "workflow_step": 4,
+    "total_steps": 5,
+    "hops": 1,
+    "xbrl_concepts": [
+      "us-gaap:PaymentsToAcquirePropertyPlantAndEquipment"
+    ],
+    "filing_type": "10-Q",
+    "filing_period": "FY2026 Q2; 2025-02-01 through 2025-07-31",
+    "answer_type": "numeric_value",
+    "tool_required": "edgartools (XBRL facts and period filtering)",
+    "source": "https://data.sec.gov/api/xbrl/companyfacts/CIK0000104169.json",
+    "reasoning": "Use the six months starting February 1, 2025, within fiscal 2026. Match accession, exact dates and unit USD; do not select by fy/fp alone. SEC API USD facts are in full dollars; convert to millions only when requested.",
+    "evidence": "https://www.sec.gov/Archives/edgar/data/104169/000010416925000137/wmt-20250731.htm; Statements of Cash Flows; Payments for property and equipment; accession 0000104169-25-000137, filed 2025-08-29; 2025-02-01 through 2025-07-31; unit USD."
+  },
+  {
+    "id": "XBRL-RET-030",
+    "question": "Using Walmart's FY2026 Q2 10-Q XBRL facts (accession 0000104169-25-000137; 2025-05-01 through 2025-07-31), retrieve diluted earnings per share for the quarter. Return USD per share. Use the listed concepts and only facts from this accession.",
+    "type": "XBRL Retrieval",
+    "answer": "WMT_FY2026_Q2_quarter_diluted_EPS",
+    "scenario_id": "XBRL-RETRIEVAL-006",
+    "workflow_step": 5,
+    "total_steps": 5,
+    "hops": 1,
+    "xbrl_concepts": [
+      "us-gaap:EarningsPerShareDiluted"
+    ],
+    "filing_type": "10-Q",
+    "filing_period": "FY2026 Q2; 2025-05-01 through 2025-07-31",
+    "answer_type": "numeric_value",
+    "tool_required": "edgartools (XBRL facts and period filtering)",
+    "source": "https://data.sec.gov/api/xbrl/companyfacts/CIK0000104169.json",
+    "reasoning": "Select unit USD/shares and the quarterly duration; do not apply million-dollar scaling. Match accession, exact dates and unit USD/shares; do not select by fy/fp alone. Keep EPS in USD per share.",
+    "evidence": "https://www.sec.gov/Archives/edgar/data/104169/000010416925000137/wmt-20250731.htm; Statements of Income; diluted net income per common share attributable to Walmart; accession 0000104169-25-000137, filed 2025-08-29; 2025-05-01 through 2025-07-31; unit USD/shares."
+  }
+]
