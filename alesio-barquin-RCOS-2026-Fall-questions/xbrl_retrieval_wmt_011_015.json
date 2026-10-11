@@ -1,0 +1,102 @@
+[
+  {
+    "id": "XBRL-RET-011",
+    "question": "Extract Walmart's total assets as of January 31, 2026 from its fiscal year 2026 10-K filing using the concept `Assets`.",
+    "type": "XBRL Retrieval",
+    "answer": "WMT_2026_total_assets",
+    "scenario_id": "XBRL-RETRIEVAL-003",
+    "workflow_step": 1,
+    "total_steps": 5,
+    "hops": 1,
+    "xbrl_concepts": [
+      "us-gaap:Assets"
+    ],
+    "filing_type": "10-K",
+    "filing_period": "FY2026",
+    "answer_type": "numeric_value",
+    "tool_required": "edgartools",
+    "source": "https://www.sec.gov/Archives/edgar/data/104169/000010416926000055/wmt-20260131.htm",
+    "reasoning": "Retrieve Walmart's total assets at fiscal year-end 2026 using the standard US-GAAP assets concept. This tests direct extraction of an instant balance-sheet XBRL fact with the correct fiscal context.",
+    "evidence": "Walmart Inc. Form 10-K for Fiscal Year 2026, filed March 13, 2026 (Accession No. 0000104169-26-000055), Consolidated Balance Sheets, January 31, 2026"
+  },
+  {
+    "id": "XBRL-RET-012",
+    "question": "Extract Walmart's consolidated net income for fiscal year 2026 from its 10-K filing using the concept `NetIncomeLoss`.",
+    "type": "XBRL Retrieval",
+    "answer": "WMT_2026_net_income",
+    "scenario_id": "XBRL-RETRIEVAL-003",
+    "workflow_step": 2,
+    "total_steps": 5,
+    "hops": 1,
+    "xbrl_concepts": [
+      "us-gaap:NetIncomeLoss"
+    ],
+    "filing_type": "10-K",
+    "filing_period": "FY2026",
+    "answer_type": "numeric_value",
+    "tool_required": "edgartools",
+    "source": "https://www.sec.gov/Archives/edgar/data/104169/000010416926000055/wmt-20260131.htm",
+    "reasoning": "Retrieve Walmart's fiscal year 2026 consolidated net income using the standard US-GAAP net income concept. This tests direct extraction of a duration fact from the annual income statement.",
+    "evidence": "Walmart Inc. Form 10-K for Fiscal Year 2026, filed March 13, 2026 (Accession No. 0000104169-26-000055), Consolidated Statements of Income, year ended January 31, 2026"
+  },
+  {
+    "id": "XBRL-RET-013",
+    "question": "Extract Walmart's net cash provided by operating activities for fiscal year 2026 from its 10-K filing using the concept `NetCashProvidedByUsedInOperatingActivities`.",
+    "type": "XBRL Retrieval",
+    "answer": "WMT_2026_operating_cash_flow",
+    "scenario_id": "XBRL-RETRIEVAL-003",
+    "workflow_step": 3,
+    "total_steps": 5,
+    "hops": 1,
+    "xbrl_concepts": [
+      "us-gaap:NetCashProvidedByUsedInOperatingActivities"
+    ],
+    "filing_type": "10-K",
+    "filing_period": "FY2026",
+    "answer_type": "numeric_value",
+    "tool_required": "edgartools",
+    "source": "https://www.sec.gov/Archives/edgar/data/104169/000010416926000055/wmt-20260131.htm",
+    "reasoning": "Retrieve Walmart's fiscal year 2026 net cash provided by operating activities using the standard US-GAAP operating cash flow concept. This tests direct extraction of a cash-flow duration fact.",
+    "evidence": "Walmart Inc. Form 10-K for Fiscal Year 2026, filed March 13, 2026 (Accession No. 0000104169-26-000055), Consolidated Statements of Cash Flows, year ended January 31, 2026"
+  },
+  {
+    "id": "XBRL-RET-014",
+    "question": "Extract Walmart's total current assets as of January 31, 2026 from its fiscal year 2026 10-K filing using the concept `AssetsCurrent`.",
+    "type": "XBRL Retrieval",
+    "answer": "WMT_2026_current_assets",
+    "scenario_id": "XBRL-RETRIEVAL-003",
+    "workflow_step": 4,
+    "total_steps": 5,
+    "hops": 1,
+    "xbrl_concepts": [
+      "us-gaap:AssetsCurrent"
+    ],
+    "filing_type": "10-K",
+    "filing_period": "FY2026",
+    "answer_type": "numeric_value",
+    "tool_required": "edgartools",
+    "source": "https://www.sec.gov/Archives/edgar/data/104169/000010416926000055/wmt-20260131.htm",
+    "reasoning": "Retrieve Walmart's total current assets at fiscal year-end 2026 using the standard US-GAAP current-assets concept. This tests direct extraction of an instant liquidity-related balance-sheet fact.",
+    "evidence": "Walmart Inc. Form 10-K for Fiscal Year 2026, filed March 13, 2026 (Accession No. 0000104169-26-000055), Consolidated Balance Sheets, January 31, 2026"
+  },
+  {
+    "id": "XBRL-RET-015",
+    "question": "Extract Walmart's diluted net income per common share attributable to Walmart for fiscal year 2026 using the concept `EarningsPerShareDiluted`.",
+    "type": "XBRL Retrieval",
+    "answer": "WMT_2026_diluted_EPS",
+    "scenario_id": "XBRL-RETRIEVAL-003",
+    "workflow_step": 5,
+    "total_steps": 5,
+    "hops": 1,
+    "xbrl_concepts": [
+      "us-gaap:EarningsPerShareDiluted"
+    ],
+    "filing_type": "10-K",
+    "filing_period": "FY2026",
+    "answer_type": "numeric_value",
+    "tool_required": "edgartools",
+    "source": "https://www.sec.gov/Archives/edgar/data/104169/000010416926000055/wmt-20260131.htm",
+    "reasoning": "Retrieve Walmart's fiscal year 2026 diluted earnings per share using the standard US-GAAP diluted EPS concept. This tests retrieval of a per-share duration fact using the correct annual reporting context.",
+    "evidence": "Walmart Inc. Form 10-K for Fiscal Year 2026, filed March 13, 2026 (Accession No. 0000104169-26-000055), Consolidated Statements of Income and Note 2 \u2014 Net Income Per Common Share"
+  }
+]

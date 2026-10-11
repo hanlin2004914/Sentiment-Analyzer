@@ -1,0 +1,102 @@
+[
+  {
+    "id": "XBRL-RET-006",
+    "question": "Extract Apple's total net sales for fiscal year 2025 from its 10-K filing using the concept `RevenueFromContractWithCustomerExcludingAssessedTax`.",
+    "type": "XBRL Retrieval",
+    "answer": "AAPL_2025_revenue",
+    "scenario_id": "XBRL-RETRIEVAL-002",
+    "workflow_step": 1,
+    "total_steps": 5,
+    "hops": 1,
+    "xbrl_concepts": [
+      "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax"
+    ],
+    "filing_type": "10-K",
+    "filing_period": "FY2025",
+    "answer_type": "numeric_value",
+    "tool_required": "edgartools",
+    "source": "https://www.sec.gov/Archives/edgar/data/320193/000032019325000079/aapl-20250927.htm",
+    "reasoning": "Retrieve Apple's total net sales for fiscal year 2025 using the standard US-GAAP revenue concept. This tests direct extraction of a duration fact from the annual income statement.",
+    "evidence": "Apple Inc. Form 10-K filed October 31, 2025 (Accession No. 0000320193-25-000079), Consolidated Statements of Operations, year ended September 27, 2025"
+  },
+  {
+    "id": "XBRL-RET-007",
+    "question": "Extract Apple's net income for fiscal year 2025 from its 10-K filing using the concept `NetIncomeLoss`.",
+    "type": "XBRL Retrieval",
+    "answer": "AAPL_2025_net_income",
+    "scenario_id": "XBRL-RETRIEVAL-002",
+    "workflow_step": 2,
+    "total_steps": 5,
+    "hops": 1,
+    "xbrl_concepts": [
+      "us-gaap:NetIncomeLoss"
+    ],
+    "filing_type": "10-K",
+    "filing_period": "FY2025",
+    "answer_type": "numeric_value",
+    "tool_required": "edgartools",
+    "source": "https://www.sec.gov/Archives/edgar/data/320193/000032019325000079/aapl-20250927.htm",
+    "reasoning": "Retrieve Apple's fiscal year 2025 net income using the standard US-GAAP net income concept. This tests direct extraction of a core profitability fact.",
+    "evidence": "Apple Inc. Form 10-K filed October 31, 2025 (Accession No. 0000320193-25-000079), Consolidated Statements of Operations, year ended September 27, 2025"
+  },
+  {
+    "id": "XBRL-RET-008",
+    "question": "Extract Apple's diluted earnings per share for fiscal year 2025 using the concept `EarningsPerShareDiluted`.",
+    "type": "XBRL Retrieval",
+    "answer": "AAPL_2025_diluted_EPS",
+    "scenario_id": "XBRL-RETRIEVAL-002",
+    "workflow_step": 3,
+    "total_steps": 5,
+    "hops": 1,
+    "xbrl_concepts": [
+      "us-gaap:EarningsPerShareDiluted"
+    ],
+    "filing_type": "10-K",
+    "filing_period": "FY2025",
+    "answer_type": "numeric_value",
+    "tool_required": "edgartools",
+    "source": "https://www.sec.gov/Archives/edgar/data/320193/000032019325000079/aapl-20250927.htm",
+    "reasoning": "Retrieve Apple's diluted earnings per share for fiscal year 2025. This tests retrieval of a per-share XBRL fact with the correct annual reporting context.",
+    "evidence": "Apple Inc. Form 10-K filed October 31, 2025 (Accession No. 0000320193-25-000079), Consolidated Statements of Operations, year ended September 27, 2025"
+  },
+  {
+    "id": "XBRL-RET-009",
+    "question": "Extract Apple's total assets as of the end of fiscal year 2025 using the concept `Assets`.",
+    "type": "XBRL Retrieval",
+    "answer": "AAPL_2025_total_assets",
+    "scenario_id": "XBRL-RETRIEVAL-002",
+    "workflow_step": 4,
+    "total_steps": 5,
+    "hops": 1,
+    "xbrl_concepts": [
+      "us-gaap:Assets"
+    ],
+    "filing_type": "10-K",
+    "filing_period": "FY2025",
+    "answer_type": "numeric_value",
+    "tool_required": "edgartools",
+    "source": "https://www.sec.gov/Archives/edgar/data/320193/000032019325000079/aapl-20250927.htm",
+    "reasoning": "Retrieve Apple's total assets at fiscal year-end 2025 using the standard US-GAAP assets concept. This tests extraction of an instant balance-sheet fact.",
+    "evidence": "Apple Inc. Form 10-K filed October 31, 2025 (Accession No. 0000320193-25-000079), Consolidated Balance Sheets, September 27, 2025"
+  },
+  {
+    "id": "XBRL-RET-010",
+    "question": "Extract Apple's net cash provided by operating activities for fiscal year 2025 using the concept `NetCashProvidedByUsedInOperatingActivities`.",
+    "type": "XBRL Retrieval",
+    "answer": "AAPL_2025_operating_cash_flow",
+    "scenario_id": "XBRL-RETRIEVAL-002",
+    "workflow_step": 5,
+    "total_steps": 5,
+    "hops": 1,
+    "xbrl_concepts": [
+      "us-gaap:NetCashProvidedByUsedInOperatingActivities"
+    ],
+    "filing_type": "10-K",
+    "filing_period": "FY2025",
+    "answer_type": "numeric_value",
+    "tool_required": "edgartools",
+    "source": "https://www.sec.gov/Archives/edgar/data/320193/000032019325000079/aapl-20250927.htm",
+    "reasoning": "Retrieve Apple's fiscal year 2025 net cash provided by operating activities. This tests direct XBRL retrieval from the cash flow statement.",
+    "evidence": "Apple Inc. Form 10-K filed October 31, 2025 (Accession No. 0000320193-25-000079), Consolidated Statements of Cash Flows, year ended September 27, 2025"
+  }
+]
